@@ -1,0 +1,803 @@
+fileFormatVersion: 2
+guid: dd18122444efe644dae4be315e51a7b6
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -8987476203164601248
+    second: antique items sheet 1.2_0
+  - first:
+      213: -1281149240723643886
+    second: antique items sheet 1.2_1
+  - first:
+      213: -3241149880886334206
+    second: antique items sheet 1.2_2
+  - first:
+      213: 3367384448833040850
+    second: antique items sheet 1.2_3
+  - first:
+      213: 8980058523805222731
+    second: antique items sheet 1.2_4
+  - first:
+      213: -7362172198524664069
+    second: antique items sheet 1.2_5
+  - first:
+      213: -982196673459984498
+    second: antique items sheet 1.2_6
+  - first:
+      213: -5940356380563118637
+    second: antique items sheet 1.2_7
+  - first:
+      213: -2640504915632312402
+    second: antique items sheet 1.2_8
+  - first:
+      213: 3106596063840018962
+    second: antique items sheet 1.2_9
+  - first:
+      213: -4614008994542972887
+    second: antique items sheet 1.2_10
+  - first:
+      213: 8801592525860079287
+    second: antique items sheet 1.2_11
+  - first:
+      213: 7241573287905561594
+    second: antique items sheet 1.2_12
+  - first:
+      213: 1827797679758459152
+    second: antique items sheet 1.2_13
+  - first:
+      213: 9048894087151978749
+    second: antique items sheet 1.2_14
+  - first:
+      213: 698711075681133725
+    second: antique items sheet 1.2_15
+  - first:
+      213: -6422952756004935431
+    second: antique items sheet 1.2_16
+  - first:
+      213: 2876462278051997180
+    second: antique items sheet 1.2_17
+  - first:
+      213: 1899983545752945205
+    second: antique items sheet 1.2_18
+  - first:
+      213: 8988122969706244921
+    second: antique items sheet 1.2_19
+  - first:
+      213: -5224892637291547108
+    second: antique items sheet 1.2_20
+  - first:
+      213: -7798096747098101253
+    second: antique items sheet 1.2_21
+  - first:
+      213: 6497560105397732687
+    second: antique items sheet 1.2_22
+  - first:
+      213: 2138088603227802534
+    second: antique items sheet 1.2_23
+  - first:
+      213: 8429310909923310844
+    second: antique items sheet 1.2_24
+  - first:
+      213: 5364162472690175683
+    second: antique items sheet 1.2_25
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 10
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: antique items sheet 1.2_0
+      rect:
+        serializedVersion: 2
+        x: 2
+        y: 218
+        width: 28
+        height: 26
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62d53f9f1d1edbc46aaccf53f7d7dc53
+      internalID: -190525202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_1
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 218
+        width: 28
+        height: 26
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 595291d04f94f054aaed4c310df7bb1c
+      internalID: 1602048607
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 218
+        width: 28
+        height: 26
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b9bd6c05fd08bf4bbb30e9f4f0bf243
+      internalID: -1176304829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_3
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 218
+        width: 28
+        height: 26
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1abffcaa5d15a6c4bab4d33844c902e9
+      internalID: 1149015507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_4
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 218
+        width: 32
+        height: 26
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 422ab274a914a31428aa1c216c0110af
+      internalID: 394730786
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_5
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 218
+        width: 96
+        height: 28
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0953d79e4d523d4d902c92aadfbd60b
+      internalID: 815953815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_6
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 154
+        width: 32
+        height: 48
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1f0c26b8c91d2c45910bd86c3f4d3a7
+      internalID: 491133991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_7
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 154
+        width: 32
+        height: 48
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 543ab75a5e0dacd40ba054abacfc9772
+      internalID: 1107663646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_8
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 154
+        width: 63
+        height: 48
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e187bbb81438bf443b9fe6508dd3682b
+      internalID: 628500432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 154
+        width: 32
+        height: 46
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e6996f0e7fd7184c8497006aab6d031
+      internalID: 1179060128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 154
+        width: 32
+        height: 39
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9fa8cc62d06535540a958239d9cd12a5
+      internalID: 303914261
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_11
+      rect:
+        serializedVersion: 2
+        x: 3
+        y: 106
+        width: 25
+        height: 36
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01b2a7f578df2b54882be9d7edab358d
+      internalID: -68918951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_12
+      rect:
+        serializedVersion: 2
+        x: 35
+        y: 106
+        width: 25
+        height: 36
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44416a1452e952c43b76bff417fc0f02
+      internalID: 133271847
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_13
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 106
+        width: 25
+        height: 36
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e63087f27a225a41a4aeac98d9f6a8e
+      internalID: 1424682395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_14
+      rect:
+        serializedVersion: 2
+        x: 112
+        y: 90
+        width: 48
+        height: 48
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d35787a9487e3274483db963cc38bfa9
+      internalID: -627933419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_15
+      rect:
+        serializedVersion: 2
+        x: 232
+        y: 106
+        width: 16
+        height: 26
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b720f37467e90774facd39808fec1c3a
+      internalID: 2049909674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 42
+        width: 48
+        height: 48
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 957f1f4983ff25c41b07400efd7f6ec6
+      internalID: -1814963753
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_17
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 58
+        width: 16
+        height: 20
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d65a470182a706749a7473e08125d438
+      internalID: 738652844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_18
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 61
+        width: 24
+        height: 24
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72158978d0164fe4ba6d2fdede314e17
+      internalID: 997222460
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_19
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 61
+        width: 24
+        height: 24
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2618246e546764d4692e74d23c8a962c
+      internalID: 1345177378
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_20
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 61
+        width: 24
+        height: 24
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1934cc64c3da3184aabef7531907fa6c
+      internalID: -1559736438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_21
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 77
+        width: 53
+        height: 25
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 236722f1868385348b5cc2a27ae2526d
+      internalID: -353897859
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_22
+      rect:
+        serializedVersion: 2
+        x: 146
+        y: 12
+        width: 28
+        height: 34
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b0f3eec6c1e8a64c8be5d84e0e786ce
+      internalID: 740355338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_23
+      rect:
+        serializedVersion: 2
+        x: 210
+        y: 10
+        width: 28
+        height: 48
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 149f257dba5819344a7eddace67843f0
+      internalID: -476051348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_24
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 10
+        width: 28
+        height: 48
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e87dffb086cf1d4ba0a35a4519608a0
+      internalID: -687067018
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: antique items sheet 1.2_25
+      rect:
+        serializedVersion: 2
+        x: 274
+        y: 10
+        width: 28
+        height: 48
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac0fd83cacb6ea44bbc45137ffbfcc5a
+      internalID: -1200989368
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 265490a36444ebf4e811c34a258e58e4
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      antique items sheet 1.2_0: -190525202
+      antique items sheet 1.2_1: 1602048607
+      antique items sheet 1.2_10: 303914261
+      antique items sheet 1.2_11: -68918951
+      antique items sheet 1.2_12: 133271847
+      antique items sheet 1.2_13: 1424682395
+      antique items sheet 1.2_14: -627933419
+      antique items sheet 1.2_15: 2049909674
+      antique items sheet 1.2_16: -1814963753
+      antique items sheet 1.2_17: 738652844
+      antique items sheet 1.2_18: 997222460
+      antique items sheet 1.2_19: 1345177378
+      antique items sheet 1.2_2: -1176304829
+      antique items sheet 1.2_20: -1559736438
+      antique items sheet 1.2_21: -353897859
+      antique items sheet 1.2_22: 740355338
+      antique items sheet 1.2_23: -476051348
+      antique items sheet 1.2_24: -687067018
+      antique items sheet 1.2_25: -1200989368
+      antique items sheet 1.2_3: 1149015507
+      antique items sheet 1.2_4: 394730786
+      antique items sheet 1.2_5: 815953815
+      antique items sheet 1.2_6: 491133991
+      antique items sheet 1.2_7: 1107663646
+      antique items sheet 1.2_8: 628500432
+      antique items sheet 1.2_9: 1179060128
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

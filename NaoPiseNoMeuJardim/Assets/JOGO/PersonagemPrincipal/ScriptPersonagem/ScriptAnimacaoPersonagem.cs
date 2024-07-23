@@ -4,15 +4,31 @@ using UnityEngine;
 
 public class ScriptAnimacaoPersonagem : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Animator animator;
+    private SpriteRenderer spriteRenderer;
+    private ScriptPersonagem movimentoPersonagem;
+
+    private void Awake()
     {
-        
+        animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        movimentoPersonagem = GetComponent<ScriptPersonagem>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        float VelX = Input.GetAxis("Horizontal");
+        animator.SetFloat("Velocidade", Mathf.Abs(VelX));
+
+        if (VelX > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (VelX < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+
+        animator.SetBool("Correndo", VelX != 0);
     }
 }
