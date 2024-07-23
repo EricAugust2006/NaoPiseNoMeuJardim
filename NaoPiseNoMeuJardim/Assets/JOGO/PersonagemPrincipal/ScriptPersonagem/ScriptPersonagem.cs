@@ -36,7 +36,12 @@ public class ScriptPersonagem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
         {
             rb.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
-            animator.SetBool("Pulando", true);
+            //animator.SetBool("Pulando", true);
         }
+    }
+
+    void Pulo()
+    {
+
     }
 }

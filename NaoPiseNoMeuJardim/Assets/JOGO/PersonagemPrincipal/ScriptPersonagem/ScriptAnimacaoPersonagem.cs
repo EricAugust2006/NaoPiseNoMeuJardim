@@ -25,7 +25,7 @@ public class ScriptAnimacaoPersonagem : MonoBehaviour
             spriteRenderer.flipX = false;
         }
         else if (VelX < 0)
-        {
+        {   
             spriteRenderer.flipX = true;
         }
 
