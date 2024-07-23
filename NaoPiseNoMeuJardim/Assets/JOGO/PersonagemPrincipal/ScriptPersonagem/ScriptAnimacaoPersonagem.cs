@@ -30,5 +30,13 @@ public class ScriptAnimacaoPersonagem : MonoBehaviour
         }
 
         animator.SetBool("Correndo", VelX != 0);
+
+        //if (Input.GetKeyDown(KeyCode.Space))
+        //{
+        //    animator.SetBool("Pulando", true);
+        //    animator.SetBool("Correndo", false);
+        //} else {
+        //    animator.SetBool("Pulando", false);
+        //}
     }
 }
