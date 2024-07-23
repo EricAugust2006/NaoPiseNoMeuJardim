@@ -1,9 +1,48 @@
 fileFormatVersion: 2
-guid: 74a0e8e646870fc45932813af6b979b2
+guid: faa7e5aa233f53b4893f0b9cd33c5742
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 2120178118800017459
+    second: PersonagemCorrendo_0
+  - first:
+      213: -8387762402824062549
+    second: PersonagemCorrendo_1
+  - first:
+      213: 8132543226581979153
+    second: PersonagemCorrendo_2
+  - first:
+      213: -4110503125447096045
+    second: PersonagemCorrendo_3
+  - first:
+      213: -4576436166539558291
+    second: PersonagemCorrendo_4
+  - first:
+      213: 3635819713272894067
+    second: PersonagemCorrendo_5
+  - first:
+      213: -1389221755104573818
+    second: PersonagemCorrendo_6
+  - first:
+      213: 8108607039906701520
+    second: PersonagemCorrendo_7
+  - first:
+      213: -2263089337491336620
+    second: PersonagemCorrendo_8
+  - first:
+      213: -1363884731774510247
+    second: PersonagemCorrendo_9
+  - first:
+      213: 2824386828572124232
+    second: PersonagemCorrendo_10
+  - first:
+      213: -5385346253900659845
+    second: PersonagemCorrendo_11
+  - first:
+      213: 4876283045805920673
+    second: PersonagemCorrendo_12
   externalObjects: {}
-  serializedVersion: 12
+  serializedVersion: 13
   mipmaps:
     mipMapMode: 0
     enableMipMap: 0
@@ -93,17 +132,56 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "Crian\xE7aCorrendo_0"
+      name: PersonagemCorrendo_0
       rect:
         serializedVersion: 2
-        x: 107
-        y: 1274
-        width: 110
-        height: 244
+        x: 108
+        y: 1275
+        width: 108
+        height: 243
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -111,20 +189,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d575221f597087140b27574ab037b43c
-      internalID: 128292247
+      spriteID: f98319289a16d6b4e9381422a83a3eab
+      internalID: -1278150154
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Crian\xE7aCorrendo_1"
+      name: PersonagemCorrendo_1
       rect:
         serializedVersion: 2
-        x: 296
-        y: 1274
-        width: 114
-        height: 241
+        x: 298
+        y: 1275
+        width: 111
+        height: 239
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -132,20 +210,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6e1a3d0e4f1d1974b92c0df46ec857f0
-      internalID: -663482861
+      spriteID: 4519fe891583a244d8c623c9f1c25590
+      internalID: -1318856077
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Crian\xE7aCorrendo_2"
+      name: PersonagemCorrendo_2
       rect:
         serializedVersion: 2
-        x: 461
-        y: 1274
-        width: 126
-        height: 238
+        x: 463
+        y: 1275
+        width: 122
+        height: 236
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +231,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf92c9c16e71f3048b25a1f53921b9fc
-      internalID: -2078825663
+      spriteID: 17114b1accdd21a47b7ca6f796ac17e7
+      internalID: -874108181
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Crian\xE7aCorrendo_3"
+      name: PersonagemCorrendo_3
       rect:
         serializedVersion: 2
-        x: 643
-        y: 1274
-        width: 114
-        height: 241
+        x: 644
+        y: 1275
+        width: 112
+        height: 239
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -174,20 +252,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 011a6119114813c4bbfecb020fe48c3d
-      internalID: 1845520014
+      spriteID: 369fd9dde044b304db519dd35b360214
+      internalID: 679366301
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Crian\xE7aCorrendo_4"
+      name: PersonagemCorrendo_4
       rect:
         serializedVersion: 2
-        x: 97
-        y: 938
-        width: 110
-        height: 244
+        x: 98
+        y: 939
+        width: 108
+        height: 243
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -195,20 +273,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c257382cfe84d1647ae2fb168ccbc06a
-      internalID: 1807657368
+      spriteID: 4bd329338eecfcb4181c62252d788196
+      internalID: -1239000469
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Crian\xE7aCorrendo_5"
+      name: PersonagemCorrendo_5
       rect:
         serializedVersion: 2
-        x: 294
-        y: 938
-        width: 120
-        height: 238
+        x: 295
+        y: 939
+        width: 118
+        height: 236
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -216,20 +294,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f3457c105990db94eb40635836eef9ac
-      internalID: -1619253133
+      spriteID: 7f0283e1d69104a4aaea6dc68377651c
+      internalID: 1925927308
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Crian\xE7aCorrendo_6"
+      name: PersonagemCorrendo_6
       rect:
         serializedVersion: 2
-        x: 431
-        y: 938
-        width: 163
-        height: 222
+        x: 434
+        y: 943
+        width: 159
+        height: 217
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -237,20 +315,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5fd6e79bc72c89742bcbb48da185ff36
-      internalID: 1328657861
+      spriteID: a08a27536b0943d4b9eda20e5adb5391
+      internalID: 546500374
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Crian\xE7aCorrendo_7"
+      name: PersonagemCorrendo_7
       rect:
         serializedVersion: 2
-        x: 597
-        y: 966
-        width: 197
-        height: 194
+        x: 598
+        y: 968
+        width: 195
+        height: 192
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -258,20 +336,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b648f0f18cfa55c489b5483f97df16e4
-      internalID: 124891262
+      spriteID: 4a4ff4a7cecc7ba41b9407e2dd49747f
+      internalID: -2139140216
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Crian\xE7aCorrendo_8"
+      name: PersonagemCorrendo_8
       rect:
         serializedVersion: 2
-        x: 810
-        y: 960
-        width: 187
-        height: 200
+        x: 813
+        y: 962
+        width: 184
+        height: 198
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -279,19 +357,40 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c52c7cd931fa134a80518c43d105a16
-      internalID: -1326208903
+      spriteID: a6c386a0696d1404ea58c2003acd34a3
+      internalID: -1088823583
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Crian\xE7aCorrendo_9"
+      name: PersonagemCorrendo_9
       rect:
         serializedVersion: 2
-        x: 1022
-        y: 938
-        width: 157
+        x: 1025
+        y: 939
+        width: 154
+        height: 227
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c76ab44e4df09f64f9a19dfbf00c0d06
+      internalID: 343185012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PersonagemCorrendo_10
+      rect:
+        serializedVersion: 2
+        x: 1197
+        y: 940
+        width: 145
         height: 229
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -300,62 +399,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 947cbf09555d1a2469f0a4cdd7989ccc
-      internalID: 304307587
+      spriteID: 2d95b81e873800a4d92a48dcfb0a5916
+      internalID: 581660148
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "Crian\xE7aCorrendo_10"
+      name: PersonagemCorrendo_11
       rect:
         serializedVersion: 2
-        x: 1195
-        y: 938
-        width: 147
-        height: 232
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: c53d8efd15c80364e82ea6391323e034
-      internalID: 353997402
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Crian\xE7aCorrendo_11"
-      rect:
-        serializedVersion: 2
-        x: 1340
-        y: 960
-        width: 186
-        height: 204
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2f3a0934ec9ccf34fb1584a49a0c622a
-      internalID: -247849050
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "Crian\xE7aCorrendo_12"
-      rect:
-        serializedVersion: 2
-        x: 67
-        y: 668
+        x: 1342
+        y: 962
         width: 182
-        height: 214
+        height: 201
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -363,8 +420,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 25ffda61538783c4287fb02e28773f32
-      internalID: 54793823
+      spriteID: ea45a029f2f06de42b955e9d3fdbd5fe
+      internalID: 1034156760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PersonagemCorrendo_12
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 670
+        width: 178
+        height: 211
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 491cc6c646abfa048a77e3d8bc8b49c7
+      internalID: 934961891
       vertices: []
       indices: 
       edges: []
@@ -372,7 +450,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 724e30f2f52ac9c4d95eb308b3eb741b
     internalID: 0
     vertices: []
     indices: 
@@ -380,19 +458,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "Crian\xE7aCorrendo_0": 128292247
-      "Crian\xE7aCorrendo_1": -663482861
-      "Crian\xE7aCorrendo_10": 353997402
-      "Crian\xE7aCorrendo_11": -247849050
-      "Crian\xE7aCorrendo_12": 54793823
-      "Crian\xE7aCorrendo_2": -2078825663
-      "Crian\xE7aCorrendo_3": 1845520014
-      "Crian\xE7aCorrendo_4": 1807657368
-      "Crian\xE7aCorrendo_5": -1619253133
-      "Crian\xE7aCorrendo_6": 1328657861
-      "Crian\xE7aCorrendo_7": 124891262
-      "Crian\xE7aCorrendo_8": -1326208903
-      "Crian\xE7aCorrendo_9": 304307587
+      PersonagemCorrendo_0: -1278150154
+      PersonagemCorrendo_1: -1318856077
+      PersonagemCorrendo_10: 581660148
+      PersonagemCorrendo_11: 1034156760
+      PersonagemCorrendo_12: 934961891
+      PersonagemCorrendo_2: -874108181
+      PersonagemCorrendo_3: 679366301
+      PersonagemCorrendo_4: -1239000469
+      PersonagemCorrendo_5: 1925927308
+      PersonagemCorrendo_6: 546500374
+      PersonagemCorrendo_7: -2139140216
+      PersonagemCorrendo_8: -1088823583
+      PersonagemCorrendo_9: 343185012
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
