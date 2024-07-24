@@ -4,27 +4,25 @@ using UnityEngine;
 
 public class ScriptPersonagem : MonoBehaviour
 {
-    //movimentacao
+    [Header("Movimentacao")]
     private Rigidbody2D rb;
     [SerializeField] private float speed = 5f;
 
-    //pulo
-    public float SpeedJump;
-    public float JumpForce;
-    public bool isJumping;
+    [Header("PULO")]
+    public bool taNoChao;
+    public float forcaPulo = 7f;
+    public Transform detectaChao;
+    public LayerMask oQueEhChao;
 
     //Contrato de eventos
     public IInteractable interactable;
 
-    //aparecer botão interacao
+    [Header("INTERACAO")]
     public GameObject botaoInteracao;
 
-
-    //pegando spriterenderer
+    [Header("ANIMACAO E FLIP")]
     private SpriteRenderer spriteRenderer;
     private Animator animator;
-
-
 
     private void Awake()
     {
@@ -36,21 +34,22 @@ public class ScriptPersonagem : MonoBehaviour
     private void Update()
     {
         Interact();
+        Pular();
     }
 
     private void FixedUpdate()
+    {
+        Movimentar();
+        DetectarChao();
+    }
+
+    private void Movimentar()
     {
         float VelX = Input.GetAxis("Horizontal");
         Vector3 Movement = new Vector3(VelX, 0f, 0f);
         transform.position += Movement * Time.deltaTime * speed;
 
-        if (Input.GetKeyDown(KeyCode.Space) && !isJumping)
-        {
-            rb.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
-        }
-        
-
-        //veio do scriptanimacaopersonagem
+        // atualiza animacao e flip
         animator.SetFloat("Velocidade", Mathf.Abs(VelX));
 
         if (VelX > 0)
@@ -65,11 +64,23 @@ public class ScriptPersonagem : MonoBehaviour
         animator.SetBool("Correndo", VelX != 0);
     }
 
+    private void DetectarChao()
+    {
+        taNoChao = Physics2D.OverlapCircle(detectaChao.position, 0.2f, oQueEhChao);
+    }
+
+    private void Pular()
+    {
+        if (Input.GetButtonDown("Jump") && taNoChao)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+        }
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<IInteractable>() != null)
         {
-            Debug.Log("Personagem entrou em contato com um objeto interagível.");
             interactable = collision.GetComponent<IInteractable>();
             botaoInteracao.SetActive(true);
         }
@@ -81,7 +92,6 @@ public class ScriptPersonagem : MonoBehaviour
         {
             if (interactable == collision.GetComponent<IInteractable>())
             {
-                Debug.Log("Personagem saiu de contato com o objeto interagível.");
                 interactable = null;
                 botaoInteracao.SetActive(false);
             }
@@ -92,7 +102,6 @@ public class ScriptPersonagem : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && interactable != null)
         {
-            Debug.Log("Interagindo com o objeto.");
             interactable.Interact();
         }
     }
