@@ -1,27 +1,30 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class VoltarCasa : MonoBehaviour, IInteractable
+public class InteracaoESPELHO : MonoBehaviour
 {
     private bool Interagido = false;
     public GameObject botaoInterage;
-
+    private ScriptPersonagem personagem;
 
     public void Interact()
     {
-        Voltar();
+        Espelho();
     }
 
-    private void Voltar()
+    private void Start()
+    {
+        personagem = GetComponent<ScriptPersonagem>();
+    }
+
+    private void Espelho()
     {
         if (!Interagido)
         {
-            Debug.Log("Interagindo com a porta. Teleportando para a cena 0.");
-            SceneManager.LoadScene(0);
-
+            Debug.Log("É você!");
+            personagem.Empurrar();
+            Interagido = true;
         }
     }
 
@@ -29,6 +32,7 @@ public class VoltarCasa : MonoBehaviour, IInteractable
     {
         if (collision.gameObject.tag == "Player")
         {
+            
             botaoInterage.SetActive(true);
         }
     }
@@ -37,8 +41,8 @@ public class VoltarCasa : MonoBehaviour, IInteractable
     {
         if (collision.gameObject.tag == "Player")
         {
+
             botaoInterage.SetActive(false);
         }
     }
 }
-

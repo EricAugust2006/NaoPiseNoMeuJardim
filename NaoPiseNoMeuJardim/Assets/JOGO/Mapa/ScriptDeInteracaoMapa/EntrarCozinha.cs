@@ -4,24 +4,22 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class VoltarCasa : MonoBehaviour, IInteractable
+public class EntrarCozinha : MonoBehaviour, IInteractable
 {
     private bool Interagido = false;
     public GameObject botaoInterage;
 
-
     public void Interact()
     {
-        Voltar();
+        EntraCozinha();
     }
 
-    private void Voltar()
+    private void EntraCozinha()
     {
         if (!Interagido)
         {
-            Debug.Log("Interagindo com a porta. Teleportando para a cena 0.");
-            SceneManager.LoadScene(0);
-
+            Debug.Log("Pelo visto a cozinha não está disponível para você. :(");
+            Interagido = true;
         }
     }
 
@@ -29,6 +27,7 @@ public class VoltarCasa : MonoBehaviour, IInteractable
     {
         if (collision.gameObject.tag == "Player")
         {
+
             botaoInterage.SetActive(true);
         }
     }
@@ -37,8 +36,8 @@ public class VoltarCasa : MonoBehaviour, IInteractable
     {
         if (collision.gameObject.tag == "Player")
         {
+
             botaoInterage.SetActive(false);
         }
     }
 }
-

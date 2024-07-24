@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class ScriptMae : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public float moveSpeed = 2f;
+    public float moveRange = 0.1f; 
+    private Vector3 startPosition; 
+
     void Start()
     {
-        
+
+        startPosition = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        float newY = startPosition.y + Mathf.Sin(Time.time * moveSpeed) * moveRange;
+
+        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
     }
 }

@@ -77,12 +77,17 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
+    public void Empurrar()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.GetComponent<IInteractable>() != null)
         {
             interactable = collision.GetComponent<IInteractable>();
-            botaoInteracao.SetActive(true);
+            //botaoInteracao.SetActive(true);
         }
     }
 
@@ -93,7 +98,7 @@ public class ScriptPersonagem : MonoBehaviour
             if (interactable == collision.GetComponent<IInteractable>())
             {
                 interactable = null;
-                botaoInteracao.SetActive(false);
+                //botaoInteracao.SetActive(false);
             }
         }
     }

@@ -4,6 +4,7 @@ using UnityEngine.SceneManagement;
 public class SairDeCasa : MonoBehaviour, IInteractable
 {
     private bool Interagido = false;
+    public GameObject botaoInterage;
 
     public void Interact()
     {
@@ -17,6 +18,23 @@ public class SairDeCasa : MonoBehaviour, IInteractable
             Debug.Log("Interagindo com a porta. Teleportando para a cena 1.");
             Interagido = true;
             SceneManager.LoadScene(1);
+
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            botaoInterage.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player")
+        {
+            botaoInterage.SetActive(false);
         }
     }
 }
