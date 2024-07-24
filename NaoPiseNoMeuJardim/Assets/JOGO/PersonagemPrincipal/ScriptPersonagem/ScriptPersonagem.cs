@@ -14,7 +14,7 @@ public class ScriptPersonagem : MonoBehaviour
     public bool isJumping;
 
     //Contrato de eventos
-    private IInteractable interactable;
+    public IInteractable interactable;
 
     //aparecer botão interacao
     public GameObject botaoInteracao;

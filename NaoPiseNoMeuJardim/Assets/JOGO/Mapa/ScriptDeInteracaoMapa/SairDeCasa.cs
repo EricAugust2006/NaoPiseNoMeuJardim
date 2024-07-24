@@ -1,16 +1,16 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class PortaSubirAndar : MonoBehaviour, IInteractable
+public class SairDeCasa : MonoBehaviour, IInteractable
 {
     private bool Interagido = false;
 
     public void Interact()
     {
-        SubirAndar();
+        Sair();
     }
 
-    private void SubirAndar()
+    private void Sair()
     {
         if (!Interagido)
         {
