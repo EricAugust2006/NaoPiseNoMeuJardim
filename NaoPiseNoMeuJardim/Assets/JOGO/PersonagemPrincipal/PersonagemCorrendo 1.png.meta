@@ -470,7 +470,20 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      PersonagemCorrendo 1_0: -8576425966831464846
+      PersonagemCorrendo 1_1: 1300181911397841001
+      PersonagemCorrendo 1_10: 1340736265866760038
+      PersonagemCorrendo 1_11: 8208537139238811347
+      PersonagemCorrendo 1_12: -7341021557574074370
+      PersonagemCorrendo 1_2: -8624783269524887147
+      PersonagemCorrendo 1_3: -1700196540592814585
+      PersonagemCorrendo 1_4: -8121550683532080143
+      PersonagemCorrendo 1_5: 8734670123786971529
+      PersonagemCorrendo 1_6: -5292112006139004237
+      PersonagemCorrendo 1_7: 593515646256955268
+      PersonagemCorrendo 1_8: 4897169296611322663
+      PersonagemCorrendo 1_9: 4005906387404631221
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
