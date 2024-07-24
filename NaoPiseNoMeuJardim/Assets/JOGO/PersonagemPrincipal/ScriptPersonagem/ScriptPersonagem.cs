@@ -79,7 +79,7 @@ public class ScriptPersonagem : MonoBehaviour
 
     public void Empurrar()
     {
-        rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+        rb.velocity = new Vector2(rb.velocity.x, 3);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteracaoESPELHO : MonoBehaviour
+public class InteracaoESPELHO : MonoBehaviour, IInteractable
 {
-    private bool Interagido = false;
+    public bool Interagido = false;
     public GameObject botaoInterage;
     private ScriptPersonagem personagem;
 
@@ -15,7 +15,7 @@ public class InteracaoESPELHO : MonoBehaviour
 
     private void Start()
     {
-        personagem = GetComponent<ScriptPersonagem>();
+        personagem = FindObjectOfType<ScriptPersonagem>(); 
     }
 
     private void Espelho()
@@ -24,7 +24,7 @@ public class InteracaoESPELHO : MonoBehaviour
         {
             Debug.Log("É você!");
             personagem.Empurrar();
-            Interagido = true;
+            Interagido = false;
         }
     }
 
