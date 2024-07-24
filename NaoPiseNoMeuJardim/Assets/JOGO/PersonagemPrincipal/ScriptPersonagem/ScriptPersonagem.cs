@@ -4,10 +4,9 @@ using UnityEngine;
 
 public class ScriptPersonagem : MonoBehaviour
 {
-    //movimentacao,animacao
+    //movimentacao
     private Rigidbody2D rb;
     [SerializeField] private float speed = 5f;
-    private Animator animator;
 
     //pulo
     public float SpeedJump;
@@ -21,10 +20,17 @@ public class ScriptPersonagem : MonoBehaviour
     public GameObject botaoInteracao;
 
 
+    //pegando spriterenderer
+    private SpriteRenderer spriteRenderer;
+    private Animator animator;
+
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
     private void Update()
@@ -42,6 +48,21 @@ public class ScriptPersonagem : MonoBehaviour
         {
             rb.AddForce(new Vector2(0f, JumpForce), ForceMode2D.Impulse);
         }
+        
+
+        //veio do scriptanimacaopersonagem
+        animator.SetFloat("Velocidade", Mathf.Abs(VelX));
+
+        if (VelX > 0)
+        {
+            spriteRenderer.flipX = false;
+        }
+        else if (VelX < 0)
+        {
+            spriteRenderer.flipX = true;
+        }
+
+        animator.SetBool("Correndo", VelX != 0);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
