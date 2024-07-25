@@ -10,6 +10,7 @@ public class ScriptPersonagem : MonoBehaviour
 
     [Header("PULO")]
     public bool taNoChao;
+    public bool pulando = false;
     public float forcaPulo = 7f;
     public Transform detectaChao;
     public LayerMask oQueEhChao;
@@ -49,7 +50,7 @@ public class ScriptPersonagem : MonoBehaviour
         Vector3 Movement = new Vector3(VelX, 0f, 0f);
         transform.position += Movement * Time.deltaTime * speed;
 
-        // atualiza animacao e flip
+        // Atualiza animação e flip
         animator.SetFloat("Velocidade", Mathf.Abs(VelX));
 
         if (VelX > 0)
@@ -61,25 +62,49 @@ public class ScriptPersonagem : MonoBehaviour
             spriteRenderer.flipX = true;
         }
 
-        animator.SetBool("Correndo", VelX != 0);
+        if (VelX != 0)
+        {
+            animator.SetInteger("Transition", 1);
+        }
+        else
+        {
+            animator.SetInteger("Transition", 0);
+        }
     }
 
     private void DetectarChao()
     {
         taNoChao = Physics2D.OverlapCircle(detectaChao.position, 0.2f, oQueEhChao);
+        animator.SetBool("chao", taNoChao);
+
+        if (taNoChao)
+        {
+            pulando = false;
+        }
     }
 
     private void Pular()
     {
-        if (Input.GetButtonDown("Jump") && taNoChao)
+        if (Input.GetKeyDown(KeyCode.Space) && taNoChao)
         {
             rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+            pulando = true;
+            animator.SetBool("Pulando", true);
+        }
+
+        if (!taNoChao && pulando)
+        {
+            animator.SetBool("Pulando", true);
+        }
+        else if (taNoChao && !pulando)
+        {
+            animator.SetBool("Pulando", false);
         }
     }
 
     public void Empurrar()
     {
-        rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+        rb.velocity = new Vector2(rb.velocity.x, 3);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -8,6 +8,8 @@ public class InteragirMae : MonoBehaviour, IInteractable
     private bool Interagido = false;
     public GameObject botaoInterage;
 
+
+
     public void Interact()
     {
         Conversar();
@@ -17,7 +19,7 @@ public class InteragirMae : MonoBehaviour, IInteractable
     {
         if (!Interagido)
         {
-            Debug.Log("Você iniciou um diálogo com sua mãe");
+            Debug.Log("O Jardim está muito bonito, não quero você perto dele");
         }
     }
 

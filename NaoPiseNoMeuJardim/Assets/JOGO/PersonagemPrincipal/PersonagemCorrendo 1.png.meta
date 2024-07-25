@@ -191,12 +191,12 @@ TextureImporter:
       name: PersonagemCorrendo 1_0
       rect:
         serializedVersion: 2
-        x: 107
-        y: 1274
-        width: 110
-        height: 245
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 108
+        y: 1275
+        width: 108
+        height: 243
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -212,12 +212,12 @@ TextureImporter:
       name: PersonagemCorrendo 1_1
       rect:
         serializedVersion: 2
-        x: 297
-        y: 1274
-        width: 113
-        height: 241
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 298
+        y: 1275
+        width: 111
+        height: 239
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -233,12 +233,12 @@ TextureImporter:
       name: PersonagemCorrendo 1_2
       rect:
         serializedVersion: 2
-        x: 462
-        y: 1274
-        width: 124
-        height: 238
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 463
+        y: 1275
+        width: 122
+        height: 236
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -254,12 +254,12 @@ TextureImporter:
       name: PersonagemCorrendo 1_3
       rect:
         serializedVersion: 2
-        x: 643
-        y: 1274
-        width: 114
-        height: 241
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 644
+        y: 1275
+        width: 112
+        height: 239
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -275,12 +275,12 @@ TextureImporter:
       name: PersonagemCorrendo 1_4
       rect:
         serializedVersion: 2
-        x: 97
-        y: 938
-        width: 111
-        height: 245
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 98
+        y: 939
+        width: 108
+        height: 243
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -296,12 +296,12 @@ TextureImporter:
       name: PersonagemCorrendo 1_5
       rect:
         serializedVersion: 2
-        x: 294
-        y: 938
-        width: 120
-        height: 238
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 295
+        y: 939
+        width: 118
+        height: 236
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -317,12 +317,12 @@ TextureImporter:
       name: PersonagemCorrendo 1_6
       rect:
         serializedVersion: 2
-        x: 432
-        y: 942
-        width: 162
-        height: 219
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 434
+        y: 943
+        width: 159
+        height: 217
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -338,12 +338,12 @@ TextureImporter:
       name: PersonagemCorrendo 1_7
       rect:
         serializedVersion: 2
-        x: 597
-        y: 967
-        width: 197
-        height: 194
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 598
+        y: 968
+        width: 195
+        height: 192
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -359,12 +359,12 @@ TextureImporter:
       name: PersonagemCorrendo 1_8
       rect:
         serializedVersion: 2
-        x: 811
-        y: 961
-        width: 187
-        height: 200
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 813
+        y: 962
+        width: 184
+        height: 198
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -380,12 +380,12 @@ TextureImporter:
       name: PersonagemCorrendo 1_9
       rect:
         serializedVersion: 2
-        x: 1023
-        y: 938
-        width: 157
-        height: 229
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1025
+        y: 939
+        width: 154
+        height: 227
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -401,12 +401,12 @@ TextureImporter:
       name: PersonagemCorrendo 1_10
       rect:
         serializedVersion: 2
-        x: 1196
-        y: 939
-        width: 147
-        height: 231
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1197
+        y: 940
+        width: 145
+        height: 229
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -422,12 +422,12 @@ TextureImporter:
       name: PersonagemCorrendo 1_11
       rect:
         serializedVersion: 2
-        x: 1341
-        y: 960
-        width: 184
-        height: 204
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 1342
+        y: 962
+        width: 182
+        height: 201
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -443,12 +443,12 @@ TextureImporter:
       name: PersonagemCorrendo 1_12
       rect:
         serializedVersion: 2
-        x: 69
-        y: 669
-        width: 180
-        height: 213
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 70
+        y: 670
+        width: 178
+        height: 211
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -463,7 +463,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 17c49381e53863348837648df090e11e
     internalID: 0
     vertices: []
     indices: 

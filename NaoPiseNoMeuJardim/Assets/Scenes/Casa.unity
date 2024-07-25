@@ -1864,7 +1864,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 740355338, guid: dd18122444efe644dae4be315e51a7b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5056,6 +5056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 5
   taNoChao: 0
+  pulando: 0
   forcaPulo: 7
   detectaChao: {fileID: 496024284}
   oQueEhChao:
