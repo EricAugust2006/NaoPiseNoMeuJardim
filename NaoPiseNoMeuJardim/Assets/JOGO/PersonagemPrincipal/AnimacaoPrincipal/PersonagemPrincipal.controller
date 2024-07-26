@@ -143,7 +143,7 @@ AnimatorController:
   m_Name: PersonagemPrincipal
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: pulo
+  - m_Name: Jump
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -307,7 +307,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: pulo
+    m_ConditionEvent: Jump
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 8572103168422545955}

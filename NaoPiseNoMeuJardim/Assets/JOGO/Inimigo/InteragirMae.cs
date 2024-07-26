@@ -9,7 +9,6 @@ public class InteragirMae : MonoBehaviour, IInteractable
     public GameObject botaoInterage;
 
 
-
     public void Interact()
     {
         Conversar();
