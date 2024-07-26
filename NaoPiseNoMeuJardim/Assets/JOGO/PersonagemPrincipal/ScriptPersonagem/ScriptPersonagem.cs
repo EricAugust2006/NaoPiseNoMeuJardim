@@ -10,6 +10,7 @@ public class ScriptPersonagem : MonoBehaviour
 
     [Header("PULO")]
     public bool taNoChao;
+    public bool pulando = false;
     public float forcaPulo = 7f;
     public Transform detectaChao;
     public LayerMask oQueEhChao;
@@ -24,6 +25,9 @@ public class ScriptPersonagem : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
+    private bool wasGrounded;
+
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -34,7 +38,9 @@ public class ScriptPersonagem : MonoBehaviour
     private void Update()
     {
         Interact();
-        Pular();
+        Jump();
+        AtualizarAnimacoes();
+        CuidarLayer();
     }
 
     private void FixedUpdate()
@@ -67,13 +73,45 @@ public class ScriptPersonagem : MonoBehaviour
     private void DetectarChao()
     {
         taNoChao = Physics2D.OverlapCircle(detectaChao.position, 0.2f, oQueEhChao);
+        if (taNoChao)
+        {
+            animator.SetBool("Caindo", false);
+        }
     }
 
-    private void Pular()
+    private void Jump()
     {
-        if (Input.GetButtonDown("Jump") && taNoChao)
+        if (Input.GetKeyDown(KeyCode.Space) && taNoChao)
         {
             rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+            animator.SetTrigger("Jump");
+        }
+    }
+
+    private void AtualizarAnimacoes()
+    {
+        if (rb.velocity.y < 0 && !taNoChao && wasGrounded)
+        {
+            animator.SetBool("Caindo", true);
+            wasGrounded = false;
+        }
+
+        if (taNoChao && !wasGrounded)
+        {
+            animator.SetBool("Caindo", false);
+            wasGrounded = true;
+        }
+    }
+
+    public void CuidarLayer()
+    {
+        if (!taNoChao)
+        {
+            animator.SetLayerWeight(1, 1);
+        }
+        else
+        {
+            animator.SetLayerWeight(1, 0);
         }
     }
 

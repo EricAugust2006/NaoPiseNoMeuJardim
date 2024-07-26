@@ -16,13 +16,14 @@ public class InteracaoESPELHO : MonoBehaviour, IInteractable
     private void Start()
     {
         personagem = FindObjectOfType<ScriptPersonagem>(); 
+        personagem = FindObjectOfType<ScriptPersonagem>();
     }
 
     private void Espelho()
     {
         if (!Interagido)
         {
-            Debug.Log("É você!");
+            Debug.Log("ï¿½ vocï¿½!");
             personagem.Empurrar();
             Interagido = false;
         }
