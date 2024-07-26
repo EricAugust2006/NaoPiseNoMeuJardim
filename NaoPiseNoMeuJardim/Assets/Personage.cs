@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ScriptPersonagem : MonoBehaviour
+public class Personage : MonoBehaviour
 {
     [Header("Movimentacao")]
     private Rigidbody2D rb;
@@ -10,23 +10,15 @@ public class ScriptPersonagem : MonoBehaviour
 
     [Header("PULO")]
     public bool taNoChao;
-    public bool pulando = false;
     public float forcaPulo = 7f;
     public Transform detectaChao;
     public LayerMask oQueEhChao;
-
-    //Contrato de eventos
-    public IInteractable interactable;
-
-    [Header("INTERACAO")]
-    public GameObject botaoInteracao;
 
     [Header("ANIMACAO E FLIP")]
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
-    private bool wasGrounded;
-
+    private bool wasGrounded; // Flag para verificar se o personagem estava no chão no frame anterior
 
     private void Awake()
     {
@@ -37,8 +29,7 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void Update()
     {
-        Interact();
-        Jump();
+        pular();
         AtualizarAnimacoes();
         CuidarLayer();
     }
@@ -79,12 +70,12 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
-    private void Jump()
+    private void pular()
     {
         if (Input.GetKeyDown(KeyCode.Space) && taNoChao)
         {
             rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
-            animator.SetTrigger("Jump");
+            animator.SetTrigger("pular");
         }
     }
 
@@ -112,40 +103,6 @@ public class ScriptPersonagem : MonoBehaviour
         else
         {
             animator.SetLayerWeight(1, 0);
-        }
-    }
-
-    public void Empurrar()
-    {
-        rb.velocity = new Vector2(rb.velocity.x, 3);
-    }
-
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.GetComponent<IInteractable>() != null)
-        {
-            interactable = collision.GetComponent<IInteractable>();
-            //botaoInteracao.SetActive(true);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.GetComponent<IInteractable>() != null)
-        {
-            if (interactable == collision.GetComponent<IInteractable>())
-            {
-                interactable = null;
-                //botaoInteracao.SetActive(false);
-            }
-        }
-    }
-
-    private void Interact()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && interactable != null)
-        {
-            interactable.Interact();
         }
     }
 }

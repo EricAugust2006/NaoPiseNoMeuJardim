@@ -1,31 +1,31 @@
 fileFormatVersion: 2
-guid: 1a8d247b19768c242850c05abf70c8d1
+guid: 6af11f5d8a5a98b44a28ef05cc1b4751
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -634395185872962027
-    second: PersonagemPulando_0
+      213: -3443443576751422654
+    second: PULANDO_0
   - first:
-      213: -2482661449259740674
-    second: PersonagemPulando_1
+      213: -5230212967245649479
+    second: PULANDO_1
   - first:
-      213: 2260480030503785341
-    second: PersonagemPulando_2
+      213: -6331308992109075978
+    second: PULANDO_2
   - first:
-      213: 6024435253738460529
-    second: PersonagemPulando_3
+      213: 4652839318645215476
+    second: PULANDO_3
   - first:
-      213: -8517413174604517351
-    second: PersonagemPulando_4
+      213: -4247687383747953083
+    second: PULANDO_4
   - first:
-      213: 8886605220269103113
-    second: PersonagemPulando_5
+      213: -9208736020353914611
+    second: PULANDO_5
   - first:
-      213: 9172697106256994090
-    second: PersonagemPulando_6
+      213: 1234764859372160852
+    second: PULANDO_6
   - first:
-      213: 6084224299202672834
-    second: PersonagemPulando_7
+      213: 7475278743990949102
+    second: PULANDO_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -131,19 +131,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -169,173 +156,186 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PersonagemPulando_0
+      name: PULANDO_0
       rect:
         serializedVersion: 2
-        x: 86
-        y: 384
-        width: 110
-        height: 245
+        x: 85
+        y: 383
+        width: 112
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 133f80671b6e0c341ac32ae1cd6aa0da
-      internalID: -922930171
+      spriteID: 24381a3af4e6630d0800000000000000
+      internalID: -3443443576751422654
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersonagemPulando_1
+      name: PULANDO_1
       rect:
         serializedVersion: 2
-        x: 302
-        y: 382
-        width: 117
-        height: 204
+        x: 301
+        y: 381
+        width: 119
+        height: 206
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0f50223f2fe4bcf4a8cf67912081cedc
-      internalID: -131252462
+      spriteID: 9b96ea3640d8a67b0800000000000000
+      internalID: -5230212967245649479
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersonagemPulando_2
+      name: PULANDO_2
       rect:
         serializedVersion: 2
-        x: 491
-        y: 382
-        width: 113
-        height: 238
+        x: 490
+        y: 381
+        width: 115
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 799443866774651478fd99a120bd82d2
-      internalID: 1735805604
+      spriteID: 6f12a12340ca228a0800000000000000
+      internalID: -6331308992109075978
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersonagemPulando_3
+      name: PULANDO_3
       rect:
         serializedVersion: 2
-        x: 644
-        y: 444
+        x: 643
+        y: 443
+        width: 133
+        height: 228
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4f091d065b4329040800000000000000
+      internalID: 4652839318645215476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PULANDO_4
+      rect:
+        serializedVersion: 2
+        x: 818
+        y: 469
         width: 131
-        height: 225
+        height: 235
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 61dc1e00a54ddbb479d1a7eddf4d6d73
-      internalID: 706238970
+      spriteID: 54e7bc664de2d05c0800000000000000
+      internalID: -4247687383747953083
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersonagemPulando_4
+      name: PULANDO_5
       rect:
         serializedVersion: 2
-        x: 819
-        y: 470
-        width: 128
-        height: 233
+        x: 1016
+        y: 437
+        width: 159
+        height: 228
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 203e0956faa8a8c40b0fca3eb21aea82
-      internalID: 1771890854
+      spriteID: d09e574216ff33080800000000000000
+      internalID: -9208736020353914611
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersonagemPulando_5
+      name: PULANDO_6
       rect:
         serializedVersion: 2
-        x: 1017
-        y: 439
-        width: 157
-        height: 225
+        x: 1250
+        y: 385
+        width: 156
+        height: 240
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4013f39f503b88b409cce7b61ecc1078
-      internalID: -1812432664
+      spriteID: 4574308f814c22110800000000000000
+      internalID: 1234764859372160852
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersonagemPulando_6
+      name: PULANDO_7
       rect:
         serializedVersion: 2
-        x: 1251
-        y: 386
-        width: 154
-        height: 238
+        x: 1431
+        y: 383
+        width: 149
+        height: 188
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 671f2b323ed7db344801a5f93a9f3d85
-      internalID: -921701766
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PersonagemPulando_7
-      rect:
-        serializedVersion: 2
-        x: 1432
-        y: 384
-        width: 147
-        height: 186
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b1f39de8b592fe34ea7bda7085ba1ed7
-      internalID: -36044534
+      spriteID: ee4db9479668db760800000000000000
+      internalID: 7475278743990949102
       vertices: []
       indices: 
       edges: []
@@ -343,7 +343,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 66cffa3dbf3602f4193d7e933b8ff401
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -351,14 +351,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PersonagemPulando_0: -922930171
-      PersonagemPulando_1: -131252462
-      PersonagemPulando_2: 1735805604
-      PersonagemPulando_3: 706238970
-      PersonagemPulando_4: 1771890854
-      PersonagemPulando_5: -1812432664
-      PersonagemPulando_6: -921701766
-      PersonagemPulando_7: -36044534
+      PULANDO_0: -3443443576751422654
+      PULANDO_1: -5230212967245649479
+      PULANDO_2: -6331308992109075978
+      PULANDO_3: 4652839318645215476
+      PULANDO_4: -4247687383747953083
+      PULANDO_5: -9208736020353914611
+      PULANDO_6: 1234764859372160852
+      PULANDO_7: 7475278743990949102
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

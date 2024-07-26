@@ -1,31 +1,46 @@
 fileFormatVersion: 2
-guid: 1a8d247b19768c242850c05abf70c8d1
+guid: 756988f2d64a39c4b95dc31cfd7074ba
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -634395185872962027
-    second: PersonagemPulando_0
+      213: 2120178118800017459
+    second: PersonagemCorrendo_0
   - first:
-      213: -2482661449259740674
-    second: PersonagemPulando_1
+      213: -8387762402824062549
+    second: PersonagemCorrendo_1
   - first:
-      213: 2260480030503785341
-    second: PersonagemPulando_2
+      213: 8132543226581979153
+    second: PersonagemCorrendo_2
   - first:
-      213: 6024435253738460529
-    second: PersonagemPulando_3
+      213: -4110503125447096045
+    second: PersonagemCorrendo_3
   - first:
-      213: -8517413174604517351
-    second: PersonagemPulando_4
+      213: -4576436166539558291
+    second: PersonagemCorrendo_4
   - first:
-      213: 8886605220269103113
-    second: PersonagemPulando_5
+      213: 3635819713272894067
+    second: PersonagemCorrendo_5
   - first:
-      213: 9172697106256994090
-    second: PersonagemPulando_6
+      213: -1389221755104573818
+    second: PersonagemCorrendo_6
   - first:
-      213: 6084224299202672834
-    second: PersonagemPulando_7
+      213: 8108607039906701520
+    second: PersonagemCorrendo_7
+  - first:
+      213: -2263089337491336620
+    second: PersonagemCorrendo_8
+  - first:
+      213: -1363884731774510247
+    second: PersonagemCorrendo_9
+  - first:
+      213: 2824386828572124232
+    second: PersonagemCorrendo_10
+  - first:
+      213: -5385346253900659845
+    second: PersonagemCorrendo_11
+  - first:
+      213: 4876283045805920673
+    second: PersonagemCorrendo_12
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -131,19 +146,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -169,15 +171,28 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: PersonagemPulando_0
+      name: PersonagemCorrendo_0
       rect:
         serializedVersion: 2
-        x: 86
-        y: 384
+        x: 107
+        y: 1274
         width: 110
         height: 245
       alignment: 0
@@ -185,157 +200,262 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 133f80671b6e0c341ac32ae1cd6aa0da
-      internalID: -922930171
+      spriteID: 33881af04c26c6d10800000000000000
+      internalID: 2120178118800017459
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersonagemPulando_1
+      name: PersonagemCorrendo_1
       rect:
         serializedVersion: 2
-        x: 302
-        y: 382
-        width: 117
+        x: 297
+        y: 1274
+        width: 113
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ba97b4fe88ea89b80800000000000000
+      internalID: -8387762402824062549
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PersonagemCorrendo_2
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 1274
+        width: 124
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1109decf9f89cd070800000000000000
+      internalID: 8132543226581979153
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PersonagemCorrendo_3
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 1274
+        width: 114
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 319c79f8f2f84f6c0800000000000000
+      internalID: -4110503125447096045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PersonagemCorrendo_4
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 938
+        width: 111
+        height: 245
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d62c824bd8b3d70c0800000000000000
+      internalID: -4576436166539558291
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PersonagemCorrendo_5
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 938
+        width: 120
+        height: 238
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3725efc04c6057230800000000000000
+      internalID: 3635819713272894067
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PersonagemCorrendo_6
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 942
+        width: 162
+        height: 219
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6864fb49c2e78bce0800000000000000
+      internalID: -1389221755104573818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PersonagemCorrendo_7
+      rect:
+        serializedVersion: 2
+        x: 597
+        y: 967
+        width: 197
+        height: 194
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d0eedc342f878070800000000000000
+      internalID: 8108607039906701520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PersonagemCorrendo_8
+      rect:
+        serializedVersion: 2
+        x: 811
+        y: 961
+        width: 187
+        height: 200
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 452dad7ec34e790e0800000000000000
+      internalID: -2263089337491336620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PersonagemCorrendo_9
+      rect:
+        serializedVersion: 2
+        x: 1023
+        y: 938
+        width: 157
+        height: 229
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95b50080012821de0800000000000000
+      internalID: -1363884731774510247
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PersonagemCorrendo_10
+      rect:
+        serializedVersion: 2
+        x: 1196
+        y: 939
+        width: 147
+        height: 231
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 84465593bdc323720800000000000000
+      internalID: 2824386828572124232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PersonagemCorrendo_11
+      rect:
+        serializedVersion: 2
+        x: 1341
+        y: 960
+        width: 184
         height: 204
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0f50223f2fe4bcf4a8cf67912081cedc
-      internalID: -131252462
+      spriteID: b7345c76d186345b0800000000000000
+      internalID: -5385346253900659845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: PersonagemPulando_2
+      name: PersonagemCorrendo_12
       rect:
         serializedVersion: 2
-        x: 491
-        y: 382
-        width: 113
-        height: 238
+        x: 69
+        y: 669
+        width: 180
+        height: 213
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 799443866774651478fd99a120bd82d2
-      internalID: 1735805604
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PersonagemPulando_3
-      rect:
-        serializedVersion: 2
-        x: 644
-        y: 444
-        width: 131
-        height: 225
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 61dc1e00a54ddbb479d1a7eddf4d6d73
-      internalID: 706238970
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PersonagemPulando_4
-      rect:
-        serializedVersion: 2
-        x: 819
-        y: 470
-        width: 128
-        height: 233
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 203e0956faa8a8c40b0fca3eb21aea82
-      internalID: 1771890854
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PersonagemPulando_5
-      rect:
-        serializedVersion: 2
-        x: 1017
-        y: 439
-        width: 157
-        height: 225
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4013f39f503b88b409cce7b61ecc1078
-      internalID: -1812432664
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PersonagemPulando_6
-      rect:
-        serializedVersion: 2
-        x: 1251
-        y: 386
-        width: 154
-        height: 238
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 671f2b323ed7db344801a5f93a9f3d85
-      internalID: -921701766
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: PersonagemPulando_7
-      rect:
-        serializedVersion: 2
-        x: 1432
-        y: 384
-        width: 147
-        height: 186
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: b1f39de8b592fe34ea7bda7085ba1ed7
-      internalID: -36044534
+      spriteID: 1a1958138990ca340800000000000000
+      internalID: 4876283045805920673
       vertices: []
       indices: 
       edges: []
@@ -343,7 +463,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 66cffa3dbf3602f4193d7e933b8ff401
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -351,14 +471,19 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      PersonagemPulando_0: -922930171
-      PersonagemPulando_1: -131252462
-      PersonagemPulando_2: 1735805604
-      PersonagemPulando_3: 706238970
-      PersonagemPulando_4: 1771890854
-      PersonagemPulando_5: -1812432664
-      PersonagemPulando_6: -921701766
-      PersonagemPulando_7: -36044534
+      PersonagemCorrendo_0: 2120178118800017459
+      PersonagemCorrendo_1: -8387762402824062549
+      PersonagemCorrendo_10: 2824386828572124232
+      PersonagemCorrendo_11: -5385346253900659845
+      PersonagemCorrendo_12: 4876283045805920673
+      PersonagemCorrendo_2: 8132543226581979153
+      PersonagemCorrendo_3: -4110503125447096045
+      PersonagemCorrendo_4: -4576436166539558291
+      PersonagemCorrendo_5: 3635819713272894067
+      PersonagemCorrendo_6: -1389221755104573818
+      PersonagemCorrendo_7: 8108607039906701520
+      PersonagemCorrendo_8: -2263089337491336620
+      PersonagemCorrendo_9: -1363884731774510247
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
