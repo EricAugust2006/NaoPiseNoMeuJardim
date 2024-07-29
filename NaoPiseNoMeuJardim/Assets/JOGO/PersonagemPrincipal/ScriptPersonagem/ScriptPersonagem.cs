@@ -72,7 +72,7 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void DetectarChao()
     {
-        taNoChao = Physics2D.OverlapCircle(detectaChao.position, 0.2f, oQueEhChao);
+        taNoChao = Physics2D.OverlapCircle(detectaChao.position, 0.4f, oQueEhChao);
         if (taNoChao)
         {
             animator.SetBool("Caindo", false);
