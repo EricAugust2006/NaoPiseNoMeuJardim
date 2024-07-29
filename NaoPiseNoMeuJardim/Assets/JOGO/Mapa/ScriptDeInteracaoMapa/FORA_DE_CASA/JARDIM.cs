@@ -6,12 +6,18 @@ public class JARDIM : MonoBehaviour, IInteractable
 {
     public bool IniciarJogo = false;
     public GameObject BotaoInciar;
+    public GameObject inimigoPrefab; // Referência ao prefab do inimigo
     private ScriptMae Mae;
     private bool playerInJardim = false;
+    private CapsuleCollider2D inimigoCollider; // Referência ao CapsuleCollider2D do inimigo
 
     private void Start()
     {
         Mae = FindObjectOfType<ScriptMae>();
+        if (inimigoPrefab != null)
+        {
+            inimigoCollider = inimigoPrefab.GetComponent<CapsuleCollider2D>();
+        }
     }
 
     public void Interact()
@@ -29,7 +35,11 @@ public class JARDIM : MonoBehaviour, IInteractable
             if (IniciarJogo)
             {
                 Mae.PerseguirFilho();
-                Mae.GetComponent<Collider2D>().isTrigger = false; 
+                Mae.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;  // Define o Rigidbody da mãe como Dynamic
+                if (inimigoCollider != null)
+                {
+                    inimigoCollider.enabled = true; // Habilita o CapsuleCollider do inimigo
+                }
             }
         }
     }
@@ -58,7 +68,11 @@ public class JARDIM : MonoBehaviour, IInteractable
         if (playerInJardim && Input.GetKeyDown(KeyCode.E))
         {
             Mae.PerseguirFilho();
-            Mae.GetComponent<Collider2D>().isTrigger = false;
+            Mae.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;  // Define o Rigidbody da mãe como Dynamic
+            if (inimigoCollider != null)
+            {
+                inimigoCollider.enabled = true; // Habilita o CapsuleCollider do inimigo
+            }
         }
     }
 }

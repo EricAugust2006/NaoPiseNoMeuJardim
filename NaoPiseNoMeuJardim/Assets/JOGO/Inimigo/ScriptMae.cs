@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 using Pathfinding;
 
 public class ScriptMae : MonoBehaviour
@@ -17,9 +16,10 @@ public class ScriptMae : MonoBehaviour
     public float jumpNodeHeightRequirement = 0.8f;
     public float jumpModifier = 0.3f;
     public float jumpCheckOffset = 0.1f;
+    public LayerMask groundLayer;
 
     [Header("Custom Behavior")]
-    public bool followEnabled = false; // Inicialmente falso
+    public bool followEnabled = false;
     public bool jumpEnabled = true;
     public bool directionLookEnabled = true;
 
@@ -28,11 +28,14 @@ public class ScriptMae : MonoBehaviour
     bool isGrounded = false;
     Seeker seeker;
     Rigidbody2D rb;
+    CapsuleCollider2D capsuleCollider; // Referência ao CapsuleCollider2D
 
     void Start()
     {
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
+        capsuleCollider = GetComponent<CapsuleCollider2D>(); // Inicializa o CapsuleCollider2D
+        capsuleCollider.enabled = false; // Desativa o CapsuleCollider2D inicialmente
 
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
     }
@@ -65,10 +68,12 @@ public class ScriptMae : MonoBehaviour
             return;
         }
 
-        isGrounded = Physics2D.Raycast(transform.position, -Vector3.up, GetComponent<Collider2D>().bounds.extents.y + jumpCheckOffset);
+        isGrounded = Physics2D.Raycast(transform.position, -Vector3.up, GetComponent<Collider2D>().bounds.extents.y + jumpCheckOffset, groundLayer);
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
-        Vector2 force = direction * speed * Time.deltaTime;
+
+        // Define a velocidade diretamente para manter constante
+        rb.velocity = direction * speed * Time.deltaTime;
 
         if (jumpEnabled && isGrounded)
         {
@@ -77,8 +82,6 @@ public class ScriptMae : MonoBehaviour
                 rb.AddForce(Vector2.up * speed * jumpModifier);
             }
         }
-
-        rb.AddForce(force);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWayPoint]);
         if (distance < nextWaypointDistance)
@@ -117,5 +120,6 @@ public class ScriptMae : MonoBehaviour
     {
         Debug.Log("Perseguicao");
         followEnabled = true;
+        capsuleCollider.enabled = true; // Habilita o CapsuleCollider2D quando a perseguição começa
     }
 }
