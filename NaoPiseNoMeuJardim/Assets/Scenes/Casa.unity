@@ -1808,6 +1808,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca917e8f9fa815641be9cfd134d394ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Interagido: 0
   botaoInterage: {fileID: 815754607}
 --- !u!212 &607943257
 SpriteRenderer:
@@ -2731,12 +2732,12 @@ Transform:
   m_GameObject: {fileID: 1313345660}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -16.43, y: 3.47, z: -7.22}
+  m_LocalPosition: {x: 0, y: 5.19, z: -7.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1558268377}
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 1871698861}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1347265160
 GameObject:
@@ -5181,6 +5182,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 496024284}
+  - {fileID: 1313345662}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1902835287
@@ -5672,4 +5674,3 @@ SceneRoots:
   - {fileID: 1238563504}
   - {fileID: 327310215}
   - {fileID: 1871698861}
-  - {fileID: 1313345662}
