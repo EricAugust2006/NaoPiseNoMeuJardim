@@ -16,7 +16,6 @@ public class InteracaoESPELHO : MonoBehaviour, IInteractable
     private void Start()
     {
         personagem = FindObjectOfType<ScriptPersonagem>(); 
-        personagem = FindObjectOfType<ScriptPersonagem>();
     }
 
     private void Espelho()
