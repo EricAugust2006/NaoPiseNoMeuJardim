@@ -67,7 +67,7 @@ public class DialogoESPELHO : MonoBehaviour
             dialoguePanel.SetActive(false);
             startDialogue = false;
             dialogueIndex = 0;
-            personagemScript.speed = 5f;
+            personagemScript.speed = 6f;
             RestaurarAnimacoes();
         }
     }
