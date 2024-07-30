@@ -6,7 +6,7 @@ public class ScriptPersonagem : MonoBehaviour
 {
     [Header("Movimentacao")]
     private Rigidbody2D rb;
-    [SerializeField] private float speed = 5f;
+    [SerializeField] public float speed = 5f;
 
     [Header("PULO")]
     public bool taNoChao;
@@ -118,6 +118,7 @@ public class ScriptPersonagem : MonoBehaviour
     public void Empurrar()
     {
         rb.velocity = new Vector2(rb.velocity.x, 3);
+        animator.SetBool("Caindo", false);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

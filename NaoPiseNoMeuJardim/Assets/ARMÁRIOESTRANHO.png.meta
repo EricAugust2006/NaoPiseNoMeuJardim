@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 863758ae506c69b49b9d8c1f3380c4cd
+guid: d6c3df051d66abf4491eb99f4696e5a3
 TextureImporter:
   internalIDToNameTable:
   - first:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 80
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -142,10 +142,10 @@ TextureImporter:
       name: "ARM\xC1RIOESTRANHO_0"
       rect:
         serializedVersion: 2
-        x: 12
+        x: 11
         y: 0
-        width: 232
-        height: 444
+        width: 234
+        height: 445
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -162,15 +162,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 39deb93506779954c945bb794658ad1f
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      "ARM\xC1RIOESTRANHO_0": -2330456151086340891
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

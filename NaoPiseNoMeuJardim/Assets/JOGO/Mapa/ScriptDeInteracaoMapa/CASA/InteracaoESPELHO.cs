@@ -24,7 +24,7 @@ public class InteracaoESPELHO : MonoBehaviour, IInteractable
         {
             Debug.Log("� voc�!");
             personagem.Empurrar();
-            Interagido = false;
+            Interagido = true;
         }
     }
 

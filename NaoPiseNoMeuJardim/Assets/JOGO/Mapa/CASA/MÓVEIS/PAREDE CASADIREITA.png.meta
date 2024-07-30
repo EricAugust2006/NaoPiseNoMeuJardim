@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 863758ae506c69b49b9d8c1f3380c4cd
+guid: 125ba9e2a9dc7c549a80a89e3a53e372
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2330456151086340891
-    second: "ARM\xC1RIOESTRANHO_0"
+      213: 9009584566678442285
+    second: PAREDE CASADIREITA_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 80
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,13 +139,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "ARM\xC1RIOESTRANHO_0"
+      name: PAREDE CASADIREITA_0
       rect:
         serializedVersion: 2
-        x: 12
+        x: 0
         y: 0
-        width: 232
-        height: 444
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5e4efd55a7e88afd0800000000000000
-      internalID: -2330456151086340891
+      spriteID: d21d5b6bd69780d70800000000000000
+      internalID: 9009584566678442285
       vertices: []
       indices: 
       edges: []
@@ -162,7 +162,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 39deb93506779954c945bb794658ad1f
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -170,7 +170,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "ARM\xC1RIOESTRANHO_0": -2330456151086340891
+      PAREDE CASADIREITA_0: 9009584566678442285
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
