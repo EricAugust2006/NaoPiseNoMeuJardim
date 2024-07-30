@@ -81,7 +81,7 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void Jump()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && taNoChao)
+        if (Input.GetButtonDown("Jump") && taNoChao)
         {
             rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
             animator.SetTrigger("Jump");
