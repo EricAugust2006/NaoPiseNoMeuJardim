@@ -19,10 +19,21 @@ public class DialogoESPELHO : MonoBehaviour
     public bool readyToSpeak;
     public bool startDialogue;
 
+    private ScriptPersonagem personagemScript;
+    private Animator personagemAnimator;
 
     void Start()
     {
         dialoguePanel.SetActive(false);
+        personagemScript = FindObjectOfType<ScriptPersonagem>();
+        if (personagemScript != null)
+        {
+            personagemAnimator = personagemScript.GetComponent<Animator>();
+        }
+        else
+        {
+            Debug.LogError("ScriptPersonagem não encontrado na cena!");
+        }
     }
 
     void Update()
@@ -31,7 +42,9 @@ public class DialogoESPELHO : MonoBehaviour
         {
             if (!startDialogue)
             {
-                FindObjectOfType<ScriptPersonagem>().speed = 0f;
+                // Desativa pulo e animação de corrida
+                personagemScript.speed = 0f;
+                DesativarAnimacoes();
                 StartDialogue();
             }
             else if (dialogueText.text == dialogueNpc[dialogueIndex])
@@ -40,11 +53,12 @@ public class DialogoESPELHO : MonoBehaviour
             }
         }
     }
+
     void NextDialogue()
     {
         dialogueIndex++;
-        
-        if(dialogueIndex < dialogueNpc.Length)
+
+        if (dialogueIndex < dialogueNpc.Length)
         {
             StartCoroutine(showDialogue());
         }
@@ -53,7 +67,8 @@ public class DialogoESPELHO : MonoBehaviour
             dialoguePanel.SetActive(false);
             startDialogue = false;
             dialogueIndex = 0;
-            FindObjectOfType<ScriptPersonagem>().speed = 5f;
+            personagemScript.speed = 5f;
+            RestaurarAnimacoes();
         }
     }
 
@@ -70,7 +85,7 @@ public class DialogoESPELHO : MonoBehaviour
     IEnumerator showDialogue()
     {
         dialogueText.text = "";
-        foreach(char letter in dialogueNpc[dialogueIndex])
+        foreach (char letter in dialogueNpc[dialogueIndex])
         {
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.1f);
@@ -92,5 +107,28 @@ public class DialogoESPELHO : MonoBehaviour
             readyToSpeak = false;
         }
     }
-   
+
+    // Método para desativar animações
+    void DesativarAnimacoes()
+    {
+        if (personagemAnimator != null)
+        {
+            Debug.Log("Desativando animações");
+            personagemAnimator.SetBool("Correndo", false);
+            personagemAnimator.SetBool("Caindo", false);
+            personagemAnimator.SetFloat("Velocidade", 0f);
+            // Adicione qualquer outro parâmetro que precise ser desativado
+        }
+    }
+
+    // Método para restaurar animações
+    void RestaurarAnimacoes()
+    {
+        if (personagemAnimator != null)
+        {
+            Debug.Log("Restaurando animações");
+            // Ajuste os valores conforme necessário para restaurar o estado anterior
+            personagemAnimator.SetBool("Correndo", true); // Se necessário, ajuste conforme a lógica do seu jogo
+        }
+    }
 }
