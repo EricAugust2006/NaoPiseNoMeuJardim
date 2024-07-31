@@ -1837,7 +1837,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -22.099993, y: -0.35390997, z: -7.22}
+  m_LocalPosition: {x: -22.099993, y: -0.3565302, z: -7.22}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2245,6 +2245,7 @@ GameObject:
   - component: {fileID: 815754608}
   - component: {fileID: 815754610}
   - component: {fileID: 815754609}
+  - component: {fileID: 815754611}
   m_Layer: 0
   m_Name: KeyUI - Window
   m_TagString: Untagged
@@ -2277,7 +2278,7 @@ Animator:
   m_GameObject: {fileID: 815754607}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 40ddd27aea923204fbdf9e29e1816694, type: 2}
+  m_Controller: {fileID: 9100000, guid: 9b3c56aa9f15b8840961071e21e64491, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -2343,6 +2344,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &815754611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 815754607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04110d97c56b5b940b9c08bfb0d972ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.4
+  distance: 0.1
 --- !u!1 &838007350
 GameObject:
   m_ObjectHideFlags: 0
@@ -3255,6 +3270,7 @@ GameObject:
   - component: {fileID: 1251114357}
   - component: {fileID: 1251114359}
   - component: {fileID: 1251114358}
+  - component: {fileID: 1251114360}
   m_Layer: 0
   m_Name: KeyUI - Kitchen
   m_TagString: Untagged
@@ -3353,6 +3369,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1251114360
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1251114356}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04110d97c56b5b940b9c08bfb0d972ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.4
+  distance: 0.1
 --- !u!1 &1277888934
 GameObject:
   m_ObjectHideFlags: 0
@@ -3364,6 +3394,7 @@ GameObject:
   - component: {fileID: 1277888935}
   - component: {fileID: 1277888937}
   - component: {fileID: 1277888936}
+  - component: {fileID: 1277888938}
   m_Layer: 0
   m_Name: KeyUI-SecondPlace
   m_TagString: Untagged
@@ -3380,7 +3411,7 @@ Transform:
   m_GameObject: {fileID: 1277888934}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.01, y: 3.14, z: 0}
+  m_LocalPosition: {x: 0, y: 3.14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3462,6 +3493,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1277888938
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277888934}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04110d97c56b5b940b9c08bfb0d972ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.4
+  distance: 0.1
 --- !u!1 &1313345660
 GameObject:
   m_ObjectHideFlags: 0
@@ -6012,6 +6057,7 @@ GameObject:
   - component: {fileID: 1722295129}
   - component: {fileID: 1722295131}
   - component: {fileID: 1722295130}
+  - component: {fileID: 1722295132}
   m_Layer: 0
   m_Name: KeyUI-Exit
   m_TagString: Untagged
@@ -6110,6 +6156,20 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1722295132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1722295128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04110d97c56b5b940b9c08bfb0d972ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 0.4
+  distance: 0.1
 --- !u!1 &1731438019
 GameObject:
   m_ObjectHideFlags: 0
