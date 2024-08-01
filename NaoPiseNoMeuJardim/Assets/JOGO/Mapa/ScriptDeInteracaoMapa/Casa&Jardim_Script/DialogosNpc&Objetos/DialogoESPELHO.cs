@@ -22,6 +22,9 @@ public class DialogoESPELHO : MonoBehaviour
     private ScriptPersonagem personagemScript;
     private Animator personagemAnimator;
 
+    public bool Interagido = false;
+    public GameObject botaoInteracao;
+
     void Start()
     {
         dialoguePanel.SetActive(false);
@@ -51,7 +54,15 @@ public class DialogoESPELHO : MonoBehaviour
             {
                 NextDialogue();
             }
+
+            if (!Interagido)
+            {
+                personagemScript.Empurrar();
+                Interagido = true;
+            }
         }
+
+       
     }
 
     void NextDialogue()
@@ -88,7 +99,7 @@ public class DialogoESPELHO : MonoBehaviour
         foreach (char letter in dialogueNpc[dialogueIndex])
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.02f);
         }
     }
 
@@ -97,6 +108,7 @@ public class DialogoESPELHO : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             readyToSpeak = true;
+            botaoInteracao.SetActive(true);
         }
     }
 
@@ -105,6 +117,7 @@ public class DialogoESPELHO : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             readyToSpeak = false;
+            botaoInteracao.SetActive(false);
         }
     }
 
