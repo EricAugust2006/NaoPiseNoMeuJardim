@@ -9,10 +9,10 @@ EditorBuildSettings:
     path: Assets/Scenes/primeiroAndar.unity
     guid: 8c9cfa26abfee488c85f1582747f6a02
   - enabled: 1
-    path: Assets/Scenes/jardimJogo.unity
+    path: Assets/Scenes/JardimJogo.unity
     guid: 514c39ad983014b43a95fe6d295eb7dd
   - enabled: 1
-    path: Assets/Scenes/segundoAndar.unity
+    path: Assets/Scenes/SegundoAndar.unity
     guid: 0eeeb24d0a4d29f47a221152d9fb71c1
   - enabled: 1
     path: Assets/Scenes/meuQuarto.unity
