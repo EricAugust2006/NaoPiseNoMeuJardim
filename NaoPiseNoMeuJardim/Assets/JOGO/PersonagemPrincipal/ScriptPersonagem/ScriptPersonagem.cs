@@ -49,13 +49,13 @@ public class ScriptPersonagem : MonoBehaviour
         DetectarChao();
     }
 
-    private void Movimentar()
+    public void Movimentar()
     {
         float VelX = Input.GetAxis("Horizontal");
         Vector3 Movement = new Vector3(VelX, 0f, 0f);
         transform.position += Movement * Time.deltaTime * speed;
 
-        // atualiza animacao e flip
+        //atualiza animacao e flip
         animator.SetFloat("Velocidade", Mathf.Abs(VelX));
 
         if (VelX > 0)
@@ -147,6 +147,28 @@ public class ScriptPersonagem : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E) && interactable != null)
         {
             interactable.Interact();
+        }
+    }
+
+    public void DesativarAnimacoes()
+    {
+        if (animator != null)
+        {
+            Debug.Log("Desativando animações");
+            animator.SetBool("Correndo", false);
+            animator.SetBool("Caindo", false);
+            animator.SetFloat("Velocidade", 0f);
+            // Adicione qualquer outro parâmetro que precise ser desativado
+        }
+    }
+
+    public void RestaurarAnimacoes()
+    {
+        if (animator != null)
+        {
+            Debug.Log("Restaurando animações");
+            // Ajuste os valores conforme necessário para restaurar o estado anterior
+            animator.SetBool("Correndo", true); // Se necessário, ajuste conforme a lógica do seu jogo
         }
     }
 }

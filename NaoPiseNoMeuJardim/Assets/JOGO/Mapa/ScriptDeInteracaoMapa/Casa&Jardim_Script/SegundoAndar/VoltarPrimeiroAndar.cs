@@ -25,6 +25,8 @@ public class VoltarPrimeiroAndar : MonoBehaviour
 
     public GameObject botaoInteracao;
 
+    public TransicaoDeCenas transicaoDeCenas;
+
     void Start()
     {
 
@@ -75,7 +77,7 @@ public class VoltarPrimeiroAndar : MonoBehaviour
             dialogueIndex = 0;
             personagemScript.speed = 6f;
             RestaurarAnimacoes();
-            SceneManager.LoadScene(0);
+            transicaoDeCenas.CarregarCena("primeiroAndar");
         }
     }
 

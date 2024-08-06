@@ -47,7 +47,7 @@ public class DialogoESPELHO : MonoBehaviour
             {
                 // Desativa pulo e animação de corrida
                 personagemScript.speed = 0f;
-                DesativarAnimacoes();
+                personagemScript.DesativarAnimacoes();
                 StartDialogue();
             }
             else if (dialogueText.text == dialogueNpc[dialogueIndex])
@@ -79,7 +79,7 @@ public class DialogoESPELHO : MonoBehaviour
             startDialogue = false;
             dialogueIndex = 0;
             personagemScript.speed = 6f;
-            RestaurarAnimacoes();
+            personagemScript.RestaurarAnimacoes();
         }
     }
 
@@ -118,30 +118,6 @@ public class DialogoESPELHO : MonoBehaviour
         {
             readyToSpeak = false;
             botaoInteracao.SetActive(false);
-        }
-    }
-
-    // Método para desativar animações
-    void DesativarAnimacoes()
-    {
-        if (personagemAnimator != null)
-        {
-            Debug.Log("Desativando animações");
-            personagemAnimator.SetBool("Correndo", false);
-            personagemAnimator.SetBool("Caindo", false);
-            personagemAnimator.SetFloat("Velocidade", 0f);
-            // Adicione qualquer outro parâmetro que precise ser desativado
-        }
-    }
-
-    // Método para restaurar animações
-    void RestaurarAnimacoes()
-    {
-        if (personagemAnimator != null)
-        {
-            Debug.Log("Restaurando animações");
-            // Ajuste os valores conforme necessário para restaurar o estado anterior
-            personagemAnimator.SetBool("Correndo", true); // Se necessário, ajuste conforme a lógica do seu jogo
         }
     }
 }

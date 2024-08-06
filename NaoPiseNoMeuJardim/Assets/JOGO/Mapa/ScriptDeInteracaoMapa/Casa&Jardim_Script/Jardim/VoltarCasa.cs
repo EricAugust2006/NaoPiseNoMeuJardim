@@ -8,6 +8,8 @@ public class VoltarCasa : MonoBehaviour, IInteractable
 {
     private bool Interagido = false;
     public GameObject botaoInterage;
+    public TransicaoDeCenas transicaoDeCenas;
+
 
 
     public void Interact()
@@ -20,7 +22,8 @@ public class VoltarCasa : MonoBehaviour, IInteractable
         if (!Interagido)
         {
             Debug.Log("Interagindo com a porta. Teleportando para a cena 0.");
-            SceneManager.LoadScene(0);
+            //SceneManager.LoadScene(0);
+            transicaoDeCenas.CarregarCena("primeiroAndar");
 
         }
     }

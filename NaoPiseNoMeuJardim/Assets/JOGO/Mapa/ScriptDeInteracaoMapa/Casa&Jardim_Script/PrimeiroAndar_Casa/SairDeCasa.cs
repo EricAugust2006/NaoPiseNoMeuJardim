@@ -6,6 +6,8 @@ public class SairDeCasa : MonoBehaviour, IInteractable
     private bool Interagido = false;
     public GameObject botaoInterage;
 
+    public TransicaoDeCenas transicaoDeCenas;
+
     public void Interact()
     {
         Sair();
@@ -17,7 +19,8 @@ public class SairDeCasa : MonoBehaviour, IInteractable
         {
             Debug.Log("Interagindo com a porta. Teleportando para a cena 1.");
             Interagido = true;
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);
+            transicaoDeCenas.CarregarCena("JardimJogo");
 
         }
     }

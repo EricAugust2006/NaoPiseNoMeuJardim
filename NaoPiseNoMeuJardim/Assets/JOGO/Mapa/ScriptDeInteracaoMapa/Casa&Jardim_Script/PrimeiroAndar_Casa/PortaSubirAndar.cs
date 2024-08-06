@@ -24,6 +24,8 @@ public class PortaSubirAndar : MonoBehaviour
 
     public GameObject botaoInteracao;
 
+    public TransicaoDeCenas transicaoDeCenas;
+
     void Start()
     {
         dialoguePanel.SetActive(false);
@@ -52,7 +54,8 @@ public class PortaSubirAndar : MonoBehaviour
             else if (dialogueText.text == dialogueNpc[dialogueIndex])
             {
                 NextDialogue();
-                SceneManager.LoadScene(2);
+                //SceneManager.LoadScene(2);
+                transicaoDeCenas.CarregarCena("SegundoAndar");
             }
         }
     }
