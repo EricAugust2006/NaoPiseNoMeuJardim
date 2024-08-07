@@ -9,6 +9,7 @@ TagManager:
   - ObjetoInterativo
   - ObjetoNaFrente
   - Algo
+  - Obstaculo
   layers:
   - Default
   - TransparentFX
@@ -23,7 +24,7 @@ TagManager:
   - NPC
   - ObjetoInterativo
   - Inimigo
-  - 
+  - Obstaculo
   - 
   - 
   - 
