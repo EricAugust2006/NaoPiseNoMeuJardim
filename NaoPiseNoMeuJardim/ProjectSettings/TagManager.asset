@@ -7,6 +7,8 @@ TagManager:
   - chao
   - NPC
   - ObjetoInterativo
+  - ObjetoNaFrente
+  - Algo
   layers:
   - Default
   - TransparentFX

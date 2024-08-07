@@ -12,6 +12,7 @@ public class ScriptPersonagem : MonoBehaviour
     public bool taNoChao;
     public bool pulando = false;
     public float forcaPulo = 7f;
+
     public Transform detectaChao;
     public LayerMask oQueEhChao;
 
