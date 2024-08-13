@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering.Universal; 
+using UnityEngine.Rendering.Universal;
 
 public class LightSwitch : MonoBehaviour
 {
@@ -12,7 +12,7 @@ public class LightSwitch : MonoBehaviour
     {
         if (lightSource)
         {
-            lightSource.enabled = isOn ;
+            lightSource.enabled = isOn;
         }
     }
 
@@ -21,7 +21,7 @@ public class LightSwitch : MonoBehaviour
         if (lightSource)
         {
             isOn = !isOn;
-            lightSource.enabled = !isOn;
+            lightSource.enabled = isOn;
         }
     }
 }

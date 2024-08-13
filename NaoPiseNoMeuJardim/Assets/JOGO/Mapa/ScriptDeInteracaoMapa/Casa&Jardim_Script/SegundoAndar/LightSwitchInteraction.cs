@@ -10,7 +10,7 @@ public class LightSwitchInteraction : MonoBehaviour
 
     private void Update()
     {
-        if(playerInZone && Input.GetKeyDown(KeyCode.E))
+        if (playerInZone && Input.GetKeyDown(KeyCode.E))
         {
             lightSwitch.ToggleLight();
         }
@@ -27,7 +27,7 @@ public class LightSwitchInteraction : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if(collision.CompareTag("Player"))
+        if (collision.CompareTag("Player"))
         {
             playerInZone = false;
             botaoInteracao.SetActive(false);

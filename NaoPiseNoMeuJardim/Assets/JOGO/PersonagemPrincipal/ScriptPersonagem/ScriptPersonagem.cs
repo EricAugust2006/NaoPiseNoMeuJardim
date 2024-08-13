@@ -12,11 +12,11 @@ public class ScriptPersonagem : MonoBehaviour
     public bool taNoChao;
     public bool pulando = false;
     public float forcaPulo = 7f;
-
     public Transform detectaChao;
     public LayerMask oQueEhChao;
+    private bool wasGrounded;
 
-    //Contrato de eventos
+    [Header("IInteractable")]
     public IInteractable interactable;
 
     [Header("INTERACAO")]
@@ -26,12 +26,17 @@ public class ScriptPersonagem : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
-    private bool wasGrounded;
+    [Header("Plataforma")]
+    private Collider2D col;
+    public LayerMask plataformaLayer;
+    public GameObject detectaPlataforma;
+    public bool taNaPlataforma;
 
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        col = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
     }
@@ -42,6 +47,7 @@ public class ScriptPersonagem : MonoBehaviour
         Jump();
         AtualizarAnimacoes();
         CuidarLayer();
+        mudarPlataforma();
     }
 
     private void FixedUpdate()
@@ -50,13 +56,46 @@ public class ScriptPersonagem : MonoBehaviour
         DetectarChao();
     }
 
+    public void mudarPlataforma()
+    {
+        if (Input.GetButtonDown("Jump") && taNoChao && !estaNaPlataforma())
+        {
+            StartCoroutine(SubirPlataforma());
+        }
+        if (Input.GetButtonDown("VerticalDown") && !taNoChao && estaNaPlataforma())
+        {
+            StartCoroutine(DescerPlataforma());
+        }
+    }
+
+    bool estaNaPlataforma()
+    {
+        return col.IsTouchingLayers(plataformaLayer);
+    }
+    
+    //COROUTINE PARA DESCER PLATAFORMA
+    IEnumerator DescerPlataforma()
+    {
+        col.enabled = false;
+        yield return new WaitForSeconds(0.8f);
+        col.enabled = true;
+    }
+
+    //COROUTINE PARA SUBIR PLATAFORMA
+    IEnumerator SubirPlataforma()
+    {
+        col.enabled = false;
+        yield return new WaitForSeconds(0.8f);
+        col.enabled = true;
+    }
+
+    //MOVIMENTAÇÃO DO PERSONAGEM
     public void Movimentar()
     {
         float VelX = Input.GetAxis("Horizontal");
         Vector3 Movement = new Vector3(VelX, 0f, 0f);
         transform.position += Movement * Time.deltaTime * speed;
 
-        //atualiza animacao e flip
         animator.SetFloat("Velocidade", Mathf.Abs(VelX));
 
         if (VelX > 0)
@@ -103,7 +142,7 @@ public class ScriptPersonagem : MonoBehaviour
             wasGrounded = true;
         }
     }
-
+    
     public void CuidarLayer()
     {
         if (!taNoChao)
@@ -127,7 +166,6 @@ public class ScriptPersonagem : MonoBehaviour
         if (collision.GetComponent<IInteractable>() != null)
         {
             interactable = collision.GetComponent<IInteractable>();
-            //botaoInteracao.SetActive(true);
         }
     }
 
@@ -138,7 +176,6 @@ public class ScriptPersonagem : MonoBehaviour
             if (interactable == collision.GetComponent<IInteractable>())
             {
                 interactable = null;
-                //botaoInteracao.SetActive(false);
             }
         }
     }
@@ -159,7 +196,6 @@ public class ScriptPersonagem : MonoBehaviour
             animator.SetBool("Correndo", false);
             animator.SetBool("Caindo", false);
             animator.SetFloat("Velocidade", 0f);
-            // Adicione qualquer outro parâmetro que precise ser desativado
         }
     }
 
@@ -168,8 +204,7 @@ public class ScriptPersonagem : MonoBehaviour
         if (animator != null)
         {
             Debug.Log("Restaurando animações");
-            // Ajuste os valores conforme necessário para restaurar o estado anterior
-            animator.SetBool("Correndo", true); // Se necessário, ajuste conforme a lógica do seu jogo
+            animator.SetBool("Correndo", true); 
         }
     }
 }
