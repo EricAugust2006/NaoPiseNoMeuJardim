@@ -8,30 +8,34 @@ public class ScriptPersonagem : MonoBehaviour
     private Rigidbody2D rb;
     [SerializeField] public float speed = 5f;
 
-    [Header("PULO")]
-    public bool taNoChao;
+    [Header("Pulo")]
     public bool pulando = false;
     public float forcaPulo = 7f;
+
+    [Header("Detecta Chao")]
     public Transform detectaChao;
     public LayerMask oQueEhChao;
     private bool wasGrounded;
+    public bool taNoChao;
+
+    [Header("Plataforma")]
+    private Collider2D col;
+    public Transform detectaPlataforma;
+    public LayerMask oQueEhPlataforma;
+    private bool wasPlataformed;
+    public bool taNaPlataforma;
 
     [Header("IInteractable")]
     public IInteractable interactable;
 
-    [Header("INTERACAO")]
+    [Header("Interacao")]
     public GameObject botaoInteracao;
 
-    [Header("ANIMACAO E FLIP")]
+    [Header("Animacao e Flip")]
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
-    [Header("Plataforma")]
-    private Collider2D col;
-    public LayerMask plataformaLayer;
-    public GameObject detectaPlataforma;
-    public bool taNaPlataforma;
-
+    private bool podePular = true;
 
     private void Awake()
     {
@@ -44,10 +48,13 @@ public class ScriptPersonagem : MonoBehaviour
     private void Update()
     {
         Interact();
-        Jump();
+        if (podePular)
+        {
+            Jump();
+        }
         AtualizarAnimacoes();
         CuidarLayer();
-        mudarPlataforma();
+        MudarPlataforma();
     }
 
     private void FixedUpdate()
@@ -56,40 +63,42 @@ public class ScriptPersonagem : MonoBehaviour
         DetectarChao();
     }
 
-    public void mudarPlataforma()
+    public void MudarPlataforma()
     {
-        if (Input.GetButtonDown("Jump") && taNoChao && !estaNaPlataforma())
+        if (Input.GetButtonDown("Jump") && taNoChao && !taNaPlataforma)
         {
             StartCoroutine(SubirPlataforma());
         }
-        if (Input.GetButtonDown("VerticalDown") && !taNoChao && estaNaPlataforma())
+        if (Input.GetButtonDown("VerticalDown") && !taNoChao && taNaPlataforma)
         {
             StartCoroutine(DescerPlataforma());
         }
     }
 
-    bool estaNaPlataforma()
+    // Verifica se o personagem está tocando a layer da plataforma
+    bool EstaNaPlataforma()
     {
-        return col.IsTouchingLayers(plataformaLayer);
+        return col.IsTouchingLayers(oQueEhPlataforma);
     }
-    
-    //COROUTINE PARA DESCER PLATAFORMA
+
     IEnumerator DescerPlataforma()
     {
+        podePular = false;
         col.enabled = false;
         yield return new WaitForSeconds(0.8f);
         col.enabled = true;
+        podePular = true;
     }
 
-    //COROUTINE PARA SUBIR PLATAFORMA
     IEnumerator SubirPlataforma()
     {
+        podePular = false;
         col.enabled = false;
         yield return new WaitForSeconds(0.8f);
         col.enabled = true;
+        podePular = true;
     }
 
-    //MOVIMENTAÇÃO DO PERSONAGEM
     public void Movimentar()
     {
         float VelX = Input.GetAxis("Horizontal");
@@ -113,46 +122,39 @@ public class ScriptPersonagem : MonoBehaviour
     private void DetectarChao()
     {
         taNoChao = Physics2D.OverlapCircle(detectaChao.position, 0.4f, oQueEhChao);
-        if (taNoChao)
+        taNaPlataforma = Physics2D.OverlapCircle(detectaPlataforma.position, 0.4f, oQueEhPlataforma);
+
+        if (taNoChao || taNaPlataforma)
         {
             animator.SetBool("Caindo", false);
         }
     }
 
-    private void Jump()
+    private void OnDrawGizmos()
     {
-        if (Input.GetButtonDown("Jump") && taNoChao)
+        Gizmos.color = taNoChao ? Color.green : Color.red;
+        Gizmos.DrawSphere(detectaChao.position, 0.4f);
+
+        Gizmos.color = taNaPlataforma ? Color.blue : Color.red;
+        Gizmos.DrawSphere(detectaPlataforma.position, 0.4f);
+    }
+
+    public void Jump()
+    {
+        if (Input.GetButtonDown("Jump"))
         {
-            rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
-            animator.SetTrigger("Jump");
+            if (taNoChao || taNaPlataforma)
+            {
+                rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+                animator.SetTrigger("Jump");
+            }
         }
     }
 
-    private void AtualizarAnimacoes()
-    {
-        if (rb.velocity.y < 0 && !taNoChao && wasGrounded)
-        {
-            animator.SetBool("Caindo", true);
-            wasGrounded = false;
-        }
-
-        if (taNoChao && !wasGrounded)
-        {
-            animator.SetBool("Caindo", false);
-            wasGrounded = true;
-        }
-    }
-    
     public void CuidarLayer()
     {
-        if (!taNoChao)
-        {
-            animator.SetLayerWeight(1, 1);
-        }
-        else
-        {
-            animator.SetLayerWeight(1, 0);
-        }
+        animator.SetLayerWeight(1, taNoChao ? 0 : 1);
+        animator.SetLayerWeight(1, taNaPlataforma ? 0 : 1);
     }
 
     public void Empurrar()
@@ -188,6 +190,35 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
+    private void AtualizarAnimacoes()
+    {
+        if (rb.velocity.y < 0)
+        {
+            if (!taNoChao && wasGrounded)
+            {
+                animator.SetBool("Caindo", true);
+                wasGrounded = false;
+            }
+            if (!taNaPlataforma && wasPlataformed)
+            {
+                animator.SetBool("Caindo", true);
+                wasPlataformed = false;
+            }
+        }
+
+        if (taNoChao && !wasGrounded)
+        {
+            animator.SetBool("Caindo", false);
+            wasGrounded = true;
+        }
+
+        if (taNaPlataforma && !wasPlataformed)
+        {
+            animator.SetBool("Caindo", false);
+            wasPlataformed = true;
+        }
+    }
+
     public void DesativarAnimacoes()
     {
         if (animator != null)
@@ -204,7 +235,7 @@ public class ScriptPersonagem : MonoBehaviour
         if (animator != null)
         {
             Debug.Log("Restaurando animações");
-            animator.SetBool("Correndo", true); 
+            animator.SetBool("Correndo", true);
         }
     }
 }

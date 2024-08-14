@@ -42,7 +42,7 @@ public class ScriptMae : MonoBehaviour
             PathFollow();
         }
     }
-
+     
     private void UpdatePath()
     {
         if (followEnabled && TargetInDistance() && seeker.IsDone())
