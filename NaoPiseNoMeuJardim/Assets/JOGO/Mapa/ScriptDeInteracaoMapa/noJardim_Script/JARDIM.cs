@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class JARDIM : MonoBehaviour, IInteractable
+public class JARDIM : MonoBehaviour
 {
     public bool IniciarJogo = false;
     public GameObject BotaoInciar;

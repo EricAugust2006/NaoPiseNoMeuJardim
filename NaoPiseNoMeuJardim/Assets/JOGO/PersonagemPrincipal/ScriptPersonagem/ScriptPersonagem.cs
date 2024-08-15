@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ScriptPersonagem : MonoBehaviour
@@ -67,11 +68,11 @@ public class ScriptPersonagem : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump") && taNoChao && !taNaPlataforma)
         {
-            StartCoroutine(SubirPlataforma());
+            StartCoroutine(mudarPlataforma());
         }
         if (Input.GetButtonDown("VerticalDown") && !taNoChao && taNaPlataforma)
         {
-            StartCoroutine(DescerPlataforma());
+            StartCoroutine(mudarPlataforma());
         }
     }
 
@@ -81,26 +82,53 @@ public class ScriptPersonagem : MonoBehaviour
         return col.IsTouchingLayers(oQueEhPlataforma);
     }
 
-    IEnumerator DescerPlataforma()
+    //IEnumerator DescerPlataforma()
+    //{
+    //    podePular = false;
+    //    col.enabled = false;
+
+    //    while (!taNoChao && !taNaPlataforma)
+    //    {
+    //        yield return null; 
+    //    }
+
+    //    yield return new WaitForSeconds(1f);
+
+    //    col.enabled = true;
+    //    podePular = true;
+    //}
+    //IEnumerator SubirPlataforma()
+    //{
+    //            podePular = false;
+    //    col.enabled = false;
+
+    //    while (!taNoChao && !taNaPlataforma)
+    //    {
+    //        yield return null; 
+    //    }
+
+    //    yield return new WaitForSeconds(1f);
+
+    //    col.enabled = true;
+    //    podePular = true;
+    //}
+
+    IEnumerator mudarPlataforma()
     {
         podePular = false;
-        col.enabled = false;
+
+        // Muda a camada do personagem para a que ignora a colisão com a plataforma
+        gameObject.layer = LayerMask.NameToLayer("PersonagemSemColisao");
+
         yield return new WaitForSeconds(0.8f);
-        col.enabled = true;
+
+        // Retorna o personagem para a camada original que colide com a plataforma
+        gameObject.layer = LayerMask.NameToLayer("Default");
+
         podePular = true;
     }
 
-    IEnumerator SubirPlataforma()
-    {
-        podePular = false;
-        col.enabled = false;
-        yield return new WaitForSeconds(0.8f);
-        col.enabled = true;
-        podePular = true;
-    }
-
-    public void Movimentar()
-    {
+    public void Movimentar(){
         float VelX = Input.GetAxis("Horizontal");
         Vector3 Movement = new Vector3(VelX, 0f, 0f);
         transform.position += Movement * Time.deltaTime * speed;
@@ -162,24 +190,25 @@ public class ScriptPersonagem : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, 3);
         animator.SetBool("Caindo", false);
     }
-
+        
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.GetComponent<IInteractable>() != null)
+        if (collision.gameObject.tag == "ObjetoImpulso")
         {
-            interactable = collision.GetComponent<IInteractable>();
+            StartCoroutine(mudarPlataforma());
+            StartCoroutine(timeBackImpulse());
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.GetComponent<IInteractable>() != null)
-        {
-            if (interactable == collision.GetComponent<IInteractable>())
-            {
-                interactable = null;
-            }
-        }
+    }
+
+    IEnumerator timeBackImpulse()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 12);
+        yield return null;
+        animator.SetTrigger("Jump");
     }
 
     private void Interact()

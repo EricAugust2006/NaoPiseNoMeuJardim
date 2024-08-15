@@ -11,6 +11,8 @@ TagManager:
   - Algo
   - Obstaculo
   - Plataforma
+  - ObjetoImpulso
+  - Mae
   layers:
   - Default
   - TransparentFX
@@ -27,8 +29,8 @@ TagManager:
   - Inimigo
   - Obstaculo
   - Plataforma
-  - 
-  - 
+  - PersonagemSemColisao
+  - Delimitador
   - 
   - 
   - 
