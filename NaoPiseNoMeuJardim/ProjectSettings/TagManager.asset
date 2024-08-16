@@ -13,6 +13,8 @@ TagManager:
   - Plataforma
   - ObjetoImpulso
   - Mae
+  - Municao
+  - PrenderPersonagem
   layers:
   - Default
   - TransparentFX

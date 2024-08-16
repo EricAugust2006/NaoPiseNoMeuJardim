@@ -138,7 +138,7 @@ public class ScriptPersonagem : MonoBehaviour
     {
         if (Input.GetButtonDown("Jump"))
         {
-            if (taNoChao || taNaPlataforma)
+            if (podePular && taNoChao || taNaPlataforma)
             {
                 rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
                 animator.SetTrigger("Jump");
@@ -164,6 +164,11 @@ public class ScriptPersonagem : MonoBehaviour
         {
             StartCoroutine(mudarPlataforma());
             StartCoroutine(timeBackImpulse());
+        }
+
+        if(collision.gameObject.tag == "PrenderPersonagem")
+        {
+            speed = 0;
         }
     }
 
