@@ -76,59 +76,26 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
-    // Verifica se o personagem está tocando a layer da plataforma
     bool EstaNaPlataforma()
     {
         return col.IsTouchingLayers(oQueEhPlataforma);
     }
 
-    //IEnumerator DescerPlataforma()
-    //{
-    //    podePular = false;
-    //    col.enabled = false;
-
-    //    while (!taNoChao && !taNaPlataforma)
-    //    {
-    //        yield return null; 
-    //    }
-
-    //    yield return new WaitForSeconds(1f);
-
-    //    col.enabled = true;
-    //    podePular = true;
-    //}
-    //IEnumerator SubirPlataforma()
-    //{
-    //            podePular = false;
-    //    col.enabled = false;
-
-    //    while (!taNoChao && !taNaPlataforma)
-    //    {
-    //        yield return null; 
-    //    }
-
-    //    yield return new WaitForSeconds(1f);
-
-    //    col.enabled = true;
-    //    podePular = true;
-    //}
-
     IEnumerator mudarPlataforma()
     {
         podePular = false;
 
-        // Muda a camada do personagem para a que ignora a colisão com a plataforma
-        gameObject.layer = LayerMask.NameToLayer("PersonagemSemColisao");
+        gameObject.layer = LayerMask.NameToLayer("Delimitador");
 
         yield return new WaitForSeconds(0.8f);
 
-        // Retorna o personagem para a camada original que colide com a plataforma
         gameObject.layer = LayerMask.NameToLayer("Default");
 
         podePular = true;
     }
 
-    public void Movimentar(){
+    public void Movimentar()
+    {
         float VelX = Input.GetAxis("Horizontal");
         Vector3 Movement = new Vector3(VelX, 0f, 0f);
         transform.position += Movement * Time.deltaTime * speed;
@@ -190,7 +157,7 @@ public class ScriptPersonagem : MonoBehaviour
         rb.velocity = new Vector2(rb.velocity.x, 3);
         animator.SetBool("Caindo", false);
     }
-        
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "ObjetoImpulso")
@@ -221,31 +188,21 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void AtualizarAnimacoes()
     {
+        // Se estiver caindo (velocidade vertical negativa)
         if (rb.velocity.y < 0)
         {
-            if (!taNoChao && wasGrounded)
-            {
-                animator.SetBool("Caindo", true);
-                wasGrounded = false;
-            }
-            if (!taNaPlataforma && wasPlataformed)
-            {
-                animator.SetBool("Caindo", true);
-                wasPlataformed = false;
-            }
+            animator.SetBool("Caindo", true);
         }
 
-        if (taNoChao && !wasGrounded)
+        // Se estiver no chão ou na plataforma, desativa a animação de caindo
+        if (taNoChao || taNaPlataforma)
         {
             animator.SetBool("Caindo", false);
-            wasGrounded = true;
         }
 
-        if (taNaPlataforma && !wasPlataformed)
-        {
-            animator.SetBool("Caindo", false);
-            wasPlataformed = true;
-        }
+        // Atualiza o estado de `wasGrounded` e `wasPlataformed`
+        wasGrounded = taNoChao;
+        wasPlataformed = taNaPlataforma;
     }
 
     public void DesativarAnimacoes()
