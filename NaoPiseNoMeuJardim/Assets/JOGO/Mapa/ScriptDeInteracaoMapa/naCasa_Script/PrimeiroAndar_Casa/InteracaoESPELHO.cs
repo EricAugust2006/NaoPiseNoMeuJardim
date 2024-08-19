@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InteracaoESPELHO : MonoBehaviour, IInteractable
+public class InteracaoESPELHO : MonoBehaviour
 {
     public bool Interagido = false;
     public GameObject botaoInterage;
@@ -32,7 +32,6 @@ public class InteracaoESPELHO : MonoBehaviour, IInteractable
     {
         if (collision.gameObject.tag == "Player")
         {
-            
             botaoInterage.SetActive(true);
         }
     }
@@ -41,7 +40,6 @@ public class InteracaoESPELHO : MonoBehaviour, IInteractable
     {
         if (collision.gameObject.tag == "Player")
         {
-
             botaoInterage.SetActive(false);
         }
     }

@@ -29205,6 +29205,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1193409190806246324, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
+      propertyPath: prefabMunicao
+      value: 
+      objectReference: {fileID: 3369979742674274362, guid: dc45bc930f5282f49b6dbca77c92438c, type: 3}
     - target: {fileID: 1969466273799910548, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.282
@@ -29212,6 +29216,14 @@ PrefabInstance:
     - target: {fileID: 2946249829068643804, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: m_Name
       value: PersonagemPrincipal
+      objectReference: {fileID: 0}
+    - target: {fileID: 3455245543287764978, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
+      propertyPath: m_Layer
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3965067635504781734, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
+      propertyPath: m_Layer
+      value: 17
       objectReference: {fileID: 0}
     - target: {fileID: 8005767813211978251, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: m_LocalPosition.y

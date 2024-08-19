@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class EntrarCozinha : MonoBehaviour, IInteractable
+public class EntrarCozinha : MonoBehaviour
 {
     private bool Interagido = false;
     public GameObject botaoInterage;

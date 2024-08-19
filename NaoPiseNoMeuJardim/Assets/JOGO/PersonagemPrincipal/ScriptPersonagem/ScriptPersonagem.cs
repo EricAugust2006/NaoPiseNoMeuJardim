@@ -12,6 +12,8 @@ public class ScriptPersonagem : MonoBehaviour
     [Header("Pulo")]
     public bool pulando = false;
     public float forcaPulo = 7f;
+    public bool podePular = true;
+    public bool taPreso = false;
 
     [Header("Detecta Chao")]
     public Transform detectaChao;
@@ -26,18 +28,18 @@ public class ScriptPersonagem : MonoBehaviour
     private bool wasPlataformed;
     public bool taNaPlataforma;
 
-    [Header("IInteractable")]
-    public IInteractable interactable;
-
-    [Header("Interacao")]
+    [Header("GameObjects")]
     public GameObject botaoInteracao;
+    public GameObject prefabMunicao;
 
     [Header("Animacao e Flip")]
     private SpriteRenderer spriteRenderer;
     private Animator animator;
 
-    private bool podePular = true;
+    [Header("Apertar para sair")]
+    public int quantidadeApertada = 0;
 
+    
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -48,7 +50,6 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void Update()
     {
-        Interact();
         if (podePular)
         {
             Jump();
@@ -56,6 +57,7 @@ public class ScriptPersonagem : MonoBehaviour
         AtualizarAnimacoes();
         CuidarLayer();
         MudarPlataforma();
+        EstaLivre();
     }
 
     private void FixedUpdate()
@@ -84,34 +86,45 @@ public class ScriptPersonagem : MonoBehaviour
     IEnumerator mudarPlataforma()
     {
         podePular = false;
-
         gameObject.layer = LayerMask.NameToLayer("Delimitador");
-
-        yield return new WaitForSeconds(0.8f);
-
+        yield return new WaitForSeconds(1f);
         gameObject.layer = LayerMask.NameToLayer("Default");
+        podePular = true;
+    }
 
+    IEnumerator TomouDanoNaPlataforma()
+    {
+        Empurrar();
+        podePular = false;
+        col.enabled = false;
+        //gameObject.layer = LayerMask.NameToLayer("Player");
+        yield return new WaitForSeconds(1f);
+        //gameObject.layer = LayerMask.NameToLayer("Default");
+        col.enabled = true;
         podePular = true;
     }
 
     public void Movimentar()
     {
-        float VelX = Input.GetAxis("Horizontal");
-        Vector3 Movement = new Vector3(VelX, 0f, 0f);
-        transform.position += Movement * Time.deltaTime * speed;
-
-        animator.SetFloat("Velocidade", Mathf.Abs(VelX));
-
-        if (VelX > 0)
+        if (taPreso == false)
         {
-            spriteRenderer.flipX = false;
-        }
-        else if (VelX < 0)
-        {
-            spriteRenderer.flipX = true;
-        }
+            float VelX = Input.GetAxis("Horizontal");
+            Vector3 Movement = new Vector3(VelX, 0f, 0f);
+            transform.position += Movement * Time.deltaTime * speed;
 
-        animator.SetBool("Correndo", VelX != 0);
+            animator.SetFloat("Velocidade", Mathf.Abs(VelX));
+
+            if (VelX > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if (VelX < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+
+            animator.SetBool("Correndo", VelX != 0);
+        }
     }
 
     private void DetectarChao()
@@ -136,13 +149,31 @@ public class ScriptPersonagem : MonoBehaviour
 
     public void Jump()
     {
-        if (Input.GetButtonDown("Jump"))
+        if(taPreso == false)
         {
-            if (podePular && taNoChao || taNaPlataforma)
+            if (Input.GetButtonDown("Jump"))
             {
-                rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
-                animator.SetTrigger("Jump");
+                if (podePular && taNoChao || taNaPlataforma)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+                    animator.SetTrigger("Jump");
+                }
             }
+        }
+    }
+
+    public void EstaLivre()
+    {
+        if (Input.GetKeyUp(KeyCode.E))
+        {
+            quantidadeApertada++;
+        }
+
+        if (quantidadeApertada == 5)
+        {
+            taPreso = false;
+            animator.SetBool("taPreso", false);
+            quantidadeApertada = 0;
         }
     }
 
@@ -158,22 +189,12 @@ public class ScriptPersonagem : MonoBehaviour
         animator.SetBool("Caindo", false);
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    public void TomouDanoDeCima()
     {
-        if (collision.gameObject.tag == "ObjetoImpulso")
+        if (taNaPlataforma)
         {
-            StartCoroutine(mudarPlataforma());
-            StartCoroutine(timeBackImpulse());
+            TomouDanoNaPlataforma();
         }
-
-        if(collision.gameObject.tag == "PrenderPersonagem")
-        {
-            speed = 0;
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
     }
 
     IEnumerator timeBackImpulse()
@@ -182,30 +203,16 @@ public class ScriptPersonagem : MonoBehaviour
         yield return null;
         animator.SetTrigger("Jump");
     }
-
-    private void Interact()
-    {
-        if (Input.GetKeyDown(KeyCode.E) && interactable != null)
-        {
-            interactable.Interact();
-        }
-    }
-
     private void AtualizarAnimacoes()
     {
-        // Se estiver caindo (velocidade vertical negativa)
         if (rb.velocity.y < 0)
         {
             animator.SetBool("Caindo", true);
         }
-
-        // Se estiver no chão ou na plataforma, desativa a animação de caindo
         if (taNoChao || taNaPlataforma)
         {
             animator.SetBool("Caindo", false);
         }
-
-        // Atualiza o estado de `wasGrounded` e `wasPlataformed`
         wasGrounded = taNoChao;
         wasPlataformed = taNaPlataforma;
     }
@@ -228,5 +235,31 @@ public class ScriptPersonagem : MonoBehaviour
             Debug.Log("Restaurando animações");
             animator.SetBool("Correndo", true);
         }
+    }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "ObjetoImpulso")
+        {
+            StartCoroutine(mudarPlataforma());
+            StartCoroutine(timeBackImpulse());
+        }
+
+        if (collision.gameObject.tag == "PrenderPersonagem")
+        {
+            quantidadeApertada = 0;
+            taPreso = true;
+            animator.SetBool("taPreso", true);
+        }
+
+        if(collision.gameObject.tag == "Municao")
+        {
+            Debug.Log("A folha me encostou");
+            StartCoroutine(TomouDanoNaPlataforma());
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        animator.SetBool("taPreso", false);
     }
 }

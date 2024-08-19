@@ -1,27 +1,26 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class SairDeCasa : MonoBehaviour, IInteractable
+public class SairDeCasa : MonoBehaviour
 {
     private bool Interagido = false;
     public GameObject botaoInterage;
 
     public TransicaoDeCenas transicaoDeCenas;
 
-    public void Interact()
+    public void Update()
     {
         Sair();
     }
 
     private void Sair()
     {
-        if (!Interagido)
+        if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("Interagindo com a porta. Teleportando para a cena 1.");
             Interagido = true;
             //SceneManager.LoadScene(1);
             transicaoDeCenas.CarregarCena("JardimJogo");
-
         }
     }
 

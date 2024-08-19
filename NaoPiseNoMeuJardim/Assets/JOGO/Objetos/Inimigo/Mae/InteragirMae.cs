@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class InteragirMae : MonoBehaviour, IInteractable
+public class InteragirMae : MonoBehaviour
 {
     private bool Interagido = false;
     public GameObject botaoInterage;
