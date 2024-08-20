@@ -24,6 +24,8 @@ public class InteraçãoPorta : MonoBehaviour
 
     public GameObject botaoInteracao;
 
+    public bool eventoLigado = false;
+
     void Start()
     {
         dialoguePanel.SetActive(false);
@@ -40,7 +42,7 @@ public class InteraçãoPorta : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && readyToSpeak)
+        if (Input.GetKeyDown(KeyCode.E) && readyToSpeak && eventoLigado == true)
         {
             if (!startDialogue)
             {
@@ -98,6 +100,7 @@ public class InteraçãoPorta : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            eventoLigado = true;
             readyToSpeak = true;
             botaoInteracao.SetActive(true);
         }
@@ -107,6 +110,7 @@ public class InteraçãoPorta : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            eventoLigado = false;
             readyToSpeak = false;
             botaoInteracao.SetActive(false);
         }

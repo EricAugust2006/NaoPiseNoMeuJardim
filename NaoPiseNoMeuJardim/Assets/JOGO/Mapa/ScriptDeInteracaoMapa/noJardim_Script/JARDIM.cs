@@ -6,10 +6,12 @@ public class JARDIM : MonoBehaviour
 {
     public bool IniciarJogo = false;
     public GameObject BotaoInciar;
-    public GameObject inimigoPrefab; // Referência ao prefab do inimigo
+    public GameObject inimigoPrefab; // Referï¿½ncia ao prefab do inimigo
     private ScriptMae Mae;
     private bool playerInJardim = false;
-    private CapsuleCollider2D inimigoCollider; // Referência ao CapsuleCollider2D do inimigo
+    private CapsuleCollider2D inimigoCollider; // Referï¿½ncia ao CapsuleCollider2D do inimigo
+    public bool eventoLigado = false;
+
 
     private void Start()
     {
@@ -27,7 +29,7 @@ public class JARDIM : MonoBehaviour
 
     private void Conversar()
     {
-        if (!IniciarJogo)
+        if (!IniciarJogo && eventoLigado == true)
         {
             Debug.Log("PISOU NO JARDIM");
             IniciarJogo = true;
@@ -35,7 +37,7 @@ public class JARDIM : MonoBehaviour
             if (IniciarJogo)
             {
                 Mae.PerseguirFilho();
-                Mae.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;  // Define o Rigidbody da mãe como Dynamic
+                Mae.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;  // Define o Rigidbody da mï¿½e como Dynamic
                 if (inimigoCollider != null)
                 {
                     inimigoCollider.enabled = true; // Habilita o CapsuleCollider do inimigo
@@ -48,7 +50,8 @@ public class JARDIM : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Você pisou no jardim");
+            eventoLigado = true;
+            Debug.Log("Vocï¿½ pisou no jardim");
             playerInJardim = true;
             BotaoInciar.SetActive(true);
         }
@@ -58,6 +61,7 @@ public class JARDIM : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            eventoLigado = false;
             playerInJardim = false;
             BotaoInciar.SetActive(false);
         }
@@ -68,7 +72,7 @@ public class JARDIM : MonoBehaviour
         if (playerInJardim && Input.GetKeyDown(KeyCode.E))
         {
             Mae.PerseguirFilho();
-            Mae.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;  // Define o Rigidbody da mãe como Dynamic
+            Mae.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;  // Define o Rigidbody da mï¿½e como Dynamic
             if (inimigoCollider != null)
             {
                 inimigoCollider.enabled = true; // Habilita o CapsuleCollider do inimigo

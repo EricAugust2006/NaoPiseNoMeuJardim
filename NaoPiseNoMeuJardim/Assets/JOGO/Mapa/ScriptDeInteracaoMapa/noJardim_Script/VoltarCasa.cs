@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class VoltarCasa : MonoBehaviour
 {
+    public bool eventoLigado = false;
     private bool Interagido = false;
     public GameObject botaoInterage;
     public TransicaoDeCenas transicaoDeCenas;
@@ -17,7 +18,7 @@ public class VoltarCasa : MonoBehaviour
 
     private void Voltar()
     {
-        if (!Interagido)
+        if (!Interagido && eventoLigado == true)
         {
             Debug.Log("Interagindo com a porta. Teleportando para a cena 0.");
             //SceneManager.LoadScene(0);
@@ -29,6 +30,7 @@ public class VoltarCasa : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            eventoLigado = true;
             botaoInterage.SetActive(true);
         }
     }
@@ -37,6 +39,7 @@ public class VoltarCasa : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            eventoLigado = false;
             botaoInterage.SetActive(false);
         }
     }

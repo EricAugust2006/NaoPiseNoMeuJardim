@@ -25,9 +25,10 @@ public class EntrarNoQuarto : MonoBehaviour
 
     public GameObject botaoInteracao;
 
+    public bool eventoLigado = false;
+
     void Start()
     {
-
         dialoguePanel.SetActive(false);
         personagemScript = FindObjectOfType<ScriptPersonagem>();
         if (personagemScript != null)
@@ -44,7 +45,7 @@ public class EntrarNoQuarto : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.E) && readyToSpeak)
+        if (Input.GetKeyDown(KeyCode.E) && readyToSpeak && eventoLigado == true)
         {
             if (!startDialogue)
             {
@@ -103,6 +104,7 @@ public class EntrarNoQuarto : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            eventoLigado = true;
             readyToSpeak = true;
             botaoInteracao.SetActive(true);
         }
@@ -112,6 +114,7 @@ public class EntrarNoQuarto : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            eventoLigado = false;
             readyToSpeak = false;
             botaoInteracao.SetActive(false);
         }

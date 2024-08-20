@@ -27,6 +27,9 @@ public class VoltarPrimeiroAndar : MonoBehaviour
 
     public TransicaoDeCenas transicaoDeCenas;
 
+    public bool eventoLigado = false;
+
+
     void Start()
     {
 
@@ -46,7 +49,7 @@ public class VoltarPrimeiroAndar : MonoBehaviour
     void Update()
     {
 
-        if (Input.GetKeyDown(KeyCode.E) && readyToSpeak)
+        if (Input.GetKeyDown(KeyCode.E) && readyToSpeak && eventoLigado == true)
         {
             if (!startDialogue)
             {
@@ -105,6 +108,7 @@ public class VoltarPrimeiroAndar : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            eventoLigado = true;
             readyToSpeak = true;
             botaoInteracao.SetActive(true);
         }
@@ -114,6 +118,7 @@ public class VoltarPrimeiroAndar : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            eventoLigado = false;
             readyToSpeak = false;
             botaoInteracao.SetActive(false);
         }

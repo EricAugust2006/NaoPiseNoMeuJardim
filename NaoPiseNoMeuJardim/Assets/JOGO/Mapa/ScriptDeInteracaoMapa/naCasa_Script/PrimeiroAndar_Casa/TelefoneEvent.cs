@@ -12,6 +12,8 @@ public class TelefoneEvent : MonoBehaviour
 
     public bool EventoIniciado = false;
 
+    public bool eventoLigado = false;
+
     private void Start()
     {
         personagemScript = FindObjectOfType<ScriptPersonagem>();
@@ -25,7 +27,7 @@ public class TelefoneEvent : MonoBehaviour
 
     public void EventoTelefone()
     {
-        if (EventoIniciado && Input.GetKeyDown(KeyCode.E))
+        if (EventoIniciado && Input.GetKeyDown(KeyCode.E) && eventoLigado == true)
         {
             telefoneEventoEntrar.SetActive(true);
 
@@ -52,6 +54,7 @@ public class TelefoneEvent : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            eventoLigado = true;
             EventoIniciado = true;
             BotaoInteracao.SetActive(true);
         }
@@ -61,6 +64,7 @@ public class TelefoneEvent : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            eventoLigado = false;
             EventoIniciado = false;
             BotaoInteracao.SetActive(false);
         }

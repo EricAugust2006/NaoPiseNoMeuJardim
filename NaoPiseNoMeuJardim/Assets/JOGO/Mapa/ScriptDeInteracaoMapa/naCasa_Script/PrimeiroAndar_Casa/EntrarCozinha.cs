@@ -6,19 +6,20 @@ using UnityEngine.SceneManagement;
 
 public class EntrarCozinha : MonoBehaviour
 {
+    public bool eventoLigado = false;
     private bool Interagido = false;
     public GameObject botaoInterage;
 
-    public void Interact()
+    public void Update()
     {
         EntraCozinha();
     }
 
     private void EntraCozinha()
     {
-        if (!Interagido)
+        if (Input.GetKeyDown(KeyCode.E) && eventoLigado == true)
         {
-            Debug.Log("Pelo visto a cozinha não está disponível para você. :(");
+            Debug.Log("(ENTROU EVENTO)Pelo visto a cozinha nï¿½o estï¿½ disponï¿½vel para vocï¿½. :(");
             Interagido = true;
         }
     }
@@ -27,7 +28,7 @@ public class EntrarCozinha : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-
+            eventoLigado = true;
             botaoInterage.SetActive(true);
         }
     }
@@ -36,7 +37,7 @@ public class EntrarCozinha : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-
+        eventoLigado = false;
             botaoInterage.SetActive(false);
         }
     }

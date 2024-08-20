@@ -23,8 +23,10 @@ public class PortaSubirAndar : MonoBehaviour
     private Animator personagemAnimator;
 
     public GameObject botaoInteracao;
-
     public TransicaoDeCenas transicaoDeCenas;
+
+    public bool eventoLigado = false;
+
 
     void Start()
     {
@@ -42,7 +44,7 @@ public class PortaSubirAndar : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && readyToSpeak)
+        if (Input.GetKeyDown(KeyCode.E) && readyToSpeak && eventoLigado == true)
         {
             if (!startDialogue)
             {
@@ -54,7 +56,6 @@ public class PortaSubirAndar : MonoBehaviour
             else if (dialogueText.text == dialogueNpc[dialogueIndex])
             {
                 NextDialogue();
-                //SceneManager.LoadScene(2);
                 transicaoDeCenas.CarregarCena("SegundoAndar");
             }
         }
@@ -102,6 +103,7 @@ public class PortaSubirAndar : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            eventoLigado = true;
             readyToSpeak = true;
             botaoInteracao.SetActive(true);
         }
@@ -111,6 +113,7 @@ public class PortaSubirAndar : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            eventoLigado = false;
             readyToSpeak = false;
             botaoInteracao.SetActive(false);
         }

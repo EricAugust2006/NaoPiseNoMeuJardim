@@ -7,10 +7,10 @@ public class LightSwitchInteraction : MonoBehaviour
     public LightSwitch lightSwitch;
     private bool playerInZone = false;
     public GameObject botaoInteracao;
-
+    public bool eventoLigado = false;
     private void Update()
     {
-        if (playerInZone && Input.GetKeyDown(KeyCode.E))
+        if (playerInZone && Input.GetKeyDown(KeyCode.E) && eventoLigado == true)
         {
             lightSwitch.ToggleLight();
         }
@@ -20,6 +20,7 @@ public class LightSwitchInteraction : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            eventoLigado = true;
             playerInZone = true;
             botaoInteracao.SetActive(true);
         }
@@ -29,6 +30,7 @@ public class LightSwitchInteraction : MonoBehaviour
     {
         if (collision.CompareTag("Player"))
         {
+            eventoLigado = false;
             playerInZone = false;
             botaoInteracao.SetActive(false);
         }

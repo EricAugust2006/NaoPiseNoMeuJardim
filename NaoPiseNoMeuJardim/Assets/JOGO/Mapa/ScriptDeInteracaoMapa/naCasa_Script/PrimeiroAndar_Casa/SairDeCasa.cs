@@ -3,6 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class SairDeCasa : MonoBehaviour
 {
+    public bool eventoLigado = false;
     private bool Interagido = false;
     public GameObject botaoInterage;
 
@@ -15,7 +16,7 @@ public class SairDeCasa : MonoBehaviour
 
     private void Sair()
     {
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && eventoLigado == true)
         {
             Debug.Log("Interagindo com a porta. Teleportando para a cena 1.");
             Interagido = true;
@@ -28,6 +29,7 @@ public class SairDeCasa : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            eventoLigado = true;
             botaoInterage.SetActive(true);
         }
     }
@@ -36,6 +38,7 @@ public class SairDeCasa : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            eventoLigado = false;
             botaoInterage.SetActive(false);
         }
     }

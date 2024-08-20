@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class InteracaoESPELHO : MonoBehaviour
 {
+    public bool eventoLigado = false;
     public bool Interagido = false;
     public GameObject botaoInterage;
     private ScriptPersonagem personagem;
 
-    public void Interact()
+    public void Update()
     {
         Espelho();
     }
@@ -20,26 +21,26 @@ public class InteracaoESPELHO : MonoBehaviour
 
     private void Espelho()
     {
-        if (!Interagido)
+        if (!Interagido && eventoLigado == true)
         {
-            Debug.Log("� voc�!");
+            Debug.Log("(ENTROU EVENTO)� voc�!");
             personagem.Empurrar();
             Interagido = true;
         }
     }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
+            eventoLigado = true;
             botaoInterage.SetActive(true);
         }
     }
-
     private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
+            eventoLigado = false;
             botaoInterage.SetActive(false);
         }
     }
