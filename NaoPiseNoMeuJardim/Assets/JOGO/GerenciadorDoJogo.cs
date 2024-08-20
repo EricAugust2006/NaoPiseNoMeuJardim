@@ -8,6 +8,7 @@ public class GerenciadorDoJogo : MonoBehaviour
 
     [Header("GameObjects")]
     [SerializeField] GameObject SairDoEventoTelefone;
+    [SerializeField] GameObject MenuPause;
 
 
     private void Start()

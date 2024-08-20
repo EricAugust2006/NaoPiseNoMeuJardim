@@ -68,13 +68,15 @@ public class ScriptPersonagem : MonoBehaviour
 
     public void MudarPlataforma()
     {
-        if (Input.GetButtonDown("Jump") && taNoChao && !taNaPlataforma)
-        {
-            StartCoroutine(mudarPlataforma());
-        }
-        if (Input.GetButtonDown("VerticalDown") && !taNoChao && taNaPlataforma)
-        {
-            StartCoroutine(mudarPlataforma());
+        if (taPreso == false){
+            if (Input.GetButtonDown("Jump") && taNoChao && !taNaPlataforma)
+            {
+                StartCoroutine(mudarPlataforma());
+            }
+            if (Input.GetButtonDown("VerticalDown") && !taNoChao && taNaPlataforma)
+            {
+                StartCoroutine(mudarPlataforma());  
+            }
         }
     }
 
@@ -221,7 +223,7 @@ public class ScriptPersonagem : MonoBehaviour
     {
         if (animator != null)
         {
-            Debug.Log("Desativando animações");
+            Debug.Log("Desativando animaï¿½ï¿½es");
             animator.SetBool("Correndo", false);
             animator.SetBool("Caindo", false);
             animator.SetFloat("Velocidade", 0f);
@@ -232,7 +234,7 @@ public class ScriptPersonagem : MonoBehaviour
     {
         if (animator != null)
         {
-            Debug.Log("Restaurando animações");
+            Debug.Log("Restaurando animaï¿½ï¿½es");
             animator.SetBool("Correndo", true);
         }
     }
@@ -242,6 +244,7 @@ public class ScriptPersonagem : MonoBehaviour
         {
             StartCoroutine(mudarPlataforma());
             StartCoroutine(timeBackImpulse());
+            animator.SetBool("Caindo", false);
         }
 
         if (collision.gameObject.tag == "PrenderPersonagem")

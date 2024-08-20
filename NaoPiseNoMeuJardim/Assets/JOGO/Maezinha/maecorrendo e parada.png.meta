@@ -1,0 +1,516 @@
+fileFormatVersion: 2
+guid: 7427ed4a5e97aa64295b5dfc875e2a47
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1691727742250953236
+    second: maecorrendo e parada_0
+  - first:
+      213: -5700150423133885401
+    second: maecorrendo e parada_1
+  - first:
+      213: 699628062959686181
+    second: maecorrendo e parada_2
+  - first:
+      213: 5964953065346153125
+    second: maecorrendo e parada_3
+  - first:
+      213: 7637730842532374905
+    second: maecorrendo e parada_4
+  - first:
+      213: 650808436887556077
+    second: maecorrendo e parada_5
+  - first:
+      213: -8166572022512635731
+    second: maecorrendo e parada_6
+  - first:
+      213: -195538740274956252
+    second: maecorrendo e parada_7
+  - first:
+      213: 2199428098150798279
+    second: maecorrendo e parada_8
+  - first:
+      213: 8926899940876880371
+    second: maecorrendo e parada_9
+  - first:
+      213: -7980151364983463949
+    second: maecorrendo e parada_10
+  - first:
+      213: 4233603626557706369
+    second: maecorrendo e parada_11
+  - first:
+      213: -3582007506194615676
+    second: maecorrendo e parada_12
+  - first:
+      213: -4035786576987167384
+    second: maecorrendo e parada_13
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 80
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: maecorrendo e parada_0
+      rect:
+        serializedVersion: 2
+        x: 121
+        y: 1621
+        width: 142
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce55572e496c588e0800000000000000
+      internalID: -1691727742250953236
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maecorrendo e parada_1
+      rect:
+        serializedVersion: 2
+        x: 381
+        y: 1621
+        width: 138
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72cefce046ff4e0b0800000000000000
+      internalID: -5700150423133885401
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maecorrendo e parada_2
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 1621
+        width: 142
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5225b97340495b900800000000000000
+      internalID: 699628062959686181
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maecorrendo e parada_3
+      rect:
+        serializedVersion: 2
+        x: 833
+        y: 1621
+        width: 142
+        height: 346
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5aab5d19535c7c250800000000000000
+      internalID: 5964953065346153125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maecorrendo e parada_4
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 1193
+        width: 142
+        height: 334
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 979ef2f1cbbaef960800000000000000
+      internalID: 7637730842532374905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maecorrendo e parada_5
+      rect:
+        serializedVersion: 2
+        x: 313
+        y: 1196
+        width: 166
+        height: 338
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: def828143d2280900800000000000000
+      internalID: 650808436887556077
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maecorrendo e parada_6
+      rect:
+        serializedVersion: 2
+        x: 580
+        y: 1210
+        width: 210
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: da0bd7d83028aae80800000000000000
+      internalID: -8166572022512635731
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maecorrendo e parada_7
+      rect:
+        serializedVersion: 2
+        x: 823
+        y: 1233
+        width: 242
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 428751e3d8e494df0800000000000000
+      internalID: -195538740274956252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maecorrendo e parada_8
+      rect:
+        serializedVersion: 2
+        x: 1126
+        y: 1235
+        width: 242
+        height: 270
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c39a43c330f58e10800000000000000
+      internalID: 2199428098150798279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maecorrendo e parada_9
+      rect:
+        serializedVersion: 2
+        x: 1433
+        y: 1209
+        width: 206
+        height: 318
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f90c611338b2eb70800000000000000
+      internalID: 8926899940876880371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maecorrendo e parada_10
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 1201
+        width: 237
+        height: 310
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ffdf4c3d9ec04190800000000000000
+      internalID: -7980151364983463949
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maecorrendo e parada_11
+      rect:
+        serializedVersion: 2
+        x: 1201
+        y: 1045
+        width: 6
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 18017c85118c0ca30800000000000000
+      internalID: 4233603626557706369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maecorrendo e parada_12
+      rect:
+        serializedVersion: 2
+        x: 1623
+        y: 786
+        width: 218
+        height: 278
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 482bc72c6272a4ec0800000000000000
+      internalID: -3582007506194615676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: maecorrendo e parada_13
+      rect:
+        serializedVersion: 2
+        x: 1585
+        y: 818
+        width: 33
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 865e361ad710ef7c0800000000000000
+      internalID: -4035786576987167384
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      maecorrendo e parada_0: -1691727742250953236
+      maecorrendo e parada_1: -5700150423133885401
+      maecorrendo e parada_10: -7980151364983463949
+      maecorrendo e parada_11: 4233603626557706369
+      maecorrendo e parada_12: -3582007506194615676
+      maecorrendo e parada_13: -4035786576987167384
+      maecorrendo e parada_2: 699628062959686181
+      maecorrendo e parada_3: 5964953065346153125
+      maecorrendo e parada_4: 7637730842532374905
+      maecorrendo e parada_5: 650808436887556077
+      maecorrendo e parada_6: -8166572022512635731
+      maecorrendo e parada_7: -195538740274956252
+      maecorrendo e parada_8: 2199428098150798279
+      maecorrendo e parada_9: 8926899940876880371
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
