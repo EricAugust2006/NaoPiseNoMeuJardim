@@ -5,17 +5,35 @@ using UnityEngine.UI;
 
 public class TelefoneEvent : MonoBehaviour
 {
+    [Header("GameObjects")]
     public GameObject BotaoInteracao;
     public GameObject telefoneEventoEntrar;
     public GameObject telefoneEventoSair;
-    private ScriptPersonagem personagemScript;
 
+    [Header("Booleanos")]
     public bool EventoIniciado = false;
-
     public bool eventoLigado = false;
+
+    [Header("Scripts")]
+    private ScriptPersonagem personagemScript;
+    private Inventario inventario; ////
+
+    [Header("Text")]
+    public Text numeroTelefone; ////
 
     private void Start()
     {
+        //modificacao
+        inventario = FindObjectOfType<Inventario>();
+         if (inventario.VerificarItem("Número de Telefone"))
+        {
+            numeroTelefone.text = "Número salvo: 123-456-789";
+        }
+        else
+        {
+            numeroTelefone.text = "Nenhum número salvo.";
+        }
+
         personagemScript = FindObjectOfType<ScriptPersonagem>();
         telefoneEventoEntrar.SetActive(false);
     }
