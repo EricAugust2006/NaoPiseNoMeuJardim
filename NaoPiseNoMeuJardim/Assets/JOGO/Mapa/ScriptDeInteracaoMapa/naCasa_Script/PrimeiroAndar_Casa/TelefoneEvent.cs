@@ -16,23 +16,11 @@ public class TelefoneEvent : MonoBehaviour
 
     [Header("Scripts")]
     private ScriptPersonagem personagemScript;
-    private Inventario inventario; ////
-
-    [Header("Text")]
-    public Text numeroTelefone; ////
+    
 
     private void Start()
     {
-        //modificacao
-        inventario = FindObjectOfType<Inventario>();
-         if (inventario.VerificarItem("Número de Telefone"))
-        {
-            numeroTelefone.text = "Número salvo: 123-456-789";
-        }
-        else
-        {
-            numeroTelefone.text = "Nenhum número salvo.";
-        }
+
 
         personagemScript = FindObjectOfType<ScriptPersonagem>();
         telefoneEventoEntrar.SetActive(false);
