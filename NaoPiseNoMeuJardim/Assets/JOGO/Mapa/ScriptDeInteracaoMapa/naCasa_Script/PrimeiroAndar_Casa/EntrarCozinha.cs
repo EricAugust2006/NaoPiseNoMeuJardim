@@ -6,8 +6,11 @@ using UnityEngine.SceneManagement;
 
 public class EntrarCozinha : MonoBehaviour
 {
+    [Header("Booleanos")]
     public bool eventoLigado = false;
     private bool Interagido = false;
+
+    [Header("GameObjects")]
     public GameObject botaoInterage;
 
     public void Update()

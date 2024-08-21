@@ -3,11 +3,15 @@ using UnityEngine.SceneManagement;
 
 public class SairDeCasa : MonoBehaviour
 {
+    [Header("Script")]
+    public TransicaoDeCenas transicaoDeCenas;
+
+    [Header("Booleanos")]
     public bool eventoLigado = false;
     private bool Interagido = false;
-    public GameObject botaoInterage;
 
-    public TransicaoDeCenas transicaoDeCenas;
+    [Header("GameObjects")]
+    public GameObject botaoInterage;
 
     public void Update()
     {

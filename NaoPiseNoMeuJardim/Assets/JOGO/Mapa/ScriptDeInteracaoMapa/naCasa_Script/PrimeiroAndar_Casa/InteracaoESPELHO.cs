@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class InteracaoESPELHO : MonoBehaviour
 {
+    [Header("Scripts")]
+    private ScriptPersonagem personagem;
+
+    [Header("Booleanos")]
     public bool eventoLigado = false;
     public bool Interagido = false;
+
+    [Header("GameObjects")]
     public GameObject botaoInterage;
-    private ScriptPersonagem personagem;
 
     public void Update()
     {

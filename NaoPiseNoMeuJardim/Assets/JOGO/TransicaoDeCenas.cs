@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class TransicaoDeCenas : MonoBehaviour
 {
+    [Header("GameObject e Slider Carregamento")]
     public GameObject TelaDeCarregamento;
     public Slider TelaDeCarregamentoSlider;
 

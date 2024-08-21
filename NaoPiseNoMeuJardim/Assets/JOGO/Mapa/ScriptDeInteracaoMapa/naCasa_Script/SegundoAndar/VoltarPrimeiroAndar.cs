@@ -7,29 +7,32 @@ using TMPro;
 
 public class VoltarPrimeiroAndar : MonoBehaviour
 {
+[Header("Dialogo")]
     public string[] dialogueNpc;
     public int dialogueIndex;
 
+    [Header("UI Dialogo")]
     public GameObject dialoguePanel;
     public TextMeshProUGUI dialogueText;
 
+    [Header("Elementos para Dialogo")]
     public TextMeshProUGUI nameNpc;
     public Image imageNpc;
     public Sprite spriteNpc;
 
+    [Header("Booleanos")]
     public bool readyToSpeak;
     public bool startDialogue;
+    public bool eventoLigado = false;
 
+    [Header("Script e Animator personagem")]
     private ScriptPersonagem personagemScript;
     private Animator personagemAnimator;
 
+    [Header("GameObjects e Script TransicaoCenas")]
     public GameObject botaoInteracao;
-
     public TransicaoDeCenas transicaoDeCenas;
-
-    public bool eventoLigado = false;
-
-
+    
     void Start()
     {
 

@@ -5,7 +5,10 @@ using UnityEngine.Rendering.Universal;
 
 public class LightSwitch : MonoBehaviour
 {
+    [Header("Light2D")]
     public Light2D lightSource;
+
+    [Header("Booleana")]
     public bool isOn = true;
 
     private void Start()

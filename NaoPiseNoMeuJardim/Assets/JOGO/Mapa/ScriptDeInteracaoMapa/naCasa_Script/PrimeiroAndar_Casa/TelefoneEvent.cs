@@ -5,13 +5,16 @@ using UnityEngine.UI;
 
 public class TelefoneEvent : MonoBehaviour
 {
+    [Header("GameObjects")]
     public GameObject BotaoInteracao;
     public GameObject telefoneEventoEntrar;
     public GameObject telefoneEventoSair;
+
+    [Header("Script")]
     private ScriptPersonagem personagemScript;
 
+    [Header("Booleanos")]
     public bool EventoIniciado = false;
-
     public bool eventoLigado = false;
 
     private void Start()

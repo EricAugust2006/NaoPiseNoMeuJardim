@@ -4,10 +4,14 @@ using UnityEngine;
 
 public class LightSwitchInteraction : MonoBehaviour
 {
-    public LightSwitch lightSwitch;
+    [Header("Booleanos")]
     private bool playerInZone = false;
-    public GameObject botaoInteracao;
     public bool eventoLigado = false;
+
+    [Header("GameObject e Script")]
+    public LightSwitch lightSwitch;
+    public GameObject botaoInteracao;
+    
     private void Update()
     {
         if (playerInZone && Input.GetKeyDown(KeyCode.E) && eventoLigado == true)
