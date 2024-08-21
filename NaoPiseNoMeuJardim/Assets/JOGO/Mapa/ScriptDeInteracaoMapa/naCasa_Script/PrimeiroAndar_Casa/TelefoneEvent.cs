@@ -12,13 +12,18 @@ public class TelefoneEvent : MonoBehaviour
 
     [Header("Script")]
     private ScriptPersonagem personagemScript;
-
     [Header("Booleanos")]
     public bool EventoIniciado = false;
     public bool eventoLigado = false;
 
+    [Header("Scripts")]
+    private ScriptPersonagem personagemScript;
+    
+
     private void Start()
     {
+
+
         personagemScript = FindObjectOfType<ScriptPersonagem>();
         telefoneEventoEntrar.SetActive(false);
     }
