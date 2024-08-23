@@ -164,6 +164,11 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
+
+    // =================================================================================
+    // ================================== IMPULSO ======================================
+    // =================================================================================
+
     public void EstaLivre()
     {
         if (Input.GetKeyUp(KeyCode.E))
@@ -179,17 +184,16 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
+
+    // =================================================================================
+    // ================================ PLATAFORMAS ====================================
+    // =================================================================================
     public void CuidarLayer()
     {
         animator.SetLayerWeight(1, taNoChao ? 0 : 1);
         animator.SetLayerWeight(1, taNaPlataforma ? 0 : 1);
     }
 
-    public void Empurrar()
-    {
-        rb.velocity = new Vector2(rb.velocity.x, 3);
-        animator.SetBool("Caindo", false);
-    }
 
     public void TomouDanoDeCima()
     {
@@ -205,6 +209,22 @@ public class ScriptPersonagem : MonoBehaviour
         yield return null;
         animator.SetTrigger("Jump");
     }
+
+    // =================================================================================
+    // ================================== IMPULSO ======================================
+    // =================================================================================
+
+
+    public void Empurrar()
+    {
+        rb.velocity = new Vector2(rb.velocity.x, 3);
+        animator.SetBool("Caindo", false);
+    }
+
+    // =================================================================================
+    // ======================== PARTE DE ANIMAÇÃO ANIMAÇÃO =============================
+    // =================================================================================
+
     private void AtualizarAnimacoes()
     {
         if (rb.velocity.y < 0)
@@ -238,6 +258,12 @@ public class ScriptPersonagem : MonoBehaviour
             animator.SetBool("Correndo", true);
         }
     }
+
+
+    // =================================================================================
+    // ============================= PARTE DAS COLISÕES ================================
+    // =================================================================================
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "ObjetoImpulso")
@@ -259,6 +285,11 @@ public class ScriptPersonagem : MonoBehaviour
             Debug.Log("A folha me encostou");
             StartCoroutine(TomouDanoNaPlataforma());
         }
+        
+        if(collision.gameObject.tag == "Mae"){
+            //logica
+        }
+
     }
 
     private void OnTriggerExit2D(Collider2D collision)
