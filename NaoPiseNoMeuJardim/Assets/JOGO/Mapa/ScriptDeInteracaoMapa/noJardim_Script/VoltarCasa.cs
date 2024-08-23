@@ -7,18 +7,18 @@ using UnityEngine.SceneManagement;
 public class VoltarCasa : MonoBehaviour
 {
     public bool eventoLigado = false;
-    private bool Interagido = false;
+    public bool Interagido = false;
     public GameObject botaoInterage;
     public TransicaoDeCenas transicaoDeCenas;
 
-    public void Interact()
+    public void Update()
     {
         Voltar();
     }
 
     private void Voltar()
     {
-        if (!Interagido && eventoLigado == true)
+        if (!Interagido && eventoLigado == true && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("Interagindo com a porta. Teleportando para a cena 0.");
             //SceneManager.LoadScene(0);

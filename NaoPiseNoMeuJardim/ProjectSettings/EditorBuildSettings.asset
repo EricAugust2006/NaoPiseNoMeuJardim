@@ -17,5 +17,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/meuQuarto.unity
     guid: f45eca27f09f10b4bbac8543babd2b36
+  - enabled: 1
+    path: Assets/Scenes/MenuPrincipal.unity
+    guid: aa065125e1ddaae4e9044466b0c95ec4
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0
