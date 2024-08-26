@@ -816,6 +816,7 @@ MonoBehaviour:
   transicaoCenas: {fileID: 0}
   MenuPrincipal: {fileID: 0}
   NovoJogo: {fileID: 0}
+  Sair: {fileID: 0}
   MenuOpcoes: {fileID: 0}
   SairDoEventoTelefone: {fileID: 0}
   MenuPause: {fileID: 406008394}
@@ -2632,7 +2633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &406008395
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3347,10 +3348,10 @@ RectTransform:
   - {fileID: 1648910073}
   m_Father: {fileID: 180175100}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 500, y: -287.5}
+  m_SizeDelta: {x: 1000, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &643139330
 MonoBehaviour:
@@ -3733,7 +3734,7 @@ Transform:
   m_GameObject: {fileID: 681819545}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.4, y: 7.72, z: -10}
+  m_LocalPosition: {x: 18.23, y: 6.87, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3974,10 +3975,10 @@ RectTransform:
   - {fileID: 389150739}
   m_Father: {fileID: 180175100}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 500, y: -87.5}
+  m_SizeDelta: {x: 1000, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &706897115
 MonoBehaviour:
@@ -4997,7 +4998,7 @@ Transform:
   m_GameObject: {fileID: 789102434}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.4, y: 7.72, z: -10}
+  m_LocalPosition: {x: 18.23, y: 6.87, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6213,6 +6214,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TelaDeCarregamento: {fileID: 885908811}
   TelaDeCarregamentoSlider: {fileID: 1039740486}
+  SpawnPosicao: {x: 0, y: 0, z: 0}
 --- !u!4 &1104131870
 Transform:
   m_ObjectHideFlags: 0
@@ -7080,10 +7082,10 @@ RectTransform:
   - {fileID: 555880167}
   m_Father: {fileID: 180175100}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 500, y: -487.5}
+  m_SizeDelta: {x: 1000, y: 175}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1341016079
 MonoBehaviour:
@@ -8155,6 +8157,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48cbcb3b8a1699a45a9bc06cd14ada70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  jokenpo: {fileID: 0}
   jogadorImagemEscolha: {fileID: 1052174925}
   computadorImagemEscolha: {fileID: 1168846776}
   pedraSprite: {fileID: 1198814295, guid: b9f27be4a3507f343a9bd0e7be59e892, type: 3}
@@ -9310,11 +9313,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 828323234131786318, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -22.5
+      value: 10.13
       objectReference: {fileID: 0}
     - target: {fileID: 828323234131786318, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.9
+      value: -1.75
       objectReference: {fileID: 0}
     - target: {fileID: 828323234131786318, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: m_LocalPosition.z
@@ -12541,15 +12544,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 2054204230}
   activateDistance: 450
-  pathUpdateSeconds: 0.5
+  pathUpdateSeconds: 1
   speed: 400
-  nextWaypointDistance: 3
+  nextWaypointDistance: 5
   jumpForce: 10
   obstacleLayer:
     serializedVersion: 2
     m_Bits: 10240
   followEnabled: 0
   directionLookEnabled: 1
+  Pedra_Papel_Tesoura: {fileID: 1862786341}
 --- !u!4 &1793958907 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4165739204069060958, guid: 5650901274002334bb555131b8186a3b, type: 3}
@@ -13249,7 +13253,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: New Text
+  m_Text: 
 --- !u!222 &2003695683
 CanvasRenderer:
   m_ObjectHideFlags: 0

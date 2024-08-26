@@ -16,6 +16,7 @@ public class GerenciadorDoJogo : MonoBehaviour
     [Header("GameObjects no Menu principal")]
     [SerializeField] GameObject MenuPrincipal;
     [SerializeField] GameObject NovoJogo;
+    [SerializeField] GameObject Sair;
 
     [Header("GameObjects em Opcoes")]
     [SerializeField] GameObject MenuOpcoes;
@@ -41,13 +42,13 @@ public class GerenciadorDoJogo : MonoBehaviour
     // =================================================
 
     public void novoJogo(){
-        transicaoCenas.CarregarCena("primeiroAndar");
+        transicaoCenas.CarregarCena("meuQuarto");
         Time.timeScale = 0f;
         // jogoTaDesligado();
 
     }
     public void continuarJogo(){
-        transicaoCenas.CarregarCena("primeiroAndar");
+        transicaoCenas.CarregarCena("meuQuarto");
         Time.timeScale = 0f;
         // jogoTaDesligado();
 
@@ -121,4 +122,8 @@ public class GerenciadorDoJogo : MonoBehaviour
         }
     }
 
+    public void sairDoJogo(){
+        Debug.Log("Saiu do jogo");
+        Application.Quit();
+    }
 }

@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 1707250481436731956}
   - component: {fileID: 1193409190806246324}
   - component: {fileID: 1470256751769913611}
+  - component: {fileID: 1621544272864886081}
   m_Layer: 9
   m_Name: PersonagemPrincipal 1
   m_TagString: Player
@@ -171,6 +172,8 @@ MonoBehaviour:
   speed: 6
   pulando: 0
   forcaPulo: 7
+  podePular: 1
+  taPreso: 0
   detectaChao: {fileID: 1969466273799910548}
   oQueEhChao:
     serializedVersion: 2
@@ -182,6 +185,10 @@ MonoBehaviour:
     m_Bits: 16384
   taNaPlataforma: 0
   botaoInteracao: {fileID: 0}
+  prefabMunicao: {fileID: 0}
+  quantidadeApertada: 0
+  spawnPointSceneA: {fileID: 0}
+  spawnPointSceneB: {fileID: 0}
 --- !u!95 &1470256751769913611
 Animator:
   serializedVersion: 7
@@ -204,6 +211,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1621544272864886081
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2946249829068643804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d348777a651fd34da4d4047c70dfe78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnPointSceneA: {fileID: 0}
+  spawnPointSceneB: {fileID: 0}
 --- !u!1 &3455245543287764978
 GameObject:
   m_ObjectHideFlags: 0

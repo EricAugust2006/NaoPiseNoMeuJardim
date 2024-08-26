@@ -3,6 +3,7 @@ using UnityEngine.UI;
 
 public class JokenpoManager : MonoBehaviour
 {
+    public GameObject jokenpo;
     public Image jogadorImagemEscolha;
     public Image computadorImagemEscolha;
     public Sprite pedraSprite;
@@ -20,18 +21,20 @@ public class JokenpoManager : MonoBehaviour
             case "Pedra":
                 jogadorImagemEscolha.sprite = pedraSprite;
                 break;
+
             case "Papel":
                 jogadorImagemEscolha.sprite = papelSprite;
                 break;
+
             case "Tesoura":
                 jogadorImagemEscolha.sprite = tesouraSprite;
                 break;
         }
 
-        // Gerar escolha do computador
+        // escolha do compiuter
         string computadorChance = chances[Random.Range(0, chances.Length)];
 
-        // Definir a imagem do computador
+        // Definir a imagem do compiuter
         switch (computadorChance)
         {
             case "Pedra":
@@ -45,7 +48,6 @@ public class JokenpoManager : MonoBehaviour
                 break;
         }
 
-        // Determinar o vencedor
         string result = determinaVencedor(jogadorEscolha, computadorChance);
         textoResultado.text = result;
     }
@@ -65,6 +67,8 @@ public class JokenpoManager : MonoBehaviour
         else
         {
             return "Você Perdeu!";
+
+            jokenpo.SetActive(false);
         }
     }
 }

@@ -11,8 +11,18 @@ public class TransicaoDeCenas : MonoBehaviour
     public GameObject TelaDeCarregamento;
     public Slider TelaDeCarregamentoSlider;
 
+    public Vector3 SpawnPosicao;
+
     public void CarregarCena(string sceneName)
     {
+         // Salva o nome da cena atual
+        PlayerPrefs.SetString("previousScene", SceneManager.GetActiveScene().name);
+
+        // Salva a posição de spawn
+        PlayerPrefs.SetFloat("spawnX", SpawnPosicao.x);
+        PlayerPrefs.SetFloat("spawnY", SpawnPosicao.y);
+        PlayerPrefs.SetFloat("spawnZ", SpawnPosicao.z);
+
         StartCoroutine(TelaDeCarregamentoAsync(sceneName));
     }
     IEnumerator TelaDeCarregamentoAsync(string sceneName) {

@@ -61,6 +61,7 @@ public class EntrarNoQuarto : MonoBehaviour
             else if (dialogueText.text == dialogueNpc[dialogueIndex])
             {
                 NextDialogue();
+                transicaoDeCenas.CarregarCena("meuQuarto");
             }
         }
 

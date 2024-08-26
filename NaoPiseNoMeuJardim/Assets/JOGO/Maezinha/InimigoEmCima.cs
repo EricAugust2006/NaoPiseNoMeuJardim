@@ -7,10 +7,17 @@ public class InimigoEmCima : MonoBehaviour
 {
     public GameObject Projetil;
     public float tempoSpawn;
+    private JARDIM jardim;
+    
+    void Start(){
+        jardim = FindObjectOfType<JARDIM>();
+    }
 
     void Update()
     {
-        ArremensarProjetil();
+        if(jardim.IniciarJogo == true){
+            ArremensarProjetil();
+        }
     }
 
     public void ArremensarProjetil()

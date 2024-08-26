@@ -30,6 +30,9 @@ public class ScriptMae : MonoBehaviour
     [Header("Animator")]
     private Animator animator;
 
+    [Header("GameObjects")]
+    // public GameObject gameOver;
+    public GameObject Pedra_Papel_Tesoura;
 
     void Start()
     {
@@ -120,5 +123,13 @@ public class ScriptMae : MonoBehaviour
     void OnDrawGizmos()
     {
         // C�digo de Gizmos removido para simplifica��o
+    }
+
+    private void OnCollisionEnter2D(Collision2D colisao) 
+    {
+        if(colisao.gameObject.tag == "Player"){
+            Pedra_Papel_Tesoura.SetActive(true);
+            Time.timeScale = 0f;
+        }
     }
 }

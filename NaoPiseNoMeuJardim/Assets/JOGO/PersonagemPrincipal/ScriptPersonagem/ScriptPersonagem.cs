@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class ScriptPersonagem : MonoBehaviour
 {
@@ -39,6 +41,9 @@ public class ScriptPersonagem : MonoBehaviour
     [Header("Apertar para sair")]
     public int quantidadeApertada = 0;
 
+    [Header("Spawn")]
+    public GameObject spawnPointSceneA;
+    public GameObject spawnPointSceneB;
     
     private void Awake()
     {
