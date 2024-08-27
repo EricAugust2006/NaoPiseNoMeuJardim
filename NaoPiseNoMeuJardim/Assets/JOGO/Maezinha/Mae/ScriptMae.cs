@@ -12,7 +12,7 @@ public class ScriptMae : MonoBehaviour
     public float pathUpdateSeconds = 0.5f;
 
     [Header("Physics")]
-    public float speed = 200f;
+    public float speed;
     public float nextWaypointDistance = 3f;
     public float jumpForce = 10f; // For�a do pulo
     public LayerMask obstacleLayer;
@@ -25,7 +25,7 @@ public class ScriptMae : MonoBehaviour
     private int currentWayPoint = 0;
     private Seeker seeker;
     private Rigidbody2D rb;
-    private Collider2D obstacleDetector;
+    public Collider2D obstacleDetector;
 
     [Header("Animator")]
     private Animator animator;
@@ -122,7 +122,7 @@ public class ScriptMae : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        // C�digo de Gizmos removido para simplifica��o
+        // Codigo de Gizmos removido para simplifica��o
     }
 
     private void OnCollisionEnter2D(Collision2D colisao) 

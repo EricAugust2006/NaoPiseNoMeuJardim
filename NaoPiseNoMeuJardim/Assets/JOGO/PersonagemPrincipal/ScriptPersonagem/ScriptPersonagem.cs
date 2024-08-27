@@ -44,7 +44,10 @@ public class ScriptPersonagem : MonoBehaviour
     [Header("Spawn")]
     public GameObject spawnPointSceneA;
     public GameObject spawnPointSceneB;
-    
+
+    [Header("Chances")]
+    public int vida = 5;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -268,7 +271,6 @@ public class ScriptPersonagem : MonoBehaviour
     // =================================================================================
     // ============================= PARTE DAS COLISÕES ================================
     // =================================================================================
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "ObjetoImpulso")
@@ -294,11 +296,16 @@ public class ScriptPersonagem : MonoBehaviour
         if(collision.gameObject.tag == "Mae"){
             //logica
         }
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
         animator.SetBool("taPreso", false);
     }
+
+    // =================================================================================
+    // ========================== PARTE DAS CHANCES/VIDA ===============================
+    // =================================================================================
+
+
 }

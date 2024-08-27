@@ -25,6 +25,8 @@ public class GerenciadorDoJogo : MonoBehaviour
     [Header("GameObjects em Jogo")]
     [SerializeField] GameObject SairDoEventoTelefone;
     [SerializeField] GameObject MenuPause;
+
+    
     private void Start()
     {
         personagemScript = FindObjectOfType<ScriptPersonagem>();
