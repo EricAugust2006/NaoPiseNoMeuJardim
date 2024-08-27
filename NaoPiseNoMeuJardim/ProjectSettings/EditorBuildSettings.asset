@@ -20,5 +20,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/JardimJogo.unity
     guid: 514c39ad983014b43a95fe6d295eb7dd
+  - enabled: 1
+    path: Assets/Scenes/testes.unity
+    guid: 857941c8d63788e49bb7bedd6fc69991
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

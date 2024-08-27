@@ -9,6 +9,7 @@ public class GerenciadorDoJogo : MonoBehaviour
     public bool jogoLigado = false;
 
     [Header("Scripts")]
+    public transicaoTeste transicaoteste;
     public TransicaoDeCenas transicaoCenas;
     private ScriptPersonagem personagemScript;
     private TelefoneEvent telefoneEvent;
@@ -24,7 +25,6 @@ public class GerenciadorDoJogo : MonoBehaviour
     [Header("GameObjects em Jogo")]
     [SerializeField] GameObject SairDoEventoTelefone;
     [SerializeField] GameObject MenuPause;
-
     private void Start()
     {
         personagemScript = FindObjectOfType<ScriptPersonagem>();
@@ -76,8 +76,6 @@ public class GerenciadorDoJogo : MonoBehaviour
         {
             alternarMenuPause();
         }
-        // jogoTaDesligado();
-
     }
 
     public void alternarMenuPause(){
@@ -90,20 +88,19 @@ public class GerenciadorDoJogo : MonoBehaviour
         else {
             Time.timeScale = 0f;
         }
-        // jogoTaDesligado();
-
     }
 
     public void sairParaMenuPrincipal(){
         transicaoCenas.CarregarCena("MenuPrincipal");       
-        // jogoTaDesligado();
+    }
 
+    public void voltarQuarto(){
+        transicaoCenas.CarregarCena("MeuQuarto");
     }
 
     //sair do evento do telefone
     public void SairEvento()
     {
-        // jogoTaDesligado();
         personagemScript.enabled = true;
         SairDoEventoTelefone.SetActive(false);
         personagemScript.RestaurarAnimacoes();
