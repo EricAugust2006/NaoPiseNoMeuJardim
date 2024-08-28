@@ -89,43 +89,50 @@ public class JokenpoManager : MonoBehaviour
             StartCoroutine(paralisarMaeAoPerder());
             Time.timeScale = 1f;    
             jokenpo.SetActive(false);
+
+            // "ScriptPersonagem".chance--; 
+
             return "Você Perdeu!";
         }
     }
 
+    public void perdeuNoJokenpo(){
+        // if()
+    }
+
     IEnumerator paralisarMaeAoPerder(){
         mae.GetComponent<ScriptMae>().enabled = false;
-        mae.obstacleDetector.enabled = false;
+        // mae.obstacleDetector.enabled = false;
         mae.speed = 380f;
 
         yield return new WaitForSeconds(4f);
         
         mae.speed = 400f;
-        mae.obstacleDetector.enabled = false;
+        // mae.obstacleDetector.enabled = false;
         mae.GetComponent<ScriptMae>().enabled = true;
     }
 
     IEnumerator paralisarMaeAoEmpatar(){
         mae.GetComponent<ScriptMae>().enabled = false;
-        mae.obstacleDetector.enabled = false;
+        // mae.obstacleDetector.enabled = false;
         mae.speed = 350f;
 
         yield return new WaitForSeconds(5f);
 
         mae.speed = 400f;
-        mae.obstacleDetector.enabled = true;
+        // mae.obstacleDetector.enabled = true;
         mae.GetComponent<ScriptMae>().enabled = true;
     }
 
     IEnumerator paralisarMaeAoGanhar(){
         mae.GetComponent<ScriptMae>().enabled = false;
-        mae.obstacleDetector.enabled = false;
+        // mae.obstacleDetector.enabled = false;
         mae.speed = 320f;
 
         yield return new WaitForSeconds(7f);
 
         mae.speed = 400f;
-        mae.obstacleDetector.enabled = true;       
+        // mae.obstacleDetector.enabled = true;       
         mae.GetComponent<ScriptMae>().enabled = true;
     }
 

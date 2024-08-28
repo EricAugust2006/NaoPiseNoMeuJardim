@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class ScriptPersonagem : MonoBehaviour
 {
@@ -33,6 +35,7 @@ public class ScriptPersonagem : MonoBehaviour
     [Header("GameObjects")]
     public GameObject botaoInteracao;
     public GameObject prefabMunicao;
+    public GameObject fimDeJogo;
 
     [Header("Animacao e Flip")]
     private SpriteRenderer spriteRenderer;
@@ -48,8 +51,18 @@ public class ScriptPersonagem : MonoBehaviour
     [Header("Chances")]
     public int vida = 5;
 
+    [Header("Scripts")]
+    private JokenpoManager jokenpoManager;
+
+
+    [Header("Cinemachine")]
+    float velocidadeZoom = 10f;
+    public CinemachineVirtualCamera cinemachine;
+
     private void Awake()
     {
+        cinemachine = GetComponent<CinemachineVirtualCamera>();
+        jokenpoManager = FindObjectOfType<JokenpoManager>();
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
@@ -271,6 +284,21 @@ public class ScriptPersonagem : MonoBehaviour
     // =================================================================================
     // ============================= PARTE DAS COLISÕES ================================
     // =================================================================================
+
+    public void VoaPassarin(){
+        var lens = cinemachine.m_Lens;
+
+        float zoomCalibrado = 0f;
+
+        lens.FieldOfView = 0;
+
+        lens.FieldOfView += zoomCalibrado * velocidadeZoom * Time.deltaTime;
+
+        lens.FieldOfView = Mathf.Clamp(lens.FieldOfView, 30f, 60f);
+
+        cinemachine.m_Lens = lens;
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "ObjetoImpulso")
@@ -293,8 +321,8 @@ public class ScriptPersonagem : MonoBehaviour
             StartCoroutine(TomouDanoNaPlataforma());
         }
         
-        if(collision.gameObject.tag == "Mae"){
-            //logica
+        if(collision.gameObject.tag == "DarZoom"){
+            VoaPassarin();
         }
     }
 
@@ -307,5 +335,10 @@ public class ScriptPersonagem : MonoBehaviour
     // ========================== PARTE DAS CHANCES/VIDA ===============================
     // =================================================================================
 
+    public void SemChance(){
+        if(vida == 0){
+            fimDeJogo.SetActive(true);            
+        }
+    }
 
 }

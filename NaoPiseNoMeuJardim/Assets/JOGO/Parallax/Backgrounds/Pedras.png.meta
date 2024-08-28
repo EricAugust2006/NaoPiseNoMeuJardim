@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: 953e18331485e0044bfe2bef843c5479
+guid: 9eee07d44f1b95c4994ae21a25847bc1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1171307550525813965
-    second: sprint cenario2_0
+      213: -3444684537588130483
+    second: Pedras_0
   - first:
-      213: -1997535677595780549
-    second: sprint cenario2_1
+      213: -8685292942023619623
+    second: Pedras_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -40,7 +40,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 0
+    filterMode: 1
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -49,12 +49,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 60
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -78,7 +78,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -101,6 +101,19 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -142,22 +155,43 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: sprint cenario2_2
+      name: Pedras_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 5120
-        height: 434
+        width: 3405
+        height: 399
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5b1d3982ec08017439607fbdd7e47328
-      internalID: -2049202787
+      spriteID: d4d57cde9a50230d0800000000000000
+      internalID: -3444684537588130483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pedras_1
+      rect:
+        serializedVersion: 2
+        x: 3431
+        y: 0
+        width: 1689
+        height: 409
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9db897cf514a77780800000000000000
+      internalID: -8685292942023619623
       vertices: []
       indices: 
       edges: []
@@ -165,7 +199,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 23a72127aa639fc4eb10233dcf71e496
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -173,9 +207,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      sprint cenario2_0: -1171307550525813965
-      sprint cenario2_1: -1997535677595780549
-      sprint cenario2_2: -2049202787
+      Pedras_0: -3444684537588130483
+      Pedras_1: -8685292942023619623
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

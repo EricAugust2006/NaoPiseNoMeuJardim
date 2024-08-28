@@ -15,6 +15,9 @@ TagManager:
   - Mae
   - Municao
   - PrenderPersonagem
+  - Vida
+  - Itens
+  - DarZoom
   layers:
   - Default
   - TransparentFX
@@ -64,9 +67,30 @@ TagManager:
   - name: Camada 0
     uniqueID: 1184654113
     locked: 0
+  - name: DecoracaoCenario
+    uniqueID: 2273801827
+    locked: 0
   - name: Chao
     uniqueID: 3948538017
     locked: 0
+  - name: Casa
+    uniqueID: 643076285
+    locked: 0
   - name: Player
     uniqueID: 3851563185
+    locked: 0
+  - name: Inimigo/NPC
+    uniqueID: 1305507965
+    locked: 0
+  - name: Obstaculos
+    uniqueID: 1142785245
+    locked: 0
+  - name: Impulso
+    uniqueID: 2197566189
+    locked: 0
+  - name: UI
+    uniqueID: 766024563
+    locked: 0
+  - name: New Layer 13
+    uniqueID: 1997881135
     locked: 0

@@ -15,30 +15,12 @@ public class JARDIM : MonoBehaviour
     private void Start()
     {
         Mae = FindObjectOfType<ScriptMae>();
+        // Mae.GetComponent<Collider2D>().enabled = false;
         if (inimigoPrefab != null)
         {
             inimigoCollider = inimigoPrefab.GetComponent<CapsuleCollider2D>();
         }
     }
-
-    // public void Conversar()
-    // {
-    //     if (!IniciarJogo && eventoLigado == true)
-    //     {
-    //         Debug.Log("PISOU NO JARDIM");
-    //         IniciarJogo = true;
-
-    //         if (IniciarJogo)
-    //         {
-    //             Mae.PerseguirFilho();
-    //             Mae.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;  // Define o Rigidbody da m�e como Dynamic
-    //             if (inimigoCollider != null)
-    //             {
-    //                 inimigoCollider.enabled = true; // Habilita o CapsuleCollider do inimigo
-    //             }
-    //         }
-    //     }
-    // }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -67,6 +49,7 @@ public class JARDIM : MonoBehaviour
         {
             IniciarJogo = true;
             Mae.PerseguirFilho();
+            // Mae.GetComponent<Collider2D>().enabled = true;
             Mae.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;  // Define o Rigidbody da m�e como Dynamic
             if (inimigoCollider != null)
             {

@@ -33,20 +33,26 @@ public class ScriptMae : MonoBehaviour
     [Header("GameObjects")]
     // public GameObject gameOver;
     public GameObject Pedra_Papel_Tesoura;
+    public GameObject coliderFicarNoChao;
+
+    [Header("GameObjects")]
+    private JARDIM jardim;
 
     void Start()
     {
+        GetComponent<Collider2D>().enabled = false;
+        coliderFicarNoChao.SetActive(false);
+        jardim = FindObjectOfType<JARDIM>();
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
         obstacleDetector = GetComponentInChildren<Collider2D>(); // Assumindo que o Collider2D est� como filho
         animator = GetComponent<Animator>();
-
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
     }
 
     private void FixedUpdate()
     {
-        if (TargetInDistance() && followEnabled)
+        if (TargetInDistance() && followEnabled && jardim.IniciarJogo == true)
         {
             PathFollow();
             animator.SetBool("taCorrendo", true);
@@ -127,7 +133,8 @@ public class ScriptMae : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D colisao) 
     {
-        if(colisao.gameObject.tag == "Player"){
+        if(colisao.gameObject.tag == "Player" && jardim.IniciarJogo == true){
+            GetComponent<Collider2D>().enabled = true;
             Pedra_Papel_Tesoura.SetActive(true);
             Time.timeScale = 0f;
         }
