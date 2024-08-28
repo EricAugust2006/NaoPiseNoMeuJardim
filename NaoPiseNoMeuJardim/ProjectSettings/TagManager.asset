@@ -52,3 +52,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Camada3
+    uniqueID: 2335976337
+    locked: 0
+  - name: Camada2
+    uniqueID: 4038540293
+    locked: 0
+  - name: Camada1
+    uniqueID: 2471937683
+    locked: 0
+  - name: Camada 0
+    uniqueID: 1184654113
+    locked: 0
+  - name: Chao
+    uniqueID: 3948538017
+    locked: 0
+  - name: Player
+    uniqueID: 3851563185
+    locked: 0
