@@ -24,6 +24,7 @@ public class JokenpoManager : MonoBehaviour
 
     [Header("Scripts")]
     public ScriptMae mae;
+    private SistemaDeVida sistemaDeVida;
 
     private string[] chances = { "Pedra", "Papel", "Tesoura" };
 
@@ -89,7 +90,7 @@ public class JokenpoManager : MonoBehaviour
             StartCoroutine(paralisarMaeAoPerder());
             Time.timeScale = 1f;    
             jokenpo.SetActive(false);
-
+            sistemaDeVida.vida--;
             // "ScriptPersonagem".chance--; 
 
             return "Você Perdeu!";

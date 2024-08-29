@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 1193409190806246324}
   - component: {fileID: 1470256751769913611}
   - component: {fileID: 1621544272864886081}
+  - component: {fileID: 3722605818911777914}
   m_Layer: 9
   m_Name: PersonagemPrincipal 1
   m_TagString: Player
@@ -186,9 +187,15 @@ MonoBehaviour:
   taNaPlataforma: 0
   botaoInteracao: {fileID: 0}
   prefabMunicao: {fileID: 0}
+  fimDeJogo: {fileID: 0}
   quantidadeApertada: 0
   spawnPointSceneA: {fileID: 0}
   spawnPointSceneB: {fileID: 0}
+  vida: 5
+  cinemachine: {fileID: 0}
+  targetOrthoSize: 10
+  initialOrthoSize: 6
+  zoomSpeed: 2
 --- !u!95 &1470256751769913611
 Animator:
   serializedVersion: 7
@@ -223,8 +230,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4d348777a651fd34da4d4047c70dfe78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spawnPointSceneA: {fileID: 0}
-  spawnPointSceneB: {fileID: 0}
+  entrouNoQuarto: {fileID: 0}
+  saiuDoQuarto: {fileID: 0}
+  subiuEscadasPrimeiroAndar: {fileID: 0}
+  desceuEscadasPrimeiroAndar: {fileID: 0}
+  voltouDoJardim: {fileID: 0}
+--- !u!114 &3722605818911777914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2946249829068643804}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e60fc77a68c10394eaa110033cdb19ce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  vida: 0
+  vidaMaxima: 0
+  coracao: []
+  cheio: {fileID: 0}
+  vazio: {fileID: 0}
 --- !u!1 &3455245543287764978
 GameObject:
   m_ObjectHideFlags: 0

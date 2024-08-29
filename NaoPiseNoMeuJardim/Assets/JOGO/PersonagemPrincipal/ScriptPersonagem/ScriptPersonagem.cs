@@ -96,45 +96,7 @@ public class ScriptPersonagem : MonoBehaviour
         AjustarZoomCamera();
     }
 
-    public void MudarPlataforma()
-    {
-        if (taPreso == false){
-            if (Input.GetButtonDown("Jump") && taNoChao && !taNaPlataforma)
-            {
-                StartCoroutine(mudarPlataforma());
-            }
-            if (Input.GetButtonDown("VerticalDown") && !taNoChao && taNaPlataforma)
-            {
-                StartCoroutine(mudarPlataforma());  
-            }
-        }
-    }
 
-    bool EstaNaPlataforma()
-    {
-        return col.IsTouchingLayers(oQueEhPlataforma);
-    }
-
-    IEnumerator mudarPlataforma()
-    {
-        podePular = false;
-        gameObject.layer = LayerMask.NameToLayer("Delimitador");
-        yield return new WaitForSeconds(1f);
-        gameObject.layer = LayerMask.NameToLayer("Default");
-        podePular = true;
-    }
-
-    IEnumerator TomouDanoNaPlataforma()
-    {
-        Empurrar();
-        podePular = false;
-        col.enabled = false;
-        //gameObject.layer = LayerMask.NameToLayer("Player");
-        yield return new WaitForSeconds(1f);
-        //gameObject.layer = LayerMask.NameToLayer("Default");
-        col.enabled = true;
-        podePular = true;
-    }
 
     public void Movimentar()
     {
@@ -218,18 +180,52 @@ public class ScriptPersonagem : MonoBehaviour
     // =================================================================================
     // ================================ PLATAFORMAS ====================================
     // =================================================================================
-    public void CuidarLayer()
-    {
-        animator.SetLayerWeight(1, taNoChao ? 0 : 1);
-        animator.SetLayerWeight(1, taNaPlataforma ? 0 : 1);
-    }
-
     public void TomouDanoDeCima()
     {
         if (taNaPlataforma)
         {
             TomouDanoNaPlataforma();
         }
+    }
+
+    public void MudarPlataforma()
+    {
+        if (taPreso == false){
+            if (Input.GetButtonDown("Jump") && taNoChao && !taNaPlataforma)
+            {
+                StartCoroutine(mudarPlataforma());
+            }
+            if (Input.GetButtonDown("VerticalDown") && !taNoChao && taNaPlataforma)
+            {
+                StartCoroutine(mudarPlataforma());  
+            }
+        }
+    }
+
+    bool EstaNaPlataforma()
+    {
+        return col.IsTouchingLayers(oQueEhPlataforma);
+    }
+
+    IEnumerator TomouDanoNaPlataforma()
+    {
+        Empurrar();
+        podePular = false;
+        col.enabled = false;
+        //gameObject.layer = LayerMask.NameToLayer("Player");
+        yield return new WaitForSeconds(1f);
+        //gameObject.layer = LayerMask.NameToLayer("Default");
+        col.enabled = true;
+        podePular = true;
+    }
+
+    IEnumerator mudarPlataforma()
+    {
+        podePular = false;
+        gameObject.layer = LayerMask.NameToLayer("Delimitador");
+        yield return new WaitForSeconds(1f);
+        gameObject.layer = LayerMask.NameToLayer("Default");
+        podePular = true;
     }
 
     IEnumerator timeBackImpulse()
@@ -242,8 +238,6 @@ public class ScriptPersonagem : MonoBehaviour
     // =================================================================================
     // ================================== IMPULSO ======================================
     // =================================================================================
-
-
     public void Empurrar()
     {
         rb.velocity = new Vector2(rb.velocity.x, 3);
@@ -288,9 +282,13 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
-
+    public void CuidarLayer()
+    {
+        animator.SetLayerWeight(1, taNoChao ? 0 : 1);
+        animator.SetLayerWeight(1, taNaPlataforma ? 0 : 1);
+    }
     // =================================================================================
-    // ============================= PARTE DAS COLISÕES ================================
+    // ============================== CINEMACHINE ZOOM =================================
     // =================================================================================
 
     public void VoaPassarin(){
@@ -311,6 +309,10 @@ public class ScriptPersonagem : MonoBehaviour
             cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(cinemachine.m_Lens.OrthographicSize, targetOrthoSize, zoomSpeed * Time.deltaTime);
         }
     }
+
+    // =================================================================================
+    // ============================= PARTE DAS COLISÕES ================================
+    // =================================================================================
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -352,11 +354,4 @@ public class ScriptPersonagem : MonoBehaviour
     // =================================================================================
     // ========================== PARTE DAS CHANCES/VIDA ===============================
     // =================================================================================
-
-    public void SemChance(){
-        if(vida == 0){
-            fimDeJogo.SetActive(true);            
-        }
-    }
-
 }
