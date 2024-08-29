@@ -4,11 +4,13 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 // using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class JokenpoManager : MonoBehaviour
 {
     [Header("Gameobjects")]
     public GameObject jokenpo;
+    public GameObject resultado;
 
     [Header("Images")]
     public Image jogadorImagemEscolha;
@@ -26,7 +28,17 @@ public class JokenpoManager : MonoBehaviour
     public ScriptMae mae;
     private SistemaDeVida sistemaDeVida;
 
+    [Header("Scripts")]
+    private Animator anim;
+
     private string[] chances = { "Pedra", "Papel", "Tesoura" };
+
+    private void Start() 
+    {
+        resultado.SetActive(false);
+        anim = GetComponent<Animator>();
+        sistemaDeVida = FindObjectOfType<SistemaDeVida>();
+    }
 
     public void jogadorFazerEscolha(string jogadorEscolha)
     {
@@ -73,16 +85,16 @@ public class JokenpoManager : MonoBehaviour
         {
             StartCoroutine(paralisarMaeAoEmpatar());
             Time.timeScale = 1f;
-            jokenpo.SetActive(false);
+            Debug.Log("EMPATE");
             return "Empate!";
         }
         else if ((jogadorEscolha == "Pedra" && computadorChance == "Tesoura") ||
                  (jogadorEscolha == "Papel" && computadorChance == "Pedra") ||
                  (jogadorEscolha == "Tesoura" && computadorChance == "Papel"))
         {
-            StartCoroutine(paralisarMaeAoGanhar());
             Time.timeScale = 1f;
             jokenpo.SetActive(false);
+            Debug.Log("GANHOU");
             return "Você Ganhou!";
         }
         else
@@ -91,50 +103,61 @@ public class JokenpoManager : MonoBehaviour
             Time.timeScale = 1f;    
             jokenpo.SetActive(false);
             sistemaDeVida.vida--;
-            // "ScriptPersonagem".chance--; 
-
+            Debug.Log("PERDEU");
             return "Você Perdeu!";
         }
     }
 
-    public void perdeuNoJokenpo(){
-        // if()
-    }
-
     IEnumerator paralisarMaeAoPerder(){
         mae.GetComponent<ScriptMae>().enabled = false;
-        // mae.obstacleDetector.enabled = false;
+        jokenpo.SetActive(false);
         mae.speed = 380f;
 
+        StartCoroutine(tempoParaVoltarResultado());
         yield return new WaitForSeconds(4f);
         
         mae.speed = 400f;
-        // mae.obstacleDetector.enabled = false;
         mae.GetComponent<ScriptMae>().enabled = true;
     }
 
     IEnumerator paralisarMaeAoEmpatar(){
         mae.GetComponent<ScriptMae>().enabled = false;
-        // mae.obstacleDetector.enabled = false;
+        jokenpo.SetActive(false);
         mae.speed = 350f;
 
+        StartCoroutine(tempoParaVoltarResultado());
         yield return new WaitForSeconds(5f);
 
         mae.speed = 400f;
-        // mae.obstacleDetector.enabled = true;
         mae.GetComponent<ScriptMae>().enabled = true;
     }
 
     IEnumerator paralisarMaeAoGanhar(){
         mae.GetComponent<ScriptMae>().enabled = false;
-        // mae.obstacleDetector.enabled = false;
+        jokenpo.SetActive(false);
         mae.speed = 320f;
 
+        StartCoroutine(tempoParaVoltarResultado());
         yield return new WaitForSeconds(7f);
 
         mae.speed = 400f;
-        // mae.obstacleDetector.enabled = true;       
         mae.GetComponent<ScriptMae>().enabled = true;
     }
+
+    IEnumerator tempoParaVoltarResultado(){
+        resultado.SetActive(true);
+        yield return new WaitForSeconds(3f);
+        resultado.SetActive(false);
+    }
+    // void tempoParaVoltarResultado(){
+    //     float tempoVoltar = 0; 
+    //     tempoVoltar += Time.deltaTime;
+
+    //     if(tempoVoltar >= 3){
+    //         taPodendoAtivar = true;
+    //     } else {
+    //         taPodendoAtivar = false;
+    //     }
+    // }
 
 }

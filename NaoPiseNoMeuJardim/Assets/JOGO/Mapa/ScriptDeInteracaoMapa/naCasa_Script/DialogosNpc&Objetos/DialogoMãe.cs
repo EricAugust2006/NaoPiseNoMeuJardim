@@ -21,9 +21,11 @@ public class DialogoMãe : MonoBehaviour
 
     private ScriptPersonagem personagemScript;
     private Animator personagemAnimator;
+    private JARDIM jardim;
 
     void Start()
     {
+        jardim = FindObjectOfType<JARDIM>();
         dialoguePanel.SetActive(false);
         personagemScript = FindObjectOfType<ScriptPersonagem>();
         if (personagemScript != null)
@@ -51,6 +53,10 @@ public class DialogoMãe : MonoBehaviour
             {
                 NextDialogue();
             }
+        }
+
+        if(jardim.IniciarJogo == true){
+            GetComponent<Collider2D>().enabled = false;
         }
     }
 

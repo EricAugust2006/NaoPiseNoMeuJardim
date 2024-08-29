@@ -292,7 +292,7 @@ public class ScriptPersonagem : MonoBehaviour
     // =================================================================================
 
     public void VoaPassarin(){
-        if (cinemachine != null)
+        if (cinemachine != null) //se cinemachine for diferente de null(nada), ou seja,  se tiver uma cinemachine vai retornar meu targetrthoSize para 10.
         {
             targetOrthoSize = 10f;
         }
@@ -350,8 +350,4 @@ public class ScriptPersonagem : MonoBehaviour
             targetOrthoSize = initialOrthoSize; // Retornar ao tamanho inicial quando sair do trigger
         }
     }
-
-    // =================================================================================
-    // ========================== PARTE DAS CHANCES/VIDA ===============================
-    // =================================================================================
 }

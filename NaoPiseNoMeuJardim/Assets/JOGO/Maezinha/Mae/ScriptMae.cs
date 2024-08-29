@@ -35,8 +35,11 @@ public class ScriptMae : MonoBehaviour
     public GameObject Pedra_Papel_Tesoura;
     public GameObject coliderFicarNoChao;
 
-    [Header("GameObjects")]
+    [Header("Scripts")]
     private JARDIM jardim;
+
+    [Header("Booleanos")]
+    public bool jokenpoEventoAtivado = false;
 
     void Start()
     {
@@ -134,6 +137,7 @@ public class ScriptMae : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D colisao) 
     {
         if(colisao.gameObject.tag == "Player" && jardim.IniciarJogo == true){
+            jokenpoEventoAtivado = true;
             GetComponent<Collider2D>().enabled = true;
             Pedra_Papel_Tesoura.SetActive(true);
             Time.timeScale = 0f;

@@ -15,6 +15,7 @@ public class TelefoneEvent : MonoBehaviour
     [Header("Booleanos")]
     public bool EventoIniciado = false;
     public bool eventoLigado = false;    
+    public bool taNoEventoTelefone = false;
 
     private void Start()
     {
@@ -31,6 +32,7 @@ public class TelefoneEvent : MonoBehaviour
     {
         if (EventoIniciado && Input.GetKeyDown(KeyCode.E) && eventoLigado == true)
         {
+            taNoEventoTelefone = true;
             telefoneEventoEntrar.SetActive(true);
 
             if (EventoIniciado)
@@ -41,6 +43,7 @@ public class TelefoneEvent : MonoBehaviour
         }
 
         if(EventoIniciado && Input.GetKeyDown(KeyCode.Escape)){
+            taNoEventoTelefone = false;
             telefoneEventoEntrar.SetActive(false);
             personagemScript.enabled = true;
             personagemScript.RestaurarAnimacoes();

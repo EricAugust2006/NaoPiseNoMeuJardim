@@ -12,7 +12,8 @@ public class GerenciadorDoJogo : MonoBehaviour
     public transicaoTeste transicaoteste;
     public TransicaoDeCenas transicaoCenas;
     private ScriptPersonagem personagemScript;
-    private TelefoneEvent telefoneEvent;
+    public TelefoneEvent telefoneEvent;
+    public ScriptMae mae;
 
     [Header("GameObjects no Menu principal")]
     [SerializeField] GameObject MenuPrincipal;
@@ -25,18 +26,17 @@ public class GerenciadorDoJogo : MonoBehaviour
     [Header("GameObjects em Jogo")]
     [SerializeField] GameObject SairDoEventoTelefone;
     [SerializeField] GameObject MenuPause;
-
-    
+        
     private void Start()
     {
+        mae = FindObjectOfType<ScriptMae>();
         personagemScript = FindObjectOfType<ScriptPersonagem>();
         telefoneEvent = FindObjectOfType<TelefoneEvent>();
     }   
 
-    private void Update() {
+    public void Update() {
         abrirEfecharMenuPause();
         jogoTaDesligado();
-
     }
 
     // =================================================
@@ -76,7 +76,19 @@ public class GerenciadorDoJogo : MonoBehaviour
     public void abrirEfecharMenuPause(){
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            alternarMenuPause();
+            if(mae.jokenpoEventoAtivado == true)
+            {
+                return;
+            }
+
+            if(telefoneEvent.taNoEventoTelefone == true)
+            {
+                return;
+            }
+
+            else {
+                alternarMenuPause();
+            }
         }
     }
 
