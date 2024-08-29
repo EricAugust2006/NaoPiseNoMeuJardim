@@ -56,17 +56,25 @@ public class ScriptPersonagem : MonoBehaviour
 
 
     [Header("Cinemachine")]
-    float velocidadeZoom = 10f;
     public CinemachineVirtualCamera cinemachine;
+    public float targetOrthoSize = 10f;
+    public float initialOrthoSize = 6f;
+    public float zoomSpeed = 2f;
 
     private void Awake()
     {
-        cinemachine = GetComponent<CinemachineVirtualCamera>();
+        cinemachine = FindObjectOfType<CinemachineVirtualCamera>(); // Find the Cinemachine camera in the scene        
         jokenpoManager = FindObjectOfType<JokenpoManager>();
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (cinemachine != null)
+        {
+            targetOrthoSize = initialOrthoSize; // Inicializar targetOrthoSize com o valor inicial
+            cinemachine.m_Lens.OrthographicSize = initialOrthoSize; // Definir o orthoSize inicial
+        }
     }
 
     private void Update()
@@ -85,6 +93,7 @@ public class ScriptPersonagem : MonoBehaviour
     {
         Movimentar();
         DetectarChao();
+        AjustarZoomCamera();
     }
 
     public void MudarPlataforma()
@@ -215,7 +224,6 @@ public class ScriptPersonagem : MonoBehaviour
         animator.SetLayerWeight(1, taNaPlataforma ? 0 : 1);
     }
 
-
     public void TomouDanoDeCima()
     {
         if (taNaPlataforma)
@@ -286,17 +294,22 @@ public class ScriptPersonagem : MonoBehaviour
     // =================================================================================
 
     public void VoaPassarin(){
-        var lens = cinemachine.m_Lens;
+        if (cinemachine != null)
+        {
+            targetOrthoSize = 10f;
+        }
+        else
+        {
+            Debug.LogError("CinemachineVirtualCamera não encontrada!");
+        }
+    }
 
-        float zoomCalibrado = 0f;
-
-        lens.FieldOfView = 0;
-
-        lens.FieldOfView += zoomCalibrado * velocidadeZoom * Time.deltaTime;
-
-        lens.FieldOfView = Mathf.Clamp(lens.FieldOfView, 30f, 60f);
-
-        cinemachine.m_Lens = lens;
+    private void AjustarZoomCamera()
+    {
+        if (cinemachine != null)
+        {
+            cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(cinemachine.m_Lens.OrthographicSize, targetOrthoSize, zoomSpeed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -329,6 +342,11 @@ public class ScriptPersonagem : MonoBehaviour
     private void OnTriggerExit2D(Collider2D collision)
     {
         animator.SetBool("taPreso", false);
+
+         if (collision.gameObject.CompareTag("DarZoom"))
+        {
+            targetOrthoSize = initialOrthoSize; // Retornar ao tamanho inicial quando sair do trigger
+        }
     }
 
     // =================================================================================
