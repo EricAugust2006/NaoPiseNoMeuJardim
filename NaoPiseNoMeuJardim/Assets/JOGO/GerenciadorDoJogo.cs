@@ -47,14 +47,16 @@ public class GerenciadorDoJogo : MonoBehaviour
         transicaoCenas.CarregarCena("meuQuarto");
         Time.timeScale = 0f;
         // jogoTaDesligado();
-
     }
     public void continuarJogo(){
         transicaoCenas.CarregarCena("meuQuarto");
         Time.timeScale = 0f;
         // jogoTaDesligado();
-
     }
+    public void irParaQuarto(){
+        transicaoCenas.CarregarCena("meuQuarto");
+    }
+
 
     public void abrirOpcoes(){
         MenuPrincipal.SetActive(false);
@@ -76,18 +78,24 @@ public class GerenciadorDoJogo : MonoBehaviour
     public void abrirEfecharMenuPause(){
         if(Input.GetKeyDown(KeyCode.Escape))
         {
-            if(mae.jokenpoEventoAtivado == true)
-            {
-                return;
+            if(SceneManager.GetActiveScene().name == "JardimJogo"){
+                if(mae.jokenpoEventoAtivado == true)
+                {
+                    return;
+                }   
+                else {
+                    alternarMenuPause();
+                }
             }
 
-            if(telefoneEvent.taNoEventoTelefone == true)
-            {
-                return;
-            }
-
-            else {
-                alternarMenuPause();
+            if(SceneManager.GetActiveScene().name == "primeiroAndar"){
+                if(telefoneEvent.taNoEventoTelefone == true)
+                {
+                    return;
+                }
+                else {
+                    alternarMenuPause();
+                }
             }
         }
     }

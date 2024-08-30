@@ -451,12 +451,12 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 267158020}
   - {fileID: 1196333804}
   - {fileID: 885908812}
   - {fileID: 1862786342}
   - {fileID: 743844324}
   - {fileID: 406008395}
-  - {fileID: 267158020}
   - {fileID: 110023770}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8161,6 +8161,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3722605818911777914, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
+      propertyPath: telaGameOver
+      value: 
+      objectReference: {fileID: 1728925420}
+    - target: {fileID: 3722605818911777914, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: coracao.Array.size
       value: 5
       objectReference: {fileID: 0}
@@ -11345,6 +11349,7 @@ MonoBehaviour:
   obstacleDetector: {fileID: 1191290359}
   Pedra_Papel_Tesoura: {fileID: 1862786341}
   coliderFicarNoChao: {fileID: 966856834}
+  resultado: {fileID: 110023769}
   jokenpoEventoAtivado: 0
 --- !u!4 &1793958907 stripped
 Transform:
@@ -13708,6 +13713,62 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 8528329}
     m_Modifications:
+    - target: {fileID: 2138075966985633088, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138075966985633088, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138075966985633088, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5757998171606388099, guid: d2225469c04ec8441b3562bc7e164b5d, type: 3}
+    - target: {fileID: 2138075966985633088, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138075966985633088, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: sairParaMenuPrincipal
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138075966985633088, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GerenciadorDoJogo, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2138075966985633088, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 3251223433507339666, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3251223433507339666, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3251223433507339666, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2082764203}
+    - target: {fileID: 3251223433507339666, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3251223433507339666, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: irParaQuarto
+      objectReference: {fileID: 0}
+    - target: {fileID: 3251223433507339666, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: GerenciadorDoJogo, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3251223433507339666, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 4098245300955883174, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

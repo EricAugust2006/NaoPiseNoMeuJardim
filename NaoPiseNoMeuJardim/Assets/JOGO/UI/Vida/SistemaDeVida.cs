@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SistemaDeVida : MonoBehaviour
 {
@@ -11,6 +12,8 @@ public class SistemaDeVida : MonoBehaviour
     public Image[] coracao;
     public Sprite cheio;
     public Sprite vazio;
+
+    public GameObject telaGameOver;
 
     void Start()
     {
@@ -43,5 +46,16 @@ public class SistemaDeVida : MonoBehaviour
                 coracao[i].enabled = false;
             }
         }
+
+        if(SceneManager.GetActiveScene().name == "JardimJogo"){
+            if(vida == 0){
+                Time.timeScale = 0f;
+                telaGameOver.SetActive(true);
+            }
+        }
     }
+
+    // void TelaGameOver(){
+        
+    // } 
 }

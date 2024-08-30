@@ -31,6 +31,9 @@ public class JokenpoManager : MonoBehaviour
     [Header("Scripts")]
     private Animator anim;
 
+    private bool eventoEmAndamento = false;
+
+
     private string[] chances = { "Pedra", "Papel", "Tesoura" };
 
     private void Start() 
@@ -42,6 +45,10 @@ public class JokenpoManager : MonoBehaviour
 
     public void jogadorFazerEscolha(string jogadorEscolha)
     {
+        if (eventoEmAndamento) return;
+
+        eventoEmAndamento = true; // Marcar evento como em andamento
+
         // Definir a imagem do jogador
         switch (jogadorEscolha)
         {
@@ -77,6 +84,8 @@ public class JokenpoManager : MonoBehaviour
 
         string result = determinaVencedor(jogadorEscolha, computadorChance);
         textoResultado.text = result;
+
+        StartCoroutine(tempoParaVoltarResultado());
     }
 
     public string determinaVencedor(string jogadorEscolha, string computadorChance)
@@ -145,9 +154,11 @@ public class JokenpoManager : MonoBehaviour
     }
 
     IEnumerator tempoParaVoltarResultado(){
+        Time.timeScale = 1f; 
         resultado.SetActive(true);
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSecondsRealtime(3f);
         resultado.SetActive(false);
+        eventoEmAndamento = false; 
     }
     // void tempoParaVoltarResultado(){
     //     float tempoVoltar = 0; 
