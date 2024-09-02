@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Cinemachine;
+using TMPro;
 
 public class ScriptPersonagem : MonoBehaviour
 {
@@ -36,6 +37,7 @@ public class ScriptPersonagem : MonoBehaviour
     public GameObject botaoInteracao;
     public GameObject prefabMunicao;
     public GameObject fimDeJogo;
+    public GameObject UIapertar;
 
     [Header("Animacao e Flip")]
     private SpriteRenderer spriteRenderer;
@@ -60,6 +62,10 @@ public class ScriptPersonagem : MonoBehaviour
     public float targetOrthoSize = 10f;
     public float initialOrthoSize = 6f;
     public float zoomSpeed = 2f;
+
+
+    public bool eventoTaPreso = false;
+    public TextMeshProUGUI textPro;
 
     private void Awake()
     {
@@ -87,6 +93,7 @@ public class ScriptPersonagem : MonoBehaviour
         CuidarLayer();
         MudarPlataforma();
         EstaLivre();
+        // apertarUI();
     }
 
     private void FixedUpdate()
@@ -95,8 +102,6 @@ public class ScriptPersonagem : MonoBehaviour
         DetectarChao();
         AjustarZoomCamera();
     }
-
-
 
     public void Movimentar()
     {
@@ -129,6 +134,7 @@ public class ScriptPersonagem : MonoBehaviour
         if (taNoChao || taNaPlataforma)
         {
             animator.SetBool("Caindo", false);
+            animator.ResetTrigger("Jump");
         }
     }
 
@@ -151,28 +157,44 @@ public class ScriptPersonagem : MonoBehaviour
                 {
                     rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
                     animator.SetTrigger("Jump");
+                    // animator.SetBool("Caindo", false);
                 }
             }
         }
     }
 
+    // =================================================================================
+    // ================================== TA PRESO =====================================
+    // =================================================================================
 
-    // =================================================================================
-    // ================================== IMPULSO ======================================
-    // =================================================================================
+    // public void apertarUI(){
+    //     if(taPreso == true){
+    //         if(Input.GetKeyDown(KeyCode.E)){
+    //             vezesApertadasUI++;
+    //             textPro.text = vezesApertadasUI.ToString();
+    //         }
+    //     }
+    //     else {
+    //         return;
+    //     }
+    // }
 
     public void EstaLivre()
     {
-        if (Input.GetKeyUp(KeyCode.E))
-        {
-            quantidadeApertada++;
-        }
+        if(taPreso == true){
+            if (Input.GetKeyUp(KeyCode.E))
+            {
+                quantidadeApertada++;
+                textPro.text = quantidadeApertada.ToString();
+            }
 
-        if (quantidadeApertada == 5)
-        {
-            taPreso = false;
-            animator.SetBool("taPreso", false);
-            quantidadeApertada = 0;
+            if (quantidadeApertada >= 5)
+            {
+                UIapertar.SetActive(false);
+                taPreso = false;
+                animator.SetBool("taPreso", false);
+                quantidadeApertada = 0;
+            }
         }
     }
 
@@ -257,6 +279,7 @@ public class ScriptPersonagem : MonoBehaviour
         if (taNoChao || taNaPlataforma)
         {
             animator.SetBool("Caindo", false);
+            // animator.ResetTrigger("Jump");
         }
         wasGrounded = taNoChao;
         wasPlataformed = taNaPlataforma;
@@ -325,6 +348,7 @@ public class ScriptPersonagem : MonoBehaviour
 
         if (collision.gameObject.tag == "PrenderPersonagem")
         {
+            UIapertar.SetActive(true);
             quantidadeApertada = 0;
             taPreso = true;
             animator.SetBool("taPreso", true);

@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
-using System.Runtime.Remoting.Messaging;
 
 public class ScriptMae : MonoBehaviour
 {
@@ -14,7 +13,7 @@ public class ScriptMae : MonoBehaviour
     [Header("Physics")]
     public float speed;
     public float nextWaypointDistance = 3f;
-    public float jumpForce = 10f; // For�a do pulo
+    public float jumpForce = 10f; // Força do pulo
     public LayerMask obstacleLayer;
 
     [Header("Custom Behavior")]
@@ -31,7 +30,6 @@ public class ScriptMae : MonoBehaviour
     private Animator animator;
 
     [Header("GameObjects")]
-    // public GameObject gameOver;
     public GameObject Pedra_Papel_Tesoura;
     public GameObject coliderFicarNoChao;
     public GameObject resultado;
@@ -41,6 +39,7 @@ public class ScriptMae : MonoBehaviour
 
     [Header("Booleanos")]
     public bool jokenpoEventoAtivado = false;
+    private bool eventoDesativadoTemporariamente = false;
 
     void Start()
     {
@@ -49,7 +48,7 @@ public class ScriptMae : MonoBehaviour
         jardim = FindObjectOfType<JARDIM>();
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        obstacleDetector = GetComponentInChildren<Collider2D>(); // Assumindo que o Collider2D est� como filho
+        obstacleDetector = GetComponentInChildren<Collider2D>(); // Assumindo que o Collider2D está como filho
         animator = GetComponent<Animator>();
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
     }
@@ -80,7 +79,7 @@ public class ScriptMae : MonoBehaviour
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
 
-        rb.velocity = new Vector2(direction.x * speed * Time.deltaTime, rb.velocity.y); // Mant�m a velocidade vertical separada
+        rb.velocity = new Vector2(direction.x * speed * Time.deltaTime, rb.velocity.y); // Mantém a velocidade vertical separada
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWayPoint]);
         if (distance < nextWaypointDistance)
@@ -119,7 +118,7 @@ public class ScriptMae : MonoBehaviour
     {
         if (obstacleLayer == (obstacleLayer | (1 << other.gameObject.layer)))
         {
-            // Pular quando detectar um obst�culo
+            // Pular quando detectar um obstáculo
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
@@ -130,14 +129,9 @@ public class ScriptMae : MonoBehaviour
         followEnabled = true;
     }
 
-    void OnDrawGizmos()
-    {
-        // Codigo de Gizmos removido para simplifica��o
-    }
-
     private void OnCollisionEnter2D(Collision2D colisao) 
     {
-        if(colisao.gameObject.tag == "Player" && jardim.IniciarJogo == true)
+        if (colisao.gameObject.tag == "Player" && jardim.IniciarJogo == true && !eventoDesativadoTemporariamente)
         {
             resultado.SetActive(false);
             jokenpoEventoAtivado = true;
@@ -145,5 +139,17 @@ public class ScriptMae : MonoBehaviour
             Pedra_Papel_Tesoura.SetActive(true);
             Time.timeScale = 0f;
         }
+    }
+
+    public void DesativarEventoTemporariamente(float duracao)
+    {
+        StartCoroutine(DesativarEventoCoroutine(duracao));
+    }
+
+    private IEnumerator DesativarEventoCoroutine(float duracao)
+    {
+        eventoDesativadoTemporariamente = true;
+        yield return new WaitForSecondsRealtime(duracao);
+        eventoDesativadoTemporariamente = false;
     }
 }

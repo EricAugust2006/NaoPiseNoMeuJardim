@@ -2,7 +2,6 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections.Generic;
-// using UnityEditor.SearchService;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -28,12 +27,8 @@ public class JokenpoManager : MonoBehaviour
     public ScriptMae mae;
     private SistemaDeVida sistemaDeVida;
 
-    [Header("Scripts")]
     private Animator anim;
-
     private bool eventoEmAndamento = false;
-
-
     private string[] chances = { "Pedra", "Papel", "Tesoura" };
 
     private void Start() 
@@ -55,20 +50,18 @@ public class JokenpoManager : MonoBehaviour
             case "Pedra":
                 jogadorImagemEscolha.sprite = pedraSprite;
                 break;
-
             case "Papel":
                 jogadorImagemEscolha.sprite = papelSprite;
                 break;
-
             case "Tesoura":
                 jogadorImagemEscolha.sprite = tesouraSprite;
                 break;
         }
 
-        // escolha do compiuter
+        // Escolha do computador
         string computadorChance = chances[Random.Range(0, chances.Length)];
 
-        // Definir a imagem do compiuter
+        // Definir a imagem do computador
         switch (computadorChance)
         {
             case "Pedra":
@@ -86,6 +79,14 @@ public class JokenpoManager : MonoBehaviour
         textoResultado.text = result;
 
         StartCoroutine(tempoParaVoltarResultado());
+        StartCoroutine(DesativarJokenpoEventoPor5Segundos()); // Desativar o evento por 5 segundos
+    }
+
+    private IEnumerator DesativarJokenpoEventoPor5Segundos()
+    {
+        mae.DesativarEventoTemporariamente(5f); // Chama o método na ScriptMae para desativar o evento por 5 segundos
+        yield return new WaitForSecondsRealtime(5f); // Esperar 5 segundos em tempo real
+        eventoEmAndamento = false; // Reativar evento
     }
 
     public string determinaVencedor(string jogadorEscolha, string computadorChance)
@@ -117,58 +118,34 @@ public class JokenpoManager : MonoBehaviour
         }
     }
 
-    IEnumerator paralisarMaeAoPerder(){
+    IEnumerator paralisarMaeAoPerder()
+    {
         mae.GetComponent<ScriptMae>().enabled = false;
         jokenpo.SetActive(false);
         mae.speed = 380f;
 
-        StartCoroutine(tempoParaVoltarResultado());
         yield return new WaitForSeconds(4f);
         
         mae.speed = 400f;
         mae.GetComponent<ScriptMae>().enabled = true;
     }
 
-    IEnumerator paralisarMaeAoEmpatar(){
+    IEnumerator paralisarMaeAoEmpatar()
+    {
         mae.GetComponent<ScriptMae>().enabled = false;
         jokenpo.SetActive(false);
-        mae.speed = 350f;
+        mae.speed = 380f;
 
-        StartCoroutine(tempoParaVoltarResultado());
-        yield return new WaitForSeconds(5f);
-
+        yield return new WaitForSeconds(2f);
+        
         mae.speed = 400f;
         mae.GetComponent<ScriptMae>().enabled = true;
     }
 
-    IEnumerator paralisarMaeAoGanhar(){
-        mae.GetComponent<ScriptMae>().enabled = false;
-        jokenpo.SetActive(false);
-        mae.speed = 320f;
-
-        StartCoroutine(tempoParaVoltarResultado());
-        yield return new WaitForSeconds(7f);
-
-        mae.speed = 400f;
-        mae.GetComponent<ScriptMae>().enabled = true;
-    }
-
-    IEnumerator tempoParaVoltarResultado(){
-        Time.timeScale = 1f; 
+    IEnumerator tempoParaVoltarResultado()
+    {
         resultado.SetActive(true);
-        yield return new WaitForSecondsRealtime(3f);
+        yield return new WaitForSecondsRealtime(2f);
         resultado.SetActive(false);
-        eventoEmAndamento = false; 
     }
-    // void tempoParaVoltarResultado(){
-    //     float tempoVoltar = 0; 
-    //     tempoVoltar += Time.deltaTime;
-
-    //     if(tempoVoltar >= 3){
-    //         taPodendoAtivar = true;
-    //     } else {
-    //         taPodendoAtivar = false;
-    //     }
-    // }
-
 }
