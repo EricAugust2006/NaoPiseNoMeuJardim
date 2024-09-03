@@ -18,6 +18,7 @@ TagManager:
   - Vida
   - Itens
   - DarZoom
+  - Ganhar
   layers:
   - Default
   - TransparentFX
@@ -39,7 +40,7 @@ TagManager:
   - DetectaChao
   - DetectaPlataforma
   - FicarNoChao
-  - 
+  - Ganhar
   - 
   - 
   - 
@@ -93,4 +94,7 @@ TagManager:
     locked: 0
   - name: New Layer 13
     uniqueID: 1997881135
+    locked: 0
+  - name: DESTINO
+    uniqueID: 1631579937
     locked: 0

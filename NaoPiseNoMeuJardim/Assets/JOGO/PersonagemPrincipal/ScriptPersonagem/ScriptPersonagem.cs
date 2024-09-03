@@ -55,6 +55,7 @@ public class ScriptPersonagem : MonoBehaviour
 
     [Header("Scripts")]
     private JokenpoManager jokenpoManager;
+    private ScriptGanhou dialogoGanhar;
 
 
     [Header("Cinemachine")]
@@ -75,6 +76,7 @@ public class ScriptPersonagem : MonoBehaviour
         col = GetComponent<Collider2D>();
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
+        dialogoGanhar = FindObjectOfType<ScriptGanhou>();
 
         if (cinemachine != null)
         {
@@ -362,6 +364,10 @@ public class ScriptPersonagem : MonoBehaviour
         
         if(collision.gameObject.tag == "DarZoom"){
             VoaPassarin();
+        }
+        
+        if(collision.gameObject.tag == "Ganhar"){
+            dialogoGanhar.StartDialogue();
         }
     }
 
