@@ -3505,8 +3505,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4280033333
+  m_fontColor: {r: 0.20784314, g: 0.1254902, b: 0.10980392, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -5871,7 +5871,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &885119003
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8932,7 +8932,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -589.99976, y: 275}
+  m_AnchoredPosition: {x: -589.9998, y: 275}
   m_SizeDelta: {x: -1220, y: -950}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616680998
