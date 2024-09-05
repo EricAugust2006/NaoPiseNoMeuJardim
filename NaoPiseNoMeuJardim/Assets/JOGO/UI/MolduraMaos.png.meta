@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: e8c7c695dac8c664993e025e167fe33e
+guid: d3d79d7d5353794499f2ead8b78728c1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2523277012678913744
-    second: ENGRENAGEM OPCOES_0
+      213: 920522141603074521
+    second: MolduraMaos_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -110,19 +110,6 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -152,7 +139,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: ENGRENAGEM OPCOES_0
+      name: MolduraMaos_0
       rect:
         serializedVersion: 2
         x: 0
@@ -166,8 +153,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0315d550de48bfcd0800000000000000
-      internalID: -2523277012678913744
+      spriteID: 9d1122ab20a56cc00800000000000000
+      internalID: 920522141603074521
       vertices: []
       indices: 
       edges: []
@@ -182,8 +169,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      ENGRENAGEM OPCOES_0: -2523277012678913744
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
