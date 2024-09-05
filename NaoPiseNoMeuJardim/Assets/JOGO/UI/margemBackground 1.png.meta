@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 7b0fd60c1196cec41803f6030f5f9e18
+guid: 629ac5a42dc76224bb25bbef309c459e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7393734862556051277
-    second: BotaoApertarMenu_0
+      213: -2439292342788441765
+    second: margemBackground 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -152,13 +152,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: BotaoApertarMenu_0
+      name: margemBackground 1_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 500
-        height: 250
+        width: 256
+        height: 256
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d47331e0fa2db9660800000000000000
-      internalID: 7393734862556051277
+      spriteID: b59b3c4c984e52ed0800000000000000
+      internalID: -2439292342788441765
       vertices: []
       indices: 
       edges: []
@@ -175,15 +175,14 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      BotaoApertarMenu_0: 7393734862556051277
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
