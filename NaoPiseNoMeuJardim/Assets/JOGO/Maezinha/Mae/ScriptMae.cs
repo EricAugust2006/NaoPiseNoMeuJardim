@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Pathfinding;
 
@@ -41,6 +40,16 @@ public class ScriptMae : MonoBehaviour
     public bool jokenpoEventoAtivado = false;
     private bool eventoDesativadoTemporariamente = false;
 
+    [Header("Chinelo Settings")]
+    public GameObject chineloPrefab; // Prefab do chinelo
+    public Transform chineloSpawnPoint; // Ponto de origem do lançamento do chinelo
+    public float throwInterval = 5f; // Intervalo de tempo para lançar o chinelo
+    public float chineloSpeed = 5f; // Velocidade do chinelo
+    public float chineloFollowDuration = 3f; // Tempo que o chinelo persegue o jogador
+
+    private bool isChineloFollowing = false; // Controle do estado do chinelo
+    private GameObject chineloInstanciado; // Instância do chinelo lançado
+
     void Start()
     {
         GetComponent<Collider2D>().enabled = false;
@@ -48,9 +57,11 @@ public class ScriptMae : MonoBehaviour
         jardim = FindObjectOfType<JARDIM>();
         seeker = GetComponent<Seeker>();
         rb = GetComponent<Rigidbody2D>();
-        obstacleDetector = GetComponentInChildren<Collider2D>(); // Assumindo que o Collider2D está como filho
+        obstacleDetector = GetComponentInChildren<Collider2D>();
         animator = GetComponent<Animator>();
+
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
+        StartCoroutine(ThrowChineloRoutine()); // Inicia o lançamento do chinelo em intervalos regulares
     }
 
     private void FixedUpdate()
@@ -60,8 +71,13 @@ public class ScriptMae : MonoBehaviour
             PathFollow();
             animator.SetBool("taCorrendo", true);
         }
+
+        if (chineloInstanciado != null)
+        {
+            AtualizarMovimentoChinelo(); // Atualiza o movimento do chinelo
+        }
     }
-     
+
     private void UpdatePath()
     {
         if (followEnabled && TargetInDistance() && seeker.IsDone())
@@ -78,8 +94,7 @@ public class ScriptMae : MonoBehaviour
         }
 
         Vector2 direction = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
-
-        rb.velocity = new Vector2(direction.x * speed * Time.deltaTime, rb.velocity.y); // Mantém a velocidade vertical separada
+        rb.velocity = new Vector2(direction.x * speed * Time.deltaTime, rb.velocity.y);
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWayPoint]);
         if (distance < nextWaypointDistance)
@@ -118,18 +133,16 @@ public class ScriptMae : MonoBehaviour
     {
         if (obstacleLayer == (obstacleLayer | (1 << other.gameObject.layer)))
         {
-            // Pular quando detectar um obstáculo
             rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
     }
 
     public void PerseguirFilho()
     {
-        Debug.Log("Perseguicao");
         followEnabled = true;
     }
 
-    private void OnCollisionEnter2D(Collision2D colisao) 
+    private void OnCollisionEnter2D(Collision2D colisao)
     {
         if (colisao.gameObject.tag == "Player" && jardim.IniciarJogo == true && !eventoDesativadoTemporariamente)
         {
@@ -151,5 +164,53 @@ public class ScriptMae : MonoBehaviour
         eventoDesativadoTemporariamente = true;
         yield return new WaitForSecondsRealtime(duracao);
         eventoDesativadoTemporariamente = false;
+    }
+
+    // Função que lança o chinelo a cada intervalo
+    private IEnumerator ThrowChineloRoutine()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(throwInterval);
+            ThrowChinelo();
+        }
+    }
+
+    // Função para lançar o chinelo
+    private void ThrowChinelo()
+    {
+        chineloInstanciado = Instantiate(chineloPrefab, chineloSpawnPoint.position, chineloSpawnPoint.rotation);
+        isChineloFollowing = true;
+        StartCoroutine(StopChineloFollowingAfterTime(chineloFollowDuration));
+        StartCoroutine(DestroyChineloAfterTime(5f)); // Destruir o chinelo após 5 segundos (ou o tempo que desejar)
+    }
+
+    // Função para parar de seguir o jogador após um tempo
+    private IEnumerator StopChineloFollowingAfterTime(float duration)
+    {
+        yield return new WaitForSeconds(duration);
+        isChineloFollowing = false;
+    }
+
+    // Função para atualizar o movimento do chinelo
+    private void AtualizarMovimentoChinelo()
+    {
+        if (isChineloFollowing)
+        {
+            // Enquanto o chinelo estiver seguindo o jogador
+            Vector2 direction = (target.position - chineloInstanciado.transform.position).normalized;
+            chineloInstanciado.transform.position += (Vector3)direction * chineloSpeed * Time.deltaTime;
+        }
+        else
+        {
+            // Após parar de seguir, o chinelo continua na direção original
+            chineloInstanciado.transform.position += chineloInstanciado.transform.right * chineloSpeed * Time.deltaTime;
+        }
+    }
+
+    private IEnumerator DestroyChineloAfterTime(float time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(chineloInstanciado); // Destrói o chinelo instanciado
     }
 }
