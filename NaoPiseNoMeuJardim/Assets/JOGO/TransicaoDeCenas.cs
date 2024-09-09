@@ -25,6 +25,7 @@ public class TransicaoDeCenas : MonoBehaviour
 
         StartCoroutine(TelaDeCarregamentoAsync(sceneName));
     }
+    
     IEnumerator TelaDeCarregamentoAsync(string sceneName) {
         AsyncOperation operation = SceneManager.LoadSceneAsync(sceneName);
         
