@@ -55,6 +55,7 @@ public class GerenciadorDoJogo : MonoBehaviour
     }
     public void irParaQuarto(){
         transicaoCenas.CarregarCena("meuQuarto");
+        Time.timeScale = 1f;
     }
 
 

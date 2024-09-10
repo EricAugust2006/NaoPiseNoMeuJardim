@@ -5,7 +5,7 @@ using UnityEngine;
 public class IrSegundoAndar : MonoBehaviour
 {
     public TransicaoDeCenas transicaoDeCenas;
-
+    public GameObject botaoInterage;
     
     void Start()
     {
@@ -19,4 +19,19 @@ public class IrSegundoAndar : MonoBehaviour
             transicaoDeCenas.CarregarCena("SegundoAndar");            
         }
     }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "Player")
+        {
+            botaoInterage.SetActive(true);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        if (other.gameObject.tag == "Player")
+        {
+            botaoInterage.SetActive(false);
+        }
+    }
+
 }

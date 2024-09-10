@@ -12,6 +12,8 @@ public class JARDIM : MonoBehaviour
     private CapsuleCollider2D inimigoCollider; // Refer�ncia ao CapsuleCollider2D do inimigo
     public bool eventoLigado = false;
 
+    public GameObject barreira;
+
     private void Start()
     {
         Mae = FindObjectOfType<ScriptMae>();
@@ -47,6 +49,7 @@ public class JARDIM : MonoBehaviour
     {
         if (playerInJardim && Input.GetKeyDown(KeyCode.E))
         {
+            barreira.SetActive(false);
             IniciarJogo = true;
             Mae.PerseguirFilho();
             // Mae.GetComponent<Collider2D>().enabled = true;
