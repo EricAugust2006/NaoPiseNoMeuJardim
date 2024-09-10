@@ -38,6 +38,7 @@ public class ScriptPersonagem : MonoBehaviour
     public GameObject prefabMunicao;
     public GameObject fimDeJogo;
     public GameObject UIapertar;
+    public SistemaDeVida sistemaDeVida;
 
     [Header("Animacao e Flip")]
     private SpriteRenderer spriteRenderer;
@@ -369,9 +370,15 @@ public class ScriptPersonagem : MonoBehaviour
         if(collision.gameObject.tag == "Ganhar"){
             dialogoGanhar.StartDialogue();
         }
+
+        if (collision.gameObject.tag == "chinelo")
+        {
+            sistemaDeVida.vida--;
+            Destroy(collision.gameObject);
+        }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+        private void OnTriggerExit2D(Collider2D collision)
     {
         animator.SetBool("taPreso", false);
 

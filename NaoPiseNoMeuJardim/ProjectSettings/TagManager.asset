@@ -19,6 +19,7 @@ TagManager:
   - Itens
   - DarZoom
   - Ganhar
+  - chinelo
   layers:
   - Default
   - TransparentFX
