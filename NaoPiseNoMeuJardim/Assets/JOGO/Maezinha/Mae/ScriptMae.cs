@@ -18,7 +18,6 @@ public class ScriptMae : MonoBehaviour
     [Header("Custom Behavior")]
     public bool followEnabled = false; // Habilitar o comportamento de perseguição
     public bool directionLookEnabled = true; // Habilitar o comportamento de olhar na direção
-
     private Path path; // Caminho a seguir
     private int currentWayPoint = 0; // Índice do waypoint atual
     private Seeker seeker; // Componente Seeker para calcular o caminho
@@ -205,7 +204,7 @@ public class ScriptMae : MonoBehaviour
     }
 
     // Função para controlar o comportamento do chinelo (perseguir e depois arremessar)
-    private IEnumerator ChineloBehaviour()
+    public IEnumerator ChineloBehaviour()
     {
         Rigidbody2D chineloRb = chineloInstanciado.GetComponent<Rigidbody2D>();
 

@@ -120,13 +120,13 @@ public class GerenciadorDoJogo : MonoBehaviour
 
     public void sairParaMenuPrincipal()
     {
-        Time.timeScale = 1f; // Garante que o jogo não fique pausado ao sair para o menu
+        Time.timeScale = 1f; // Garante que o jogo nï¿½o fique pausado ao sair para o menu
         transicaoCenas.CarregarCena("MenuPrincipal");
     }
 
     public void voltarQuarto()
     {
-        Time.timeScale = 1f; // Garante que o jogo não fique pausado ao voltar para o quarto
+        Time.timeScale = 1f; // Garante que o jogo nï¿½o fique pausado ao voltar para o quarto
         transicaoCenas.CarregarCena("meuQuarto");
     }
 
@@ -144,15 +144,19 @@ public class GerenciadorDoJogo : MonoBehaviour
         {
             jogoLigado = false;
 
-            if (!jogoLigado) // Comparação correta
+            if (!jogoLigado) // Comparaï¿½ï¿½o correta
             {
                 Time.timeScale = 0f; // Pausa o jogo no menu principal
             }
             else
             {
-                Time.timeScale = 1f; // Retoma o jogo se não estiver no menu principal
+                Time.timeScale = 1f; // Retoma o jogo se nï¿½o estiver no menu principal
             }
         }
+    }
+
+    public void recomecarJogo(){
+        transicaoCenas.CarregarCena("JardimJogo");
     }
 
     public void sairDoJogo()

@@ -57,6 +57,7 @@ public class ScriptPersonagem : MonoBehaviour
     [Header("Scripts")]
     private JokenpoManager jokenpoManager;
     private ScriptGanhou dialogoGanhar;
+    private InimigosKnockBack chinelo;
 
 
     [Header("Cinemachine")]
@@ -79,6 +80,7 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void Awake()
     {
+        
         cinemachine = FindObjectOfType<CinemachineVirtualCamera>(); // Find the Cinemachine camera in the scene        
         jokenpoManager = FindObjectOfType<JokenpoManager>();
         rb = GetComponent<Rigidbody2D>();
@@ -86,6 +88,7 @@ public class ScriptPersonagem : MonoBehaviour
         animator = GetComponent<Animator>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         dialogoGanhar = FindObjectOfType<ScriptGanhou>();
+        chinelo = FindObjectOfType<InimigosKnockBack>();
 
         if (cinemachine != null)
         {
@@ -117,21 +120,24 @@ public class ScriptPersonagem : MonoBehaviour
 
     void KnockLogic()
     {
-        if(kbCount < 0)
+        if(kbCount < 0 && tomouDano == false)
         {
             Movimentar();
         }
-        else
+        else if(tomouDano == true) 
         {
+            animator.SetTrigger("dano");
             if(isKnockRight == true)
             {
+                Debug.Log("-kbForce, kbForce");
                 rb.velocity = new Vector2(-kbForce, kbForce);
             }
-
             if (isKnockRight == false)
             {
+                Debug.Log("kbForce, kbForce");
                 rb.velocity = new Vector2(kbForce, kbForce);
             }
+            tomouDano = false;
         }
 
         kbCount -= Time.deltaTime;
@@ -402,11 +408,12 @@ public class ScriptPersonagem : MonoBehaviour
             dialogoGanhar.StartDialogue();
         }
 
-        //if (collision.gameObject.tag == "chinelo")
-        //{
-        //    sistemaDeVida.vida--;
-        //    Destroy(collision.gameObject);
-        //}
+        if (collision.gameObject.tag == "chinelo")
+        {
+            tomouDano = true;
+           sistemaDeVida.vida--;
+           Destroy(collision.gameObject);
+        }
 
         if (collision.gameObject.tag == "plataformaInimigo")
         {
@@ -415,10 +422,9 @@ public class ScriptPersonagem : MonoBehaviour
     }
 
         private void OnTriggerExit2D(Collider2D collision)
-    {
+    {    
         animator.SetBool("taPreso", false);
-
-         if (collision.gameObject.CompareTag("DarZoom"))
+        if (collision.gameObject.CompareTag("DarZoom"))
         {
             targetOrthoSize = initialOrthoSize; // Retornar ao tamanho inicial quando sair do trigger
         }

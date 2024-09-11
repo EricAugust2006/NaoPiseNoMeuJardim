@@ -10,10 +10,19 @@ public class VoltarCasa : MonoBehaviour
     public bool Interagido = false;
     public GameObject botaoInterage;
     public TransicaoDeCenas transicaoDeCenas;
+    private JARDIM jardim;
+
+    private void Start() {
+        jardim = FindObjectOfType<JARDIM>();
+    }
 
     public void Update()
     {
         Voltar();
+        if(jardim.IniciarJogo == true && Input.GetKeyDown(KeyCode.E))
+        {
+            return;
+        }
     }
 
     private void Voltar()
