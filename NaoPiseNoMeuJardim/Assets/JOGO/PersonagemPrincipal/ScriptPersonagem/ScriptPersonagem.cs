@@ -65,6 +65,14 @@ public class ScriptPersonagem : MonoBehaviour
     public float initialOrthoSize = 6f;
     public float zoomSpeed = 2f;
 
+    [Header("KnockBack Personagem")]
+    public float kbForce;
+    public float kbCount;
+    public float kBTime;
+
+    public bool isKnockRight;
+    public bool tomouDano = false;
+
 
     public bool eventoTaPreso = false;
     public TextMeshProUGUI textPro;
@@ -101,9 +109,32 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Movimentar();
+        //Movimentar();
+        KnockLogic(); //substituiu o Movimentar();
         DetectarChao();
         AjustarZoomCamera();
+    }
+
+    void KnockLogic()
+    {
+        if(kbCount < 0)
+        {
+            Movimentar();
+        }
+        else
+        {
+            if(isKnockRight == true)
+            {
+                rb.velocity = new Vector2(-kbForce, kbForce);
+            }
+
+            if (isKnockRight == false)
+            {
+                rb.velocity = new Vector2(kbForce, kbForce);
+            }
+        }
+
+        kbCount -= Time.deltaTime;
     }
 
     public void Movimentar()
@@ -371,10 +402,15 @@ public class ScriptPersonagem : MonoBehaviour
             dialogoGanhar.StartDialogue();
         }
 
-        if (collision.gameObject.tag == "chinelo")
+        //if (collision.gameObject.tag == "chinelo")
+        //{
+        //    sistemaDeVida.vida--;
+        //    Destroy(collision.gameObject);
+        //}
+
+        if (collision.gameObject.tag == "plataformaInimigo")
         {
             sistemaDeVida.vida--;
-            Destroy(collision.gameObject);
         }
     }
 
@@ -387,4 +423,12 @@ public class ScriptPersonagem : MonoBehaviour
             targetOrthoSize = initialOrthoSize; // Retornar ao tamanho inicial quando sair do trigger
         }
     }
+
+    //public void OnCollisionEnter2D(Collision2D collisionChinelo)
+    //{
+    //    if (collisionChinelo.gameObject.tag == "chinelo")
+    //    {
+    //        Destroy(collisionChinelo.gameObject);
+    //    }
+    //}
 }

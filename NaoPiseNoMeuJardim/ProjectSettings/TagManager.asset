@@ -20,6 +20,7 @@ TagManager:
   - DarZoom
   - Ganhar
   - chinelo
+  - plataformaInimigo
   layers:
   - Default
   - TransparentFX
@@ -42,7 +43,7 @@ TagManager:
   - DetectaPlataforma
   - FicarNoChao
   - Ganhar
-  - 
+  - inimigo
   - 
   - 
   - 

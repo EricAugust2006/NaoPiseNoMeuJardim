@@ -200,6 +200,8 @@ public class ScriptMae : MonoBehaviour
         chineloInstanciado = Instantiate(chineloPrefab, chineloSpawnPoint.position, chineloSpawnPoint.rotation);
         isChineloFollowing = true;
         StartCoroutine(ChineloBehaviour());
+
+        Destroy(chineloInstanciado, 6f);
     }
 
     // Função para controlar o comportamento do chinelo (perseguir e depois arremessar)

@@ -18593,6 +18593,10 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 1193409190806246324, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
+      propertyPath: kbForce
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193409190806246324, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: textPro
       value: 
       objectReference: {fileID: 548736939}
@@ -18721,6 +18725,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2946249829068643804, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 2054204238}
+    - targetCorrespondingSourceObject: {fileID: 2946249829068643804, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2054204240}
   m_SourcePrefab: {fileID: 100100000, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
 --- !u!1001 &1715581173
 PrefabInstance:
@@ -24102,6 +24109,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e60fc77a68c10394eaa110033cdb19ce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2054204240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718424806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80e71076a992ec94bade2c2c01a713ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inimigoPrefab: {fileID: 2904658612614552509, guid: 4ed2640d847d93a46981fb4dca9a5345, type: 3}
+  plataformaTilemap: {fileID: 1787202370}
+  layerPlataforma:
+    serializedVersion: 2
+    m_Bits: 16384
+  tempoParaGerarInimigo: 5
 --- !u!1 &2064405384
 GameObject:
   m_ObjectHideFlags: 0
