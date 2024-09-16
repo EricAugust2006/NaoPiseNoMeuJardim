@@ -82,6 +82,9 @@ TagManager:
   - name: Player
     uniqueID: 3851563185
     locked: 0
+  - name: Items
+    uniqueID: 4057829151
+    locked: 0
   - name: Camada -1
     uniqueID: 3989643909
     locked: 0
