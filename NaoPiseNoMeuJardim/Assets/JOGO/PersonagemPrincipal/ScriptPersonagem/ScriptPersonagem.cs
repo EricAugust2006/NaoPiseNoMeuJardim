@@ -120,28 +120,32 @@ public class ScriptPersonagem : MonoBehaviour
 
     void KnockLogic()
     {
-        if(kbCount < 0 && tomouDano == false)
+        if (kbCount < 0 && tomouDano == false)
         {
             Movimentar();
         }
-        else if(tomouDano == true) 
+        else if (tomouDano == true)
         {
             animator.SetTrigger("dano");
-            if(isKnockRight == true)
+
+            // Verificação da direção do knockback
+            if (isKnockRight == true) // Knockback para a direita
             {
-                Debug.Log("-kbForce, kbForce");
-                rb.velocity = new Vector2(-kbForce, kbForce);
-            }
-            if (isKnockRight == false)
-            {
-                Debug.Log("kbForce, kbForce");
+                Debug.Log("Aplicando knockback para a direita");
                 rb.velocity = new Vector2(kbForce, kbForce);
             }
-            tomouDano = false;
+            else // Knockback para a esquerda
+            {
+                Debug.Log("Aplicando knockback para a esquerda");
+                rb.velocity = new Vector2(-kbForce, kbForce);
+            }
+
+            tomouDano = false; // Resetando o estado de dano
         }
 
-        kbCount -= Time.deltaTime;
+        kbCount -= Time.deltaTime; // Diminuindo o tempo de knockback
     }
+
 
     public void Movimentar()
     {

@@ -12,25 +12,28 @@ public class VoltarCasa : MonoBehaviour
     public TransicaoDeCenas transicaoDeCenas;
     private JARDIM jardim;
 
-    private void Start() {
+    private void Start()
+    {
         jardim = FindObjectOfType<JARDIM>();
     }
 
     public void Update()
     {
         Voltar();
-        if(jardim.IniciarJogo == true && Input.GetKeyDown(KeyCode.E))
-        {
-            return;
-        }
     }
 
     private void Voltar()
     {
+        // Verifica se o jogo já foi iniciado, impedindo a interação se for o caso
+        if (jardim.IniciarJogo == true)
+        {
+            return; // Não permite a interação
+        }
+
+        // Se o jogador não interagiu ainda, e o evento está ligado, permite a interação
         if (!Interagido && eventoLigado == true && Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("Interagindo com a porta. Teleportando para a cena 0.");
-            //SceneManager.LoadScene(0);
             transicaoDeCenas.CarregarCena("primeiroAndar");
         }
     }
@@ -53,4 +56,3 @@ public class VoltarCasa : MonoBehaviour
         }
     }
 }
-
