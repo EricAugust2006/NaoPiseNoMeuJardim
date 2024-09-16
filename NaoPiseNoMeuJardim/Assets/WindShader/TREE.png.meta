@@ -1,22 +1,10 @@
 fileFormatVersion: 2
-guid: e035371810a451a46b5ef3d0eab9503f
+guid: 5415732e1a08a3a4fa8cd172d59f02a9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 800643407712193422
-    second: Toupeira-Sheet_0
-  - first:
-      213: -3732882541216081583
-    second: Toupeira-Sheet_1
-  - first:
-      213: 7690318612956677036
-    second: Toupeira-Sheet_2
-  - first:
-      213: -623357919480047207
-    second: Toupeira-Sheet_3
-  - first:
-      213: 7102687296746930702
-    second: Toupeira-Sheet_4
+      213: 3093979473664756730
+    second: TREE_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -58,12 +46,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 64
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -122,6 +110,19 @@ TextureImporter:
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
     buildTarget: WebGL
     maxTextureSize: 2048
     resizeAlgorithm: 0
@@ -147,30 +148,17 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: iPhone
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Toupeira-Sheet_0
+      name: TREE_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 29
-        width: 66
-        height: 66
+        x: 33
+        y: 0
+        width: 62
+        height: 105
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -178,92 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e8b8174ffe47c1b00800000000000000
-      internalID: 800643407712193422
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Toupeira-Sheet_1
-      rect:
-        serializedVersion: 2
-        x: 133
-        y: 29
-        width: 66
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 159de8e3b13223cc0800000000000000
-      internalID: -3732882541216081583
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Toupeira-Sheet_2
-      rect:
-        serializedVersion: 2
-        x: 237
-        y: 29
-        width: 66
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: ca38bde880089ba60800000000000000
-      internalID: 7690318612956677036
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Toupeira-Sheet_3
-      rect:
-        serializedVersion: 2
-        x: 341
-        y: 29
-        width: 66
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 999177166436957f0800000000000000
-      internalID: -623357919480047207
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Toupeira-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 445
-        y: 29
-        width: 66
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: e02c749f670d19260800000000000000
-      internalID: 7102687296746930702
+      spriteID: afb432e40f500fa20800000000000000
+      internalID: 3093979473664756730
       vertices: []
       indices: 
       edges: []
@@ -271,7 +175,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -279,11 +183,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Toupeira-Sheet_0: 800643407712193422
-      Toupeira-Sheet_1: -3732882541216081583
-      Toupeira-Sheet_2: 7690318612956677036
-      Toupeira-Sheet_3: -623357919480047207
-      Toupeira-Sheet_4: 7102687296746930702
+      TREE_0: 3093979473664756730
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

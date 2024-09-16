@@ -421,6 +421,7 @@ public class ScriptPersonagem : MonoBehaviour
 
         if (collision.gameObject.tag == "plataformaInimigo")
         {
+            tomouDano = true;
             sistemaDeVida.vida--;
         }
     }

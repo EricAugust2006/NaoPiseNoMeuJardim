@@ -8,6 +8,7 @@ public class InimigosKnockBack : MonoBehaviour
     private ScriptPersonagem player;
     private SpriteRenderer playerSpriteRenderer;
     private void Start()
+    
     {
         player = FindObjectOfType<ScriptPersonagem>();
         sistemaDeVida = FindObjectOfType<SistemaDeVida>();
@@ -17,30 +18,29 @@ public class InimigosKnockBack : MonoBehaviour
         }
     }
 
-
     public void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
             player.kbCount = player.kBTime; // Inicia o contador de knockback
 
-            // Adicionar mensagens de debug para verificar as posições
-            Debug.Log("Posição do jogador: " + collision.transform.position.x);
-            Debug.Log("Posição do inimigo: " + transform.position.x);
+            // Adicionar mensagens de debug para verificar as posiï¿½ï¿½es
+            Debug.Log("Posiï¿½ï¿½o do jogador: " + collision.transform.position.x);
+            Debug.Log("Posiï¿½ï¿½o do inimigo: " + transform.position.x);
 
-            // Verifica a posição do jogador em relação ao inimigo para definir a direção do knockback
-            // Verifica a posição do jogador em relação ao inimigo
+            // Verifica a posiï¿½ï¿½o do jogador em relaï¿½ï¿½o ao inimigo para definir a direï¿½ï¿½o do knockback
+            // Verifica a posiï¿½ï¿½o do jogador em relaï¿½ï¿½o ao inimigo
             if (collision.transform.position.x < transform.position.x)
             {
-                // Jogador está à esquerda do inimigo, então knockback para a direita
+                // Jogador estï¿½ ï¿½ esquerda do inimigo, entï¿½o knockback para a direita
                 player.isKnockRight = true;
-                Debug.Log("Jogador à esquerda do inimigo, knockback para a direita");
+                Debug.Log("Jogador ï¿½ esquerda do inimigo, knockback para a direita");
             }
             else if (collision.transform.position.x > transform.position.x)
             {
-                // Jogador está à direita do inimigo, então knockback para a esquerda
+                // Jogador estï¿½ ï¿½ direita do inimigo, entï¿½o knockback para a esquerda
                 player.isKnockRight = false;
-                Debug.Log("Jogador à direita do inimigo, knockback para a esquerda");
+                Debug.Log("Jogador ï¿½ direita do inimigo, knockback para a esquerda");
             }
 
 
@@ -48,6 +48,4 @@ public class InimigosKnockBack : MonoBehaviour
             sistemaDeVida.vida--;
         }
     }
-
-
 }

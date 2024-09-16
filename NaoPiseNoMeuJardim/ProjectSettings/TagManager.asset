@@ -79,8 +79,17 @@ TagManager:
   - name: Casa
     uniqueID: 643076285
     locked: 0
+  - name: inimigo
+    uniqueID: 3644161037
+    locked: 0
   - name: Player
     uniqueID: 3851563185
+    locked: 0
+  - name: Plataforma
+    uniqueID: 4136102467
+    locked: 0
+  - name: ArvoreFrente
+    uniqueID: 3112098353
     locked: 0
   - name: Items
     uniqueID: 4057829151
@@ -105,9 +114,6 @@ TagManager:
     locked: 0
   - name: DESTINO
     uniqueID: 1631579937
-    locked: 0
-  - name: inimigo
-    uniqueID: 3644161037
     locked: 0
   - name: New Layer 17
     uniqueID: 2654096287
