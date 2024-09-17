@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Cinemachine;
 using TMPro;
+using UnityEngine.UIElements;
 
 public class ScriptPersonagem : MonoBehaviour
 {
@@ -123,7 +124,6 @@ public class ScriptPersonagem : MonoBehaviour
                 framingTransposer.m_TrackedObjectOffset = originalOffset;
             }
         }   
-        
         else
         {
             Debug.LogError("CinemachineVirtualCamera não encontrada!");
@@ -143,6 +143,7 @@ public class ScriptPersonagem : MonoBehaviour
 
         AjustarZoomCamera();
         AjustarOffSetCamera();
+        Agachar();
     }
 
     private void FixedUpdate()
@@ -150,6 +151,7 @@ public class ScriptPersonagem : MonoBehaviour
         //Movimentar();
         KnockLogic(); //substituiu o Movimentar();
         DetectarChao();
+   
     }
 
     void KnockLogic()
@@ -184,7 +186,38 @@ public class ScriptPersonagem : MonoBehaviour
         kbCount -= Time.deltaTime; // Diminuindo o tempo de knockback
     }
 
+    public void Invulnerabilidade(){
 
+    }
+
+    IEnumerator tempoInvulneravel(){
+
+        yield return null;
+    }
+
+    public void Agachar() {
+        
+    if (Input.GetKeyDown(KeyCode.LeftShift)) {
+        bool taAgachado = animator.GetBool("taAgachado");
+        animator.SetBool("taAgachado", !taAgachado);
+
+        if (animator.GetBool("taAgachado")) {
+            speed = 4.5f;
+        } else {
+            speed = 8f;
+            animator.SetTrigger("sairDoAgachar");
+        }
+    }
+
+    bool estaSeMovendo = Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
+
+    if (animator.GetBool("taAgachado") && estaSeMovendo) {
+        animator.SetBool("andarAgachado", true);
+    } 
+    else {
+        animator.SetBool("andarAgachado", false);
+    }
+}
     public void Movimentar()
     {
         if (taPreso == false)
@@ -249,18 +282,6 @@ public class ScriptPersonagem : MonoBehaviour
     // ================================== TA PRESO =====================================
     // =================================================================================
 
-    // public void apertarUI(){
-    //     if(taPreso == true){
-    //         if(Input.GetKeyDown(KeyCode.E)){
-    //             vezesApertadasUI++;
-    //             textPro.text = vezesApertadasUI.ToString();
-    //         }
-    //     }
-    //     else {
-    //         return;
-    //     }
-    // }
-
     public void EstaLivre()
     {
         if(taPreso == true){
@@ -280,10 +301,10 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
-
     // =================================================================================
     // ================================ PLATAFORMAS ====================================
     // =================================================================================
+
     public void TomouDanoDeCima()
     {
         if (taNaPlataforma)
