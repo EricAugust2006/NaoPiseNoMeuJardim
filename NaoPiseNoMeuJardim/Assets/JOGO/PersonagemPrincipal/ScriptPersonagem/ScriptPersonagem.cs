@@ -61,10 +61,20 @@ public class ScriptPersonagem : MonoBehaviour
 
 
     [Header("Cinemachine")]
+    private CinemachineFramingTransposer framingTransposer;
     public CinemachineVirtualCamera cinemachine;
+
     public float targetOrthoSize = 10f;
     public float initialOrthoSize = 6f;
     public float zoomSpeed = 2f;
+
+    private Vector3 originalOffset;
+    private Vector3 targetOffset;
+    private bool isInTriggerZone = false;
+    public float transitionSpeed = 10f;
+
+
+
 
     [Header("KnockBack Personagem")]
     public float kbForce;
@@ -90,10 +100,33 @@ public class ScriptPersonagem : MonoBehaviour
         dialogoGanhar = FindObjectOfType<ScriptGanhou>();
         chinelo = FindObjectOfType<InimigosKnockBack>();
 
+        //if (cinemachine == null)
+        //{
+        //    cinemachine = FindObjectOfType<CinemachineVirtualCamera>();
+        //}
+
         if (cinemachine != null)
         {
             targetOrthoSize = initialOrthoSize; // Inicializar targetOrthoSize com o valor inicial
             cinemachine.m_Lens.OrthographicSize = initialOrthoSize; // Definir o orthoSize inicial
+
+            // Obtém o Framing Transposer do Cinemachine Virtual Camera
+            framingTransposer = cinemachine.GetCinemachineComponent<CinemachineFramingTransposer>();
+
+            if (framingTransposer != null)
+            {
+                // Define o valor inicial do offset
+                originalOffset = new Vector3(framingTransposer.m_TrackedObjectOffset.x, 4.05f, framingTransposer.m_TrackedObjectOffset.z);
+                targetOffset = originalOffset;
+
+                // Aplicar o valor inicial ao Framing Transposer
+                framingTransposer.m_TrackedObjectOffset = originalOffset;
+            }
+        }   
+        
+        else
+        {
+            Debug.LogError("CinemachineVirtualCamera não encontrada!");
         }
     }
 
@@ -107,7 +140,9 @@ public class ScriptPersonagem : MonoBehaviour
         CuidarLayer();
         MudarPlataforma();
         EstaLivre();
-        // apertarUI();
+
+        AjustarZoomCamera();
+        AjustarOffSetCamera();
     }
 
     private void FixedUpdate()
@@ -115,7 +150,6 @@ public class ScriptPersonagem : MonoBehaviour
         //Movimentar();
         KnockLogic(); //substituiu o Movimentar();
         DetectarChao();
-        AjustarZoomCamera();
     }
 
     void KnockLogic()
@@ -131,11 +165,15 @@ public class ScriptPersonagem : MonoBehaviour
             // Verificação da direção do knockback
             if (isKnockRight == true) // Knockback para a direita
             {
+                animator.SetTrigger("dano");
+
                 Debug.Log("Aplicando knockback para a direita");
                 rb.velocity = new Vector2(kbForce, kbForce);
             }
             else // Knockback para a esquerda
             {
+                animator.SetTrigger("dano");
+
                 Debug.Log("Aplicando knockback para a esquerda");
                 rb.velocity = new Vector2(-kbForce, kbForce);
             }
@@ -359,21 +397,46 @@ public class ScriptPersonagem : MonoBehaviour
     // =================================================================================
 
     public void VoaPassarin(){
+
+        if(framingTransposer != null)
+        {
+            targetOffset = new Vector3(originalOffset.x, 0, originalOffset.z);
+            isInTriggerZone = true;
+        }
+
         if (cinemachine != null) //se cinemachine for diferente de null(nada), ou seja,  se tiver uma cinemachine vai retornar meu targetrthoSize para 10.
         {
             targetOrthoSize = 10f;
         }
+
         else
         {
             Debug.LogError("CinemachineVirtualCamera não encontrada!");
         }
     }
 
+    private void AjustarOffSetCamera()
+    {
+        if(framingTransposer != null)
+        {
+            framingTransposer.m_TrackedObjectOffset = Vector3.Lerp(
+                framingTransposer.m_TrackedObjectOffset,
+                targetOffset,
+                Time.deltaTime * transitionSpeed
+                );
+        }
+    }
+
+
     private void AjustarZoomCamera()
     {
         if (cinemachine != null)
         {
-            cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(cinemachine.m_Lens.OrthographicSize, targetOrthoSize, zoomSpeed * Time.deltaTime);
+            cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(
+                cinemachine.m_Lens.OrthographicSize,
+                targetOrthoSize,
+                zoomSpeed * Time.deltaTime
+                );
         }
     }
 
@@ -406,6 +469,7 @@ public class ScriptPersonagem : MonoBehaviour
         
         if(collision.gameObject.tag == "DarZoom"){
             VoaPassarin();
+            isInTriggerZone = true;
         }
         
         if(collision.gameObject.tag == "Ganhar"){
@@ -414,7 +478,7 @@ public class ScriptPersonagem : MonoBehaviour
 
         if (collision.gameObject.tag == "chinelo")
         {
-            tomouDano = true;
+           tomouDano = true;
            sistemaDeVida.vida--;
            Destroy(collision.gameObject);
         }
@@ -422,6 +486,7 @@ public class ScriptPersonagem : MonoBehaviour
         if (collision.gameObject.tag == "plataformaInimigo")
         {
             tomouDano = true;
+            animator.SetTrigger("dano");
             sistemaDeVida.vida--;
         }
     }
@@ -429,8 +494,11 @@ public class ScriptPersonagem : MonoBehaviour
         private void OnTriggerExit2D(Collider2D collision)
     {    
         animator.SetBool("taPreso", false);
+
         if (collision.gameObject.CompareTag("DarZoom"))
         {
+            targetOffset = originalOffset;
+            isInTriggerZone = false;
             targetOrthoSize = initialOrthoSize; // Retornar ao tamanho inicial quando sair do trigger
         }
     }
