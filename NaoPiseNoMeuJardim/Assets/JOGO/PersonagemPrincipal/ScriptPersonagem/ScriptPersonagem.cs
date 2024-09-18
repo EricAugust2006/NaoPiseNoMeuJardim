@@ -504,12 +504,12 @@ public class ScriptPersonagem : MonoBehaviour
            Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.tag == "plataformaInimigo")
-        {
-            tomouDano = true;
-            animator.SetTrigger("dano");
-            sistemaDeVida.vida--;
-        }
+        // if (collision.gameObject.tag == "plataformaInimigo")
+        // {
+        //     tomouDano = true;
+        //     animator.SetTrigger("dano");
+        //     sistemaDeVida.vida--;
+        // }
     }
 
         private void OnTriggerExit2D(Collider2D collision)

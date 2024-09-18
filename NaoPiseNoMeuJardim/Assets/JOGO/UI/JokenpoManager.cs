@@ -84,7 +84,7 @@ public class JokenpoManager : MonoBehaviour
 
     private IEnumerator DesativarJokenpoEventoPor5Segundos()
     {
-        mae.DesativarEventoTemporariamente(5f); // Chama o método na ScriptMae para desativar o evento por 5 segundos
+        // mae.DesativarEventoTemporariamente(5f); // Chama o método na ScriptMae para desativar o evento por 5 segundos
         yield return new WaitForSecondsRealtime(5f); // Esperar 5 segundos em tempo real
         eventoEmAndamento = false; // Reativar evento
     }

@@ -1,12 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
-public class ScriptGanhou : MonoBehaviour
+public class InicioDoJogo : MonoBehaviour
 {
-    // Dialogue script variables
+// Dialogue script variables
     public string[] dialogueNpc;
     public int dialogueIndex;
 
@@ -140,4 +138,4 @@ public class ScriptGanhou : MonoBehaviour
             yield return null;
         }
     }
-}   
+}

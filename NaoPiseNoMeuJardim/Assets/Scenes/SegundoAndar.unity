@@ -558,6 +558,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Lampada
       objectReference: {fileID: 0}
+    - target: {fileID: 7949444812159396970, guid: 51812afbd4fad35438696904dceee01e, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4473,7 +4477,7 @@ Transform:
   m_GameObject: {fileID: 1401069966}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.389825, y: 0.031579997, z: -5.05}
+  m_LocalPosition: {x: 12.378238, y: 0.03193, z: -5.05}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

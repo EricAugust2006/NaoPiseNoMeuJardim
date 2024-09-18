@@ -25,6 +25,8 @@ public class GerenciadorDoJogo : MonoBehaviour
     [Header("GameObjects em Jogo")]
     [SerializeField] GameObject SairDoEventoTelefone;
     [SerializeField] GameObject MenuPause;
+    public ScriptGanhou dialogoGanhar;
+
 
     private void Start()
     {
@@ -35,6 +37,7 @@ public class GerenciadorDoJogo : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "meuQuarto")
         {
             Time.timeScale = 1f;
+             dialogoGanhar.StartDialogue();
         }
     }
 
@@ -49,12 +52,6 @@ public class GerenciadorDoJogo : MonoBehaviour
     // =================================================
 
     public void novoJogo()
-    {
-        Time.timeScale = 1f;
-        transicaoCenas.CarregarCena("meuQuarto");
-    }
-
-    public void continuarJogo()
     {
         Time.timeScale = 1f;
         transicaoCenas.CarregarCena("meuQuarto");

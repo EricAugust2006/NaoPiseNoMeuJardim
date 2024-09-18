@@ -6,6 +6,7 @@ public class IrSegundoAndar : MonoBehaviour
 {
     public TransicaoDeCenas transicaoDeCenas;
     public GameObject botaoInterage;
+    public bool eventoLigado = false;
     
     void Start()
     {
@@ -15,7 +16,7 @@ public class IrSegundoAndar : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.E)){
+        if(Input.GetKeyDown(KeyCode.E) && eventoLigado == true){
             transicaoDeCenas.CarregarCena("SegundoAndar");            
         }
     }
@@ -23,6 +24,7 @@ public class IrSegundoAndar : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.gameObject.tag == "Player")
         {
+            eventoLigado = true;
             botaoInterage.SetActive(true);
         }
     }
@@ -30,6 +32,7 @@ public class IrSegundoAndar : MonoBehaviour
     private void OnTriggerExit2D(Collider2D other) {
         if (other.gameObject.tag == "Player")
         {
+            eventoLigado = false;
             botaoInterage.SetActive(false);
         }
     }
