@@ -25,7 +25,7 @@ public class GerenciadorDoJogo : MonoBehaviour
     [Header("GameObjects em Jogo")]
     [SerializeField] GameObject SairDoEventoTelefone;
     [SerializeField] GameObject MenuPause;
-    public ScriptGanhou dialogoGanhar;
+    public GerenciaInicio gerenciaInicio;
 
 
     private void Start()
@@ -37,7 +37,7 @@ public class GerenciadorDoJogo : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "meuQuarto")
         {
             Time.timeScale = 1f;
-             dialogoGanhar.StartDialogue();
+            gerenciaInicio.StartDialogue();
         }
     }
 

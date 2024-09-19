@@ -4,20 +4,23 @@ using UnityEngine;
 
 public class JARDIM : MonoBehaviour
 {
-    public bool IniciarJogo = false;
     public GameObject BotaoInciar;
-    public GameObject inimigoPrefab; // Refer�ncia ao prefab do inimigo
-    private ScriptMae Mae;
+    public GameObject inimigoPrefab;
+    public GameObject barreira;
+
+    public bool IniciarJogo = false;
     private bool playerInJardim = false;
-    private CapsuleCollider2D inimigoCollider; // Refer�ncia ao CapsuleCollider2D do inimigo
     public bool eventoLigado = false;
 
-    public GameObject barreira;
+    private ScriptMae Mae;
+
+    private ScriptPersonagem scriptPersonagem; // Referência ao script do personagem
+    private CapsuleCollider2D inimigoCollider;
 
     private void Start()
     {
         Mae = FindObjectOfType<ScriptMae>();
-        // Mae.GetComponent<Collider2D>().enabled = false;
+        scriptPersonagem = FindObjectOfType<ScriptPersonagem>(); // Referência ao script do personagem
         if (inimigoPrefab != null)
         {
             inimigoCollider = inimigoPrefab.GetComponent<CapsuleCollider2D>();
@@ -29,7 +32,7 @@ public class JARDIM : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             eventoLigado = true;
-            Debug.Log("Voc� pisou no jardim");
+            Debug.Log("Você pisou no jardim");
             playerInJardim = true;
             BotaoInciar.SetActive(true);
         }
@@ -49,15 +52,18 @@ public class JARDIM : MonoBehaviour
     {
         if (playerInJardim && Input.GetKeyDown(KeyCode.E))
         {
+            // Inicia a cutscene de corrida
             barreira.SetActive(false);
             IniciarJogo = true;
             Mae.PerseguirFilho();
-            // Mae.GetComponent<Collider2D>().enabled = true;
-            Mae.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;  // Define o Rigidbody da m�e como Dynamic
+            Mae.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+
             if (inimigoCollider != null)
             {
                 inimigoCollider.enabled = true; // Habilita o CapsuleCollider do inimigo
             }
+
+            //scriptPersonagem.cutsScene(); // Chama o método que inicia a corrida
         }
     }
 }

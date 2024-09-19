@@ -21,6 +21,7 @@ TagManager:
   - Ganhar
   - chinelo
   - plataformaInimigo
+  - pararCorrida
   layers:
   - Default
   - TransparentFX
