@@ -40,6 +40,7 @@ public class ScriptPersonagem : MonoBehaviour
     public GameObject fimDeJogo;
     public GameObject UIapertar;
     public SistemaDeVida sistemaDeVida;
+    public GameObject paredeInvisivel;
 
     [Header("Animacao e Flip")]
     private SpriteRenderer spriteRenderer;
@@ -59,6 +60,7 @@ public class ScriptPersonagem : MonoBehaviour
     private JokenpoManager jokenpoManager;
     private ScriptGanhou dialogoGanhar;
     private InimigosKnockBack chinelo;
+    private JARDIM jardim;
 
 
     [Header("Cinemachine")]
@@ -71,6 +73,10 @@ public class ScriptPersonagem : MonoBehaviour
 
     private Vector3 originalOffset;
     private Vector3 targetOffset;
+
+     private Vector3 originalOffsetX;
+    private Vector3 targetOffsetX;
+    
     private bool isInTriggerZone = false;
     public float transitionSpeed = 10f;
 
@@ -94,13 +100,12 @@ public class ScriptPersonagem : MonoBehaviour
     public float distanciaScene = 100f;
     public float velocidadeScene = 5f;
     private bool movendoScene = false;
-    private Vector3 destino;
     private bool movendoAutomaticamente = false;
-
+    public Vector2 destination;
 
     private void Awake()
     {
-
+        jardim = FindObjectOfType<JARDIM>();
         cinemachine = FindObjectOfType<CinemachineVirtualCamera>(); // Find the Cinemachine camera in the scene        
         jokenpoManager = FindObjectOfType<JokenpoManager>();
         rb = GetComponent<Rigidbody2D>();
@@ -109,11 +114,6 @@ public class ScriptPersonagem : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         dialogoGanhar = FindObjectOfType<ScriptGanhou>();
         chinelo = FindObjectOfType<InimigosKnockBack>();
-
-        //if (cinemachine == null)
-        //{
-        //    cinemachine = FindObjectOfType<CinemachineVirtualCamera>();
-        //}
 
         if (cinemachine != null)
         {
@@ -128,7 +128,6 @@ public class ScriptPersonagem : MonoBehaviour
                 // Define o valor inicial do offset
                 originalOffset = new Vector3(framingTransposer.m_TrackedObjectOffset.x, 4.05f, framingTransposer.m_TrackedObjectOffset.z);
                 targetOffset = originalOffset;
-
                 // Aplicar o valor inicial ao Framing Transposer
                 framingTransposer.m_TrackedObjectOffset = originalOffset;
             }
@@ -141,12 +140,12 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && jardim.IniciarJogo == true)
         {
+            paredeInvisivel.SetActive(false);
+            animator.SetBool("Correndo", true);
             movendoAutomaticamente = true;
         }
-
         if (movendoAutomaticamente)
         {
             MoverAutomaticamente();
@@ -169,58 +168,48 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void FixedUpdate()
     {
-        //Movimentar();
-        KnockLogic(); //substituiu o Movimentar();
+        Movimentar();
+        // KnockLogic(); //substituiu o Movimentar();
         DetectarChao();
 
     }
 
-    void KnockLogic()
-    {
-        if (kbCount < 0 && tomouDano == false)
-        {
-            Movimentar();
-        }
-        else if (tomouDano == true)
-        {
-            animator.SetTrigger("dano");
+    // void KnockLogic()
+    // {
+    //     if(jardim.IniciarJogo == false){
+    //         if (kbCount < 0 && tomouDano == false)
+    //         {
+    //             Movimentar();
+    //         }
+    //         else if (tomouDano == true)
+    //         {
+    //             animator.SetTrigger("dano");
+    //             // Verificação da direção do knockback
+    //             if (isKnockRight == true) // Knockback para a direita
+    //             {
+    //                 animator.SetTrigger("dano");
 
-            // Verificação da direção do knockback
-            if (isKnockRight == true) // Knockback para a direita
-            {
-                animator.SetTrigger("dano");
+    //                 Debug.Log("Aplicando knockback para a direita");
+    //                 rb.velocity = new Vector2(kbForce, kbForce);
+    //             }
+    //             else // Knockback para a esquerda
+    //             {
+    //                 animator.SetTrigger("dano");
 
-                Debug.Log("Aplicando knockback para a direita");
-                rb.velocity = new Vector2(kbForce, kbForce);
-            }
-            else // Knockback para a esquerda
-            {
-                animator.SetTrigger("dano");
-
-                Debug.Log("Aplicando knockback para a esquerda");
-                rb.velocity = new Vector2(-kbForce, kbForce);
-            }
-
-            tomouDano = false; // Resetando o estado de dano
-        }
-
-        kbCount -= Time.deltaTime; // Diminuindo o tempo de knockback
-    }
-
-    //public void Invulnerabilidade()
-    //{
-
-    //}
-
-    //IEnumerator tempoInvulneravel()
-    //{
-
-    //    yield return null;
-    //}
+    //                 Debug.Log("Aplicando knockback para a esquerda");
+    //                 rb.velocity = new Vector2(-kbForce, kbForce);
+    //             }
+    //             tomouDano = false; // Resetando o estado de dano
+    //         }
+    //         kbCount -= Time.deltaTime; // Diminuindo o tempo de knockback
+    //     } 
+    //     else {
+    //         return;
+    //     }
+    // }
 
     public void Agachar()
     {
-
         if (Input.GetKeyDown(KeyCode.LeftShift))
         {
             bool taAgachado = animator.GetBool("taAgachado");
@@ -270,28 +259,46 @@ public class ScriptPersonagem : MonoBehaviour
         //    animator.SetBool("Correndo", VelX != 0);
         //}
 
-        if (!emCorridaInfinita)
-        {
-            float VelX = Input.GetAxis("Horizontal");
-            Vector3 Movement = new Vector3(VelX, 0f, 0f);
-            transform.position += Movement * Time.deltaTime * speed;
+        if(SceneManager.GetActiveScene().name == "JardimJogo"){
+            if (!emCorridaInfinita && jardim.IniciarJogo == false)
+            {    
+                float VelX = Input.GetAxis("Horizontal");
+                Vector3 Movement = new Vector3(VelX, 0f, 0f);
+                transform.position += Movement * Time.deltaTime * speed;
 
-            animator.SetFloat("Velocidade", Mathf.Abs(VelX));
+                animator.SetFloat("Velocidade", Mathf.Abs(VelX));
 
-            if (VelX > 0)
-            {
-                spriteRenderer.flipX = false;
+                if (VelX > 0)
+                {
+                    spriteRenderer.flipX = false;
+                }
+                else if (VelX < 0)
+                {
+                    spriteRenderer.flipX = true;
+                }
+                animator.SetBool("Correndo", VelX != 0);
             }
-            else if (VelX < 0)
-            {
-                spriteRenderer.flipX = true;
+            else {
+                return;
             }
-
-            animator.SetBool("Correndo", VelX != 0);
         }
-
+        else {
+            float VelX = Input.GetAxis("Horizontal");
+             Vector3 Movement = new Vector3(VelX, 0f, 0f);
+             transform.position += Movement * Time.deltaTime * speed;
+             animator.SetFloat("Velocidade", Mathf.Abs(VelX));
+             if (VelX > 0)
+             {
+                 spriteRenderer.flipX = false;
+             }
+             else if (VelX < 0)
+             {
+                 spriteRenderer.flipX = true;
+             }
+             animator.SetBool("Correndo", VelX != 0);
+        }
     }
-
+    
     private void DetectarChao()
     {
         taNoChao = Physics2D.OverlapCircle(detectaChao.position, 0.4f, oQueEhChao);
@@ -328,14 +335,21 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
+    public void MoverAutomatico(){
+        transform.position  = Vector2.Lerp(transform.position, destination, Time.deltaTime);
+    }
 
     private void MoverAutomaticamente()
     {
+        animator.SetBool("Correndo", true);
         Vector3 destino = transform.position + Vector3.right * 20f;
-        float velocidadeMovimento = 5f; // Defina a velocidade de movimentação
+        float velocidadeMovimento = 10f; // Defina a velocidade de movimentação
 
         // Move o personagem em direção ao destino
         transform.position = Vector3.MoveTowards(transform.position, destino, velocidadeMovimento * Time.deltaTime);
+        animator.SetBool("Correndo", true);
+
+        animator.SetBool("Correndo", true);
 
         // Verifica se o personagem chegou ao destino
         if (transform.position == destino)
@@ -343,30 +357,6 @@ public class ScriptPersonagem : MonoBehaviour
             movendoAutomaticamente = false; // Para a movimentação
         }
     }
-
-    //public void IniciarCorridaInfinita()
-    //{
-    //    emCorridaInfinita = true;
-    //    animator.SetBool("Correndo", true); // Ativa a animação de corrida
-
-    //    // Força o personagem a correr para a direita automaticamente
-    //    StartCoroutine(CorrerAutomaticamente());
-    //}
-
-    //private IEnumerator CorrerAutomaticamente()
-    //{
-    //    while (emCorridaInfinita)
-    //    {
-    //        transform.position += Vector3.right * Time.deltaTime * velocidadeCorridaInfinita;
-    //        yield return null; // Continua a cada frame
-    //    }
-    //}
-
-    //public void PararCorridaInfinita()
-    //{
-    //    emCorridaInfinita = false;
-    //    //animator.SetBool("Correndo", false); // Desativa a animação de corrida
-    //}
 
     // =================================================================================
     // ================================== TA PRESO =====================================
@@ -403,7 +393,6 @@ public class ScriptPersonagem : MonoBehaviour
             TomouDanoNaPlataforma();
         }
     }
-
     public void MudarPlataforma()
     {
         if (taPreso == false)
@@ -418,12 +407,10 @@ public class ScriptPersonagem : MonoBehaviour
             }
         }
     }
-
     bool EstaNaPlataforma()
     {
         return col.IsTouchingLayers(oQueEhPlataforma);
     }
-
     IEnumerator TomouDanoNaPlataforma()
     {
         Empurrar();
@@ -444,7 +431,6 @@ public class ScriptPersonagem : MonoBehaviour
         gameObject.layer = LayerMask.NameToLayer("Default");
         podePular = true;
     }
-
     IEnumerator timeBackImpulse()
     {
         rb.velocity = new Vector2(rb.velocity.x, 12);
@@ -479,7 +465,6 @@ public class ScriptPersonagem : MonoBehaviour
         wasGrounded = taNoChao;
         wasPlataformed = taNaPlataforma;
     }
-
     public void DesativarAnimacoes()
     {
         if (animator != null)
@@ -490,7 +475,6 @@ public class ScriptPersonagem : MonoBehaviour
             animator.SetFloat("Velocidade", 0f);
         }
     }
-
     public void RestaurarAnimacoes()
     {
         if (animator != null)
@@ -499,7 +483,6 @@ public class ScriptPersonagem : MonoBehaviour
             animator.SetBool("Correndo", true);
         }
     }
-
     public void CuidarLayer()
     {
         animator.SetLayerWeight(1, taNoChao ? 0 : 1);
@@ -508,7 +491,6 @@ public class ScriptPersonagem : MonoBehaviour
     // =================================================================================
     // ============================== CINEMACHINE ZOOM =================================
     // =================================================================================
-
     public void VoaPassarin()
     {
         if (framingTransposer != null)
@@ -527,7 +509,6 @@ public class ScriptPersonagem : MonoBehaviour
             Debug.LogError("CinemachineVirtualCamera não encontrada!");
         }
     }
-
     private void AjustarOffSetCamera()
     {
         if (framingTransposer != null)
@@ -537,6 +518,13 @@ public class ScriptPersonagem : MonoBehaviour
                 targetOffset,
                 Time.deltaTime * transitionSpeed
                 );
+        }
+    }
+
+    private void AjustarOffSetCameraX(){
+         if (framingTransposer != null)
+        {
+
         }
     }
 
@@ -561,6 +549,9 @@ public class ScriptPersonagem : MonoBehaviour
     {
         if(collision.gameObject.tag == "pararCorrida")
         {
+            movendoAutomaticamente = false;
+            VoaPassarin();
+            isInTriggerZone = true;
             //PararCorridaInfinita();
         }
 
@@ -587,8 +578,7 @@ public class ScriptPersonagem : MonoBehaviour
 
         if (collision.gameObject.tag == "DarZoom")
         {
-            VoaPassarin();
-            isInTriggerZone = true;
+
         }
 
         if (collision.gameObject.tag == "Ganhar")

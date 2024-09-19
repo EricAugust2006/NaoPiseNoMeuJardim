@@ -22,6 +22,7 @@ TagManager:
   - chinelo
   - plataformaInimigo
   - pararCorrida
+  - ta
   layers:
   - Default
   - TransparentFX

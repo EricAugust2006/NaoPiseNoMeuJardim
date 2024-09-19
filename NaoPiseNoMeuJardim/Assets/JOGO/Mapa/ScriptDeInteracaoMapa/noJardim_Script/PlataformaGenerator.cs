@@ -5,30 +5,45 @@ using UnityEngine;
 public class PlataformaGenerator : MonoBehaviour
 {
     public GameObject blocoPrefab; // Prefab do bloco de plataforma
-    public float distanciaGeracao = 20f; // Distância entre uma geração e outra
+    public float distanciaGeracao = 20f; // DistÃ¢ncia entre uma geraÃ§Ã£o e outra
     public float velocidade = 5f; // Velocidade das plataformas se movendo para a esquerda
     public float limiteDestruicao = -15f; // Limite para destruir plataformas fora da tela
 
     private List<GameObject> plataformasAtivas = new List<GameObject>(); // Lista para rastrear as plataformas ativas
-    private float[] posicoesY = new float[] { 2f, 12f, 18f, 24f }; // As quatro linhas horizontais
-    private float proximaPosicaoX = 0f; // A posição X onde a próxima plataforma será gerada
+    private float[] posicoesY = new float[] { 2f, 3f }; // As duas linhas horizontais
+
+    private float proximaPosicaoX = 0f; // A posiÃ§Ã£o X onde a prÃ³xima plataforma serÃ¡ gerada
+
+    private JARDIM jardim;
 
     // Define cores para cada linha
     private Color[] coresDasLinhas = new Color[] {
-        Color.red,    // Linha 1 (Y = -3f)
-        Color.green,  // Linha 2 (Y = -1f)
-        Color.blue,   // Linha 3 (Y = 1f)
-        Color.yellow  // Linha 4 (Y = 3f)
+        Color.red,    // Linha 1
+        Color.green,  // Linha 2
     };
+
+    private bool jogoIniciado = false;
 
     void Start()
     {
-        // Inicia a geração contínua de plataformas
-        StartCoroutine(GerarPlataformasContinuamente());
+        jardim = FindObjectOfType<JARDIM>();
     }
 
     void Update()
     {
+        // Verifica se o jogo foi iniciado
+        if (jardim != null && jardim.IniciarJogo && !jogoIniciado)
+        {
+            jogoIniciado = true;
+            StartCoroutine(GerarPlataformasContinuamente());
+        }
+
+        // Se o jogo nÃ£o foi iniciado, nÃ£o faz nada
+        if (!jogoIniciado)
+        {
+            return;
+        }
+
         // Movimenta as plataformas para a esquerda
         MoverPlataformas();
 
@@ -41,20 +56,17 @@ public class PlataformaGenerator : MonoBehaviour
         while (true)
         {
             GerarPlataforma();
-            // Espera um tempo antes de gerar a próxima plataforma
+            // Espera um tempo antes de gerar a prÃ³xima plataforma
             yield return new WaitForSeconds(1f); // Gera uma nova plataforma a cada 1 segundo
         }
     }
 
     void GerarPlataforma()
     {
-        // Escolhe um tamanho aleatório entre 4 e 8 blocos
-        int tamanhoPlataforma = Random.Range(4, 9);
-
-        // Escolhe uma posição aleatória Y (uma das 4 linhas)
+        int tamanhoPlataforma = Random.Range(4, 9); // Escolhe um tamanho aleatÃ³rio entre 4 e 8 blocos
         int indiceLinha = Random.Range(0, posicoesY.Length);
         float posicaoY = posicoesY[indiceLinha];
-        Color corDaLinha = coresDasLinhas[indiceLinha]; // Cor associada à linha
+        Color corDaLinha = coresDasLinhas[indiceLinha];
 
         // Cria a plataforma bloco por bloco
         for (int i = 0; i < tamanhoPlataforma; i++)
@@ -69,16 +81,15 @@ public class PlataformaGenerator : MonoBehaviour
                 sr.color = corDaLinha;
             }
 
-            plataformasAtivas.Add(bloco); // Adiciona à lista de plataformas ativas
+            plataformasAtivas.Add(bloco); // Adiciona Ã  lista de plataformas ativas
         }
 
-        // Atualiza a posição X para a próxima plataforma
-        proximaPosicaoX += tamanhoPlataforma + Random.Range(1, 4); // Espaço entre as plataformas
+        // Atualiza a posiÃ§Ã£o X para a prÃ³xima plataforma
+        proximaPosicaoX += tamanhoPlataforma + Random.Range(1, 4); // EspaÃ§o entre as plataformas
     }
 
     void MoverPlataformas()
     {
-        // Movimenta cada plataforma da lista para a esquerda
         foreach (GameObject plataforma in plataformasAtivas)
         {
             plataforma.transform.Translate(Vector2.left * velocidade * Time.deltaTime);
@@ -87,7 +98,6 @@ public class PlataformaGenerator : MonoBehaviour
 
     void DestruirPlataformas()
     {
-        // Verifica as plataformas que saíram do limite e as destrói
         for (int i = plataformasAtivas.Count - 1; i >= 0; i--)
         {
             if (plataformasAtivas[i].transform.position.x < limiteDestruicao)

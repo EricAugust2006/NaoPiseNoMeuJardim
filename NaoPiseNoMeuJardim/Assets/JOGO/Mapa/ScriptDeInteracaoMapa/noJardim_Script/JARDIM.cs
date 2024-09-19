@@ -27,6 +27,13 @@ public class JARDIM : MonoBehaviour
         }
     }
 
+    private void Update() {
+        if(Input.GetKeyDown(KeyCode.E) && playerInJardim == true){
+            barreira.SetActive(false);
+            IniciarJogo = true;
+        };
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
@@ -48,22 +55,20 @@ public class JARDIM : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (playerInJardim && Input.GetKeyDown(KeyCode.E))
-        {
-            // Inicia a cutscene de corrida
-            barreira.SetActive(false);
-            IniciarJogo = true;
-            Mae.PerseguirFilho();
-            Mae.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
+    // private void Update()
+    // {
+    //     if (playerInJardim && Input.GetKeyDown(KeyCode.E))
+    //     {
+    //         // Inicia a cutscene de corrida
+ 
+   
+    //         // Mae.PerseguirFilho();
+    //         // Mae.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
 
-            if (inimigoCollider != null)
-            {
-                inimigoCollider.enabled = true; // Habilita o CapsuleCollider do inimigo
-            }
-
-            //scriptPersonagem.cutsScene(); // Chama o método que inicia a corrida
-        }
-    }
+    //         // if (inimigoCollider != null)
+    //         // {
+    //         //     inimigoCollider.enabled = true; // Habilita o CapsuleCollider do inimigo
+    //         // }
+    //     }
+    // }
 }

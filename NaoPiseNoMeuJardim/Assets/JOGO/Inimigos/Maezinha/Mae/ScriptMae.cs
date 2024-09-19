@@ -63,7 +63,7 @@ public class ScriptMae : MonoBehaviour
 
         // Inicia a atualização do caminho e o lançamento do chinelo em intervalos regulares
         InvokeRepeating("UpdatePath", 0f, pathUpdateSeconds);
-        StartCoroutine(ThrowChineloRoutine());
+        // StartCoroutine(ThrowChineloRoutine());
     }
 
     private void FixedUpdate()
@@ -78,7 +78,7 @@ public class ScriptMae : MonoBehaviour
         // Atualiza o movimento do chinelo se ele estiver instanciado
         if (chineloInstanciado != null)
         {
-            AtualizarMovimentoChinelo();
+            // AtualizarMovimentoChinelo();
         }
     }
 
@@ -180,68 +180,68 @@ public class ScriptMae : MonoBehaviour
         eventoDesativadoTemporariamente = false;
     }
 
-    // Função que lança o chinelo a cada intervalo
-    private IEnumerator ThrowChineloRoutine()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(throwInterval);
-            if (jardim.IniciarJogo)
-            {
-                ThrowChinelo();
-            }
-        }
-    }
+    // // Função que lança o chinelo a cada intervalo
+    // private IEnumerator ThrowChineloRoutine()
+    // {
+    //     while (true)
+    //     {
+    //         yield return new WaitForSeconds(throwInterval);
+    //         if (jardim.IniciarJogo)
+    //         {
+    //             ThrowChinelo();
+    //         }
+    //     }
+    // }
 
-    // Função para lançar o chinelo
-    private void ThrowChinelo()
-    {
-        chineloInstanciado = Instantiate(chineloPrefab, chineloSpawnPoint.position, chineloSpawnPoint.rotation);
-        isChineloFollowing = true;
-        StartCoroutine(ChineloBehaviour());
+    // // Função para lançar o chinelo
+    // private void ThrowChinelo()
+    // {
+    //     chineloInstanciado = Instantiate(chineloPrefab, chineloSpawnPoint.position, chineloSpawnPoint.rotation);
+    //     isChineloFollowing = true;
+    //     StartCoroutine(ChineloBehaviour());
 
-        Destroy(chineloInstanciado, 6f);
-    }
+    //     Destroy(chineloInstanciado, 6f);
+    // }
 
-    // Função para controlar o comportamento do chinelo (perseguir e depois arremessar)
-    public IEnumerator ChineloBehaviour()
-    {
-        Rigidbody2D chineloRb = chineloInstanciado.GetComponent<Rigidbody2D>();
+    // // Função para controlar o comportamento do chinelo (perseguir e depois arremessar)
+    // public IEnumerator ChineloBehaviour()
+    // {
+    //     Rigidbody2D chineloRb = chineloInstanciado.GetComponent<Rigidbody2D>();
 
-        // Verifica se o chinelo possui um Rigidbody2D
-        if (chineloRb != null)
-        {
-            // Primeira fase: chinelo segue o jogador com velocidade normal
-            float elapsedTime = 0f;
-            while (elapsedTime < chineloFollowDuration)
-            {
-                if (!isChineloFollowing)
-                    yield break;
+    //     // Verifica se o chinelo possui um Rigidbody2D
+    //     if (chineloRb != null)
+    //     {
+    //         // Primeira fase: chinelo segue o jogador com velocidade normal
+    //         float elapsedTime = 0f;
+    //         while (elapsedTime < chineloFollowDuration)
+    //         {
+    //             if (!isChineloFollowing)
+    //                 yield break;
 
-                Vector2 direction = (target.position - chineloInstanciado.transform.position).normalized;
-                chineloRb.velocity = direction * chineloSpeed;
-                elapsedTime += Time.deltaTime;
-                yield return null;
-            }
+    //             Vector2 direction = (target.position - chineloInstanciado.transform.position).normalized;
+    //             chineloRb.velocity = direction * chineloSpeed;
+    //             elapsedTime += Time.deltaTime;
+    //             yield return null;
+    //         }
 
-            // Segunda fase: chinelo é arremessado em alta velocidade em direção ao jogador
-            isChineloFollowing = false;
-            Vector2 throwDirection = (target.position - chineloInstanciado.transform.position).normalized;
-            chineloRb.velocity = throwDirection * chineloThrowSpeed;
-        }
-    }
+    //         // Segunda fase: chinelo é arremessado em alta velocidade em direção ao jogador
+    //         isChineloFollowing = false;
+    //         Vector2 throwDirection = (target.position - chineloInstanciado.transform.position).normalized;
+    //         chineloRb.velocity = throwDirection * chineloThrowSpeed;
+    //     }
+    // }
 
-    // Função para atualizar o movimento do chinelo
-    private void AtualizarMovimentoChinelo()
-    {
-        if (chineloInstanciado == null)
-            return;
+    // // Função para atualizar o movimento do chinelo
+    // private void AtualizarMovimentoChinelo()
+    // {
+    //     if (chineloInstanciado == null)
+    //         return;
 
-        Rigidbody2D chineloRb = chineloInstanciado.GetComponent<Rigidbody2D>();
-        if (chineloRb != null && isChineloFollowing)
-        {
-            Vector2 direction = (target.position - chineloInstanciado.transform.position).normalized;
-            chineloRb.velocity = direction * chineloSpeed;
-        }
-    }
+    //     Rigidbody2D chineloRb = chineloInstanciado.GetComponent<Rigidbody2D>();
+    //     if (chineloRb != null && isChineloFollowing)
+    //     {
+    //         Vector2 direction = (target.position - chineloInstanciado.transform.position).normalized;
+    //         chineloRb.velocity = direction * chineloSpeed;
+    //     }
+    // }
 }
