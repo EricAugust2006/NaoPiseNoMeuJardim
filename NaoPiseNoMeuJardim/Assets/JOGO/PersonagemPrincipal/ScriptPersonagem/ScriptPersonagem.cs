@@ -74,9 +74,9 @@ public class ScriptPersonagem : MonoBehaviour
     private Vector3 originalOffset;
     private Vector3 targetOffset;
 
-     private Vector3 originalOffsetX;
+    private Vector3 originalOffsetX;
     private Vector3 targetOffsetX;
-    
+
     private bool isInTriggerZone = false;
     public float transitionSpeed = 10f;
 
@@ -125,11 +125,12 @@ public class ScriptPersonagem : MonoBehaviour
 
             if (framingTransposer != null)
             {
-                // Define o valor inicial do offset
-                originalOffset = new Vector3(framingTransposer.m_TrackedObjectOffset.x, 4.05f, framingTransposer.m_TrackedObjectOffset.z);
-                targetOffset = originalOffset;
-                // Aplicar o valor inicial ao Framing Transposer
-                framingTransposer.m_TrackedObjectOffset = originalOffset;
+                // Define o valor inicial do offset no eixo X (originalOffsetX)
+                originalOffsetX = new Vector3(0f, framingTransposer.m_TrackedObjectOffset.y, framingTransposer.m_TrackedObjectOffset.z);
+                targetOffsetX = originalOffsetX;
+
+                // Aplicar o valor inicial ao Framing Transposer, mas apenas no eixo X
+                framingTransposer.m_TrackedObjectOffset = new Vector3(originalOffsetX.x, framingTransposer.m_TrackedObjectOffset.y, framingTransposer.m_TrackedObjectOffset.z);
             }
         }
         else
@@ -140,16 +141,24 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && jardim.IniciarJogo == true)
+        if (Input.GetKeyDown(KeyCode.E) && jardim.eventoLigado && jardim.IniciarJogo == true)
         {
+            // Remove a parede invisível e inicia a corrida automática
             paredeInvisivel.SetActive(false);
             animator.SetBool("Correndo", true);
             movendoAutomaticamente = true;
         }
+
         if (movendoAutomaticamente)
         {
             MoverAutomaticamente();
         }
+        else
+        {
+            // Permite o movimento manual caso o evento do jardim tenha sido finalizado
+            Movimentar();
+        }
+
 
         if (podePular)
         {
@@ -162,7 +171,7 @@ public class ScriptPersonagem : MonoBehaviour
         EstaLivre();
 
         AjustarZoomCamera();
-        AjustarOffSetCamera();
+
         Agachar();
     }
 
@@ -176,7 +185,7 @@ public class ScriptPersonagem : MonoBehaviour
 
     // void KnockLogic()
     // {
-    //     if(jardim.IniciarJogo == false){
+    //     if(jardim.eventoLigado == false){
     //         if (kbCount < 0 && tomouDano == false)
     //         {
     //             Movimentar();
@@ -237,6 +246,34 @@ public class ScriptPersonagem : MonoBehaviour
             animator.SetBool("andarAgachado", false);
         }
     }
+
+    private void MoverAutomaticamente()
+    {
+        //animator.SetBool("Correndo", true);
+        //Vector3 destino = transform.position + Vector3.right * 20f;
+        //float velocidadeMovimento = 10f; // Defina a velocidade de movimentação
+
+        //// Move o personagem em direção ao destino
+        //transform.position = Vector3.MoveTowards(transform.position, destino, velocidadeMovimento * Time.deltaTime);
+        //animator.SetBool("Correndo", true);
+
+        //// Verifica se o personagem chegou ao destino
+        //if (transform.position == destino)
+        //{
+        //    movendoAutomaticamente = false; // Para a movimentação
+        //}
+
+        // Lógica de movimentação automática (mover o personagem até o destino)
+        transform.Translate(Vector3.right * speed * Time.deltaTime);
+
+        //// Adicione aqui a condição de parada automática
+        //if (/* Condição para parar a corrida automática */)
+        //{
+        //    movendoAutomaticamente = false;
+        //    animator.SetBool("Correndo", false);
+        //}
+    }
+
     public void Movimentar()
     {
         //if (taPreso == false)
@@ -259,9 +296,12 @@ public class ScriptPersonagem : MonoBehaviour
         //    animator.SetBool("Correndo", VelX != 0);
         //}
 
-        if(SceneManager.GetActiveScene().name == "JardimJogo"){
-            if (!emCorridaInfinita && jardim.IniciarJogo == false)
-            {    
+        // Movimento do personagem enquanto não está no estado de corrida infinita
+        if (SceneManager.GetActiveScene().name == "JardimJogo")
+        {
+            // Verifica se o personagem não está em corrida automática e o evento não está ativado
+            if (!emCorridaInfinita && !movendoAutomaticamente && !jardim.IniciarJogo)
+            {
                 float VelX = Input.GetAxis("Horizontal");
                 Vector3 Movement = new Vector3(VelX, 0f, 0f);
                 transform.position += Movement * Time.deltaTime * speed;
@@ -278,27 +318,28 @@ public class ScriptPersonagem : MonoBehaviour
                 }
                 animator.SetBool("Correndo", VelX != 0);
             }
-            else {
-                return;
-            }
         }
-        else {
+        else
+        {
+            // Movimentação fora do Jardim
             float VelX = Input.GetAxis("Horizontal");
-             Vector3 Movement = new Vector3(VelX, 0f, 0f);
-             transform.position += Movement * Time.deltaTime * speed;
-             animator.SetFloat("Velocidade", Mathf.Abs(VelX));
-             if (VelX > 0)
-             {
-                 spriteRenderer.flipX = false;
-             }
-             else if (VelX < 0)
-             {
-                 spriteRenderer.flipX = true;
-             }
-             animator.SetBool("Correndo", VelX != 0);
+            Vector3 Movement = new Vector3(VelX, 0f, 0f);
+            transform.position += Movement * Time.deltaTime * speed;
+            animator.SetFloat("Velocidade", Mathf.Abs(VelX));
+            if (VelX > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+            else if (VelX < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            animator.SetBool("Correndo", VelX != 0);
         }
     }
+
     
+
     private void DetectarChao()
     {
         taNoChao = Physics2D.OverlapCircle(detectaChao.position, 0.4f, oQueEhChao);
@@ -335,28 +376,9 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
-    public void MoverAutomatico(){
-        transform.position  = Vector2.Lerp(transform.position, destination, Time.deltaTime);
-    }
-
-    private void MoverAutomaticamente()
-    {
-        animator.SetBool("Correndo", true);
-        Vector3 destino = transform.position + Vector3.right * 20f;
-        float velocidadeMovimento = 10f; // Defina a velocidade de movimentação
-
-        // Move o personagem em direção ao destino
-        transform.position = Vector3.MoveTowards(transform.position, destino, velocidadeMovimento * Time.deltaTime);
-        animator.SetBool("Correndo", true);
-
-        animator.SetBool("Correndo", true);
-
-        // Verifica se o personagem chegou ao destino
-        if (transform.position == destino)
-        {
-            movendoAutomaticamente = false; // Para a movimentação
-        }
-    }
+    //public void MoverAutomatico() {
+    //    transform.position = Vector2.Lerp(transform.position, destination, Time.deltaTime);
+    //}
 
     // =================================================================================
     // ================================== TA PRESO =====================================
@@ -513,96 +535,90 @@ public class ScriptPersonagem : MonoBehaviour
     {
         if (framingTransposer != null)
         {
+            // Aqui ajustamos apenas o eixo X
             framingTransposer.m_TrackedObjectOffset = Vector3.Lerp(
                 framingTransposer.m_TrackedObjectOffset,
-                targetOffset,
+                new Vector3(targetOffsetX.x, framingTransposer.m_TrackedObjectOffset.y, framingTransposer.m_TrackedObjectOffset.z),
                 Time.deltaTime * transitionSpeed
-                );
-        }
-    }
-
-    private void AjustarOffSetCameraX(){
-         if (framingTransposer != null)
-        {
-
+            );
         }
     }
 
 
-    private void AjustarZoomCamera()
-    {
-        if (cinemachine != null)
+        private void AjustarZoomCamera()
         {
-            cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(
-                cinemachine.m_Lens.OrthographicSize,
-                targetOrthoSize,
-                zoomSpeed * Time.deltaTime
-                );
+            if (cinemachine != null)
+            {
+                cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(
+                    cinemachine.m_Lens.OrthographicSize,
+                    targetOrthoSize,
+                    zoomSpeed * Time.deltaTime
+                    );
+            }
         }
-    }
 
-    // =================================================================================
-    // ============================= PARTE DAS COLISÕES ================================
-    // =================================================================================
+        // =================================================================================
+        // ============================= PARTE DAS COLISÕES ================================
+        // =================================================================================
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "pararCorrida")
+        private void OnTriggerEnter2D(Collider2D collision)
         {
-            movendoAutomaticamente = false;
-            VoaPassarin();
-            isInTriggerZone = true;
+            if (collision.gameObject.tag == "pararCorrida")
+            {
+                movendoAutomaticamente = false;
+                VoaPassarin();
+                AjustarOffSetCamera();
             //PararCorridaInfinita();
         }
 
-        if (collision.gameObject.tag == "ObjetoImpulso")
-        {
-            StartCoroutine(mudarPlataforma());
-            StartCoroutine(timeBackImpulse());
-            animator.SetBool("Caindo", false);
+            if (collision.gameObject.tag == "ObjetoImpulso")
+            {
+                StartCoroutine(mudarPlataforma());
+                StartCoroutine(timeBackImpulse());
+                animator.SetBool("Caindo", false);
+            }
+
+            if (collision.gameObject.tag == "PrenderPersonagem")
+            {
+                UIapertar.SetActive(true);
+                quantidadeApertada = 0;
+                taPreso = true;
+                animator.SetBool("taPreso", true);
+            }
+
+            if (collision.gameObject.tag == "Municao")
+            {
+                Debug.Log("A folha me encostou");
+                StartCoroutine(TomouDanoNaPlataforma());
+            }
+
+            if (collision.gameObject.tag == "DarZoom")
+            {
+
+            }
+
+            if (collision.gameObject.tag == "Ganhar")
+            {
+                dialogoGanhar.StartDialogue();
+            }
+
+            if (collision.gameObject.tag == "chinelo")
+            {
+                tomouDano = true;
+                sistemaDeVida.vida--;
+                Destroy(collision.gameObject);
+            }
         }
 
-        if (collision.gameObject.tag == "PrenderPersonagem")
+        private void OnTriggerExit2D(Collider2D collision)
         {
-            UIapertar.SetActive(true);
-            quantidadeApertada = 0;
-            taPreso = true;
-            animator.SetBool("taPreso", true);
+            animator.SetBool("taPreso", false);
+
+            if (collision.gameObject.CompareTag("DarZoom"))
+            {
+                targetOffset = originalOffset;
+                isInTriggerZone = false;
+                targetOrthoSize = initialOrthoSize; // Retornar ao tamanho inicial quando sair do trigger
+            }
         }
-
-        if (collision.gameObject.tag == "Municao")
-        {
-            Debug.Log("A folha me encostou");
-            StartCoroutine(TomouDanoNaPlataforma());
-        }
-
-        if (collision.gameObject.tag == "DarZoom")
-        {
-
-        }
-
-        if (collision.gameObject.tag == "Ganhar")
-        {
-            dialogoGanhar.StartDialogue();
-        }
-
-        if (collision.gameObject.tag == "chinelo")
-        {
-            tomouDano = true;
-            sistemaDeVida.vida--;
-            Destroy(collision.gameObject);
-        }
-    }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        animator.SetBool("taPreso", false);
-
-        if (collision.gameObject.CompareTag("DarZoom"))
-        {
-            targetOffset = originalOffset;
-            isInTriggerZone = false;
-            targetOrthoSize = initialOrthoSize; // Retornar ao tamanho inicial quando sair do trigger
-        }
-    }
 }

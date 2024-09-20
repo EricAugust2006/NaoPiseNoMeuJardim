@@ -39,7 +39,6 @@ public class JARDIM : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             eventoLigado = true;
-            Debug.Log("Você pisou no jardim");
             playerInJardim = true;
             BotaoInciar.SetActive(true);
         }
