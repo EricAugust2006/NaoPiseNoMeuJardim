@@ -170,7 +170,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f99f6aeef01f549ace2b24ad76629f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
+  speed: 5
   pulando: 0
   forcaPulo: 7
   podePular: 1
@@ -188,6 +188,9 @@ MonoBehaviour:
   botaoInteracao: {fileID: 0}
   prefabMunicao: {fileID: 0}
   fimDeJogo: {fileID: 0}
+  UIapertar: {fileID: 0}
+  sistemaDeVida: {fileID: 0}
+  paredeInvisivel: {fileID: 0}
   quantidadeApertada: 0
   spawnPointSceneA: {fileID: 0}
   spawnPointSceneB: {fileID: 0}
@@ -196,6 +199,21 @@ MonoBehaviour:
   targetOrthoSize: 10
   initialOrthoSize: 6
   zoomSpeed: 2
+  transitionSpeed: 10
+  kbForce: 0
+  kbCount: 0
+  kBTime: 0
+  isKnockRight: 0
+  tomouDano: 0
+  eventoTaPreso: 0
+  textPro: {fileID: 0}
+  emCorridaInfinita: 0
+  velocidadeCorridaInfinita: 8
+  distanciaScene: 100
+  velocidadeScene: 5
+  movendoAutomaticamente: 0
+  destination: {x: 0, y: 0}
+  parallaxAtivar: 0
 --- !u!95 &1470256751769913611
 Animator:
   serializedVersion: 7
@@ -252,6 +270,7 @@ MonoBehaviour:
   coracao: []
   cheio: {fileID: 0}
   vazio: {fileID: 0}
+  telaGameOver: {fileID: 0}
 --- !u!1 &3455245543287764978
 GameObject:
   m_ObjectHideFlags: 0

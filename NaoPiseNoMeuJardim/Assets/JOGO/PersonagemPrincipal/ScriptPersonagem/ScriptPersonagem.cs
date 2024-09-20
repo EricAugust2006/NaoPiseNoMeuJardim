@@ -13,7 +13,7 @@ public class ScriptPersonagem : MonoBehaviour
 {
     [Header("Movimentacao")]
     private Rigidbody2D rb;
-    [SerializeField] public float speed = 5f;
+    [SerializeField] public float speed;
 
     [Header("Pulo")]
     public bool pulando = false;
@@ -61,6 +61,7 @@ public class ScriptPersonagem : MonoBehaviour
     private ScriptGanhou dialogoGanhar;
     private InimigosKnockBack chinelo;
     private JARDIM jardim;
+    private MoverFundo parallax;
 
 
     [Header("Cinemachine")]
@@ -100,11 +101,15 @@ public class ScriptPersonagem : MonoBehaviour
     public float distanciaScene = 100f;
     public float velocidadeScene = 5f;
     private bool movendoScene = false;
-    private bool movendoAutomaticamente = false;
+    public bool movendoAutomaticamente = false;
     public Vector2 destination;
+
+    [Header("Corrida Infinita")]
+    public bool parallaxAtivar = false;
 
     private void Awake()
     {
+        parallax = FindObjectOfType<MoverFundo>();
         jardim = FindObjectOfType<JARDIM>();
         cinemachine = FindObjectOfType<CinemachineVirtualCamera>(); // Find the Cinemachine camera in the scene        
         jokenpoManager = FindObjectOfType<JokenpoManager>();
@@ -141,12 +146,13 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && jardim.eventoLigado && jardim.IniciarJogo == true)
+        if (Input.GetKeyDown(KeyCode.E) && jardim.eventoLigado)
         {
             // Remove a parede invisível e inicia a corrida automática
             paredeInvisivel.SetActive(false);
             animator.SetBool("Correndo", true);
             movendoAutomaticamente = true;
+            spriteRenderer.flipX = false;
         }
 
         if (movendoAutomaticamente)
@@ -264,9 +270,9 @@ public class ScriptPersonagem : MonoBehaviour
         //}
 
         // Lógica de movimentação automática (mover o personagem até o destino)
-        transform.Translate(Vector3.right * speed * Time.deltaTime);
+        transform.Translate(Vector2.right * speed * Time.deltaTime);
 
-        //// Adicione aqui a condição de parada automática
+        //// Adicione aqui a condição de parada autwomática
         //if (/* Condição para parar a corrida automática */)
         //{
         //    movendoAutomaticamente = false;
@@ -565,11 +571,13 @@ public class ScriptPersonagem : MonoBehaviour
         {
             if (collision.gameObject.tag == "pararCorrida")
             {
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+                spriteRenderer.flipX = false;
                 movendoAutomaticamente = false;
                 VoaPassarin();
                 AjustarOffSetCamera();
-            //PararCorridaInfinita();
-        }
+                parallaxAtivar = true;
+            }
 
             if (collision.gameObject.tag == "ObjetoImpulso")
             {

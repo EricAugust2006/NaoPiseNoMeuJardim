@@ -23,6 +23,8 @@ TagManager:
   - plataformaInimigo
   - pararCorrida
   - ta
+  - Jardim
+  - pisarPlataforma
   layers:
   - Default
   - TransparentFX
