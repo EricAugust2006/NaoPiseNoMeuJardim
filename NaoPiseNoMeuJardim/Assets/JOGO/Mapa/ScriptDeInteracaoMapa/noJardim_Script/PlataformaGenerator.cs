@@ -4,25 +4,31 @@ using UnityEngine;
 
 public class PlataformaGenerator : MonoBehaviour
 {
+    [Header("Configurações da Plataforma")]
     public GameObject blocoPrefab; // Prefab do bloco de plataforma
-    public float distanciaGeracao = 20f; // Distância entre uma geração e outra
+    public List<Transform> pontosDeSpawn; // Lista de pontos de spawn das plataformas
     public float velocidade = 5f; // Velocidade das plataformas se movendo para a esquerda
     public float limiteDestruicao = -15f; // Limite para destruir plataformas fora da tela
+    public Color[] coresDasLinhas; // Cores das linhas de plataformas (configurável)
+
+    [Header("Configurações de Geração")]
+    public float intervaloMinimoGeracao = 2f; // Intervalo mínimo entre gerações de plataformas
+    public float intervaloMaximoGeracao = 4f; // Intervalo máximo entre gerações de plataformas
+    public int tamanhoMinimoPlataforma = 4; // Tamanho mínimo da plataforma
+    public int tamanhoMaximoPlataforma = 8; // Tamanho máximo da plataforma
+    public float espacamentoMinimoPlataforma = 4f; // Espaçamento mínimo entre plataformas
+    public float espacamentoMaximoPlataforma = 7f; // Espaçamento máximo entre plataformas
+
+    [Header("Configurações de Inimigos")]
+    public GameObject inimigoPrefab; // Prefab do inimigo
+    public float chanceSpawnInimigo = 0.3f; // Chance de spawnar inimigo por plataforma
 
     private List<GameObject> plataformasAtivas = new List<GameObject>(); // Lista para rastrear as plataformas ativas
-    private float[] posicoesY = new float[] { 2f, 3f }; // As duas linhas horizontais
-
-    private float proximaPosicaoX = 0f; // A posição X onde a próxima plataforma será gerada
-
     private JARDIM jardim;
-
-    // Define cores para cada linha
-    private Color[] coresDasLinhas = new Color[] {
-        Color.red,    // Linha 1
-        Color.green,  // Linha 2
-    };
-
     private bool jogoIniciado = false;
+
+    // Posiciona a próxima plataforma sempre a uma distância fixa do ponto de spawn
+    private float distanciaFixadaX = 10f; // Distância fixa da câmera/jogador para o spawn das plataformas
 
     void Start()
     {
@@ -56,23 +62,31 @@ public class PlataformaGenerator : MonoBehaviour
         while (true)
         {
             GerarPlataforma();
-            // Espera um tempo antes de gerar a próxima plataforma
-            yield return new WaitForSeconds(1f); // Gera uma nova plataforma a cada 1 segundo
+            // Espera um tempo aleatório antes de gerar a próxima plataforma
+            yield return new WaitForSeconds(Random.Range(intervaloMinimoGeracao, intervaloMaximoGeracao));
         }
     }
 
     void GerarPlataforma()
     {
-        int tamanhoPlataforma = Random.Range(4, 9); // Escolhe um tamanho aleatório entre 4 e 8 blocos
-        int indiceLinha = Random.Range(0, posicoesY.Length);
-        float posicaoY = posicoesY[indiceLinha];
-        Color corDaLinha = coresDasLinhas[indiceLinha];
+        if (pontosDeSpawn.Count == 0) return; // Se não houver pontos de spawn, sair da função
 
-        // Cria a plataforma bloco por bloco
+        // Escolhe um ponto de spawn aleatório da lista
+        Transform pontoDeSpawn = pontosDeSpawn[Random.Range(0, pontosDeSpawn.Count)];
+        int tamanhoPlataforma = Random.Range(tamanhoMinimoPlataforma, tamanhoMaximoPlataforma + 1); // Tamanho aleatório da plataforma
+        Color corDaLinha = coresDasLinhas[Random.Range(0, coresDasLinhas.Length)];
+
+        // Calcula a posição de spawn baseada em uma distância fixa da posição do ponto de spawn
+        float posicaoBaseX = pontoDeSpawn.position.x + distanciaFixadaX;
+
+        GameObject plataforma = new GameObject("Plataforma");
+        plataforma.transform.position = pontoDeSpawn.position; // Posiciona a nova plataforma
+
+        // Cria a plataforma bloco por bloco no ponto de spawn
         for (int i = 0; i < tamanhoPlataforma; i++)
         {
-            Vector2 posicaoBloco = new Vector2(proximaPosicaoX + i, posicaoY);
-            GameObject bloco = Instantiate(blocoPrefab, posicaoBloco, Quaternion.identity);
+            Vector2 posicaoBloco = new Vector2(posicaoBaseX + i, pontoDeSpawn.position.y);
+            GameObject bloco = Instantiate(blocoPrefab, posicaoBloco, Quaternion.identity, plataforma.transform);
 
             // Muda a cor do bloco de acordo com a linha
             SpriteRenderer sr = bloco.GetComponent<SpriteRenderer>();
@@ -80,12 +94,28 @@ public class PlataformaGenerator : MonoBehaviour
             {
                 sr.color = corDaLinha;
             }
-
-            plataformasAtivas.Add(bloco); // Adiciona à lista de plataformas ativas
         }
 
-        // Atualiza a posição X para a próxima plataforma
-        proximaPosicaoX += tamanhoPlataforma + Random.Range(1, 4); // Espaço entre as plataformas
+        // Decide se vai spawnar um inimigo para essa plataforma
+        if (Random.value < chanceSpawnInimigo)
+        {
+            SpawnarInimigo(plataforma);
+        }
+
+        plataformasAtivas.Add(plataforma); // Adiciona a plataforma inteira à lista de plataformas ativas
+    }
+
+    void SpawnarInimigo(GameObject plataforma)
+    {
+        // Pega a posição do primeiro bloco da plataforma
+        Transform primeiroBloco = plataforma.transform.GetChild(0);
+
+        // Ajusta a posição para spawnar o inimigo no topo do primeiro bloco
+        Vector2 posicaoInimigo = new Vector2(primeiroBloco.position.x, primeiroBloco.position.y + 0.5f); // Ajuste de altura
+        GameObject inimigo = Instantiate(inimigoPrefab, posicaoInimigo, Quaternion.identity);
+
+        // Define a plataforma como o pai do inimigo para que ele se mova junto com a plataforma
+        inimigo.transform.parent = plataforma.transform;
     }
 
     void MoverPlataformas()

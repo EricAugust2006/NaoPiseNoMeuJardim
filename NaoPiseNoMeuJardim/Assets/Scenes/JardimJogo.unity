@@ -63000,6 +63000,37 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6530512588310891544, guid: 2d778975b9e009b4e84d50fcb108d63e, type: 3}
   m_PrefabInstance: {fileID: 1454375558}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &307529735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 307529736}
+  m_Layer: 0
+  m_Name: SpawnPlataform1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &307529736
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307529735}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 85, y: 2, z: -0.022485584}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &323150676 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2224648662898838051, guid: 83393814314fdfe4a81df3b9ca362169, type: 3}
@@ -63115,7 +63146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.4
-  movimentoAutomatico: 0.2
+  movimentoAutomatico: 0.5
   irmao: {fileID: 1388546077}
 --- !u!1 &363763140
 GameObject:
@@ -64472,7 +64503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 1
-  movimentoAutomatico: 0.2
+  movimentoAutomatico: 0.5
   irmao: {fileID: 1982115015}
 --- !u!1 &681819545
 GameObject:
@@ -65555,6 +65586,52 @@ MonoBehaviour:
   m_CameraActivatedEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!1 &795882912
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 795882914}
+  - component: {fileID: 795882913}
+  m_Layer: 0
+  m_Name: HorizontalInimigoSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &795882913
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795882912}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5b0b8539a88cbec44985a1adfdf0cc64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  inimigoPrefab: {fileID: 3369979742674274362, guid: dc45bc930f5282f49b6dbca77c92438c, type: 3}
+  intervaloSpawn: 5
+--- !u!4 &795882914
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 795882912}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 74.1, y: 4, z: -0.26997384}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &799271066
 GameObject:
   m_ObjectHideFlags: 0
@@ -65754,7 +65831,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.6
-  movimentoAutomatico: 0.2
+  movimentoAutomatico: 0.5
   irmao: {fileID: 2032375851}
 --- !u!1 &824491265
 GameObject:
@@ -67720,7 +67797,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.4
-  movimentoAutomatico: 0.2
+  movimentoAutomatico: 0.5
   irmao: {fileID: 360598366}
 --- !u!4 &1419089774 stripped
 Transform:
@@ -69423,6 +69500,10 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1193409190806246324, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
+      propertyPath: offSetX
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193409190806246324, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: textPro
       value: 
       objectReference: {fileID: 548736939}
@@ -69903,9 +69984,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blocoPrefab: {fileID: 6637006406729679616, guid: e3ce6a708d864f74a831e3e0a4430f7e, type: 3}
-  distanciaGeracao: 20
+  pontosDeSpawn:
+  - {fileID: 307529736}
   velocidade: 8
   limiteDestruicao: -15
+  coresDasLinhas:
+  - {r: 1, g: 0, b: 0, a: 1}
+  - {r: 0, g: 1, b: 0, a: 1}
+  intervaloMinimoGeracao: 2
+  intervaloMaximoGeracao: 6
+  tamanhoMinimoPlataforma: 4
+  tamanhoMaximoPlataforma: 10
+  espacamentoMinimoPlataforma: 4
+  espacamentoMaximoPlataforma: 10
+  inimigoPrefab: {fileID: 2904658612614552509, guid: 4ed2640d847d93a46981fb4dca9a5345, type: 3}
+  chanceSpawnInimigo: 0.2
 --- !u!4 &1751892052
 Transform:
   m_ObjectHideFlags: 0
@@ -71798,7 +71891,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 1
-  movimentoAutomatico: 0.2
+  movimentoAutomatico: 0.5
   irmao: {fileID: 678657153}
 --- !u!1001 &1987021426
 PrefabInstance:
@@ -72295,7 +72388,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   parallaxEffect: 0.6
-  movimentoAutomatico: 0.2
+  movimentoAutomatico: 0.5
   irmao: {fileID: 817453783}
 --- !u!4 &2054204230 stripped
 Transform:
@@ -74541,3 +74634,5 @@ SceneRoots:
   - {fileID: 1751892052}
   - {fileID: 1377466243}
   - {fileID: 45350752}
+  - {fileID: 307529736}
+  - {fileID: 795882914}

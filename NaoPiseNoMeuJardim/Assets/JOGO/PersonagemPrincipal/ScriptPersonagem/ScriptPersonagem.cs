@@ -67,10 +67,13 @@ public class ScriptPersonagem : MonoBehaviour
     [Header("Cinemachine")]
     private CinemachineFramingTransposer framingTransposer;
     public CinemachineVirtualCamera cinemachine;
+    private bool pararCorrida = false;
 
     public float targetOrthoSize = 10f;
     public float initialOrthoSize = 6f;
     public float zoomSpeed = 2f;
+
+    public float offSetX;
 
     private Vector3 originalOffset;
     private Vector3 targetOffset;
@@ -131,7 +134,7 @@ public class ScriptPersonagem : MonoBehaviour
             if (framingTransposer != null)
             {
                 // Define o valor inicial do offset no eixo X (originalOffsetX)
-                originalOffsetX = new Vector3(0f, framingTransposer.m_TrackedObjectOffset.y, framingTransposer.m_TrackedObjectOffset.z);
+                originalOffsetX = new Vector3(framingTransposer.m_TrackedObjectOffset.x, framingTransposer.m_TrackedObjectOffset.y, framingTransposer.m_TrackedObjectOffset.z);
                 targetOffsetX = originalOffsetX;
 
                 // Aplicar o valor inicial ao Framing Transposer, mas apenas no eixo X
@@ -146,6 +149,11 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void Update()
     {
+        if (pararCorrida)
+        {
+            MudarCameraParaDireita();
+        }
+
         if (Input.GetKeyDown(KeyCode.E) && jardim.eventoLigado)
         {
             // Remove a parede invisível e inicia a corrida automática
@@ -344,7 +352,15 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
-    
+    private void MudarCameraParaDireita()
+    {
+        if (framingTransposer != null)
+        {
+            // Defina o valor do offset no eixo X para mover a câmera para a direita
+            framingTransposer.m_TrackedObjectOffset = new Vector3(originalOffsetX.x + offSetX, framingTransposer.m_TrackedObjectOffset.y, framingTransposer.m_TrackedObjectOffset.z);
+        }
+    }
+
 
     private void DetectarChao()
     {
@@ -577,6 +593,7 @@ public class ScriptPersonagem : MonoBehaviour
                 VoaPassarin();
                 AjustarOffSetCamera();
                 parallaxAtivar = true;
+                MudarCameraParaDireita();
             }
 
             if (collision.gameObject.tag == "ObjetoImpulso")
