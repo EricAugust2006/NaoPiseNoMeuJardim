@@ -1613,9 +1613,9 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 34
+  field of view: 60
   orthographic: 1
-  orthographic size: 8.22
+  orthographic size: 6.0859303
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -1640,7 +1640,7 @@ Transform:
   m_GameObject: {fileID: 328816973}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -44.024982, y: -2.0499997, z: -7.22}
+  m_LocalPosition: {x: -43.869423, y: -2.86406, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4702,7 +4702,7 @@ PrefabInstance:
     - target: {fileID: 5757998171606388099, guid: d2225469c04ec8441b3562bc7e164b5d, type: 3}
       propertyPath: dialogoGanhar
       value: 
-      objectReference: {fileID: 1168572980}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8138,7 +8138,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1168572979
+--- !u!1 &1186128328
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8146,49 +8146,52 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1168572981}
-  - component: {fileID: 1168572980}
+  - component: {fileID: 1186128330}
+  - component: {fileID: 1186128329}
   m_Layer: 0
-  m_Name: GerenciarInicio
+  m_Name: gerenciainicio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1168572980
+--- !u!114 &1186128329
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168572979}
+  m_GameObject: {fileID: 1186128328}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc280d9bd81c15342ac3449ec20de672, type: 3}
+  m_Script: {fileID: 11500000, guid: f7719a79eef5c8f459143c3b7febf8c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueNpc:
-  - aagua com sal
+  - aaa
+  - vbbbbbbb
+  - dafgadfgadfgadf
+  - fgadfgadfgdafgadfgadfg
   dialogueIndex: 0
   dialoguePanel: {fileID: 1188291808}
   dialogueText: {fileID: 1188291807}
   nameNpc: {fileID: 1188291806}
   imageNpc: {fileID: 1188291805}
-  spriteNpc: {fileID: -9188101176490687506, guid: 0ca80460ec7a9da48addcbe5d39f2a90, type: 3}
+  spriteNpc: {fileID: 21300000, guid: 41ea5baaa14cbcb458c0db213a5186ec, type: 3}
   readyToSpeak: 0
   startDialogue: 0
-  victoryPanel: {fileID: 2019959629}
-  fadeSpeed: 1
---- !u!4 &1168572981
+  fadeSpeed: 0.09
+  blackScreenPanel: {fileID: 2019959629}
+--- !u!4 &1186128330
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1168572979}
+  m_GameObject: {fileID: 1186128328}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 401.08792, y: -16.449097, z: 2721.255}
+  m_LocalPosition: {x: 58.54072, y: -0.47906694, z: 0.88758016}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -10829,4 +10832,4 @@ SceneRoots:
   - {fileID: 1313345662}
   - {fileID: 1372537881}
   - {fileID: 2124555728}
-  - {fileID: 1168572981}
+  - {fileID: 1186128330}

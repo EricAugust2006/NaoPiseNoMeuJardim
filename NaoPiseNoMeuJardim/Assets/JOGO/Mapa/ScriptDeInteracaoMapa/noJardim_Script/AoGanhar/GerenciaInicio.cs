@@ -25,7 +25,6 @@ public class GerenciaInicio : MonoBehaviour
     private Animator personagemAnimator;
 
     // Victory script variables
-    public Image victoryPanel;
     public float fadeSpeed = 0.5f;
 
     // Black screen panel for scene transition
@@ -34,7 +33,7 @@ public class GerenciaInicio : MonoBehaviour
     void Start()
     {
         dialoguePanel.SetActive(false);
-        victoryPanel.gameObject.SetActive(false);
+        // victoryPanel.gameObject.SetActive(false);
 
         // Start with black screen active
         blackScreenPanel.gameObject.SetActive(true);
@@ -49,7 +48,7 @@ public class GerenciaInicio : MonoBehaviour
     IEnumerator BeginScene()
     {
         // Start the dialogue automatically
-        yield return new WaitForSeconds(1f); // Wait for 1 second before starting dialogue
+        yield return new WaitForSeconds(3.5f); // Wait for 1 second before starting dialogue
         StartDialogue();
     }
 
@@ -100,7 +99,7 @@ public class GerenciaInicio : MonoBehaviour
         foreach (char letter in dialogueNpc[dialogueIndex])
         {
             dialogueText.text += letter;
-            yield return new WaitForSeconds(0.04f);
+            yield return new WaitForSeconds(0.1f);
         }
     }
 
@@ -116,7 +115,6 @@ public class GerenciaInicio : MonoBehaviour
             blackScreenPanel.color = color;
             yield return null;
         }
-
         // Disable black screen panel after fade out
         blackScreenPanel.gameObject.SetActive(false);
     }
@@ -134,41 +132,6 @@ public class GerenciaInicio : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             readyToSpeak = false;
-        }
-    }
-
-    //// Method to disable animations
-    //void DesativarAnimacoes()
-    //{
-    //    if (personagemAnimator != null)
-    //    {
-    //        Debug.Log("Desativando animações");
-    //        personagemAnimator.SetBool("Correndo", false);
-    //        personagemAnimator.SetBool("Caindo", false);
-    //        personagemAnimator.SetFloat("Velocidade", 0f);
-    //    }
-    //}
-
-    //// Method to restore animations
-    //void RestaurarAnimacoes()
-    //{
-    //    if (personagemAnimator != null)
-    //    {
-    //        Debug.Log("Restaurando animações");
-    //        personagemAnimator.SetBool("Correndo", true);
-    //    }
-    //}
-
-    IEnumerator ShowVictory()
-    {
-        victoryPanel.gameObject.SetActive(true);
-        Color color = victoryPanel.color;
-
-        while (color.a < 1f)
-        {
-            color.a -= fadeSpeed * Time.deltaTime;
-            victoryPanel.color = color;
-            yield return null;
         }
     }
 }

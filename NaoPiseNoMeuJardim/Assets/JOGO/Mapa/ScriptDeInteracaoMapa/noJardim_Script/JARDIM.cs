@@ -53,21 +53,4 @@ public class JARDIM : MonoBehaviour
             BotaoInciar.SetActive(false);
         }
     }
-
-    // private void Update()
-    // {
-    //     if (playerInJardim && Input.GetKeyDown(KeyCode.E))
-    //     {
-    //         // Inicia a cutscene de corrida
- 
-   
-    //         // Mae.PerseguirFilho();
-    //         // Mae.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
-
-    //         // if (inimigoCollider != null)
-    //         // {
-    //         //     inimigoCollider.enabled = true; // Habilita o CapsuleCollider do inimigo
-    //         // }
-    //     }
-    // }
 }

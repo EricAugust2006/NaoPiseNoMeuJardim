@@ -8,14 +8,16 @@ public class InimigoEmCima : MonoBehaviour
     public GameObject Projetil;
     public float tempoSpawn;
     private JARDIM jardim;
+    private ScriptPersonagem player;
     
     void Start(){
         jardim = FindObjectOfType<JARDIM>();
+        player = FindObjectOfType<ScriptPersonagem>();
     }
 
     void Update()
     {
-        if(jardim.IniciarJogo == true){
+        if(jardim.IniciarJogo == true && player.triggouComTagPararCorrida == true){
             ArremensarProjetil();
         }
     }

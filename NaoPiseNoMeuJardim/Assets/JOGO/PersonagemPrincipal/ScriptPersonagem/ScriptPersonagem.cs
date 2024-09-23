@@ -35,6 +35,7 @@ public class ScriptPersonagem : MonoBehaviour
     public bool taNaPlataforma;
 
     [Header("GameObjects")]
+    public GameObject desativarColisaoPlataforma;
     public GameObject botaoInteracao;
     public GameObject prefabMunicao;
     public GameObject fimDeJogo;
@@ -62,6 +63,7 @@ public class ScriptPersonagem : MonoBehaviour
     private InimigosKnockBack chinelo;
     private JARDIM jardim;
     private MoverFundo parallax;
+    private MoverFundo moveFundo;
 
 
     [Header("Cinemachine")]
@@ -109,6 +111,7 @@ public class ScriptPersonagem : MonoBehaviour
 
     [Header("Corrida Infinita")]
     public bool parallaxAtivar = false;
+    public bool triggouComTagPararCorrida = false;
 
     private void Awake()
     {
@@ -361,6 +364,16 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
+    // public void tirarFollowCinemachine(){
+    //     if(cinemachine != null){
+    //         cinemachine.Follow = null;
+    //          MudarCameraParaDireita();
+    //     }
+    //     else {
+    //         Debug.LogError("CinemachineVirtualCamera não encontrado no GameObject.");
+    //     }
+    // }
+
 
     private void DetectarChao()
     {
@@ -566,18 +579,17 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
-
-        private void AjustarZoomCamera()
+    private void AjustarZoomCamera()
+    {
+        if (cinemachine != null)
         {
-            if (cinemachine != null)
-            {
-                cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(
-                    cinemachine.m_Lens.OrthographicSize,
-                    targetOrthoSize,
-                    zoomSpeed * Time.deltaTime
-                    );
-            }
+            cinemachine.m_Lens.OrthographicSize = Mathf.Lerp(
+                cinemachine.m_Lens.OrthographicSize,
+                targetOrthoSize,
+                zoomSpeed * Time.deltaTime
+                );
         }
+    }
 
         // =================================================================================
         // ============================= PARTE DAS COLISÕES ================================
@@ -587,6 +599,7 @@ public class ScriptPersonagem : MonoBehaviour
         {
             if (collision.gameObject.tag == "pararCorrida")
             {
+                triggouComTagPararCorrida = true;
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 spriteRenderer.flipX = false;
                 movendoAutomaticamente = false;
@@ -594,6 +607,7 @@ public class ScriptPersonagem : MonoBehaviour
                 AjustarOffSetCamera();
                 parallaxAtivar = true;
                 MudarCameraParaDireita();
+                // tirarFollowCinemachine();                
             }
 
             if (collision.gameObject.tag == "ObjetoImpulso")
