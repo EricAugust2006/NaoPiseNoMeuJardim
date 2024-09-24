@@ -30,8 +30,11 @@ public class PlataformaGenerator : MonoBehaviour
     // Posiciona a próxima plataforma sempre a uma distância fixa do ponto de spawn
     private float distanciaFixadaX = 10f; // Distância fixa da câmera/jogador para o spawn das plataformas
 
+    private ScriptPersonagem player;
+
     void Start()
     {
+        player = FindObjectOfType<ScriptPersonagem>();
         jardim = FindObjectOfType<JARDIM>();
     }
 
@@ -69,40 +72,44 @@ public class PlataformaGenerator : MonoBehaviour
 
     void GerarPlataforma()
     {
-        if (pontosDeSpawn.Count == 0) return; // Se não houver pontos de spawn, sair da função
-
-        // Escolhe um ponto de spawn aleatório da lista
-        Transform pontoDeSpawn = pontosDeSpawn[Random.Range(0, pontosDeSpawn.Count)];
-        int tamanhoPlataforma = Random.Range(tamanhoMinimoPlataforma, tamanhoMaximoPlataforma + 1); // Tamanho aleatório da plataforma
-        Color corDaLinha = coresDasLinhas[Random.Range(0, coresDasLinhas.Length)];
-
-        // Calcula a posição de spawn baseada em uma distância fixa da posição do ponto de spawn
-        float posicaoBaseX = pontoDeSpawn.position.x + distanciaFixadaX;
-
-        GameObject plataforma = new GameObject("Plataforma");
-        plataforma.transform.position = pontoDeSpawn.position; // Posiciona a nova plataforma
-
-        // Cria a plataforma bloco por bloco no ponto de spawn
-        for (int i = 0; i < tamanhoPlataforma; i++)
+        if (player.triggouComTagPararCorrida == true)
         {
-            Vector2 posicaoBloco = new Vector2(posicaoBaseX + i, pontoDeSpawn.position.y);
-            GameObject bloco = Instantiate(blocoPrefab, posicaoBloco, Quaternion.identity, plataforma.transform);
 
-            // Muda a cor do bloco de acordo com a linha
-            SpriteRenderer sr = bloco.GetComponent<SpriteRenderer>();
-            if (sr != null)
+            if (pontosDeSpawn.Count == 0) return; // Se não houver pontos de spawn, sair da função
+
+            // Escolhe um ponto de spawn aleatório da lista
+            Transform pontoDeSpawn = pontosDeSpawn[Random.Range(0, pontosDeSpawn.Count)];
+            int tamanhoPlataforma = Random.Range(tamanhoMinimoPlataforma, tamanhoMaximoPlataforma + 1); // Tamanho aleatório da plataforma
+            Color corDaLinha = coresDasLinhas[Random.Range(0, coresDasLinhas.Length)];
+
+            // Calcula a posição de spawn baseada em uma distância fixa da posição do ponto de spawn
+            float posicaoBaseX = pontoDeSpawn.position.x + distanciaFixadaX;
+
+            GameObject plataforma = new GameObject("Plataforma");
+            plataforma.transform.position = pontoDeSpawn.position; // Posiciona a nova plataforma
+
+            // Cria a plataforma bloco por bloco no ponto de spawn
+            for (int i = 0; i < tamanhoPlataforma; i++)
             {
-                sr.color = corDaLinha;
+                Vector2 posicaoBloco = new Vector2(posicaoBaseX + i, pontoDeSpawn.position.y);
+                GameObject bloco = Instantiate(blocoPrefab, posicaoBloco, Quaternion.identity, plataforma.transform);
+
+                // Muda a cor do bloco de acordo com a linha
+                SpriteRenderer sr = bloco.GetComponent<SpriteRenderer>();
+                if (sr != null)
+                {
+                    sr.color = corDaLinha;
+                }
             }
-        }
 
-        // Decide se vai spawnar um inimigo para essa plataforma
-        if (Random.value < chanceSpawnInimigo)
-        {
-            SpawnarInimigo(plataforma);
-        }
+            // Decide se vai spawnar um inimigo para essa plataforma
+            if (Random.value < chanceSpawnInimigo)
+            {
+                SpawnarInimigo(plataforma);
+            }
 
-        plataformasAtivas.Add(plataforma); // Adiciona a plataforma inteira à lista de plataformas ativas
+            plataformasAtivas.Add(plataforma); // Adiciona a plataforma inteira à lista de plataformas ativas
+        }
     }
 
     void SpawnarInimigo(GameObject plataforma)

@@ -77,6 +77,9 @@ TagManager:
   - name: DecoracaoCenario
     uniqueID: 2273801827
     locked: 0
+  - name: arvoreatras
+    uniqueID: 3179907585
+    locked: 0
   - name: Chao
     uniqueID: 3948538017
     locked: 0

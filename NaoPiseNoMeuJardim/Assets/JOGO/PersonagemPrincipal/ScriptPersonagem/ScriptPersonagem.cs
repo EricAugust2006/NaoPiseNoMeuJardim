@@ -94,7 +94,6 @@ public class ScriptPersonagem : MonoBehaviour
     public bool isKnockRight;
     public bool tomouDano = false;
 
-
     public bool eventoTaPreso = false;
     public TextMeshProUGUI textPro;
 
@@ -112,9 +111,21 @@ public class ScriptPersonagem : MonoBehaviour
     public bool triggouComTagPararCorrida = false;
 
     [Header("Corrida Infinita")]
+
+    public MoverFundo parallaxCeuUm;
+    public MoverFundo parallaxCeuDois;
+
+    public MoverFundo parallaxRochasUm;
+    public MoverFundo parallaxRochasDois;
+
+    public MoverFundo parallaxGramasUm;
+    public MoverFundo parallaxGramasDois;
+
     public MoverFundo parallaxChaoUM;
     public MoverFundo parallaxChaoDOIS;
 
+    public MoverFundo parallaxArvoreUm;
+    public MoverFundo parallaxArvoreDois;
 
     private void Awake()
     {
@@ -567,6 +578,19 @@ public class ScriptPersonagem : MonoBehaviour
     {
         parallaxChaoUM.movimentoAutomatico = 8f;
         parallaxChaoDOIS.movimentoAutomatico = 8f;
+
+        parallaxCeuUm.movimentoAutomatico = 1f;
+        parallaxCeuDois.movimentoAutomatico = 1f;
+
+
+        parallaxRochasUm.movimentoAutomatico = .8f;
+        parallaxRochasDois.movimentoAutomatico = .8f;
+
+        parallaxGramasUm.movimentoAutomatico = .6f;
+        parallaxGramasDois.movimentoAutomatico = .6f;
+
+        parallaxArvoreUm.movimentoAutomatico = 8f;
+        parallaxArvoreDois.movimentoAutomatico = 8f;
     }
 
     // =================================================================================
@@ -574,71 +598,79 @@ public class ScriptPersonagem : MonoBehaviour
     // =================================================================================
 
     private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "pararCorrida")
         {
-            if (collision.gameObject.tag == "pararCorrida")
-            {
-                triggouComTagPararCorrida = true;
-                rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
-                spriteRenderer.flipX = false;
-                movendoAutomaticamente = false;
-                parallaxAtivar = true;
-                forcaPulo = 18f;
-                VoaPassarin();
-                AjustarOffSetCamera();
-                MudarCameraParaDireita();
-                modificaParallaxAutomatico();
-                // tirarFollowCinemachine();                
-            }
-
-            if (collision.gameObject.tag == "ObjetoImpulso")
-            {
-                StartCoroutine(mudarPlataforma());
-                StartCoroutine(timeBackImpulse());
-                animator.SetBool("Caindo", false);
-            }
-
-            if (collision.gameObject.tag == "PrenderPersonagem")
-            {
-                UIapertar.SetActive(true);
-                quantidadeApertada = 0;
-                taPreso = true;
-                animator.SetBool("taPreso", true);
-            }
-
-            if (collision.gameObject.tag == "Municao")
-            {
-                Debug.Log("A folha me encostou");
-                StartCoroutine(TomouDanoNaPlataforma());
-            }
-
-            if (collision.gameObject.tag == "DarZoom")
-            {
-
-            }
-
-            if (collision.gameObject.tag == "Ganhar")
-            {
-                dialogoGanhar.StartDialogue();
-            }
-
-            if (collision.gameObject.tag == "chinelo")
-            {
-                animator.SetTrigger("dano");
-                tomouDano = true;
-                sistemaDeVida.vida--;
-                Destroy(collision.gameObject);
-            }
+            triggouComTagPararCorrida = true;
+            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+            spriteRenderer.flipX = false;
+            movendoAutomaticamente = false;
+            parallaxAtivar = true;
+            forcaPulo = 18f;
+            VoaPassarin();
+            AjustarOffSetCamera();
+            MudarCameraParaDireita();
+            modificaParallaxAutomatico();
+            // tirarFollowCinemachine();                
         }
 
-        private void OnTriggerExit2D(Collider2D collision)
+        if (collision.gameObject.tag == "ObjetoImpulso")
         {
-            animator.SetBool("taPreso", false);
-
-            if (collision.gameObject.CompareTag("DarZoom"))
-            {
-                targetOffset = originalOffset;
-                isInTriggerZone = false;
-                targetOrthoSize = initialOrthoSize; // Retornar ao tamanho inicial quando sair do trigger
-            }
+            StartCoroutine(mudarPlataforma());
+            StartCoroutine(timeBackImpulse());
+            animator.SetBool("Caindo", false);
         }
+
+        if (collision.gameObject.tag == "PrenderPersonagem")
+        {
+            UIapertar.SetActive(true);
+            quantidadeApertada = 0;
+            taPreso = true;
+            animator.SetBool("taPreso", true);
+        }
+
+        if (collision.gameObject.tag == "Municao")
+        {
+            Destroy(collision.gameObject);
+            Debug.Log("A folha me encostou");
+            StartCoroutine(TomouDanoNaPlataforma());
+        }
+
+        if (collision.gameObject.tag == "plataformaInimigo")
+        {
+            Destroy(collision.gameObject);
+            sistemaDeVida.vida--;
+            StartCoroutine(TomouDanoNaPlataforma());
+        }
+
+        if (collision.gameObject.tag == "DarZoom")
+        {
+
+        }
+
+        if (collision.gameObject.tag == "Ganhar")
+        {
+            dialogoGanhar.StartDialogue();
+        }
+
+        if (collision.gameObject.tag == "chinelo")
+        {
+            animator.SetTrigger("dano");
+            tomouDano = true;
+            sistemaDeVida.vida--;
+            Destroy(collision.gameObject);
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        animator.SetBool("taPreso", false);
+
+        if (collision.gameObject.CompareTag("DarZoom"))
+        {
+            targetOffset = originalOffset;
+            isInTriggerZone = false;
+            targetOrthoSize = initialOrthoSize; // Retornar ao tamanho inicial quando sair do trigger
+        }
+    }
 }
