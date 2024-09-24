@@ -101,17 +101,20 @@ public class ScriptPersonagem : MonoBehaviour
     [Header("Corrida Infinita")]
     public bool emCorridaInfinita = false;
     public float velocidadeCorridaInfinita = 8f;
-
-    [Header("Corrida Infinita")]
     public float distanciaScene = 100f;
     public float velocidadeScene = 5f;
-    private bool movendoScene = false;
     public bool movendoAutomaticamente = false;
+    private bool movendoScene = false;
     public Vector2 destination;
 
-    [Header("Corrida Infinita")]
+    [Header("Bools Parallax")]
     public bool parallaxAtivar = false;
     public bool triggouComTagPararCorrida = false;
+
+    [Header("Corrida Infinita")]
+    public MoverFundo parallaxChaoUM;
+    public MoverFundo parallaxChaoDOIS;
+
 
     private void Awake()
     {
@@ -266,29 +269,9 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void MoverAutomaticamente()
     {
+        float speedautomatico = speed * 1.5f;
         //animator.SetBool("Correndo", true);
-        //Vector3 destino = transform.position + Vector3.right * 20f;
-        //float velocidadeMovimento = 10f; // Defina a velocidade de movimentação
-
-        //// Move o personagem em direção ao destino
-        //transform.position = Vector3.MoveTowards(transform.position, destino, velocidadeMovimento * Time.deltaTime);
-        //animator.SetBool("Correndo", true);
-
-        //// Verifica se o personagem chegou ao destino
-        //if (transform.position == destino)
-        //{
-        //    movendoAutomaticamente = false; // Para a movimentação
-        //}
-
-        // Lógica de movimentação automática (mover o personagem até o destino)
-        transform.Translate(Vector2.right * speed * Time.deltaTime);
-
-        //// Adicione aqui a condição de parada autwomática
-        //if (/* Condição para parar a corrida automática */)
-        //{
-        //    movendoAutomaticamente = false;
-        //    animator.SetBool("Correndo", false);
-        //}
+        transform.Translate(Vector2.right * speedautomatico * Time.deltaTime);
     }
 
     public void Movimentar()
@@ -363,17 +346,6 @@ public class ScriptPersonagem : MonoBehaviour
             framingTransposer.m_TrackedObjectOffset = new Vector3(originalOffsetX.x + offSetX, framingTransposer.m_TrackedObjectOffset.y, framingTransposer.m_TrackedObjectOffset.z);
         }
     }
-
-    // public void tirarFollowCinemachine(){
-    //     if(cinemachine != null){
-    //         cinemachine.Follow = null;
-    //          MudarCameraParaDireita();
-    //     }
-    //     else {
-    //         Debug.LogError("CinemachineVirtualCamera não encontrado no GameObject.");
-    //     }
-    // }
-
 
     private void DetectarChao()
     {
@@ -474,7 +446,7 @@ public class ScriptPersonagem : MonoBehaviour
         podePular = false;
         col.enabled = false;
         //gameObject.layer = LayerMask.NameToLayer("Player");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
         //gameObject.layer = LayerMask.NameToLayer("Default");
         col.enabled = true;
         podePular = true;
@@ -484,7 +456,7 @@ public class ScriptPersonagem : MonoBehaviour
     {
         podePular = false;
         gameObject.layer = LayerMask.NameToLayer("Delimitador");
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
         gameObject.layer = LayerMask.NameToLayer("Default");
         podePular = true;
     }
@@ -591,11 +563,17 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
-        // =================================================================================
-        // ============================= PARTE DAS COLISÕES ================================
-        // =================================================================================
+    private void modificaParallaxAutomatico()
+    {
+        parallaxChaoUM.movimentoAutomatico = 8f;
+        parallaxChaoDOIS.movimentoAutomatico = 8f;
+    }
 
-        private void OnTriggerEnter2D(Collider2D collision)
+    // =================================================================================
+    // ============================= PARTE DAS COLISÕES ================================
+    // =================================================================================
+
+    private void OnTriggerEnter2D(Collider2D collision)
         {
             if (collision.gameObject.tag == "pararCorrida")
             {
@@ -603,10 +581,12 @@ public class ScriptPersonagem : MonoBehaviour
                 rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
                 spriteRenderer.flipX = false;
                 movendoAutomaticamente = false;
+                parallaxAtivar = true;
+                forcaPulo = 18f;
                 VoaPassarin();
                 AjustarOffSetCamera();
-                parallaxAtivar = true;
                 MudarCameraParaDireita();
+                modificaParallaxAutomatico();
                 // tirarFollowCinemachine();                
             }
 
@@ -643,6 +623,7 @@ public class ScriptPersonagem : MonoBehaviour
 
             if (collision.gameObject.tag == "chinelo")
             {
+                animator.SetTrigger("dano");
                 tomouDano = true;
                 sistemaDeVida.vida--;
                 Destroy(collision.gameObject);

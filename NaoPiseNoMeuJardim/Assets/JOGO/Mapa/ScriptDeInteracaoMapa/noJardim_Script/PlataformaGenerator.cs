@@ -107,11 +107,18 @@ public class PlataformaGenerator : MonoBehaviour
 
     void SpawnarInimigo(GameObject plataforma)
     {
-        // Pega a posição do primeiro bloco da plataforma
-        Transform primeiroBloco = plataforma.transform.GetChild(0);
+        // Obtém o número total de blocos na plataforma
+        int numeroDeBlocos = plataforma.transform.childCount;
 
-        // Ajusta a posição para spawnar o inimigo no topo do primeiro bloco
-        Vector2 posicaoInimigo = new Vector2(primeiroBloco.position.x, primeiroBloco.position.y + 0.5f); // Ajuste de altura
+        // Garante que haja pelo menos um bloco para spawnar o inimigo
+        if (numeroDeBlocos == 0) return;
+
+        // Escolhe um bloco aleatório da plataforma
+        int indiceBlocoAleatorio = Random.Range(0, numeroDeBlocos);
+        Transform blocoAleatorio = plataforma.transform.GetChild(indiceBlocoAleatorio);
+
+        // Ajusta a posição para spawnar o inimigo no topo do bloco aleatório
+        Vector2 posicaoInimigo = new Vector2(blocoAleatorio.position.x, blocoAleatorio.position.y + 0.5f); // Ajuste de altura
         GameObject inimigo = Instantiate(inimigoPrefab, posicaoInimigo, Quaternion.identity);
 
         // Define a plataforma como o pai do inimigo para que ele se mova junto com a plataforma
