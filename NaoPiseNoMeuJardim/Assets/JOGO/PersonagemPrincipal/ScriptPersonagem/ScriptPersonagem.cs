@@ -127,6 +127,10 @@ public class ScriptPersonagem : MonoBehaviour
     public MoverFundo parallaxArvoreUm;
     public MoverFundo parallaxArvoreDois;
 
+    [Header("Descer rápido")]
+    public float velocidadeDescidaRapida = 20f;  // Velocidade extra ao descer
+     public float raioDetectaChao = 0.2f;  // Raio para a detecção
+
     private void Awake()
     {
         parallax = FindObjectOfType<MoverFundo>();
@@ -166,6 +170,8 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void Update()
     {
+        descerRapido();
+        
         if (pararCorrida)
         {
             MudarCameraParaDireita();
@@ -203,13 +209,12 @@ public class ScriptPersonagem : MonoBehaviour
 
         AjustarZoomCamera();
 
-        Agachar();
+        // Agachar();
     }
 
     private void FixedUpdate()
     {
         Movimentar();
-        // KnockLogic(); //substituiu o Movimentar();
         DetectarChao();
 
     }
@@ -248,35 +253,36 @@ public class ScriptPersonagem : MonoBehaviour
     //     }
     // }
 
-    public void Agachar()
-    {
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            bool taAgachado = animator.GetBool("taAgachado");
-            animator.SetBool("taAgachado", !taAgachado);
 
-            if (animator.GetBool("taAgachado"))
-            {
-                //speed = 4.5f;
-            }
-            else
-            {
-                speed = 8f;
-                animator.SetTrigger("sairDoAgachar");
-            }
-        }
+    // public void Agachar()
+    // {
+    //     if (Input.GetKeyDown(KeyCode.LeftShift))
+    //     {
+    //         bool taAgachado = animator.GetBool("taAgachado");
+    //         animator.SetBool("taAgachado", !taAgachado);
 
-        bool estaSeMovendo = Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
+    //         if (animator.GetBool("taAgachado"))
+    //         {
+    //             //speed = 4.5f;
+    //         }
+    //         else
+    //         {
+    //             speed = 8f;
+    //             animator.SetTrigger("sairDoAgachar");
+    //         }
+    //     }
 
-        if (animator.GetBool("taAgachado") && estaSeMovendo)
-        {
-            animator.SetBool("andarAgachado", true);
-        }
-        else
-        {
-            animator.SetBool("andarAgachado", false);
-        }
-    }
+    //     bool estaSeMovendo = Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
+
+    //     if (animator.GetBool("taAgachado") && estaSeMovendo)
+    //     {
+    //         animator.SetBool("andarAgachado", true);
+    //     }
+    //     else
+    //     {
+    //         animator.SetBool("andarAgachado", false);
+    //     }
+    // }
 
     private void MoverAutomaticamente()
     {
@@ -392,6 +398,19 @@ public class ScriptPersonagem : MonoBehaviour
                 }
             }
         }
+    }
+
+    public void descerRapido(){
+        taNoChao = Physics2D.OverlapCircle(detectaChao.position, raioDetectaChao, oQueEhChao);
+
+        if (!taNoChao && Input.GetKey(KeyCode.DownArrow))
+        {
+            DescerRapidamente();
+        }
+    }
+
+    public void DescerRapidamente(){
+        rb.velocity = new Vector2(rb.velocity.x, -velocidadeDescidaRapida);
     }
 
     //public void MoverAutomatico() {
