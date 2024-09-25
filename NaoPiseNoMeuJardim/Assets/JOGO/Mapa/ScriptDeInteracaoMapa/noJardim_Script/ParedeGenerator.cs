@@ -56,21 +56,25 @@ public class ParedeGenerator : MonoBehaviour
 
     void GerarParede()
     {
-        // Calcula a posição de spawn baseada em uma distância fixa da posição do ponto de spawn
-        float posicaoBaseX = pontoDeSpawn.position.x + 10f; // Distância fixa para spawnar a parede
-
-        GameObject parede = new GameObject("Parede");
-        parede.transform.position = new Vector2(posicaoBaseX, pontoDeSpawn.position.y); // Posiciona a parede no chão
-
-        // Cria a parede bloco por bloco (3 blocos de altura)
-        for (int i = 0; i < 3; i++)
+        if (player.triggouComTagPararCorrida == true)
         {
-            Vector2 posicaoBloco = new Vector2(posicaoBaseX, pontoDeSpawn.position.y + i);
-            GameObject bloco = Instantiate(paredePrefab, posicaoBloco, Quaternion.identity, parede.transform);
-        }
 
-        // Adiciona a parede à lista de paredes ativas
-        paredesAtivas.Add(parede);
+            // Calcula a posição de spawn baseada em uma distância fixa da posição do ponto de spawn
+            float posicaoBaseX = pontoDeSpawn.position.x + 10f; // Distância fixa para spawnar a parede
+
+            GameObject parede = new GameObject("Parede");
+            parede.transform.position = new Vector2(posicaoBaseX, pontoDeSpawn.position.y); // Posiciona a parede no chão
+
+            // Cria a parede bloco por bloco (3 blocos de altura)
+            for (int i = 0; i < 3; i++)
+            {
+                Vector2 posicaoBloco = new Vector2(posicaoBaseX, pontoDeSpawn.position.y + i);
+                GameObject bloco = Instantiate(paredePrefab, posicaoBloco, Quaternion.identity, parede.transform);
+            }
+
+            // Adiciona a parede à lista de paredes ativas
+            paredesAtivas.Add(parede);
+        }
     }
 
     void MoverParedes()

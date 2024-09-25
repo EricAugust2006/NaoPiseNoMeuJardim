@@ -129,7 +129,13 @@ public class ScriptPersonagem : MonoBehaviour
 
     [Header("Descer rápido")]
     public float velocidadeDescidaRapida = 20f;  // Velocidade extra ao descer
-     public float raioDetectaChao = 0.2f;  // Raio para a detecção
+    public float raioDetectaChao = 0.2f;  // Raio para a detecção
+
+    [Header("Destrói Toupeira")]
+    // public Collider2D destroiToupeira;
+    public GameObject destroiToupeira;
+
+    public Transform detectaToupeura;
 
     private void Awake()
     {
@@ -143,6 +149,8 @@ public class ScriptPersonagem : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         dialogoGanhar = FindObjectOfType<ScriptGanhou>();
         chinelo = FindObjectOfType<InimigosKnockBack>();
+
+        // destroiToupeira.SetActive(false);
 
         if (cinemachine != null)
         {
@@ -171,7 +179,7 @@ public class ScriptPersonagem : MonoBehaviour
     private void Update()
     {
         descerRapido();
-        
+
         if (pararCorrida)
         {
             MudarCameraParaDireita();
@@ -216,7 +224,6 @@ public class ScriptPersonagem : MonoBehaviour
     {
         Movimentar();
         DetectarChao();
-
     }
 
     // void KnockLogic()
@@ -391,6 +398,7 @@ public class ScriptPersonagem : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
+                // destroiToupeira.enabled = false;
                 if (podePular && taNoChao || taNaPlataforma)
                 {
                     rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
@@ -400,22 +408,33 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
-    public void descerRapido(){
+    public void descerRapido()
+    {
         taNoChao = Physics2D.OverlapCircle(detectaChao.position, raioDetectaChao, oQueEhChao);
 
-        if (!taNoChao && Input.GetKey(KeyCode.DownArrow))
+        if (!taNoChao && Input.GetButtonDown("VerticalDown"))
         {
+            // destroiToupeira.SetActive(true);
+            StartCoroutine(trocarLayerPlayer());
             DescerRapidamente();
         }
+        // if (taNoChao || taNaPlataforma)
+        // {
+        //     destroiToupeira.SetActive(false);
+        // }
     }
 
-    public void DescerRapidamente(){
+    public void DescerRapidamente()
+    {
         rb.velocity = new Vector2(rb.velocity.x, -velocidadeDescidaRapida);
     }
 
-    //public void MoverAutomatico() {
-    //    transform.position = Vector2.Lerp(transform.position, destination, Time.deltaTime);
-    //}
+    IEnumerator trocarLayerPlayer()
+    {
+        gameObject.tag = "PlayerAtk";
+        yield return new WaitForSeconds(1f);
+        gameObject.tag = "Player";
+    }
 
     // =================================================================================
     // ================================== TA PRESO =====================================
@@ -485,9 +504,9 @@ public class ScriptPersonagem : MonoBehaviour
     IEnumerator mudarPlataforma()
     {
         podePular = false;
-        gameObject.layer = LayerMask.NameToLayer("Delimitador");
+        // gameObject.layer = LayerMask.NameToLayer("Delimitador");
         yield return new WaitForSeconds(.5f);
-        gameObject.layer = LayerMask.NameToLayer("Default");
+        // gameObject.layer = LayerMask.NameToLayer("Default");
         podePular = true;
     }
     IEnumerator timeBackImpulse()
@@ -500,9 +519,24 @@ public class ScriptPersonagem : MonoBehaviour
     // =================================================================================
     // ================================== IMPULSO ======================================
     // =================================================================================
+    public void InimigoEmpurrar()
+    {
+        animator.SetTrigger("Jump");
+        rb.velocity = new Vector2(rb.velocity.x, 15);
+        animator.SetBool("Caindo", false);
+    }
+
     public void Empurrar()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 3);
+        animator.SetTrigger("Jump");
+        rb.velocity = new Vector2(rb.velocity.x, 10);
+        animator.SetBool("Caindo", false);
+    }
+
+     public void EmpurrarEspelho()
+    {
+        animator.SetTrigger("Jump");
+        rb.velocity = new Vector2(rb.velocity.x, 5);
         animator.SetBool("Caindo", false);
     }
 
@@ -655,11 +689,13 @@ public class ScriptPersonagem : MonoBehaviour
             StartCoroutine(TomouDanoNaPlataforma());
         }
 
-        if (collision.gameObject.tag == "plataformaInimigo")
-        {
-            Destroy(collision.gameObject);
-            sistemaDeVida.vida--;
-            StartCoroutine(TomouDanoNaPlataforma());
+        if(gameObject.tag == "Player"){
+            if (collision.gameObject.tag == "plataformaInimigo")
+            {
+                animator.SetTrigger("dano");
+                Debug.Log("Tomou dano da toupeira");
+                StartCoroutine(TomouDanoNaPlataforma());
+            }
         }
 
         if (collision.gameObject.tag == "DarZoom")
@@ -674,6 +710,7 @@ public class ScriptPersonagem : MonoBehaviour
 
         if (collision.gameObject.tag == "chinelo")
         {
+            Empurrar();
             animator.SetTrigger("dano");
             tomouDano = true;
             sistemaDeVida.vida--;

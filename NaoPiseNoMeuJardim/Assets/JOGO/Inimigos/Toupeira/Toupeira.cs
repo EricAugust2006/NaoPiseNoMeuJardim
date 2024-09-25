@@ -22,30 +22,36 @@ public class Toupeira : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            player.kbCount = player.kBTime; // Inicia o contador de knockback
+            // player.kbCount = player.kBTime; // Inicia o contador de knockback
 
-            // Adicionar mensagens de debug para verificar as posi��es
-            Debug.Log("Posi��o do jogador: " + other.transform.position.x);
-            Debug.Log("Posi��o do inimigo: " + transform.position.x);
+            // // Adicionar mensagens de debug para verificar as posi��es
+            // Debug.Log("Posi��o do jogador: " + other.transform.position.x);
+            // Debug.Log("Posi��o do inimigo: " + transform.position.x);
 
-            // Verifica a posi��o do jogador em rela��o ao inimigo para definir a dire��o do knockback
-            // Verifica a posi��o do jogador em rela��o ao inimigo
-            if (other.transform.position.x < transform.position.x)
-            {
-                // Jogador est� � esquerda do inimigo, ent�o knockback para a direita
-                player.isKnockRight = true;
-                Debug.Log("Jogador � esquerda do inimigo, knockback para a direita");
-            }
-            else if (other.transform.position.x > transform.position.x)
-            {
-                // Jogador est� � direita do inimigo, ent�o knockback para a esquerda
-                player.isKnockRight = false;
-                Debug.Log("Jogador � direita do inimigo, knockback para a esquerda");
-            }
+            // // Verifica a posi��o do jogador em rela��o ao inimigo para definir a dire��o do knockback
+            // // Verifica a posi��o do jogador em rela��o ao inimigo
+            // if (other.transform.position.x < transform.position.x)
+            // {
+            //     // Jogador est� � esquerda do inimigo, ent�o knockback para a direita
+            //     player.isKnockRight = true;
+            //     Debug.Log("Jogador � esquerda do inimigo, knockback para a direita");
+            // }
+            // else if (other.transform.position.x > transform.position.x)
+            // {
+            //     // Jogador est� � direita do inimigo, ent�o knockback para a esquerda
+            //     player.isKnockRight = false;
+            //     Debug.Log("Jogador � direita do inimigo, knockback para a esquerda");
+            // }
 
-
+            sistemaDeVida.vida--;
             // Aplica o dano ao jogador
-            //sistemaDeVida.vida--;
+        }
+
+        if (other.gameObject.tag == "PlayerAtk")
+        {
+            Debug.Log("o bixo colidiu cmg");
+            player.InimigoEmpurrar();
+            Destroy(gameObject);
         }
     }
 }

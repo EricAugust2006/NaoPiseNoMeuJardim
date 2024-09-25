@@ -24,6 +24,7 @@ public class DialogoESPELHO : MonoBehaviour
 
     public bool Interagido = false;
     public GameObject botaoInteracao;
+    public bool tanoDialogoEspelho = false;
 
     void Start()
     {
@@ -35,7 +36,7 @@ public class DialogoESPELHO : MonoBehaviour
         }
         else
         {
-            Debug.LogError("ScriptPersonagem não encontrado na cena!");
+            Debug.LogError("ScriptPersonagem nï¿½o encontrado na cena!");
         }
     }
 
@@ -43,9 +44,10 @@ public class DialogoESPELHO : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && readyToSpeak)
         {
+            tanoDialogoEspelho = true;
             if (!startDialogue)
             {
-                // Desativa pulo e animação de corrida
+                // Desativa pulo e animaï¿½ï¿½o de corrida
                 personagemScript.speed = 0f;
                 personagemScript.DesativarAnimacoes();
                 StartDialogue();
@@ -57,7 +59,7 @@ public class DialogoESPELHO : MonoBehaviour
 
             if (!Interagido)
             {
-                personagemScript.Empurrar();
+                personagemScript.EmpurrarEspelho();
                 Interagido = true;
             }
         }

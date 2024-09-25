@@ -25,6 +25,8 @@ TagManager:
   - ta
   - Jardim
   - pisarPlataforma
+  - DestroiToupeira
+  - PlayerAtk
   layers:
   - Default
   - TransparentFX
@@ -48,10 +50,10 @@ TagManager:
   - FicarNoChao
   - Ganhar
   - inimigo
-  - 
-  - 
-  - 
-  - 
+  - DestroiToupeira
+  - PisaNaPlataforma
+  - ToupeiraTomaPisada
+  - PlayerAtk
   - 
   - 
   - 
