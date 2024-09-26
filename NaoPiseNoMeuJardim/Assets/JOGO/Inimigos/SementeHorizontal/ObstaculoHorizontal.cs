@@ -12,10 +12,41 @@ public class ObstaculoHorizontal : MonoBehaviour
     public float tempoSumir;
     public float chanceSpawn = 0.2f; // Chance de spawn (0.0 a 1.0)
 
+    public static ObstaculoHorizontal instancia; // Instância única
+    public float chanceSpawnInimigo = 0.1f; // Exemplo de chance inicial de spawn
+    public GameObject obstaculoPrefab; // Prefab do obstáculo a ser instanciado
+    public float intervaloSpawn = 2f; // Intervalo de spawn
+
+
     void Start()
     {
+        if (instancia == null)
+        {
+            instancia = this;
+            StartCoroutine(SpawnObstaculos());
+        }
         jardim = FindObjectOfType<JARDIM>();
         player = FindObjectOfType<ScriptPersonagem>();
+    }
+
+    public void AumentarTaxaSpawn(float aumento)
+    {
+        chanceSpawnInimigo += aumento;
+        // Limite opcional para a taxa de spawn
+        chanceSpawnInimigo = Mathf.Clamp(chanceSpawnInimigo, 0f, 1f);
+    }
+
+     private IEnumerator SpawnObstaculos()
+    {
+        while (true)
+        {
+            // Lógica para instanciar obstáculos
+            if (Random.value < chanceSpawnInimigo)
+            {
+                Instantiate(obstaculoPrefab, new Vector3(Random.Range(-5f, 5f), 5f, 0), Quaternion.identity);
+            }
+            yield return new WaitForSeconds(intervaloSpawn);
+        }
     }
 
     void Update()

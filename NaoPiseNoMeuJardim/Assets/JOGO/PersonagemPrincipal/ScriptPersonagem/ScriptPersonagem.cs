@@ -137,6 +137,8 @@ public class ScriptPersonagem : MonoBehaviour
 
     public Transform detectaToupeura;
 
+    public Collider2D colisorGameObjectPlataforma;
+
     private void Awake()
     {
         parallax = FindObjectOfType<MoverFundo>();
@@ -412,7 +414,7 @@ public class ScriptPersonagem : MonoBehaviour
     {
         taNoChao = Physics2D.OverlapCircle(detectaChao.position, raioDetectaChao, oQueEhChao);
 
-        if (!taNoChao && Input.GetButtonDown("VerticalDown"))
+        if (!taNoChao && Input.GetButtonDown("VerticalDown") && !taNaPlataforma)
         {
             // destroiToupeira.SetActive(true);
             StartCoroutine(trocarLayerPlayer());
@@ -477,11 +479,11 @@ public class ScriptPersonagem : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump") && taNoChao && !taNaPlataforma)
             {
-                StartCoroutine(mudarPlataforma());
+                colisorGameObjectPlataforma.isTrigger = false;
             }
             if (Input.GetButtonDown("VerticalDown") && !taNoChao && taNaPlataforma)
             {
-                StartCoroutine(mudarPlataforma());
+                colisorGameObjectPlataforma.isTrigger = true;
             }
         }
     }
@@ -501,14 +503,16 @@ public class ScriptPersonagem : MonoBehaviour
         podePular = true;
     }
 
-    IEnumerator mudarPlataforma()
-    {
-        podePular = false;
-        // gameObject.layer = LayerMask.NameToLayer("Delimitador");
-        yield return new WaitForSeconds(.5f);
-        // gameObject.layer = LayerMask.NameToLayer("Default");
-        podePular = true;
-    }
+    // IEnumerator mudarPlataforma()
+    // {
+    //     col.isTrigger = false; // Restaura a colisão normal
+    //     podePular = false;
+    //     // gameObject.layer = LayerMask.NameToLayer("Delimitador");
+    //     yield return new WaitForSeconds(.5f);
+    //     // gameObject.layer = LayerMask.NameToLayer("Default");
+    //     podePular = true;
+    // }
+
     IEnumerator timeBackImpulse()
     {
         rb.velocity = new Vector2(rb.velocity.x, 12);
@@ -669,7 +673,7 @@ public class ScriptPersonagem : MonoBehaviour
 
         if (collision.gameObject.tag == "ObjetoImpulso")
         {
-            StartCoroutine(mudarPlataforma());
+            // StartCoroutine(mudarPlataforma());
             StartCoroutine(timeBackImpulse());
             animator.SetBool("Caindo", false);
         }

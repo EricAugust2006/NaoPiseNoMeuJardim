@@ -32,10 +32,38 @@ public class PlataformaGenerator : MonoBehaviour
 
     private ScriptPersonagem player;
 
+    public static PlataformaGenerator instancia; // Instância única
+    // public float chanceSpawnInimigo = 0.1f; // Exemplo de chance inicial de spawn
+    public GameObject plataformaPrefab; // Prefab da plataforma a ser instanciada
+    public float intervaloSpawn = 2f; // Intervalo de spawn
+
+
     void Start()
     {
+        if (instancia == null)
+        {
+            instancia = this;
+            StartCoroutine(SpawnPlataformas());
+        }
         player = FindObjectOfType<ScriptPersonagem>();
         jardim = FindObjectOfType<JARDIM>();
+    }
+
+    public void AumentarTaxaSpawn(float aumento)
+    {
+        chanceSpawnInimigo += aumento;
+        // Limite opcional para a taxa de spawn
+        chanceSpawnInimigo = Mathf.Clamp(chanceSpawnInimigo, 0f, 1f);
+    }
+
+    private IEnumerator SpawnPlataformas()
+    {
+        while (true)
+        {
+            // Lógica para instanciar plataformas
+            Instantiate(plataformaPrefab, new Vector3(Random.Range(-5f, 5f), 5f, 0), Quaternion.identity);
+            yield return new WaitForSeconds(intervaloSpawn);
+        }
     }
 
     void Update()

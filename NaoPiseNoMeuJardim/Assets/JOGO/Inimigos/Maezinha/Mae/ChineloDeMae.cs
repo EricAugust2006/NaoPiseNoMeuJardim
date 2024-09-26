@@ -15,12 +15,28 @@ public class ChineloDeMae : MonoBehaviour
     [Range(0f, 1f)]
     public float chanceSpawn = 0.5f; // Chance de spawn (0.0 a 1.0)
 
+    public static ChineloDeMae instancia; // Instância única
+    public float chanceSpawnInimigo = 0.1f; // Exemplo de chance inicial de spawn
+    // public GameObject chineloPrefab; // Prefab do chinelo a ser instanciado
+    public float intervaloSpawn = 2f; // Intervalo de spawn
+
     private ScriptPersonagem player;
 
     void Start()
     {
+        if (instancia == null)
+        {
+            instancia = this;
+            StartCoroutine(SpawnChinelo());
+        }
         player = FindObjectOfType<ScriptPersonagem>();
-        StartCoroutine(SpawnChinelo());
+    }
+
+     public void AumentarTaxaSpawn(float aumento)
+    {
+        chanceSpawnInimigo += aumento;
+        // Limite opcional para a taxa de spawn
+        chanceSpawnInimigo = Mathf.Clamp(chanceSpawnInimigo, 0f, 1f);
     }
 
     private IEnumerator SpawnChinelo()
