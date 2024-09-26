@@ -15,28 +15,16 @@ public class ChineloDeMae : MonoBehaviour
     [Range(0f, 1f)]
     public float chanceSpawn = 0.5f; // Chance de spawn (0.0 a 1.0)
 
-    public static ChineloDeMae instancia; // Instância única
-    public float chanceSpawnInimigo = 0.1f; // Exemplo de chance inicial de spawn
-    // public GameObject chineloPrefab; // Prefab do chinelo a ser instanciado
-    public float intervaloSpawn = 2f; // Intervalo de spawn
-
     private ScriptPersonagem player;
 
     void Start()
     {
-        if (instancia == null)
-        {
-            instancia = this;
-            StartCoroutine(SpawnChinelo());
-        }
         player = FindObjectOfType<ScriptPersonagem>();
-    }
+        if (player.triggouComTagPararCorrida == true)
+        {
+            StartCoroutine(SpawnChinelo());
 
-     public void AumentarTaxaSpawn(float aumento)
-    {
-        chanceSpawnInimigo += aumento;
-        // Limite opcional para a taxa de spawn
-        chanceSpawnInimigo = Mathf.Clamp(chanceSpawnInimigo, 0f, 1f);
+        }
     }
 
     private IEnumerator SpawnChinelo()
@@ -69,19 +57,21 @@ public class ChineloDeMae : MonoBehaviour
     {
         if (player.triggouComTagPararCorrida == true)
         {
-
-            // Cria o chinelo no ponto de spawn do ch�o
+            // Cria o chinelo no ponto de spawn do chão
             GameObject chineloLancado = Instantiate(chineloPrefab, spawnPointGround.position, Quaternion.identity);
 
-            // Passo 1: Mover por baixo (ch�o)
-            while (Vector3.Distance(chineloLancado.transform.position, destinoChao.position) > 0.1f)
+            // Passo 1: Mover por baixo (chão)
+            while (chineloLancado != null && Vector3.Distance(chineloLancado.transform.position, destinoChao.position) > 0.1f)
             {
                 chineloLancado.transform.position = Vector3.MoveTowards(chineloLancado.transform.position, destinoChao.position, velocidadeChinelo * Time.deltaTime);
-                yield return null; // Espera at� o pr�ximo frame
+                yield return null; // Espera até o próximo frame
             }
 
-            // Destr�i o chinelo quando atinge o destino
-            Destroy(chineloLancado);
+            // Destrói o chinelo quando atinge o destino
+            if (chineloLancado != null)
+            {
+                Destroy(chineloLancado);
+            }
 
             // Aguardar um momento antes de gerar o chinelo na plataforma
             yield return new WaitForSeconds(0.5f);
@@ -90,15 +80,18 @@ public class ChineloDeMae : MonoBehaviour
             GameObject chineloNaPlataforma = Instantiate(chineloPrefab, spawnPointPlatform.position, Quaternion.identity);
             chineloNaPlataforma.transform.position = new Vector3(chineloNaPlataforma.transform.position.x, spawnPointPlatform.position.y, chineloNaPlataforma.transform.position.z); // Ajusta a altura do chinelo
 
-            // Passo 3: Mover o chinelo na plataforma at� o destino
-            while (Vector3.Distance(chineloNaPlataforma.transform.position, destinoPlataforma.position) > 0.1f)
+            // Passo 3: Mover o chinelo na plataforma até o destino
+            while (chineloNaPlataforma != null && Vector3.Distance(chineloNaPlataforma.transform.position, destinoPlataforma.position) > 0.1f)
             {
                 chineloNaPlataforma.transform.position = Vector3.MoveTowards(chineloNaPlataforma.transform.position, destinoPlataforma.position, velocidadeChinelo * Time.deltaTime);
-                yield return null; // Espera at� o pr�ximo frame
+                yield return null; // Espera até o próximo frame
             }
 
-            // Ap�s atingir o ponto final, destr�i o chinelo na plataforma
-            Destroy(chineloNaPlataforma);
+            // Após atingir o ponto final, destrói o chinelo na plataforma
+            if (chineloNaPlataforma != null)
+            {
+                Destroy(chineloNaPlataforma);
+            }
         }
     }
 }

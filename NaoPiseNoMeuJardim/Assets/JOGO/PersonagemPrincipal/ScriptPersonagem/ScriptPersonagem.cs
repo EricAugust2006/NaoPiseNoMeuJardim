@@ -42,6 +42,8 @@ public class ScriptPersonagem : MonoBehaviour
     public GameObject UIapertar;
     public SistemaDeVida sistemaDeVida;
     public GameObject paredeInvisivel;
+    public GameObject GameObjectdetectaPlataforma;
+    public GameObject temporizadorIniciar;
 
     [Header("Animacao e Flip")]
     private SpriteRenderer spriteRenderer;
@@ -131,16 +133,43 @@ public class ScriptPersonagem : MonoBehaviour
     public float velocidadeDescidaRapida = 20f;  // Velocidade extra ao descer
     public float raioDetectaChao = 0.2f;  // Raio para a detecção
 
-    [Header("Destrói Toupeira")]
-    // public Collider2D destroiToupeira;
-    public GameObject destroiToupeira;
-
-    public Transform detectaToupeura;
-
     public Collider2D colisorGameObjectPlataforma;
 
     private void Awake()
     {
+        // Verifica se a cena atual é "JardimJogo"
+        if (SceneManager.GetActiveScene().name == "JardimJogo")
+        {
+            // Encontre o Canvas primeiro
+            GameObject canvas = GameObject.Find("UI/HUD");
+            if (canvas != null)
+            {
+                // Em seguida, encontre o temporizador dentro do Canvas
+                temporizadorIniciar = canvas.transform.Find("Temporizador")?.gameObject;
+
+                if (temporizadorIniciar != null)
+                {
+                    DontDestroyOnLoad(temporizadorIniciar);
+                }
+                else
+                {
+                    Debug.LogError("Temporizador não encontrado dentro do Canvas HUD!");
+                }
+            }
+            else
+            {
+                Debug.LogError("Canvas UI/HUD não encontrado!");
+            }
+        }
+        else
+        {
+            // Garante que a variável seja nula fora da cena "JardimJogo"
+            temporizadorIniciar = null;
+        }
+
+        // verificaVariaveisEntreCena();
+
+        // temporizadorIniciar.SetActive(false);
         parallax = FindObjectOfType<MoverFundo>();
         jardim = FindObjectOfType<JARDIM>();
         cinemachine = FindObjectOfType<CinemachineVirtualCamera>(); // Find the Cinemachine camera in the scene        
@@ -177,23 +206,42 @@ public class ScriptPersonagem : MonoBehaviour
             Debug.LogError("CinemachineVirtualCamera não encontrada!");
         }
     }
+    public void verificaVariaveisEntreCena()
+    {
+        if (SceneManager.GetActiveScene().name == "JardimJogo" && temporizadorIniciar != null)
+        {
+            temporizadorIniciar.SetActive(true);
+        }
+        else if (temporizadorIniciar != null)
+        {
+            temporizadorIniciar.SetActive(false);
+        }
+    }
 
     private void Update()
     {
+        // verificaVariaveisEntreCena();
         descerRapido();
 
-        if (pararCorrida)
+        if (SceneManager.GetActiveScene().name == "JardimJogo")
         {
-            MudarCameraParaDireita();
-        }
+            if (pararCorrida)
+            {
+                MudarCameraParaDireita();
+            }
 
-        if (Input.GetKeyDown(KeyCode.E) && jardim.eventoLigado)
-        {
-            // Remove a parede invisível e inicia a corrida automática
-            paredeInvisivel.SetActive(false);
-            animator.SetBool("Correndo", true);
-            movendoAutomaticamente = true;
-            spriteRenderer.flipX = false;
+            if (Input.GetKeyDown(KeyCode.E) && jardim.eventoLigado)
+            {
+                // Remove a parede invisível e inicia a corrida automática
+                paredeInvisivel.SetActive(false);
+                animator.SetBool("Correndo", true);
+                movendoAutomaticamente = true;
+                spriteRenderer.flipX = false;
+            }
+
+            AjustarZoomCamera();
+            MudarPlataforma();
+            CuidarLayer();
         }
 
         if (movendoAutomaticamente)
@@ -213,13 +261,7 @@ public class ScriptPersonagem : MonoBehaviour
         }
 
         AtualizarAnimacoes();
-        CuidarLayer();
-        MudarPlataforma();
         EstaLivre();
-
-        AjustarZoomCamera();
-
-        // Agachar();
     }
 
     private void FixedUpdate()
@@ -410,6 +452,11 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
+    public void VerificarQueda()
+    {
+        Debug.Log("O personagem está caindo!");
+        animator.SetTrigger("Caiu"); // Chama o trigger de animação "Caiu"
+    }
     public void descerRapido()
     {
         taNoChao = Physics2D.OverlapCircle(detectaChao.position, raioDetectaChao, oQueEhChao);
@@ -420,10 +467,6 @@ public class ScriptPersonagem : MonoBehaviour
             StartCoroutine(trocarLayerPlayer());
             DescerRapidamente();
         }
-        // if (taNoChao || taNaPlataforma)
-        // {
-        //     destroiToupeira.SetActive(false);
-        // }
     }
 
     public void DescerRapidamente()
@@ -480,9 +523,11 @@ public class ScriptPersonagem : MonoBehaviour
             if (Input.GetButtonDown("Jump") && taNoChao && !taNaPlataforma)
             {
                 colisorGameObjectPlataforma.isTrigger = false;
+                GameObjectdetectaPlataforma.SetActive(true);
             }
             if (Input.GetButtonDown("VerticalDown") && !taNoChao && taNaPlataforma)
             {
+                GameObjectdetectaPlataforma.SetActive(false);
                 colisorGameObjectPlataforma.isTrigger = true;
             }
         }
@@ -537,7 +582,7 @@ public class ScriptPersonagem : MonoBehaviour
         animator.SetBool("Caindo", false);
     }
 
-     public void EmpurrarEspelho()
+    public void EmpurrarEspelho()
     {
         animator.SetTrigger("Jump");
         rb.velocity = new Vector2(rb.velocity.x, 5);
@@ -648,7 +693,32 @@ public class ScriptPersonagem : MonoBehaviour
 
         parallaxArvoreUm.movimentoAutomatico = 8f;
         parallaxArvoreDois.movimentoAutomatico = 8f;
+
+        //parallax effect
+
+        parallaxChaoUM.parallaxEffect = 0f;
+        parallaxChaoDOIS.parallaxEffect = 0f;
+
+        parallaxCeuUm.parallaxEffect = 0f;
+        parallaxCeuDois.parallaxEffect = 0f;
+
+        parallaxRochasUm.parallaxEffect = 0f;
+        parallaxRochasDois.parallaxEffect = 0f;
+
+        parallaxGramasUm.parallaxEffect = 0f;
+        parallaxGramasDois.parallaxEffect = 0f;
+
+        parallaxArvoreUm.parallaxEffect = 0f;
+        parallaxArvoreDois.parallaxEffect = 0f;
     }
+
+    // public void verificaVariaveisEntreCena()
+    // {
+    //     if (temporizadorIniciar == null)
+    //     {
+    //         return;
+    //     }
+    // }
 
     // =================================================================================
     // ============================= PARTE DAS COLISÕES ================================
@@ -664,11 +734,12 @@ public class ScriptPersonagem : MonoBehaviour
             movendoAutomaticamente = false;
             parallaxAtivar = true;
             forcaPulo = 18f;
+            // verificaVariaveisEntreCena();
+            temporizadorIniciar.SetActive(true);
             VoaPassarin();
             AjustarOffSetCamera();
             MudarCameraParaDireita();
             modificaParallaxAutomatico();
-            // tirarFollowCinemachine();                
         }
 
         if (collision.gameObject.tag == "ObjetoImpulso")
@@ -693,7 +764,8 @@ public class ScriptPersonagem : MonoBehaviour
             StartCoroutine(TomouDanoNaPlataforma());
         }
 
-        if(gameObject.tag == "Player"){
+        if (gameObject.tag == "Player")
+        {
             if (collision.gameObject.tag == "plataformaInimigo")
             {
                 animator.SetTrigger("dano");

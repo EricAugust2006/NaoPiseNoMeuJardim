@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 65708694037745771}
   - component: {fileID: 3408551589547677461}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: tomarDanoEmCima
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   - component: {fileID: 1151420709319530436}
   - component: {fileID: -2270017863670846111}
   - component: {fileID: 8051417258707732387}
-  m_Layer: 0
+  m_Layer: 26
   m_Name: Toupeira
   m_TagString: plataformaInimigo
   m_Icon: {fileID: 0}

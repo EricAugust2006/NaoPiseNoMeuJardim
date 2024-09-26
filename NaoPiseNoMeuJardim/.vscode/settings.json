@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "NaoPiseNoMeuJardim.sln"
+    "dotnet.defaultSolution": "NaoPiseNoMeuJardim.sln",
+    "editor.fontFamily": "Monocraft"
 }

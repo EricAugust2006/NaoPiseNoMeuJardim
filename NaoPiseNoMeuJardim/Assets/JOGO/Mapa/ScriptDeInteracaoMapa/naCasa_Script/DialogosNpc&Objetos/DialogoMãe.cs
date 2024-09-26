@@ -55,7 +55,8 @@ public class DialogoMãe : MonoBehaviour
             }
         }
 
-        if(jardim.IniciarJogo == true){
+        if (jardim.IniciarJogo == true)
+        {
             GetComponent<Collider2D>().enabled = false;
         }
     }
@@ -104,6 +105,7 @@ public class DialogoMãe : MonoBehaviour
         {
             readyToSpeak = true;
         }
+        return;
     }
 
     private void OnTriggerExit2D(Collider2D collision)
@@ -112,6 +114,7 @@ public class DialogoMãe : MonoBehaviour
         {
             readyToSpeak = false;
         }
+        return;
     }
 
     // Método para desativar animações

@@ -43,8 +43,8 @@ public class Toupeira : MonoBehaviour
             //     Debug.Log("Jogador � direita do inimigo, knockback para a esquerda");
             // }
 
-            sistemaDeVida.vida--;
             // Aplica o dano ao jogador
+            sistemaDeVida.vida--;
         }
 
         if (other.gameObject.tag == "PlayerAtk")
