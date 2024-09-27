@@ -4703,6 +4703,10 @@ PrefabInstance:
       propertyPath: dialogoGanhar
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 5757998171606388099, guid: d2225469c04ec8441b3562bc7e164b5d, type: 3}
+      propertyPath: gerenciaInicio
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -10738,6 +10742,10 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1193409190806246324, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
+      propertyPath: forcaPulo
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193409190806246324, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: spawnPointSceneA
       value: 
       objectReference: {fileID: 264447235}
@@ -10745,6 +10753,10 @@ PrefabInstance:
       propertyPath: spawnPointSceneB
       value: 
       objectReference: {fileID: 264447235}
+    - target: {fileID: 1450048878948196802, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
+      propertyPath: m_GravityScale
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 1621544272864886081, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: spawn.x
       value: -18.16

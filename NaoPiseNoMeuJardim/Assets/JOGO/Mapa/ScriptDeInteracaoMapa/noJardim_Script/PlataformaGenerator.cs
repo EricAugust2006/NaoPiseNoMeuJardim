@@ -40,8 +40,8 @@ public class PlataformaGenerator : MonoBehaviour
 
     void Update()
     {
-        // Verifica se o jogo foi iniciado
-        if (jardim != null && jardim.IniciarJogo && !jogoIniciado)
+        // Verifica se o jogo foi iniciado e o trigger foi ativado
+        if (jardim != null && jardim.IniciarJogo && player.triggouComTagPararCorrida && !jogoIniciado)
         {
             jogoIniciado = true;
             StartCoroutine(GerarPlataformasContinuamente());

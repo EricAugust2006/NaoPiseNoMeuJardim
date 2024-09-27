@@ -462,11 +462,17 @@ public class ScriptPersonagem : MonoBehaviour
     {
         taNoChao = Physics2D.OverlapCircle(detectaChao.position, raioDetectaChao, oQueEhChao);
 
-        if (!taNoChao && Input.GetButtonDown("VerticalDown") && !taNaPlataforma)
+        if (SceneManager.GetActiveScene().name == "JardimJogo")
         {
-            // destroiToupeira.SetActive(true);
-            StartCoroutine(trocarLayerPlayer());
-            DescerRapidamente();
+            if (triggouComTagPararCorrida == true)
+            {
+                if (!taNoChao && Input.GetButtonDown("VerticalDown") && !taNaPlataforma)
+                {
+                    // destroiToupeira.SetActive(true);
+                    StartCoroutine(trocarLayerPlayer());
+                    DescerRapidamente();
+                }
+            }
         }
     }
 
@@ -790,6 +796,14 @@ public class ScriptPersonagem : MonoBehaviour
             Empurrar();
             animator.SetTrigger("dano");
             tomouDano = true;
+            sistemaDeVida.vida--;
+            Destroy(collision.gameObject);
+        }
+
+        if (collision.gameObject.tag == "parede")
+        {
+            Empurrar();
+            animator.SetTrigger("dano");
             sistemaDeVida.vida--;
             Destroy(collision.gameObject);
         }

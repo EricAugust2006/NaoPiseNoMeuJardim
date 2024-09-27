@@ -10,17 +10,31 @@ public class Temporizador : MonoBehaviour
 
     public TextMeshProUGUI tempoUIText; // Referência ao componente de texto na UI
     public float tempoMaximo = 300f; // 5 minutos (300 segundos)
-    private float tempoAtual = 0f; // Tempo atual que será contado
+    public float tempoAtual = 0f; // Tempo atual que será contado
     private float proximoAumento; // Controla quando deve ocorrer o próximo aumento
+
+    // Variável para controlar quando iniciar o cronômetro
+    public ScriptPersonagem player;
+
+    private Coroutine cronometroCoroutine;
 
     void Start()
     {
+        player = FindObjectOfType<ScriptPersonagem>();
         // Encontra o script ChineloDeMae na cena
         chineloScript = FindObjectOfType<ChineloDeMae>();
 
-        // Inicializa o tempo e o próximo aumento
+        // Inicializa o próximo aumento
         proximoAumento = intervaloAumento;
-        StartCoroutine(Cronometro());
+    }
+
+    void Update()
+    {
+        // Inicia o cronômetro apenas quando a variável for true
+        if (player.triggouComTagPararCorrida == true && cronometroCoroutine == null)
+        {
+            cronometroCoroutine = StartCoroutine(Cronometro());
+        }
     }
 
     private IEnumerator Cronometro()
@@ -47,7 +61,7 @@ public class Temporizador : MonoBehaviour
             yield return null; // Aguarda o próximo frame
         }
 
-        // Após 5 minutos, interrompe o temporizador (pode adicionar algo para finalizar o jogo, se necessário)
+        // Após 5 minutos, interrompe o temporizador
         tempoUIText.text = "05:00";
         Debug.Log("Tempo máximo atingido!");
     }

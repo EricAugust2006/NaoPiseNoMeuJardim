@@ -27,6 +27,7 @@ TagManager:
   - pisarPlataforma
   - DestroiToupeira
   - PlayerAtk
+  - parede
   layers:
   - Default
   - TransparentFX
@@ -90,6 +91,9 @@ TagManager:
     locked: 0
   - name: inimigo
     uniqueID: 3644161037
+    locked: 0
+  - name: parede
+    uniqueID: 2277505609
     locked: 0
   - name: Player
     uniqueID: 3851563185

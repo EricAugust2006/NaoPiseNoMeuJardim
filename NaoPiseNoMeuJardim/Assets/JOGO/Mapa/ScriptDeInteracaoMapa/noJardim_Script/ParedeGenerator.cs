@@ -18,23 +18,39 @@ public class ParedeGenerator : MonoBehaviour
     public float maxChance = 1f; // Chance máxima de spawn
 
     private List<GameObject> paredesAtivas = new List<GameObject>(); // Lista para rastrear as paredes ativas
-    private bool jogoIniciado = false;
+    private bool jogoIniciado = false; // Controla se o jogo foi iniciado
+    private ScriptPersonagem player; // Referência ao personagem
 
-    private ScriptPersonagem player;
+    // Variável para rastrear o tempo decorrido
+    private float tempoDecorrido = 0f;
+    public float intervaloParaAumentarChance = 30f; // Intervalo para aumentar a chance (30 segundos)
 
     void Start()
     {
+        // Busca pelo componente do personagem
         player = FindObjectOfType<ScriptPersonagem>();
-        StartCoroutine(AumentarChanceSpawnComTempo()); // Iniciar aumento progressivo da chance de spawn
     }
 
     void Update()
     {
-        // Verifica se o jogo foi iniciado
+        // Verifica se o jogo foi iniciado e a condição foi atendida
         if (!jogoIniciado && player.triggouComTagPararCorrida == true)
         {
             jogoIniciado = true;
             StartCoroutine(GerarParedesContinuamente());
+        }
+
+        // Se o jogo não foi iniciado, não movimenta nem destrói paredes
+        if (!jogoIniciado) return;
+
+        // Atualiza o temporizador
+        tempoDecorrido += Time.deltaTime;
+
+        // Aumenta a chance de spawn a cada intervalo de tempo
+        if (tempoDecorrido >= intervaloParaAumentarChance)
+        {
+            AumentarChance();
+            tempoDecorrido = 0f; // Reseta o temporizador após aumentar a chance
         }
 
         // Movimenta as paredes para a esquerda
@@ -48,6 +64,7 @@ public class ParedeGenerator : MonoBehaviour
     {
         while (true)
         {
+            // Gera paredes somente se a condição do jogador ainda for verdadeira
             if (player.triggouComTagPararCorrida == true && Random.value < chanceSpawnParede)
             {
                 GerarParede();
@@ -59,11 +76,11 @@ public class ParedeGenerator : MonoBehaviour
 
     void GerarParede()
     {
-        // Calcula a posição de spawn baseada em uma distância fixa da posição do ponto de spawn
+        // Calcula a posição de spawn
         float posicaoBaseX = pontoDeSpawn.position.x + 10f; // Distância fixa para spawnar a parede
 
         GameObject parede = new GameObject("Parede");
-        parede.transform.position = new Vector2(posicaoBaseX, pontoDeSpawn.position.y); // Posiciona a parede no chão
+        parede.transform.position = new Vector2(posicaoBaseX, pontoDeSpawn.position.y); // Posiciona a parede
 
         // Cria a parede bloco por bloco (3 blocos de altura)
         for (int i = 0; i < 3; i++)
@@ -78,6 +95,7 @@ public class ParedeGenerator : MonoBehaviour
 
     void MoverParedes()
     {
+        // Movimenta as paredes para a esquerda
         foreach (GameObject parede in paredesAtivas)
         {
             parede.transform.Translate(Vector2.left * velocidade * Time.deltaTime);
@@ -93,16 +111,6 @@ public class ParedeGenerator : MonoBehaviour
                 Destroy(paredesAtivas[i]);
                 paredesAtivas.RemoveAt(i);
             }
-        }
-    }
-
-    // Coroutine para aumentar a chance de spawn com o tempo
-    IEnumerator AumentarChanceSpawnComTempo()
-    {
-        while (true)
-        {
-            yield return new WaitForSeconds(30f); // Intervalo de 30 segundos entre cada aumento de chance
-            AumentarChance();
         }
     }
 
