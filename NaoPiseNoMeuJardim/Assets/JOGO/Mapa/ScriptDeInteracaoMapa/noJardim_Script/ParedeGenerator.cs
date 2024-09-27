@@ -13,7 +13,9 @@ public class ParedeGenerator : MonoBehaviour
     [Header("Configurações de Geração")]
     public float intervaloMinimoGeracao = 2f; // Intervalo mínimo entre gerações de paredes
     public float intervaloMaximoGeracao = 5f; // Intervalo máximo entre gerações de paredes
-    public float chanceSpawnParede = 0.5f; // Chance de spawnar uma parede
+    [Range(0f, 1f)] public float chanceSpawnParede = 0.5f; // Chance inicial de spawnar uma parede
+    public float aumentoChance = 0.1f; // Valor de aumento da chance
+    public float maxChance = 1f; // Chance máxima de spawn
 
     private List<GameObject> paredesAtivas = new List<GameObject>(); // Lista para rastrear as paredes ativas
     private bool jogoIniciado = false;
@@ -23,12 +25,13 @@ public class ParedeGenerator : MonoBehaviour
     void Start()
     {
         player = FindObjectOfType<ScriptPersonagem>();
+        StartCoroutine(AumentarChanceSpawnComTempo()); // Iniciar aumento progressivo da chance de spawn
     }
 
     void Update()
     {
         // Verifica se o jogo foi iniciado
-        if (!jogoIniciado)
+        if (!jogoIniciado && player.triggouComTagPararCorrida == true)
         {
             jogoIniciado = true;
             StartCoroutine(GerarParedesContinuamente());
@@ -45,7 +48,7 @@ public class ParedeGenerator : MonoBehaviour
     {
         while (true)
         {
-            if (Random.value < chanceSpawnParede)
+            if (player.triggouComTagPararCorrida == true && Random.value < chanceSpawnParede)
             {
                 GerarParede();
             }
@@ -56,25 +59,21 @@ public class ParedeGenerator : MonoBehaviour
 
     void GerarParede()
     {
-        if (player.triggouComTagPararCorrida == true)
+        // Calcula a posição de spawn baseada em uma distância fixa da posição do ponto de spawn
+        float posicaoBaseX = pontoDeSpawn.position.x + 10f; // Distância fixa para spawnar a parede
+
+        GameObject parede = new GameObject("Parede");
+        parede.transform.position = new Vector2(posicaoBaseX, pontoDeSpawn.position.y); // Posiciona a parede no chão
+
+        // Cria a parede bloco por bloco (3 blocos de altura)
+        for (int i = 0; i < 3; i++)
         {
-
-            // Calcula a posição de spawn baseada em uma distância fixa da posição do ponto de spawn
-            float posicaoBaseX = pontoDeSpawn.position.x + 10f; // Distância fixa para spawnar a parede
-
-            GameObject parede = new GameObject("Parede");
-            parede.transform.position = new Vector2(posicaoBaseX, pontoDeSpawn.position.y); // Posiciona a parede no chão
-
-            // Cria a parede bloco por bloco (3 blocos de altura)
-            for (int i = 0; i < 3; i++)
-            {
-                Vector2 posicaoBloco = new Vector2(posicaoBaseX, pontoDeSpawn.position.y + i);
-                GameObject bloco = Instantiate(paredePrefab, posicaoBloco, Quaternion.identity, parede.transform);
-            }
-
-            // Adiciona a parede à lista de paredes ativas
-            paredesAtivas.Add(parede);
+            Vector2 posicaoBloco = new Vector2(posicaoBaseX, pontoDeSpawn.position.y + i);
+            GameObject bloco = Instantiate(paredePrefab, posicaoBloco, Quaternion.identity, parede.transform);
         }
+
+        // Adiciona a parede à lista de paredes ativas
+        paredesAtivas.Add(parede);
     }
 
     void MoverParedes()
@@ -97,32 +96,21 @@ public class ParedeGenerator : MonoBehaviour
         }
     }
 
-    // Método para lidar com a colisão do jogador com a parede
-    private void OnTriggerEnter2D(Collider2D collision)
+    // Coroutine para aumentar a chance de spawn com o tempo
+    IEnumerator AumentarChanceSpawnComTempo()
     {
-        if (collision.CompareTag("Player"))
+        while (true)
         {
-            // Exemplo de ação quando o jogador colide com a parede
-            ScriptPersonagem personagem = collision.GetComponent<ScriptPersonagem>();
-
-            if (personagem != null)
-            {
-                // O jogador perde vida
-                // personagem.PerdeVida(1);
-
-                // O jogador fica intangível por um tempo
-                StartCoroutine(FicarIntangivel(personagem));
-            }
+            yield return new WaitForSeconds(30f); // Intervalo de 30 segundos entre cada aumento de chance
+            AumentarChance();
         }
     }
 
-    IEnumerator FicarIntangivel(ScriptPersonagem personagem)
+    // Função para aumentar a chance de spawn
+    private void AumentarChance()
     {
-        // personagem.ficarIntangivel = true; // Supondo que o jogador tenha uma flag de invulnerabilidade
-
-        // Tempo de intangibilidade (ex: 2 segundos)
-        yield return new WaitForSeconds(2f);
-
-        // personagem.ficarIntangivel = false;
+        chanceSpawnParede += aumentoChance;
+        chanceSpawnParede = Mathf.Clamp(chanceSpawnParede, 0f, maxChance);
+        Debug.Log($"Chance de spawn de parede aumentada para: {chanceSpawnParede}");
     }
 }

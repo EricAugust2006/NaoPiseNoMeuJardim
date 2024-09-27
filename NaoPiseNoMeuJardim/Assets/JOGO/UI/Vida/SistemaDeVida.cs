@@ -55,7 +55,4 @@ public class SistemaDeVida : MonoBehaviour
         }
     }
 
-    // void TelaGameOver(){
-        
-    // } 
 }

@@ -1,97 +1,125 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ChineloDeMae : MonoBehaviour
 {
-    public GameObject chineloPrefab; // Prefab do chinelo
-    public Transform spawnPointGround; // Ponto de spawn no ch�o
-    public Transform spawnPointPlatform; // Ponto de spawn nas plataformas
-    public Transform destinoChao; // GameObject para o destino final do chinelo no ch�o
-    public Transform destinoPlataforma; // GameObject para o destino final do chinelo na plataforma
-    public float tempoAviso = 2f; // Tempo de aviso antes do chinelo aparecer
-    public float velocidadeChinelo = 5f; // Velocidade do chinelo
-    public float tempoMinSpawn = 6f; // Tempo m�nimo de spawn (em segundos)
-    public float tempoMaxSpawn = 12f; // Tempo m�ximo de spawn (em segundos)
+    public GameObject chineloPrefab;
+    public Transform spawnPointGround;
+    public Transform spawnPointPlatform;
+    public Transform destinoChao;
+    public Transform destinoPlataforma;
+    public float tempoAviso = 2f;
+    public float velocidadeChinelo = 5f;
+    public float tempoMinSpawn = 6f;
+    public float tempoMaxSpawn = 12f;
+    public GameObject avisoUI;
+
     [Range(0f, 1f)]
-    public float chanceSpawn = 0.5f; // Chance de spawn (0.0 a 1.0)
+    public float chanceSpawn = 0.5f; // Chance inicial de spawn
+    public float aumentoChance = 0.1f; // O valor de aumento da chance
+    public float maxChance = 1f; // Valor máximo da chance de spawn
 
     private ScriptPersonagem player;
 
     void Start()
     {
         player = FindObjectOfType<ScriptPersonagem>();
-        if (player.triggouComTagPararCorrida == true)
-        {
-            StartCoroutine(SpawnChinelo());
-
-        }
+        avisoUI.SetActive(false);
+        StartCoroutine(SpawnChinelo());
     }
 
     private IEnumerator SpawnChinelo()
     {
-        while (true) // Loop infinito para o spawn cont�nuo
+        while (true)
         {
-            // Verifica se o chinelo deve ser spawned com base na chance
-            if (Random.value <= chanceSpawn)
+            // Verifica se o player triggou a condição
+            if (player.triggouComTagPararCorrida)
             {
-                // Espera um intervalo aleat�rio entre o tempo m�nimo e m�ximo
-                float intervaloSpawn = Random.Range(tempoMinSpawn, tempoMaxSpawn);
-                yield return new WaitForSeconds(intervaloSpawn);
+                if (Random.value <= chanceSpawn)
+                {
+                    float intervaloSpawn = Random.Range(tempoMinSpawn, tempoMaxSpawn);
+                    yield return new WaitForSeconds(intervaloSpawn);
 
-                // Avisar o jogador
-                Debug.Log("Cuidado! Um chinelo vai chegar!");
-                yield return new WaitForSeconds(tempoAviso); // Tempo de aviso
+                    avisoUI.SetActive(true);
+                    Debug.Log("Cuidado! Um chinelo vai chegar!");
+                    yield return new WaitForSeconds(tempoAviso);
 
-                // Inicia o movimento do chinelo
-                StartCoroutine(MoverChinelo());
+                    avisoUI.SetActive(false);
+                    StartCoroutine(MoverChinelo());
+                }
+                else
+                {
+                    yield return new WaitForSeconds(Random.Range(1f, 3f));
+                }
             }
             else
             {
-                // Espera um intervalo aleat�rio antes de verificar novamente
-                yield return new WaitForSeconds(Random.Range(1f, 3f)); // Tempo de espera caso n�o spawne
+                yield return null; // Espera até que a condição seja atendida novamente
             }
         }
     }
 
     private IEnumerator MoverChinelo()
     {
-        if (player.triggouComTagPararCorrida == true)
+        GameObject chineloLancado = Instantiate(
+            chineloPrefab,
+            spawnPointGround.position,
+            Quaternion.identity
+        );
+
+        while (chineloLancado != null
+            && Vector3.Distance(chineloLancado.transform.position, destinoChao.position) > 0.1f)
         {
-            // Cria o chinelo no ponto de spawn do chão
-            GameObject chineloLancado = Instantiate(chineloPrefab, spawnPointGround.position, Quaternion.identity);
-
-            // Passo 1: Mover por baixo (chão)
-            while (chineloLancado != null && Vector3.Distance(chineloLancado.transform.position, destinoChao.position) > 0.1f)
-            {
-                chineloLancado.transform.position = Vector3.MoveTowards(chineloLancado.transform.position, destinoChao.position, velocidadeChinelo * Time.deltaTime);
-                yield return null; // Espera até o próximo frame
-            }
-
-            // Destrói o chinelo quando atinge o destino
-            if (chineloLancado != null)
-            {
-                Destroy(chineloLancado);
-            }
-
-            // Aguardar um momento antes de gerar o chinelo na plataforma
-            yield return new WaitForSeconds(0.5f);
-
-            // Passo 2: Criar o chinelo na plataforma e mover por cima
-            GameObject chineloNaPlataforma = Instantiate(chineloPrefab, spawnPointPlatform.position, Quaternion.identity);
-            chineloNaPlataforma.transform.position = new Vector3(chineloNaPlataforma.transform.position.x, spawnPointPlatform.position.y, chineloNaPlataforma.transform.position.z); // Ajusta a altura do chinelo
-
-            // Passo 3: Mover o chinelo na plataforma até o destino
-            while (chineloNaPlataforma != null && Vector3.Distance(chineloNaPlataforma.transform.position, destinoPlataforma.position) > 0.1f)
-            {
-                chineloNaPlataforma.transform.position = Vector3.MoveTowards(chineloNaPlataforma.transform.position, destinoPlataforma.position, velocidadeChinelo * Time.deltaTime);
-                yield return null; // Espera até o próximo frame
-            }
-
-            // Após atingir o ponto final, destrói o chinelo na plataforma
-            if (chineloNaPlataforma != null)
-            {
-                Destroy(chineloNaPlataforma);
-            }
+            chineloLancado.transform.position = Vector3.MoveTowards(
+                chineloLancado.transform.position,
+                destinoChao.position,
+                velocidadeChinelo * Time.deltaTime
+            );
+            yield return null;
         }
+
+        if (chineloLancado != null)
+        {
+            Destroy(chineloLancado);
+        }
+
+        yield return new WaitForSeconds(0.5f);
+
+        GameObject chineloNaPlataforma = Instantiate(
+            chineloPrefab,
+            spawnPointPlatform.position,
+            Quaternion.identity
+        );
+        chineloNaPlataforma.transform.position = new Vector3(
+            chineloNaPlataforma.transform.position.x,
+            spawnPointPlatform.position.y,
+            chineloNaPlataforma.transform.position.z
+        );
+
+        while (chineloNaPlataforma != null
+            && Vector3.Distance(chineloNaPlataforma.transform.position, destinoPlataforma.position)
+                > 0.1f)
+        {
+            chineloNaPlataforma.transform.position = Vector3.MoveTowards(
+                chineloNaPlataforma.transform.position,
+                destinoPlataforma.position,
+                velocidadeChinelo * Time.deltaTime
+            );
+            yield return null;
+        }
+
+        if (chineloNaPlataforma != null)
+        {
+            Destroy(chineloNaPlataforma);
+        }
+    }
+
+    // Função pública para aumentar a chance de spawn
+    public void AumentarChance()
+    {
+        chanceSpawn += aumentoChance;
+        chanceSpawn = Mathf.Clamp(chanceSpawn, 0f, maxChance);
+        Debug.Log($"Chance de spawn aumentada para: {chanceSpawn}");
     }
 }

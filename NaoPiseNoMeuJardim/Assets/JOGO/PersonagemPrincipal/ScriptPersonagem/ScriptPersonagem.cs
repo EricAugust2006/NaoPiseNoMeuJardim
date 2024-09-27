@@ -43,7 +43,7 @@ public class ScriptPersonagem : MonoBehaviour
     public SistemaDeVida sistemaDeVida;
     public GameObject paredeInvisivel;
     public GameObject GameObjectdetectaPlataforma;
-    public GameObject temporizadorIniciar;
+    // public GameObject temporizadorIniciar;
 
     [Header("Animacao e Flip")]
     private SpriteRenderer spriteRenderer;
@@ -137,35 +137,35 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void Awake()
     {
-        // Verifica se a cena atual é "JardimJogo"
-        if (SceneManager.GetActiveScene().name == "JardimJogo")
-        {
-            // Encontre o Canvas primeiro
-            GameObject canvas = GameObject.Find("UI/HUD");
-            if (canvas != null)
-            {
-                // Em seguida, encontre o temporizador dentro do Canvas
-                temporizadorIniciar = canvas.transform.Find("Temporizador")?.gameObject;
+        // // Verifica se a cena atual é "JardimJogo"
+        // if (SceneManager.GetActiveScene().name == "JardimJogo")
+        // {
+        //     // Encontre o Canvas primeiro
+        //     GameObject canvas = GameObject.Find("UI/HUD");
+        //     if (canvas != null)
+        //     {
+        //         // Em seguida, encontre o temporizador dentro do Canvas
+        //         temporizadorIniciar = canvas.transform.Find("Temporizador")?.gameObject;
 
-                if (temporizadorIniciar != null)
-                {
-                    DontDestroyOnLoad(temporizadorIniciar);
-                }
-                else
-                {
-                    Debug.LogError("Temporizador não encontrado dentro do Canvas HUD!");
-                }
-            }
-            else
-            {
-                Debug.LogError("Canvas UI/HUD não encontrado!");
-            }
-        }
-        else
-        {
-            // Garante que a variável seja nula fora da cena "JardimJogo"
-            temporizadorIniciar = null;
-        }
+        //         if (temporizadorIniciar != null)
+        //         {
+        //             DontDestroyOnLoad(temporizadorIniciar);
+        //         }
+        //         else
+        //         {
+        //             Debug.LogError("Temporizador não encontrado dentro do Canvas HUD!");
+        //         }
+        //     }
+        //     else
+        //     {
+        //         Debug.LogError("Canvas UI/HUD não encontrado!");
+        //     }
+        // }
+        // else
+        // {
+        //     // Garante que a variável seja nula fora da cena "JardimJogo"
+        //     temporizadorIniciar = null;
+        // }
 
         // verificaVariaveisEntreCena();
 
@@ -206,17 +206,18 @@ public class ScriptPersonagem : MonoBehaviour
             Debug.LogError("CinemachineVirtualCamera não encontrada!");
         }
     }
-    public void verificaVariaveisEntreCena()
-    {
-        if (SceneManager.GetActiveScene().name == "JardimJogo" && temporizadorIniciar != null)
-        {
-            temporizadorIniciar.SetActive(true);
-        }
-        else if (temporizadorIniciar != null)
-        {
-            temporizadorIniciar.SetActive(false);
-        }
-    }
+
+    // public void verificaVariaveisEntreCena()
+    // {
+    //     if (SceneManager.GetActiveScene().name == "JardimJogo" && temporizadorIniciar != null)
+    //     {
+    //         temporizadorIniciar.SetActive(true);
+    //     }
+    //     else if (temporizadorIniciar != null)
+    //     {
+    //         temporizadorIniciar.SetActive(false);
+    //     }
+    // }
 
     private void Update()
     {
@@ -735,7 +736,7 @@ public class ScriptPersonagem : MonoBehaviour
             parallaxAtivar = true;
             forcaPulo = 18f;
             // verificaVariaveisEntreCena();
-            temporizadorIniciar.SetActive(true);
+            // temporizadorIniciar.SetActive(true);
             VoaPassarin();
             AjustarOffSetCamera();
             MudarCameraParaDireita();
