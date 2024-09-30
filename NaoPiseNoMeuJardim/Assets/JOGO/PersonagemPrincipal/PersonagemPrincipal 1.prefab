@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 1470256751769913611}
   - component: {fileID: 1621544272864886081}
   - component: {fileID: 3722605818911777914}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: PersonagemPrincipal 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -185,12 +185,15 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   taNaPlataforma: 0
+  desativarColisaoPlataforma: {fileID: 0}
   botaoInteracao: {fileID: 0}
   prefabMunicao: {fileID: 0}
   fimDeJogo: {fileID: 0}
   UIapertar: {fileID: 0}
   sistemaDeVida: {fileID: 0}
   paredeInvisivel: {fileID: 0}
+  GameObjectdetectaPlataforma: {fileID: 0}
+  animator: {fileID: 0}
   quantidadeApertada: 0
   spawnPointSceneA: {fileID: 0}
   spawnPointSceneB: {fileID: 0}
@@ -199,6 +202,7 @@ MonoBehaviour:
   targetOrthoSize: 10
   initialOrthoSize: 6
   zoomSpeed: 2
+  offSetX: 0
   transitionSpeed: 10
   kbForce: 0
   kbCount: 0
@@ -214,6 +218,21 @@ MonoBehaviour:
   movendoAutomaticamente: 0
   destination: {x: 0, y: 0}
   parallaxAtivar: 0
+  triggouComTagPararCorrida: 0
+  parallaxCeuUm: {fileID: 0}
+  parallaxCeuDois: {fileID: 0}
+  parallaxRochasUm: {fileID: 0}
+  parallaxRochasDois: {fileID: 0}
+  parallaxGramasUm: {fileID: 0}
+  parallaxGramasDois: {fileID: 0}
+  parallaxChaoUM: {fileID: 0}
+  parallaxChaoDOIS: {fileID: 0}
+  parallaxArvoreUm: {fileID: 0}
+  parallaxArvoreDois: {fileID: 0}
+  velocidadeDescidaRapida: 20
+  raioDetectaChao: 0.2
+  colisorGameObjectPlataforma: {fileID: 0}
+  tempoEntreDano: 1
 --- !u!95 &1470256751769913611
 Animator:
   serializedVersion: 7
@@ -280,7 +299,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8005767813211978251}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: DetectaPlataforma
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -311,7 +330,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1969466273799910548}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: DetectaChao
   m_TagString: Untagged
   m_Icon: {fileID: 0}

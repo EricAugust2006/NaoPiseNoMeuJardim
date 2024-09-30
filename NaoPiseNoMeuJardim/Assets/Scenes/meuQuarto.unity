@@ -8158,7 +8158,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1186128329
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8166,7 +8166,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1186128328}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f7719a79eef5c8f459143c3b7febf8c7, type: 3}
   m_Name: 
@@ -8776,7 +8776,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 766024563
-  m_SortingLayer: 18
+  m_SortingLayer: 19
   m_SortingOrder: 0
   m_Sprite: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -9956,7 +9956,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 766024563
-  m_SortingLayer: 18
+  m_SortingLayer: 19
   m_SortingOrder: 1
   m_Sprite: {fileID: -1900818236, guid: 9084cb6770d84414aa2b27dfb39f52be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -10545,7 +10545,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2019959628
 RectTransform:
   m_ObjectHideFlags: 0

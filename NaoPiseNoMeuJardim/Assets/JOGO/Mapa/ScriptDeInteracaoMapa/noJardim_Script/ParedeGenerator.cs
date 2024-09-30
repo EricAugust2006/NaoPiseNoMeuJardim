@@ -22,6 +22,7 @@ public class ParedeGenerator : MonoBehaviour
     private List<GameObject> paredesAtivas = new List<GameObject>(); // Lista para rastrear as paredes ativas
     private bool jogoIniciado = false; // Controla se o jogo foi iniciado
     private ScriptPersonagem player; // Referência ao personagem
+    private SistemaDeVida sistemaDeVida;
 
     // Variável para rastrear o tempo decorrido
     private float tempoDecorrido = 0f;
@@ -31,6 +32,7 @@ public class ParedeGenerator : MonoBehaviour
     {
         // Busca pelo componente do personagem
         player = FindObjectOfType<ScriptPersonagem>();
+        sistemaDeVida = FindObjectOfType<SistemaDeVida>();
     }
 
     void Update()
@@ -90,10 +92,11 @@ public class ParedeGenerator : MonoBehaviour
 
         // Adiciona um BoxCollider2D ao GameObject da parede
         BoxCollider2D boxCollider = parede.AddComponent<BoxCollider2D>();
+        parede.tag = "paredes";
 
-        // Define o tamanho e o offset do BoxCollider para cobrir a altura dos 3 blocos
-        boxCollider.size = new Vector2(1f, 3f); // 1 unidade de largura (ajuste conforme a largura do bloco) e 3 de altura
-        boxCollider.offset = new Vector2(0, 1.5f); // Coloca o centro do collider no meio da parede
+        // // Define o tamanho e o offset do BoxCollider para cobrir a altura dos 3 blocos
+        // boxCollider.size = new Vector2(1f, 3f); // 1 unidade de largura (ajuste conforme a largura do bloco) e 3 de altura
+        // boxCollider.offset = new Vector2(0, 1f); // Coloca o centro do collider no meio da parede
 
         // Cria a parede como um objeto visual sem colisor individual para cada bloco
         for (int i = 0; i < 3; i++)
@@ -119,7 +122,10 @@ public class ParedeGenerator : MonoBehaviour
         // Movimenta as paredes para a esquerda
         foreach (GameObject parede in paredesAtivas)
         {
-            parede.transform.Translate(Vector2.left * velocidade * Time.deltaTime);
+            if (parede != null) // Verifica se a parede não foi destruída
+            {
+                parede.transform.Translate(Vector2.left * velocidade * Time.deltaTime);
+            }
         }
     }
 
@@ -127,10 +133,10 @@ public class ParedeGenerator : MonoBehaviour
     {
         for (int i = paredesAtivas.Count - 1; i >= 0; i--)
         {
-            if (paredesAtivas[i].transform.position.x < limiteDestruicao)
+            if (paredesAtivas[i] != null && paredesAtivas[i].transform.position.x < limiteDestruicao)
             {
                 Destroy(paredesAtivas[i]);
-                paredesAtivas.RemoveAt(i);
+                paredesAtivas.RemoveAt(i); // Remove da lista após destruir
             }
         }
     }

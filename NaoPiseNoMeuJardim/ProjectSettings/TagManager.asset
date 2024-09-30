@@ -28,6 +28,8 @@ TagManager:
   - DestroiToupeira
   - PlayerAtk
   - parede
+  - "intang\xEDvel"
+  - paredes
   layers:
   - Default
   - TransparentFX

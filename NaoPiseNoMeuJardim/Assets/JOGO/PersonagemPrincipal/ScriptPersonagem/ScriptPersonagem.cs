@@ -47,7 +47,7 @@ public class ScriptPersonagem : MonoBehaviour
 
     [Header("Animacao e Flip")]
     private SpriteRenderer spriteRenderer;
-    private Animator animator;
+    public Animator animator;
 
     [Header("Apertar para sair")]
     public int quantidadeApertada = 0;
@@ -135,6 +135,10 @@ public class ScriptPersonagem : MonoBehaviour
 
     public Collider2D colisorGameObjectPlataforma;
 
+
+    public float tempoEntreDano = 1f; // Intervalo entre cada dano
+    private float ultimoTempoDano = 0f; // Rastrea o tempo da última aplicação de dano
+
     private void Awake()
     {
         // // Verifica se a cena atual é "JardimJogo"
@@ -221,6 +225,9 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void Update()
     {
+        AtualizarAnimacoes();
+        RestaurarAnimacoes();
+
         // verificaVariaveisEntreCena();
         descerRapido();
 
@@ -545,7 +552,6 @@ public class ScriptPersonagem : MonoBehaviour
     }
     IEnumerator TomouDanoNaPlataforma()
     {
-        Empurrar();
         podePular = false;
         col.enabled = false;
         //gameObject.layer = LayerMask.NameToLayer("Player");
@@ -719,13 +725,15 @@ public class ScriptPersonagem : MonoBehaviour
         parallaxArvoreDois.parallaxEffect = 0f;
     }
 
-    // public void verificaVariaveisEntreCena()
-    // {
-    //     if (temporizadorIniciar == null)
-    //     {
-    //         return;
-    //     }
-    // }
+    IEnumerator invencilibdade()
+    {
+
+        gameObject.tag = "intangível";
+
+        yield return new WaitForSeconds(1f);
+
+        gameObject.tag = "Player";
+    }
 
     // =================================================================================
     // ============================= PARTE DAS COLISÕES ================================
@@ -768,6 +776,7 @@ public class ScriptPersonagem : MonoBehaviour
         {
             Destroy(collision.gameObject);
             Debug.Log("A folha me encostou");
+            Empurrar();
             StartCoroutine(TomouDanoNaPlataforma());
         }
 
@@ -775,15 +784,12 @@ public class ScriptPersonagem : MonoBehaviour
         {
             if (collision.gameObject.tag == "plataformaInimigo")
             {
+                StartCoroutine(invencilibdade());
+                Empurrar();
                 animator.SetTrigger("dano");
                 Debug.Log("Tomou dano da toupeira");
-                StartCoroutine(TomouDanoNaPlataforma());
+                // StartCoroutine(TomouDanoNaPlataforma());
             }
-        }
-
-        if (collision.gameObject.tag == "DarZoom")
-        {
-
         }
 
         if (collision.gameObject.tag == "Ganhar")
@@ -795,17 +801,28 @@ public class ScriptPersonagem : MonoBehaviour
         {
             Empurrar();
             animator.SetTrigger("dano");
+            StartCoroutine(invencilibdade());
             tomouDano = true;
             sistemaDeVida.vida--;
             Destroy(collision.gameObject);
         }
 
-        if (collision.gameObject.tag == "parede")
+        // if (collision.gameObject.CompareTag("paredes"))
+        // {
+        //     sistemaDeVida.vida--;
+        //     Empurrar();
+        //     animator.SetTrigger("dano");
+        // }
+    }
+
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("paredes"))
         {
+            sistemaDeVida.vida--;
             Empurrar();
             animator.SetTrigger("dano");
-            sistemaDeVida.vida--;
-            Destroy(collision.gameObject);
+            Destroy(other.gameObject);
         }
     }
 

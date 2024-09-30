@@ -18,12 +18,12 @@ public class MusicManager : MonoBehaviour
 
     void Awake()
     {
-        // Singleton para garantir que apenas uma instância exista
         if (instance == null)
         {
             instance = this;
             DontDestroyOnLoad(gameObject);
             audioSource = GetComponent<AudioSource>();
+            Debug.Log("AudioSource encontrado e MusicManager inicializado.");
         }
         else
         {
@@ -33,56 +33,51 @@ public class MusicManager : MonoBehaviour
 
     void OnEnable()
     {
-        // Inscreve o método quando a cena for carregada
         SceneManager.sceneLoaded += OnSceneLoaded;
     }
 
     void OnDisable()
     {
-        // Desinscreve o método para evitar erros
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
 
-    // Método chamado toda vez que uma nova cena é carregada
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+        Debug.Log("Cena carregada: " + scene.name);
         PlayMusicForScene(scene.name);
     }
 
-    // Método para tocar a música correta com base na cena atual
     void PlayMusicForScene(string sceneName)
     {
         if (sceneName == "MenuPrincipal")
         {
             PlayMusic(menuPrincipalMusic);
         }
-        else if (sceneName == "MeuQuarto" || sceneName == "SegundoAndar" || sceneName == "primeiroAndar")
+        else if (sceneName == "meuQuarto" || sceneName == "SegundoAndar" || sceneName == "primeiraAndar")
         {
-            PlayMusic(meuQuartoMusic);  // Trilha única para essas cenas
+            PlayMusic(meuQuartoMusic);
         }
         else if (sceneName == "JardimJogo" && !isPararCorridaTriggered)
         {
-            PlayMusic(jardimJogoMusic);  // Toca até o trigger ser ativado
+            PlayMusic(jardimJogoMusic);
         }
     }
 
-    // Método para tocar a música desejada
     void PlayMusic(AudioClip clip)
     {
         if (audioSource.clip != clip)
         {
             audioSource.clip = clip;
             audioSource.Play();
+            Debug.Log("Música tocando: " + clip.name);
         }
     }
 
-    // Método que verifica se o Player trigou com o "pararCorrida"
     void Update()
     {
         if (SceneManager.GetActiveScene().name == "JardimJogo")
         {
-            // Busca o Player e verifica o estado da variável
-            var player = FindObjectOfType<ScriptPersonagem>(); // Substitua pelo nome correto do script do Player
+            var player = FindObjectOfType<ScriptPersonagem>();
 
             if (player != null && player.triggouComTagPararCorrida && !isPararCorridaTriggered)
             {
@@ -91,10 +86,10 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    // Método para trocar a música quando o trigger é ativado
     public void TriggerPararCorrida()
     {
         isPararCorridaTriggered = true;
         PlayMusic(pararCorridaMusic);
+        Debug.Log("Trigger ativado! Mudando para a música: " + pararCorridaMusic.name);
     }
 }
