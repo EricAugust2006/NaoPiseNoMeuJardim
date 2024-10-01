@@ -64055,7 +64055,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &436743695
 RectTransform:
   m_ObjectHideFlags: 0
@@ -64634,12 +64634,12 @@ GameObject:
   m_Component:
   - component: {fileID: 644367184}
   m_Layer: 5
-  m_Name: ImagemTexto
+  m_Name: ImagemTextoParaTerminarCorrida
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &644367184
 RectTransform:
   m_ObjectHideFlags: 0
@@ -66324,7 +66324,7 @@ GameObject:
   - component: {fileID: 825741184}
   - component: {fileID: 825741185}
   m_Layer: 0
-  m_Name: Temporizador
+  m_Name: TemporizadorChu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -66361,7 +66361,9 @@ MonoBehaviour:
   tempoUIText: {fileID: 395374901}
   tempoMaximo: 300
   tempoAtual: 0
-  player: {fileID: 0}
+  player: {fileID: 2054204243}
+  clicarParaTerminarCorrida: {fileID: 644367183}
+  temporizadorGameObject: {fileID: 436743694}
 --- !u!1 &840795584
 GameObject:
   m_ObjectHideFlags: 0
@@ -70702,6 +70704,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 17
       objectReference: {fileID: 0}
+    - target: {fileID: 3965067635504781734, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8005767813211978251, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: m_LocalPosition.y
       value: -1.3
@@ -73497,6 +73503,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 80e71076a992ec94bade2c2c01a713ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2054204243 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1193409190806246324, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
+  m_PrefabInstance: {fileID: 1711954810}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1718424806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6f99f6aeef01f549ace2b24ad76629f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2064405384
 GameObject:
   m_ObjectHideFlags: 0
@@ -74053,7 +74070,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2143424223
 Transform:
   m_ObjectHideFlags: 0

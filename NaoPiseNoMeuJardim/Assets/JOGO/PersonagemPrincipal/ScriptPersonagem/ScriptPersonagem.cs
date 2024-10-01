@@ -491,7 +491,7 @@ public class ScriptPersonagem : MonoBehaviour
     IEnumerator trocarLayerPlayer()
     {
         gameObject.tag = "PlayerAtk";
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(.5f);
         gameObject.tag = "Player";
     }
 
@@ -749,12 +749,11 @@ public class ScriptPersonagem : MonoBehaviour
             movendoAutomaticamente = false;
             parallaxAtivar = true;
             forcaPulo = 18f;
-            // verificaVariaveisEntreCena();
-            // temporizadorIniciar.SetActive(true);
             VoaPassarin();
             AjustarOffSetCamera();
             MudarCameraParaDireita();
             modificaParallaxAutomatico();
+
         }
 
         if (collision.gameObject.tag == "ObjetoImpulso")
