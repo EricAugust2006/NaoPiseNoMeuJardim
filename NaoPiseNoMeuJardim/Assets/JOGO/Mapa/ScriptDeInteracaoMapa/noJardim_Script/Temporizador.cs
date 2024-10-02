@@ -32,7 +32,7 @@ public class Temporizador : MonoBehaviour
 
     void Update()
     {
-        if (player.triggouComTagPararCorrida = true)
+        if (player.triggouComTagPararCorrida == true)
         {
             temporizadorGameObject.SetActive(true);
         }
@@ -42,6 +42,8 @@ public class Temporizador : MonoBehaviour
         {
             cronometroCoroutine = StartCoroutine(Cronometro());
         }
+
+        // chamarVovozinha();
     }
 
     private IEnumerator Cronometro()
@@ -71,6 +73,9 @@ public class Temporizador : MonoBehaviour
         // Após 5 minutos, interrompe o temporizador
         tempoUIText.text = "05:00";
         Debug.Log("Tempo máximo atingido!");
+
+        temporizadorGameObject.SetActive(false);
+        clicarParaTerminarCorrida.SetActive(true);
     }
 
     public void chamarVovozinha()
@@ -78,10 +83,10 @@ public class Temporizador : MonoBehaviour
         if (tempoAtual == tempoMaximo)
         {
             clicarParaTerminarCorrida.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.C) && player.triggouComTagPararCorrida == true)
-            {
-                //script para chamar animação para chamar o script do fim da corrida infinita
-            }
+            // if (Input.GetKeyDown(KeyCode.C) && player.triggouComTagPararCorrida == true)
+            // {
+            //     //script para chamar animação para chamar o script do fim da corrida infinita
+            // }
         }
     }
 }
