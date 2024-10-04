@@ -132,48 +132,12 @@ public class ScriptPersonagem : MonoBehaviour
     [Header("Descer rápido")]
     public float velocidadeDescidaRapida = 20f;  // Velocidade extra ao descer
     public float raioDetectaChao = 0.2f;  // Raio para a detecção
-
     public Collider2D colisorGameObjectPlataforma;
-
-
     public float tempoEntreDano = 1f; // Intervalo entre cada dano
     private float ultimoTempoDano = 0f; // Rastrea o tempo da última aplicação de dano
 
     private void Awake()
     {
-        // // Verifica se a cena atual é "JardimJogo"
-        // if (SceneManager.GetActiveScene().name == "JardimJogo")
-        // {
-        //     // Encontre o Canvas primeiro
-        //     GameObject canvas = GameObject.Find("UI/HUD");
-        //     if (canvas != null)
-        //     {
-        //         // Em seguida, encontre o temporizador dentro do Canvas
-        //         temporizadorIniciar = canvas.transform.Find("Temporizador")?.gameObject;
-
-        //         if (temporizadorIniciar != null)
-        //         {
-        //             DontDestroyOnLoad(temporizadorIniciar);
-        //         }
-        //         else
-        //         {
-        //             Debug.LogError("Temporizador não encontrado dentro do Canvas HUD!");
-        //         }
-        //     }
-        //     else
-        //     {
-        //         Debug.LogError("Canvas UI/HUD não encontrado!");
-        //     }
-        // }
-        // else
-        // {
-        //     // Garante que a variável seja nula fora da cena "JardimJogo"
-        //     temporizadorIniciar = null;
-        // }
-
-        // verificaVariaveisEntreCena();
-
-        // temporizadorIniciar.SetActive(false);
         parallax = FindObjectOfType<MoverFundo>();
         jardim = FindObjectOfType<JARDIM>();
         cinemachine = FindObjectOfType<CinemachineVirtualCamera>(); // Find the Cinemachine camera in the scene        
@@ -184,8 +148,6 @@ public class ScriptPersonagem : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         dialogoGanhar = FindObjectOfType<ScriptGanhou>();
         chinelo = FindObjectOfType<InimigosKnockBack>();
-
-        // destroiToupeira.SetActive(false);
 
         if (cinemachine != null)
         {
@@ -204,31 +166,16 @@ public class ScriptPersonagem : MonoBehaviour
                 // Aplicar o valor inicial ao Framing Transposer, mas apenas no eixo X
                 framingTransposer.m_TrackedObjectOffset = new Vector3(originalOffsetX.x, framingTransposer.m_TrackedObjectOffset.y, framingTransposer.m_TrackedObjectOffset.z);
             }
-        }
-        else
+        }else
         {
             Debug.LogError("CinemachineVirtualCamera não encontrada!");
         }
     }
 
-    // public void verificaVariaveisEntreCena()
-    // {
-    //     if (SceneManager.GetActiveScene().name == "JardimJogo" && temporizadorIniciar != null)
-    //     {
-    //         temporizadorIniciar.SetActive(true);
-    //     }
-    //     else if (temporizadorIniciar != null)
-    //     {
-    //         temporizadorIniciar.SetActive(false);
-    //     }
-    // }
-
     private void Update()
     {
         AtualizarAnimacoes();
         RestaurarAnimacoes();
-
-        // verificaVariaveisEntreCena();
         descerRapido();
 
         if (SceneManager.GetActiveScene().name == "JardimJogo")
@@ -240,7 +187,6 @@ public class ScriptPersonagem : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.E) && jardim.eventoLigado)
             {
-                // Remove a parede invisível e inicia a corrida automática
                 paredeInvisivel.SetActive(false);
                 animator.SetBool("Correndo", true);
                 movendoAutomaticamente = true;
@@ -255,10 +201,8 @@ public class ScriptPersonagem : MonoBehaviour
         if (movendoAutomaticamente)
         {
             MoverAutomaticamente();
-        }
-        else
+        }else
         {
-            // Permite o movimento manual caso o evento do jardim tenha sido finalizado
             Movimentar();
         }
 
@@ -269,7 +213,6 @@ public class ScriptPersonagem : MonoBehaviour
         }
 
         AtualizarAnimacoes();
-        EstaLivre();
     }
 
     private void FixedUpdate()
@@ -277,41 +220,6 @@ public class ScriptPersonagem : MonoBehaviour
         Movimentar();
         DetectarChao();
     }
-
-    // void KnockLogic()
-    // {
-    //     if(jardim.eventoLigado == false){
-    //         if (kbCount < 0 && tomouDano == false)
-    //         {
-    //             Movimentar();
-    //         }
-    //         else if (tomouDano == true)
-    //         {
-    //             animator.SetTrigger("dano");
-    //             // Verificação da direção do knockback
-    //             if (isKnockRight == true) // Knockback para a direita
-    //             {
-    //                 animator.SetTrigger("dano");
-
-    //                 Debug.Log("Aplicando knockback para a direita");
-    //                 rb.velocity = new Vector2(kbForce, kbForce);
-    //             }
-    //             else // Knockback para a esquerda
-    //             {
-    //                 animator.SetTrigger("dano");
-
-    //                 Debug.Log("Aplicando knockback para a esquerda");
-    //                 rb.velocity = new Vector2(-kbForce, kbForce);
-    //             }
-    //             tomouDano = false; // Resetando o estado de dano
-    //         }
-    //         kbCount -= Time.deltaTime; // Diminuindo o tempo de knockback
-    //     } 
-    //     else {
-    //         return;
-    //     }
-    // }
-
 
     // public void Agachar()
     // {
@@ -346,7 +254,6 @@ public class ScriptPersonagem : MonoBehaviour
     private void MoverAutomaticamente()
     {
         float speedautomatico = speed * 1.5f;
-        //animator.SetBool("Correndo", true);
         transform.Translate(Vector2.right * speedautomatico * Time.deltaTime);
     }
 
@@ -460,11 +367,6 @@ public class ScriptPersonagem : MonoBehaviour
         }
     }
 
-    public void VerificarQueda()
-    {
-        Debug.Log("O personagem está caindo!");
-        animator.SetTrigger("Caiu"); // Chama o trigger de animação "Caiu"
-    }
     public void descerRapido()
     {
         taNoChao = Physics2D.OverlapCircle(detectaChao.position, raioDetectaChao, oQueEhChao);
@@ -496,30 +398,6 @@ public class ScriptPersonagem : MonoBehaviour
     }
 
     // =================================================================================
-    // ================================== TA PRESO =====================================
-    // =================================================================================
-
-    public void EstaLivre()
-    {
-        if (taPreso == true)
-        {
-            if (Input.GetKeyUp(KeyCode.E))
-            {
-                quantidadeApertada++;
-                textPro.text = quantidadeApertada.ToString();
-            }
-
-            if (quantidadeApertada >= 5)
-            {
-                UIapertar.SetActive(false);
-                taPreso = false;
-                animator.SetBool("taPreso", false);
-                quantidadeApertada = 0;
-            }
-        }
-    }
-
-    // =================================================================================
     // ================================ PLATAFORMAS ====================================
     // =================================================================================
 
@@ -530,6 +408,7 @@ public class ScriptPersonagem : MonoBehaviour
             TomouDanoNaPlataforma();
         }
     }
+
     public void MudarPlataforma()
     {
         if (taPreso == false)
@@ -546,10 +425,12 @@ public class ScriptPersonagem : MonoBehaviour
             }
         }
     }
+
     bool EstaNaPlataforma()
     {
         return col.IsTouchingLayers(oQueEhPlataforma);
     }
+
     IEnumerator TomouDanoNaPlataforma()
     {
         podePular = false;
@@ -561,16 +442,6 @@ public class ScriptPersonagem : MonoBehaviour
         podePular = true;
     }
 
-    // IEnumerator mudarPlataforma()
-    // {
-    //     col.isTrigger = false; // Restaura a colisão normal
-    //     podePular = false;
-    //     // gameObject.layer = LayerMask.NameToLayer("Delimitador");
-    //     yield return new WaitForSeconds(.5f);
-    //     // gameObject.layer = LayerMask.NameToLayer("Default");
-    //     podePular = true;
-    // }
-
     IEnumerator timeBackImpulse()
     {
         rb.velocity = new Vector2(rb.velocity.x, 12);
@@ -579,7 +450,7 @@ public class ScriptPersonagem : MonoBehaviour
     }
 
     // =================================================================================
-    // ================================== IMPULSO ======================================
+    // ================================= EMPURRAR ======================================
     // =================================================================================
     public void InimigoEmpurrar()
     {
@@ -612,14 +483,15 @@ public class ScriptPersonagem : MonoBehaviour
         {
             animator.SetBool("Caindo", true);
         }
+
         if (taNoChao || taNaPlataforma)
         {
             animator.SetBool("Caindo", false);
-            // animator.ResetTrigger("Jump");
         }
         wasGrounded = taNoChao;
         wasPlataformed = taNaPlataforma;
     }
+
     public void DesativarAnimacoes()
     {
         if (animator != null)
@@ -630,6 +502,7 @@ public class ScriptPersonagem : MonoBehaviour
             animator.SetFloat("Velocidade", 0f);
         }
     }
+
     public void RestaurarAnimacoes()
     {
         if (animator != null)
@@ -638,14 +511,17 @@ public class ScriptPersonagem : MonoBehaviour
             animator.SetBool("Correndo", true);
         }
     }
+
     public void CuidarLayer()
     {
         animator.SetLayerWeight(1, taNoChao ? 0 : 1);
         animator.SetLayerWeight(1, taNaPlataforma ? 0 : 1);
     }
+
     // =================================================================================
     // ============================== CINEMACHINE ZOOM =================================
     // =================================================================================
+
     public void VoaPassarin()
     {
         if (framingTransposer != null)
@@ -664,11 +540,11 @@ public class ScriptPersonagem : MonoBehaviour
             Debug.LogError("CinemachineVirtualCamera não encontrada!");
         }
     }
+    
     private void AjustarOffSetCamera()
     {
         if (framingTransposer != null)
         {
-            // Aqui ajustamos apenas o eixo X
             framingTransposer.m_TrackedObjectOffset = Vector3.Lerp(
                 framingTransposer.m_TrackedObjectOffset,
                 new Vector3(targetOffsetX.x, framingTransposer.m_TrackedObjectOffset.y, framingTransposer.m_TrackedObjectOffset.z),
@@ -685,7 +561,7 @@ public class ScriptPersonagem : MonoBehaviour
                 cinemachine.m_Lens.OrthographicSize,
                 targetOrthoSize,
                 zoomSpeed * Time.deltaTime
-                );
+            );
         }
     }
 
@@ -727,7 +603,6 @@ public class ScriptPersonagem : MonoBehaviour
 
     IEnumerator invencilibdade()
     {
-
         gameObject.tag = "intangível";
 
         yield return new WaitForSeconds(1f);
@@ -753,12 +628,10 @@ public class ScriptPersonagem : MonoBehaviour
             AjustarOffSetCamera();
             MudarCameraParaDireita();
             modificaParallaxAutomatico();
-
         }
 
         if (collision.gameObject.tag == "ObjetoImpulso")
         {
-            // StartCoroutine(mudarPlataforma());
             StartCoroutine(timeBackImpulse());
             animator.SetBool("Caindo", false);
         }
@@ -787,7 +660,6 @@ public class ScriptPersonagem : MonoBehaviour
                 Empurrar();
                 animator.SetTrigger("dano");
                 Debug.Log("Tomou dano da toupeira");
-                // StartCoroutine(TomouDanoNaPlataforma());
             }
         }
 
@@ -805,13 +677,6 @@ public class ScriptPersonagem : MonoBehaviour
             sistemaDeVida.vida--;
             Destroy(collision.gameObject);
         }
-
-        // if (collision.gameObject.CompareTag("paredes"))
-        // {
-        //     sistemaDeVida.vida--;
-        //     Empurrar();
-        //     animator.SetTrigger("dano");
-        // }
     }
 
     private void OnCollisionEnter2D(Collision2D other)

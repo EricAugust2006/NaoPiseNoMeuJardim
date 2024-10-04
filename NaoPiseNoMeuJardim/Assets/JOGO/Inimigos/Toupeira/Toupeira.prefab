@@ -267,3 +267,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d6e3946996f7443b79b22ca56a1fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  chanceDarVida: 0.1

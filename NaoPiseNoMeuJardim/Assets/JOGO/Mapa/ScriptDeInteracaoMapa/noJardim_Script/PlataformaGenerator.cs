@@ -99,12 +99,12 @@ public class PlataformaGenerator : MonoBehaviour
                 plataforma.transform
             );
 
-            // Muda a cor do bloco de acordo com a linha
-            SpriteRenderer sr = bloco.GetComponent<SpriteRenderer>();
-            if (sr != null)
-            {
-                sr.color = corDaLinha;
-            }
+            // // Muda a cor do bloco de acordo com a linha
+            // SpriteRenderer sr = bloco.GetComponent<SpriteRenderer>();
+            // if (sr != null)
+            // {
+            //     sr.color = corDaLinha;
+            // }
         }
 
         // Decide se vai spawnar um inimigo para essa plataforma

@@ -20,6 +20,10 @@ public class Temporizador : MonoBehaviour
     public GameObject clicarParaTerminarCorrida;
     public GameObject temporizadorGameObject;
 
+    public float fadeSpeed = .5f;
+    public Image blackScreenPanel;
+
+
     void Start()
     {
         player = FindObjectOfType<ScriptPersonagem>();
@@ -28,6 +32,13 @@ public class Temporizador : MonoBehaviour
 
         // Inicializa o próximo aumento
         proximoAumento = intervaloAumento;
+
+
+        // Start with black screen active
+        blackScreenPanel.gameObject.SetActive(true);
+        Color color = blackScreenPanel.color;
+        color.a = 1f;
+        blackScreenPanel.color = color;
     }
 
     void Update()
@@ -83,10 +94,32 @@ public class Temporizador : MonoBehaviour
         if (tempoAtual == tempoMaximo)
         {
             clicarParaTerminarCorrida.SetActive(true);
-            // if (Input.GetKeyDown(KeyCode.C) && player.triggouComTagPararCorrida == true)
-            // {
-            //     //script para chamar animação para chamar o script do fim da corrida infinita
-            // }
+            if (Input.GetKeyDown(KeyCode.C) && player.triggouComTagPararCorrida == true)
+            {
+                StartCoroutine(FadeOutBlackScreen());
+
+                IEnumerator FadeOutBlackScreen()
+                {
+                    Color color = blackScreenPanel.color;
+
+                    // Gradually fade out the black screen
+                    while (color.a > 0f)
+                    {
+                        color.a -= fadeSpeed * Time.deltaTime;
+                        blackScreenPanel.color = color;
+                        yield return null;
+                    }
+                    // Disable black screen panel after fade out
+                    blackScreenPanel.gameObject.SetActive(false);
+                }
+                //script para chamar animação para chamar o script do fim da corrida infinita
+            }
         }
+    }
+
+    public void cagarnaCalca(){
+        float cagar = 0;   
+
+
     }
 }

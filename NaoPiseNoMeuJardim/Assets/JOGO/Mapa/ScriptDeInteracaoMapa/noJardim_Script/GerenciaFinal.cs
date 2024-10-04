@@ -63,6 +63,7 @@ public class GerenciaFinal : MonoBehaviour
     }
 
     // Exemplos de funções de fade (precisam ser implementadas de acordo com a sua lógica)
+    
     private IEnumerator FadeIn()
     {
         // Implementação do fade in

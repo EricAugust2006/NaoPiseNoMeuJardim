@@ -24,10 +24,8 @@ public class GerenciaInicio : MonoBehaviour
 
     private Animator personagemAnimator;
 
-    // Victory script variables
     public float fadeSpeed = 0.5f;
 
-    // Black screen panel for scene transition
     public Image blackScreenPanel;
 
     void Start()
