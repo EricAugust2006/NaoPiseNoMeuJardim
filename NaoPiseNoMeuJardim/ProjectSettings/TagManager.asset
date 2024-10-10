@@ -30,6 +30,7 @@ TagManager:
   - parede
   - "intang\xEDvel"
   - paredes
+  - instrucoes
   layers:
   - Default
   - TransparentFX

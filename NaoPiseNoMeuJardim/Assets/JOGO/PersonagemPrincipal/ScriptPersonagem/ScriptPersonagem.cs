@@ -166,7 +166,8 @@ public class ScriptPersonagem : MonoBehaviour
                 // Aplicar o valor inicial ao Framing Transposer, mas apenas no eixo X
                 framingTransposer.m_TrackedObjectOffset = new Vector3(originalOffsetX.x, framingTransposer.m_TrackedObjectOffset.y, framingTransposer.m_TrackedObjectOffset.z);
             }
-        }else
+        }
+        else
         {
             Debug.LogError("CinemachineVirtualCamera não encontrada!");
         }
@@ -201,7 +202,8 @@ public class ScriptPersonagem : MonoBehaviour
         if (movendoAutomaticamente)
         {
             MoverAutomaticamente();
-        }else
+        }
+        else
         {
             Movimentar();
         }
@@ -540,7 +542,7 @@ public class ScriptPersonagem : MonoBehaviour
             Debug.LogError("CinemachineVirtualCamera não encontrada!");
         }
     }
-    
+
     private void AjustarOffSetCamera()
     {
         if (framingTransposer != null)
