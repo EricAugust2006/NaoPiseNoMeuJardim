@@ -91,7 +91,7 @@ public class TelefoneEvent : MonoBehaviour
         }
 
         // Espera 2 segundos antes de exibir o primeiro item
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(1f);
 
         // Exibir o primeiro item do dicionário
         MostrarItem(indiceAtual);

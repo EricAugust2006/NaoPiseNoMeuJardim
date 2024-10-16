@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 [System.Serializable]
 public class Instrucao
@@ -19,7 +20,7 @@ public class InstrucoesJogo : MonoBehaviour
     public Image telaPreta;
     public GameObject painelInstrucoes;
     public Image imagemTecla;
-    public Text descricaoAcao;
+    public TextMeshProUGUI descricaoAcao;
     public Button botaoProximo;
     public Button botaoAnterior;
 
