@@ -167,12 +167,12 @@ TextureImporter:
       name: Toupeira-Sheet_0
       rect:
         serializedVersion: 2
-        x: 29
-        y: 29
-        width: 66
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 30
+        y: 30
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -188,12 +188,12 @@ TextureImporter:
       name: Toupeira-Sheet_1
       rect:
         serializedVersion: 2
-        x: 133
-        y: 29
-        width: 66
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 134
+        y: 30
+        width: 64
+        height: 63
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -209,12 +209,12 @@ TextureImporter:
       name: Toupeira-Sheet_2
       rect:
         serializedVersion: 2
-        x: 237
-        y: 29
-        width: 66
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 238
+        y: 30
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -230,12 +230,12 @@ TextureImporter:
       name: Toupeira-Sheet_3
       rect:
         serializedVersion: 2
-        x: 341
-        y: 29
-        width: 66
-        height: 66
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 342
+        y: 30
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -251,12 +251,12 @@ TextureImporter:
       name: Toupeira-Sheet_4
       rect:
         serializedVersion: 2
-        x: 445
-        y: 29
-        width: 66
-        height: 65
-      alignment: 0
-      pivot: {x: 0, y: 0}
+        x: 446
+        y: 30
+        width: 64
+        height: 63
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -271,7 +271,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 4395d83e74850e04c8928f185326c444
     internalID: 0
     vertices: []
     indices: 

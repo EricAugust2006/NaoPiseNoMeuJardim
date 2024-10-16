@@ -176,19 +176,19 @@ TextureImporter:
       name: ToupeiroSurgindo-Sheet_0
       rect:
         serializedVersion: 2
-        x: 45
-        y: 29
-        width: 35
-        height: 24
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 136
+        y: 30
+        width: 58
+        height: 25
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 611b4c525022d08b0800000000000000
-      internalID: -5184450190529744618
+      spriteID: 4fb2791c0ba4c4c4488d9cdee8a0ad57
+      internalID: 66454734
       vertices: []
       indices: 
       edges: []
@@ -197,19 +197,19 @@ TextureImporter:
       name: ToupeiroSurgindo-Sheet_1
       rect:
         serializedVersion: 2
-        x: 241
-        y: 29
-        width: 58
-        height: 36
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 242
+        y: 30
+        width: 56
+        height: 34
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: a61a5c9d5733a7640800000000000000
-      internalID: 5078428111071453546
+      spriteID: e728d4d10b652a741996f1fe603787ec
+      internalID: 2131223173
       vertices: []
       indices: 
       edges: []
@@ -218,19 +218,19 @@ TextureImporter:
       name: ToupeiroSurgindo-Sheet_2
       rect:
         serializedVersion: 2
-        x: 345
-        y: 29
-        width: 58
-        height: 46
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 346
+        y: 30
+        width: 56
+        height: 44
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f084c937acee181c0800000000000000
-      internalID: -4503055599103358961
+      spriteID: ed175e839d4f50540804332039f8e055
+      internalID: -1083118620
       vertices: []
       indices: 
       edges: []
@@ -239,19 +239,19 @@ TextureImporter:
       name: ToupeiroSurgindo-Sheet_3
       rect:
         serializedVersion: 2
-        x: 449
-        y: 29
-        width: 58
-        height: 54
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 450
+        y: 30
+        width: 56
+        height: 52
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: e7b8927b249345210800000000000000
-      internalID: 1320743549429975934
+      spriteID: 657d36124b67d0645b5d99581ef14df3
+      internalID: -559476726
       vertices: []
       indices: 
       edges: []
@@ -260,19 +260,19 @@ TextureImporter:
       name: ToupeiroSurgindo-Sheet_4
       rect:
         serializedVersion: 2
-        x: 553
-        y: 29
-        width: 58
-        height: 66
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 554
+        y: 30
+        width: 56
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 0dcfdd765427e5d20800000000000000
-      internalID: 3269176021938470096
+      spriteID: 02fda3deeaa137d4e95a46ae184a9002
+      internalID: -1700216695
       vertices: []
       indices: 
       edges: []
@@ -281,19 +281,19 @@ TextureImporter:
       name: ToupeiroSurgindo-Sheet_5
       rect:
         serializedVersion: 2
-        x: 653
-        y: 29
-        width: 66
-        height: 62
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 654
+        y: 30
+        width: 64
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: f280b520a20642670800000000000000
-      internalID: 8513034929181493295
+      spriteID: c5add4c9096d8604eb8d0789ba862325
+      internalID: 1323324321
       vertices: []
       indices: 
       edges: []
@@ -302,19 +302,19 @@ TextureImporter:
       name: ToupeiroSurgindo-Sheet_6
       rect:
         serializedVersion: 2
-        x: 757
-        y: 29
-        width: 66
-        height: 66
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 758
+        y: 30
+        width: 64
+        height: 64
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 48f3f4a296368b010800000000000000
-      internalID: 1204822203654160260
+      spriteID: ef38d44cdb53dc6438422299af68306a
+      internalID: -86223594
       vertices: []
       indices: 
       edges: []
@@ -323,19 +323,19 @@ TextureImporter:
       name: ToupeiroSurgindo-Sheet_7
       rect:
         serializedVersion: 2
-        x: 861
-        y: 29
-        width: 66
-        height: 62
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 862
+        y: 30
+        width: 64
+        height: 60
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 4567dd4d67986c130800000000000000
-      internalID: 3586705296717608532
+      spriteID: 26e5662d81b77b448b69414d5ac4bfef
+      internalID: 913404543
       vertices: []
       indices: 
       edges: []
@@ -344,10 +344,10 @@ TextureImporter:
       name: ToupeiroSurgindo-Sheet_8
       rect:
         serializedVersion: 2
-        x: 137
+        x: 40
         y: 29
-        width: 58
-        height: 26
+        width: 41
+        height: 7
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -355,7 +355,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 603346bb96a66a64ab02bb42ed40757d
+      spriteID: 7e1312c87fb1c0c4588ec0ad0053cfd7
       internalID: -1051298413
       vertices: []
       indices: 
@@ -372,6 +372,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      ToupeiroSurgindo-Sheet_0: 66454734
+      ToupeiroSurgindo-Sheet_1: 2131223173
+      ToupeiroSurgindo-Sheet_2: -1083118620
+      ToupeiroSurgindo-Sheet_3: -559476726
+      ToupeiroSurgindo-Sheet_4: -1700216695
+      ToupeiroSurgindo-Sheet_5: 1323324321
+      ToupeiroSurgindo-Sheet_6: -86223594
+      ToupeiroSurgindo-Sheet_7: 913404543
       ToupeiroSurgindo-Sheet_8: -1051298413
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0

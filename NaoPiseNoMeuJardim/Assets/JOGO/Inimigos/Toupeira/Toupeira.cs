@@ -6,6 +6,7 @@ public class Toupeira : MonoBehaviour
 {
     private SistemaDeVida sistemaDeVida;
     private ScriptPersonagem player;
+    private Animator animator;
 
     // Chance de dar uma vida ao jogador (0 a 1)
     [Range(0f, 1f)]
@@ -13,8 +14,11 @@ public class Toupeira : MonoBehaviour
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         player = FindObjectOfType<ScriptPersonagem>();
         sistemaDeVida = FindObjectOfType<SistemaDeVida>();
+
+        animator.SetTrigger("Spawn");
     }
 
     public void OnTriggerEnter2D(Collider2D other)
@@ -26,6 +30,7 @@ public class Toupeira : MonoBehaviour
 
         if (other.gameObject.tag == "PlayerAtk")
         {
+            animator.SetTrigger("Despawn");
             Debug.Log("A toupeira foi atacada!");
 
             // Verifica se o jogador pode receber uma vida extra

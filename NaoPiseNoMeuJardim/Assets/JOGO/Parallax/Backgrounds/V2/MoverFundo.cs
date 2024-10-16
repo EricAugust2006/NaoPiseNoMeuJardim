@@ -59,8 +59,9 @@ public class MoverFundo : MonoBehaviour
         lastCameraPos = cameraTransform.position;
 
         // Reposiciona o fundo quando ele sai da tela à esquerda
-        if (transform.position.x < cameraTransform.position.x - larguraObjeto - 10f)
+        if (transform.position.x < cameraTransform.position.x - larguraObjeto)
         {
+            // Usar uma margem de segurança para evitar piscadas
             transform.position = new Vector3(irmao.transform.position.x + larguraObjeto, posOriginal.y, posOriginal.z);
         }
     }

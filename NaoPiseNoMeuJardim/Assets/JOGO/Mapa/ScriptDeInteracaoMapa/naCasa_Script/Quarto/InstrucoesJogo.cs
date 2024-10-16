@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using TMPro;
 
 [System.Serializable]
 public class Instrucao
@@ -20,7 +19,7 @@ public class InstrucoesJogo : MonoBehaviour
     public Image telaPreta;
     public GameObject painelInstrucoes;
     public Image imagemTecla;
-    public TextMeshProUGUI descricaoAcao;
+    public Text descricaoAcao;
     public Button botaoProximo;
     public Button botaoAnterior;
 
@@ -43,37 +42,27 @@ public class InstrucoesJogo : MonoBehaviour
 
     private void Update()
     {
-        if (eventoLigado && Input.GetKeyDown(KeyCode.F1)) // Tecla F1 para abrir o painel de instruções
+        if (eventoLigado && Input.GetKeyDown(KeyCode.E)) // Tecla F1 para abrir o painel de instruções
         {
             taNoEventoInstrucoes = true;
-            StartCoroutine(ExibirInstrucoesComTransicao());
+            ExibirInstrucoes(); // Exibe as instruções imediatamente
         }
 
         if (taNoEventoInstrucoes && Input.GetKeyDown(KeyCode.Escape)) // Tecla Escape para fechar as instruções
         {
             taNoEventoInstrucoes = false;
-            StopAllCoroutines(); // Para todas as corrotinas ativas
             ResetarTransicao(); // Volta ao estado inicial
         }
     }
 
-    IEnumerator ExibirInstrucoesComTransicao()
+    private void ExibirInstrucoes()
     {
-        // Gradualmente escurece a tela
-        float alpha = 0;
-        while (alpha < 0.5f) // Escurece até 50% (alpha 0.5)
-        {
-            alpha += Time.deltaTime * velocidadeTransicao;
-            telaPreta.color = new Color(0, 0, 0, alpha);
-            yield return null;
-        }
-
-        // Espera 2 segundos antes de exibir as instruções
-        yield return new WaitForSeconds(2f);
-
+        // Define a tela preta com transparência
+        telaPreta.color = new Color(0, 0, 0, 0.5f); // Escurece até 50% (alpha 0.5)
+        
         // Exibir a primeira instrução
         MostrarInstrucao(indiceAtual);
-        painelInstrucoes.SetActive(true);
+        painelInstrucoes.SetActive(true); // Exibe o painel de instruções imediatamente
     }
 
     public void ResetarTransicao()

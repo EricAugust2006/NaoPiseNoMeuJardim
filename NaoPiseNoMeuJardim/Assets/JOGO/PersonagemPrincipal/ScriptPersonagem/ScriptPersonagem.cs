@@ -1,19 +1,21 @@
 using System.Collections;
 using System.Collections.Generic;
 using Cinemachine;
+using Cinemachine;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
-using Cinemachine;
-using TMPro;
 using UnityEngine.UIElements;
 
 public class ScriptPersonagem : MonoBehaviour
 {
     [Header("Movimentacao")]
     private Rigidbody2D rb;
-    [SerializeField] public float speed;
+
+    [SerializeField]
+    public float speed;
 
     [Header("Pulo")]
     public bool pulando = false;
@@ -43,6 +45,7 @@ public class ScriptPersonagem : MonoBehaviour
     public SistemaDeVida sistemaDeVida;
     public GameObject paredeInvisivel;
     public GameObject GameObjectdetectaPlataforma;
+
     // public GameObject temporizadorIniciar;
 
     [Header("Animacao e Flip")]
@@ -66,7 +69,6 @@ public class ScriptPersonagem : MonoBehaviour
     private JARDIM jardim;
     private MoverFundo parallax;
     private MoverFundo moveFundo;
-
 
     [Header("Cinemachine")]
     private CinemachineFramingTransposer framingTransposer;
@@ -113,7 +115,6 @@ public class ScriptPersonagem : MonoBehaviour
     public bool triggouComTagPararCorrida = false;
 
     [Header("Corrida Infinita")]
-
     public MoverFundo parallaxCeuUm;
     public MoverFundo parallaxCeuDois;
 
@@ -130,8 +131,8 @@ public class ScriptPersonagem : MonoBehaviour
     public MoverFundo parallaxArvoreDois;
 
     [Header("Descer rápido")]
-    public float velocidadeDescidaRapida = 20f;  // Velocidade extra ao descer
-    public float raioDetectaChao = 0.2f;  // Raio para a detecção
+    public float velocidadeDescidaRapida = 20f; // Velocidade extra ao descer
+    public float raioDetectaChao = 0.2f; // Raio para a detecção
     public Collider2D colisorGameObjectPlataforma;
     public float tempoEntreDano = 1f; // Intervalo entre cada dano
     private float ultimoTempoDano = 0f; // Rastrea o tempo da última aplicação de dano
@@ -140,7 +141,7 @@ public class ScriptPersonagem : MonoBehaviour
     {
         parallax = FindObjectOfType<MoverFundo>();
         jardim = FindObjectOfType<JARDIM>();
-        cinemachine = FindObjectOfType<CinemachineVirtualCamera>(); // Find the Cinemachine camera in the scene        
+        cinemachine = FindObjectOfType<CinemachineVirtualCamera>(); // Find the Cinemachine camera in the scene
         jokenpoManager = FindObjectOfType<JokenpoManager>();
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
@@ -160,11 +161,19 @@ public class ScriptPersonagem : MonoBehaviour
             if (framingTransposer != null)
             {
                 // Define o valor inicial do offset no eixo X (originalOffsetX)
-                originalOffsetX = new Vector3(framingTransposer.m_TrackedObjectOffset.x, framingTransposer.m_TrackedObjectOffset.y, framingTransposer.m_TrackedObjectOffset.z);
+                originalOffsetX = new Vector3(
+                    framingTransposer.m_TrackedObjectOffset.x,
+                    framingTransposer.m_TrackedObjectOffset.y,
+                    framingTransposer.m_TrackedObjectOffset.z
+                );
                 targetOffsetX = originalOffsetX;
 
                 // Aplicar o valor inicial ao Framing Transposer, mas apenas no eixo X
-                framingTransposer.m_TrackedObjectOffset = new Vector3(originalOffsetX.x, framingTransposer.m_TrackedObjectOffset.y, framingTransposer.m_TrackedObjectOffset.z);
+                framingTransposer.m_TrackedObjectOffset = new Vector3(
+                    originalOffsetX.x,
+                    framingTransposer.m_TrackedObjectOffset.y,
+                    framingTransposer.m_TrackedObjectOffset.z
+                );
             }
         }
         else
@@ -207,7 +216,6 @@ public class ScriptPersonagem : MonoBehaviour
         {
             Movimentar();
         }
-
 
         if (podePular)
         {
@@ -328,14 +336,22 @@ public class ScriptPersonagem : MonoBehaviour
         if (framingTransposer != null)
         {
             // Defina o valor do offset no eixo X para mover a câmera para a direita
-            framingTransposer.m_TrackedObjectOffset = new Vector3(originalOffsetX.x + offSetX, framingTransposer.m_TrackedObjectOffset.y, framingTransposer.m_TrackedObjectOffset.z);
+            framingTransposer.m_TrackedObjectOffset = new Vector3(
+                originalOffsetX.x + offSetX,
+                framingTransposer.m_TrackedObjectOffset.y,
+                framingTransposer.m_TrackedObjectOffset.z
+            );
         }
     }
 
     private void DetectarChao()
     {
         taNoChao = Physics2D.OverlapCircle(detectaChao.position, 0.4f, oQueEhChao);
-        taNaPlataforma = Physics2D.OverlapCircle(detectaPlataforma.position, 0.4f, oQueEhPlataforma);
+        taNaPlataforma = Physics2D.OverlapCircle(
+            detectaPlataforma.position,
+            0.4f,
+            oQueEhPlataforma
+        );
 
         if (taNoChao || taNaPlataforma)
         {
@@ -536,7 +552,6 @@ public class ScriptPersonagem : MonoBehaviour
         {
             targetOrthoSize = 10f;
         }
-
         else
         {
             Debug.LogError("CinemachineVirtualCamera não encontrada!");
@@ -549,7 +564,11 @@ public class ScriptPersonagem : MonoBehaviour
         {
             framingTransposer.m_TrackedObjectOffset = Vector3.Lerp(
                 framingTransposer.m_TrackedObjectOffset,
-                new Vector3(targetOffsetX.x, framingTransposer.m_TrackedObjectOffset.y, framingTransposer.m_TrackedObjectOffset.z),
+                new Vector3(
+                    targetOffsetX.x,
+                    framingTransposer.m_TrackedObjectOffset.y,
+                    framingTransposer.m_TrackedObjectOffset.z
+                ),
                 Time.deltaTime * transitionSpeed
             );
         }
@@ -574,7 +593,6 @@ public class ScriptPersonagem : MonoBehaviour
 
         parallaxCeuUm.movimentoAutomatico = 1f;
         parallaxCeuDois.movimentoAutomatico = 1f;
-
 
         parallaxRochasUm.movimentoAutomatico = .8f;
         parallaxRochasDois.movimentoAutomatico = .8f;
@@ -621,7 +639,8 @@ public class ScriptPersonagem : MonoBehaviour
         if (collision.gameObject.tag == "pararCorrida")
         {
             triggouComTagPararCorrida = true;
-            rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+            rb.constraints =
+                RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
             spriteRenderer.flipX = false;
             movendoAutomaticamente = false;
             parallaxAtivar = true;
@@ -662,6 +681,17 @@ public class ScriptPersonagem : MonoBehaviour
                 Empurrar();
                 animator.SetTrigger("dano");
                 Debug.Log("Tomou dano da toupeira");
+            }
+        }
+
+        if (gameObject.tag == "Player" || gameObject.tag == "PlayerAtk")
+        {
+            if (collision.gameObject.tag == "plantaCarnivora")
+            {
+                StartCoroutine(invencilibdade());
+                Empurrar();
+                animator.SetTrigger("dano");
+                Debug.Log("Tomou dano da planta carnivora");
             }
         }
 

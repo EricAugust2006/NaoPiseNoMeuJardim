@@ -230,7 +230,10 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      SetaDirecao1-Sheet_0: 2741805916442467660
+      SetaDirecao1-Sheet_1: -4194349883888508596
+      SetaDirecao1-Sheet_2: -5250507756718912987
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -31,6 +31,7 @@ TagManager:
   - "intang\xEDvel"
   - paredes
   - instrucoes
+  - plantaCarnivora
   layers:
   - Default
   - TransparentFX
