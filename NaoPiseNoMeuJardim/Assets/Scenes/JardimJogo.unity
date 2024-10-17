@@ -68598,7 +68598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3722605818911777914, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: vida
-      value: 10000
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3722605818911777914, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: cheio
@@ -68610,7 +68610,7 @@ PrefabInstance:
       objectReference: {fileID: -8465372704706663609, guid: a99cf47ce5e100c43a8f7f26517a6014, type: 3}
     - target: {fileID: 3722605818911777914, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: vidaMaxima
-      value: 100000
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 3722605818911777914, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: telaGameOver

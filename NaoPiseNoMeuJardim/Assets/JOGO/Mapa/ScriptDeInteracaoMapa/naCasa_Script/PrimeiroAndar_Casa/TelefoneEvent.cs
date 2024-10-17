@@ -82,16 +82,16 @@ public class TelefoneEvent : MonoBehaviour
     IEnumerator ExibirDicionarioComTransicao()
     {
         // Gradualmente escurece a tela
-        float alpha = 0;
-        while (alpha < 0.5f) // Escurece até 50% (alpha 0.5)
-        {
-            alpha += Time.deltaTime * velocidadeTransicao;
-            telaPreta.color = new Color(0, 0, 0, alpha);
-            yield return null;
-        }
+        // float alpha = 0;
+        // while (alpha < 0.5f) // Escurece até 50% (alpha 0.5)
+        // {
+        //     alpha += Time.deltaTime * velocidadeTransicao;
+        //     telaPreta.color = new Color(0, 0, 0, alpha);
+        //     yield return null;
+        // }
 
         // Espera 2 segundos antes de exibir o primeiro item
-        yield return new WaitForSeconds(1f);
+        yield return null;
 
         // Exibir o primeiro item do dicionário
         MostrarItem(indiceAtual);
