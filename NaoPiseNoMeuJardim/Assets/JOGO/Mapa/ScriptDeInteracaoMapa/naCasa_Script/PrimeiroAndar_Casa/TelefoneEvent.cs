@@ -17,7 +17,7 @@ public class TelefoneEvent : MonoBehaviour
     public GameObject BotaoInteracao;
     public GameObject telefoneEventoEntrar;
     public GameObject telefoneEventoSair;
-    
+
     // Elementos adicionais para a tela preta e o dicionário de itens
     public Image telaPreta;
     public GameObject painelDicionario;
@@ -29,15 +29,20 @@ public class TelefoneEvent : MonoBehaviour
     [Header("Configurações")]
     public List<ItemDicionario> itensDicionario; // Lista de itens do dicionário
     public float velocidadeTransicao = 0.5f; // Controle de velocidade da transição da tela preta
-    private int indiceAtual = 0; // Índice do item atualmente mostrado
+    public int indiceAtual = 0; // Índice do item atualmente mostrado
 
     [Header("Script")]
     private ScriptPersonagem personagemScript;
 
     [Header("Booleanos")]
     public bool EventoIniciado = false;
-    public bool eventoLigado = false;    
+    public bool eventoLigado = false;
     public bool taNoEventoTelefone = false;
+
+    public bool painelLigado = false;
+
+    bool dicionarioTaLigado = false;
+
 
     private void Start()
     {
@@ -45,18 +50,19 @@ public class TelefoneEvent : MonoBehaviour
         telefoneEventoEntrar.SetActive(false);
         telaPreta.color = new Color(0, 0, 0, 0); // Iniciar com tela transparente
         painelDicionario.SetActive(false); // O painel começa invisível
-        botaoProximo.onClick.AddListener(MostrarProximoItem); // Associa o botão "Próximo" ao método
-        botaoAnterior.onClick.AddListener(MostrarItemAnterior); // Associa o botão "Anterior" ao método
+        indiceAtual = 0;
     }
 
     private void Update()
     {
         EventoTelefone();
+
+        MostrarProximoItem();
     }
 
     public void EventoTelefone()
     {
-        if (EventoIniciado && Input.GetKeyDown(KeyCode.E) && eventoLigado == true)
+        if (Input.GetKeyDown(KeyCode.E) && eventoLigado == true)
         {
             taNoEventoTelefone = true;
             telefoneEventoEntrar.SetActive(true);
@@ -69,33 +75,26 @@ public class TelefoneEvent : MonoBehaviour
             }
         }
 
-        if(EventoIniciado && Input.GetKeyDown(KeyCode.Escape)){
+        if (Input.GetKeyDown(KeyCode.Escape) && eventoLigado == true)
+        {
             taNoEventoTelefone = false;
             telefoneEventoEntrar.SetActive(false);
             StopAllCoroutines(); // Para todas as corrotinas ativas
             ResetarTransicao(); // Volta ao estado inicial
             personagemScript.enabled = true;
             personagemScript.RestaurarAnimacoes();
+            indiceAtual = -1;
         }
     }
 
     IEnumerator ExibirDicionarioComTransicao()
     {
-        // Gradualmente escurece a tela
-        // float alpha = 0;
-        // while (alpha < 0.5f) // Escurece até 50% (alpha 0.5)
-        // {
-        //     alpha += Time.deltaTime * velocidadeTransicao;
-        //     telaPreta.color = new Color(0, 0, 0, alpha);
-        //     yield return null;
-        // }
-
-        // Espera 2 segundos antes de exibir o primeiro item
         yield return null;
 
         // Exibir o primeiro item do dicionário
         MostrarItem(indiceAtual);
         painelDicionario.SetActive(true);
+        painelLigado = true;
     }
 
     public void ResetarTransicao()
@@ -112,31 +111,46 @@ public class TelefoneEvent : MonoBehaviour
             imagemItem.sprite = itensDicionario[index].imagemItem;
             descricaoItem.text = itensDicionario[index].descricaoItem;
         }
-
-        // Verifica se os botões "Anterior" ou "Próximo" devem estar ativos
-        botaoAnterior.gameObject.SetActive(index > 0);
-        botaoProximo.gameObject.SetActive(index < itensDicionario.Count - 1);
     }
 
     // Método para mostrar o próximo item
     public void MostrarProximoItem()
     {
-        if (indiceAtual < itensDicionario.Count - 1)
+        if (Input.GetKeyDown(KeyCode.E) && taNoEventoTelefone == true)
         {
-            indiceAtual++;
             MostrarItem(indiceAtual);
+            if (indiceAtual < itensDicionario.Count - 1)
+            {
+                if (painelLigado == true)
+                {
+                    if (Input.GetKeyDown(KeyCode.E))
+                        Debug.Log("ai");
+                        indiceAtual++;
+                }
+            }
+        }
+        else if (indiceAtual > 0)
+        {
+            if (Input.GetKeyDown(KeyCode.Q) && taNoEventoTelefone == true)
+            {
+                indiceAtual--;
+                MostrarItem(indiceAtual);
+            }
         }
     }
 
-    // Método para mostrar o item anterior
-    public void MostrarItemAnterior()
-    {
-        if (indiceAtual > 0)
-        {
-            indiceAtual--;
-            MostrarItem(indiceAtual);
-        }
-    }
+    // // Método para mostrar o item anterior
+    // public void MostrarItemAnterior()
+    // {
+    //     if (indiceAtual > 0)
+    //     {
+    //         if (Input.GetKeyDown(KeyCode.Q) && taNoEventoTelefone == true)
+    //         {
+    //             indiceAtual--;
+    //             MostrarItem(indiceAtual);
+    //         }
+    //     }
+    // }
 
     public void SairDoEvento()
     {
