@@ -263,6 +263,8 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void MoverAutomaticamente()
     {
+        animator.SetBool("Correndo", true);
+         animator.SetFloat("Velocidade", 1);
         float speedautomatico = speed * 1.5f;
         transform.Translate(Vector2.right * speedautomatico * Time.deltaTime);
     }

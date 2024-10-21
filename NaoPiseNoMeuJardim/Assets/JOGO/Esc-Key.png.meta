@@ -51,7 +51,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 16
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -157,17 +157,38 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 64
+        width: 32
         height: 28
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: -1
+      tessellationDetail: 0
       bones: []
-      spriteID: 651af5ccb3aaf5d90800000000000000
+      spriteID: c8d72a83d3ebf1b498e8a1b7898d509f
       internalID: -7106774513158741674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Esc-Key_1
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 28
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 703d8f9c5387c794289b5fc9ab0f1954
+      internalID: -2089813954
       vertices: []
       indices: 
       edges: []
@@ -175,7 +196,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: abeb15efbfd7b6e47a4bddfa1e471ab8
     internalID: 0
     vertices: []
     indices: 
@@ -184,6 +205,7 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       Esc-Key_0: -7106774513158741674
+      Esc-Key_1: -2089813954
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

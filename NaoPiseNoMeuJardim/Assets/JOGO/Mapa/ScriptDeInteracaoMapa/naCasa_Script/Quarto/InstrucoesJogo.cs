@@ -7,16 +7,19 @@ using TMPro;
 [System.Serializable]
 public class Instrucao
 {
-    public Sprite imagemTecla;   // Imagem da tecla
-    [TextArea] public string descricaoAcao; // Descrição da ação
+    public Sprite imagemTecla;
+    [TextArea] public string descricaoAcao;
 }
 
 public class InstrucoesJogo : MonoBehaviour
 {
     [Header("GameObjects")]
+    public GameObject ESCbutton;
+    public GameObject eButton;
+    public GameObject qButton;
+
     public GameObject BotaoInteracao;
 
-    // Elementos para as instruções
     public Image telaPreta;
     public GameObject painelInstrucoes;
     public Image imagemTecla;
@@ -36,6 +39,7 @@ public class InstrucoesJogo : MonoBehaviour
 
     private void Start()
     {
+        ESCbutton.SetActive(false);
         telaPreta.color = new Color(0, 0, 0, 0); // Iniciar com tela transparente
         painelInstrucoes.SetActive(false); // O painel começa invisível
     }
@@ -45,7 +49,7 @@ public class InstrucoesJogo : MonoBehaviour
         if (eventoLigado && Input.GetKeyDown(KeyCode.E))
         {
             taNoEventoInstrucoes = true;
-           
+
         }
 
         if (taNoEventoInstrucoes && Input.GetKeyDown(KeyCode.Escape))
@@ -67,6 +71,9 @@ public class InstrucoesJogo : MonoBehaviour
         MostrarInstrucao(indiceAtual);
         painelInstrucoes.SetActive(true); // Exibe o painel de instruções imediatamente
         painelLigado = true;
+        ESCbutton.SetActive(true);
+        qButton.SetActive(true);
+        eButton.SetActive(true);
     }
 
     public void ResetarTransicao()
@@ -93,7 +100,7 @@ public class InstrucoesJogo : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.E) && taNoEventoInstrucoes == true)
         {
-             ExibirInstrucoes();
+            ExibirInstrucoes();
             MostrarInstrucao(indiceAtual);
             if (indiceAtual < listaInstrucoes.Count - 1)
             {

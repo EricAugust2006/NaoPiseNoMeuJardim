@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 9084cb6770d84414aa2b27dfb39f52be
+guid: 429fa5925b0d1bb47b9f80330b985b0e
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1223216668860354309
-    second: E-Key_0
+      213: -7639426471219791500
+    second: Q-Key_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -135,11 +135,24 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: iPhone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: E-Key_0
+      name: Q-Key_0
       rect:
         serializedVersion: 2
         x: 0
@@ -151,16 +164,16 @@ TextureImporter:
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 98d8500451958a2429d251c7e0163908
-      internalID: -1900818236
+      spriteID: 4797a3f891e4bf590800000000000000
+      internalID: -7639426471219791500
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: E-Key_1
+      name: Q-Key_1
       rect:
         serializedVersion: 2
         x: 32
@@ -174,8 +187,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 83afb38a5fc9c6e439ac64fb703a5558
-      internalID: 2058260885
+      spriteID: cd91dbd81a87e52478931bbb270f7d75
+      internalID: 1662394404
       vertices: []
       indices: 
       edges: []
@@ -183,7 +196,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: b2784323288d0f5478e48b71c1b61f70
+    spriteID: 689daced65bc9274b9de9fb1ba8623fd
     internalID: 0
     vertices: []
     indices: 
@@ -191,8 +204,8 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      E-Key_0: -1900818236
-      E-Key_1: 2058260885
+      Q-Key_0: -7639426471219791500
+      Q-Key_1: 1662394404
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

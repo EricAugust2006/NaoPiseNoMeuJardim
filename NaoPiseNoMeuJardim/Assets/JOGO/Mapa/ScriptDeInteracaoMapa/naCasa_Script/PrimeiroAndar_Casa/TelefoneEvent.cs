@@ -14,6 +14,10 @@ public class ItemDicionario
 public class TelefoneEvent : MonoBehaviour
 {
     [Header("GameObjects")]
+    public GameObject ESCbutton;
+    public GameObject eButton;
+    public GameObject qButton;
+
     public GameObject BotaoInteracao;
     public GameObject telefoneEventoEntrar;
     public GameObject telefoneEventoSair;
@@ -46,6 +50,7 @@ public class TelefoneEvent : MonoBehaviour
 
     private void Start()
     {
+        ESCbutton.SetActive(false);
         personagemScript = FindObjectOfType<ScriptPersonagem>();
         telefoneEventoEntrar.SetActive(false);
         telaPreta.color = new Color(0, 0, 0, 0); // Iniciar com tela transparente
@@ -95,6 +100,9 @@ public class TelefoneEvent : MonoBehaviour
         MostrarItem(indiceAtual);
         painelDicionario.SetActive(true);
         painelLigado = true;
+        ESCbutton.SetActive(true);
+        qButton.SetActive(true);
+        eButton.SetActive(true);
     }
 
     public void ResetarTransicao()
@@ -125,7 +133,7 @@ public class TelefoneEvent : MonoBehaviour
                 {
                     if (Input.GetKeyDown(KeyCode.E))
                         Debug.Log("ai");
-                        indiceAtual++;
+                    indiceAtual++;
                 }
             }
         }
@@ -138,19 +146,6 @@ public class TelefoneEvent : MonoBehaviour
             }
         }
     }
-
-    // // Método para mostrar o item anterior
-    // public void MostrarItemAnterior()
-    // {
-    //     if (indiceAtual > 0)
-    //     {
-    //         if (Input.GetKeyDown(KeyCode.Q) && taNoEventoTelefone == true)
-    //         {
-    //             indiceAtual--;
-    //             MostrarItem(indiceAtual);
-    //         }
-    //     }
-    // }
 
     public void SairDoEvento()
     {
