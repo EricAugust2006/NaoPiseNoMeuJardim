@@ -64484,12 +64484,12 @@ SpriteRenderer:
   m_SortingLayerID: -1958990959
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2025014305788752376, guid: 188b50cff16bbd6468bbbad61e8072d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 188b50cff16bbd6468bbbad61e8072d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 160, y: 16.015625}
+  m_Size: {x: 106.666664, y: 10.677083}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -65446,7 +65446,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &795882914
 Transform:
   m_ObjectHideFlags: 0
@@ -66825,8 +66825,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -2097401107
+  m_SortingLayer: 18
   m_SortingOrder: 1
   m_Sprite: {fileID: -1900818236, guid: 9084cb6770d84414aa2b27dfb39f52be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -67756,7 +67756,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54.79, y: -1.36}
+  m_AnchoredPosition: {x: 54.7, y: -1.53}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1377466244
@@ -69379,7 +69379,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5757998171606388099, guid: d2225469c04ec8441b3562bc7e164b5d, type: 3}
+      - m_Target: {fileID: 2082764203}
         m_TargetAssemblyTypeName: GerenciadorDoJogo, Assembly-CSharp
         m_MethodName: recomecarJogo
         m_Mode: 1
@@ -69390,7 +69390,7 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
-        m_CallState: 2
+        m_CallState: 1
 --- !u!114 &1709964437
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69699,7 +69699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3722605818911777914, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: vida
-      value: 3
+      value: 422
       objectReference: {fileID: 0}
     - target: {fileID: 3722605818911777914, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: cheio
@@ -69711,7 +69711,7 @@ PrefabInstance:
       objectReference: {fileID: -8465372704706663609, guid: a99cf47ce5e100c43a8f7f26517a6014, type: 3}
     - target: {fileID: 3722605818911777914, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: vidaMaxima
-      value: 3
+      value: 422
       objectReference: {fileID: 0}
     - target: {fileID: 3722605818911777914, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: telaGameOver
@@ -69815,7 +69815,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1738584850}
   m_Layer: 5
-  m_Name: DICIONARIO
+  m_Name: INSTRUCOES
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69829,7 +69829,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1738584849}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 220.87346}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.85705715, y: 0.85705715, z: 0.85705715}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -69842,7 +69842,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -782.45087, y: -199.10136}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1751892050
@@ -72292,12 +72292,12 @@ SpriteRenderer:
   m_SortingLayerID: -1958990959
   m_SortingLayer: 1
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2025014305788752376, guid: 188b50cff16bbd6468bbbad61e8072d2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 188b50cff16bbd6468bbbad61e8072d2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 160, y: 16.015625}
+  m_Size: {x: 106.666664, y: 10.677083}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -72657,7 +72657,7 @@ GameObject:
   - component: {fileID: 2020717404}
   - component: {fileID: 2020717407}
   - component: {fileID: 2020717406}
-  - component: {fileID: 2020717405}
+  - component: {fileID: 2020717408}
   m_Layer: 0
   m_Name: Telefone
   m_TagString: Untagged
@@ -72674,54 +72674,13 @@ Transform:
   m_GameObject: {fileID: 2020717403}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.95, y: 0.27, z: -0.0035072826}
+  m_LocalPosition: {x: 3.8, y: 0.35, z: -0.0035072826}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1134994938}
   m_Father: {fileID: 729108128}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2020717405
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2020717403}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffc1d890be73eab468cc38237f688722, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ESCbutton: {fileID: 0}
-  eButton: {fileID: 0}
-  qButton: {fileID: 0}
-  BotaoInteracao: {fileID: 1134994937}
-  telefoneEventoEntrar: {fileID: 0}
-  telefoneEventoSair: {fileID: 0}
-  telaPreta: {fileID: 0}
-  painelDicionario: {fileID: 0}
-  imagemItem: {fileID: 0}
-  descricaoItem: {fileID: 0}
-  botaoProximo: {fileID: 0}
-  botaoAnterior: {fileID: 0}
-  itensDicionario:
-  - imagemItem: {fileID: 7102687296746930702, guid: e035371810a451a46b5ef3d0eab9503f, type: 3}
-    descricaoItem: 'Toupeira
-
-
-      Geralmente aparece para te atrapalhar'
-  - imagemItem: {fileID: 2829232388215122354, guid: 021bb958b980c58418e7a810d826a740, type: 3}
-    descricaoItem: "Planta Carnivora\t\n\nEla tem fome de crian\xE7a chata"
-  - imagemItem: {fileID: -2289573320250491306, guid: 6813eab2207e1da479e83b54ddfe6293, type: 3}
-    descricaoItem: "Chinelo de m\xE3e\t\n\nN\xE3o seja acertado pelo chinelo...\nMachuca
-      muito!"
-  velocidadeTransicao: 0.5
-  indiceAtual: 0
-  EventoIniciado: 0
-  eventoLigado: 0
-  taNoEventoTelefone: 0
-  painelLigado: 0
 --- !u!61 &2020717406
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -72811,7 +72770,7 @@ SpriteRenderer:
   m_SortingLayerID: -237138145
   m_SortingLayer: 14
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: 6a605ef1148168f40922ed24fe365b6f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e58c06bee4d040446b47a8d81d722708, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -72822,6 +72781,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &2020717408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2020717403}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c679af470fdd9c44e8398327b2151aa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ESCbutton: {fileID: 2009598026}
+  eButton: {fileID: 895590517}
+  qButton: {fileID: 879858571}
+  BotaoInteracao: {fileID: 1134994937}
+  telaPreta: {fileID: 1087770035}
+  painelInstrucoes: {fileID: 1738584849}
+  imagemTecla: {fileID: 1121999438}
+  descricaoAcao: {fileID: 2133528415}
+  botaoProximo: {fileID: 651040249}
+  botaoAnterior: {fileID: 650202818}
+  listaInstrucoes:
+  - imagemTecla: {fileID: 0}
+    descricaoAcao: "Quando voc\xEA INTERAGIR com o JARDIM, voc\xEA estar\xE1 iniciando
+      o jogo!"
+  velocidadeTransicao: 0.5
+  eventoLigado: 0
+  taNoEventoInstrucoes: 0
+  painelLigado: 0
 --- !u!1 &2032375851
 GameObject:
   m_ObjectHideFlags: 0
@@ -74555,10 +74544,10 @@ PrefabInstance:
     - target: {fileID: 2138075966985633088, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 5757998171606388099, guid: d2225469c04ec8441b3562bc7e164b5d, type: 3}
+      objectReference: {fileID: 2082764203}
     - target: {fileID: 2138075966985633088, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2138075966985633088, guid: 5d45e561c1ab7464ba7d4394904b5aa3, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName

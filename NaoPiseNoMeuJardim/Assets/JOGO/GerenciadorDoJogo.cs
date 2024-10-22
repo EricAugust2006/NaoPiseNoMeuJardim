@@ -13,6 +13,7 @@ public class GerenciadorDoJogo : MonoBehaviour
     private ScriptPersonagem personagemScript;
     public TelefoneEvent telefoneEvent;
     public ScriptMae mae;
+    private InstrucoesJogo instrucoesJogo;
 
     [Header("GameObjects no Menu principal")]
     [SerializeField] GameObject MenuPrincipal;
@@ -30,6 +31,8 @@ public class GerenciadorDoJogo : MonoBehaviour
 
     private void Start()
     {
+        transicaoCenas = FindObjectOfType<TransicaoDeCenas>();
+        instrucoesJogo = FindObjectOfType<InstrucoesJogo>();
         mae = FindObjectOfType<ScriptMae>();
         personagemScript = FindObjectOfType<ScriptPersonagem>();
         telefoneEvent = FindObjectOfType<TelefoneEvent>();
@@ -89,6 +92,11 @@ public class GerenciadorDoJogo : MonoBehaviour
                 {
                     alternarMenuPause();
                 }
+
+                if(!instrucoesJogo.taNoEventoInstrucoes)
+                {
+                    alternarMenuPause();
+                }
             }
             else if (SceneManager.GetActiveScene().name == "primeiroAndar")
             {
@@ -117,13 +125,15 @@ public class GerenciadorDoJogo : MonoBehaviour
 
     public void sairParaMenuPrincipal()
     {
-        Time.timeScale = 1f; // Garante que o jogo n�o fique pausado ao sair para o menu
+        Time.timeScale = 1f;
         transicaoCenas.CarregarCena("MenuPrincipal");
+        // SceneManager.LoadScene("MenuPrincipal");
     }
 
     public void voltarQuarto()
     {
-        Time.timeScale = 1f; // Garante que o jogo n�o fique pausado ao voltar para o quarto
+        Time.timeScale = 1f; 
+        // SceneManager.LoadScene("meuQuarto");
         transicaoCenas.CarregarCena("meuQuarto");
     }
 

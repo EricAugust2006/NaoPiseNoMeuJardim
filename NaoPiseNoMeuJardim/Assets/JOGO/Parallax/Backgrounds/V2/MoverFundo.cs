@@ -62,7 +62,7 @@ public class MoverFundo : MonoBehaviour
         if (transform.position.x < cameraTransform.position.x - larguraObjeto)
         {
             // Usar uma margem de segurança para evitar piscadas
-            transform.position = new Vector3(irmao.transform.position.x + larguraObjeto, posOriginal.y, posOriginal.z);
+            transform.position = new Vector3(irmao.transform.position.x + larguraObjeto, posOriginal.y, posOriginal.z - 4f);
         }
     }
 }

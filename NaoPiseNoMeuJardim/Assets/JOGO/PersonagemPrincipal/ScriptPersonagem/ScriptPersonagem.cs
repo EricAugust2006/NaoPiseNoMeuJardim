@@ -195,7 +195,7 @@ public class ScriptPersonagem : MonoBehaviour
                 MudarCameraParaDireita();
             }
 
-            if (Input.GetKeyDown(KeyCode.E) && jardim.eventoLigado)
+            if (jardim.eventoLigado)
             {
                 paredeInvisivel.SetActive(false);
                 animator.SetBool("Correndo", true);
@@ -593,14 +593,14 @@ public class ScriptPersonagem : MonoBehaviour
         parallaxChaoUM.movimentoAutomatico = 8f;
         parallaxChaoDOIS.movimentoAutomatico = 8f;
 
-        parallaxCeuUm.movimentoAutomatico = 1f;
-        parallaxCeuDois.movimentoAutomatico = 1f;
+        parallaxCeuUm.movimentoAutomatico = 2f;
+        parallaxCeuDois.movimentoAutomatico = 2f;
 
-        parallaxRochasUm.movimentoAutomatico = .8f;
-        parallaxRochasDois.movimentoAutomatico = .8f;
+        parallaxRochasUm.movimentoAutomatico = 1.5f;
+        parallaxRochasDois.movimentoAutomatico = 1.5f;
 
-        parallaxGramasUm.movimentoAutomatico = .6f;
-        parallaxGramasDois.movimentoAutomatico = .6f;
+        parallaxGramasUm.movimentoAutomatico = 1.2f;
+        parallaxGramasDois.movimentoAutomatico = 1.2f;
 
         parallaxArvoreUm.movimentoAutomatico = 8f;
         parallaxArvoreDois.movimentoAutomatico = 8f;
