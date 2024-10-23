@@ -137,6 +137,9 @@ public class ScriptPersonagem : MonoBehaviour
     public float tempoEntreDano = 1f; // Intervalo entre cada dano
     private float ultimoTempoDano = 0f; // Rastrea o tempo da última aplicação de dano
 
+    public GameObject colisoresParede2;
+    public GameObject colisoresParede1;
+
     private void Awake()
     {
         parallax = FindObjectOfType<MoverFundo>();
@@ -149,6 +152,8 @@ public class ScriptPersonagem : MonoBehaviour
         spriteRenderer = GetComponent<SpriteRenderer>();
         dialogoGanhar = FindObjectOfType<ScriptGanhou>();
         chinelo = FindObjectOfType<InimigosKnockBack>();
+        colisoresParede1.SetActive(false);
+        colisoresParede2.SetActive(false);
 
         if (cinemachine != null)
         {
@@ -227,70 +232,19 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void FixedUpdate()
     {
-        Movimentar();
         DetectarChao();
     }
-
-    // public void Agachar()
-    // {
-    //     if (Input.GetKeyDown(KeyCode.LeftShift))
-    //     {
-    //         bool taAgachado = animator.GetBool("taAgachado");
-    //         animator.SetBool("taAgachado", !taAgachado);
-
-    //         if (animator.GetBool("taAgachado"))
-    //         {
-    //             //speed = 4.5f;
-    //         }
-    //         else
-    //         {
-    //             speed = 8f;
-    //             animator.SetTrigger("sairDoAgachar");
-    //         }
-    //     }
-
-    //     bool estaSeMovendo = Input.GetAxisRaw("Horizontal") != 0 || Input.GetAxisRaw("Vertical") != 0;
-
-    //     if (animator.GetBool("taAgachado") && estaSeMovendo)
-    //     {
-    //         animator.SetBool("andarAgachado", true);
-    //     }
-    //     else
-    //     {
-    //         animator.SetBool("andarAgachado", false);
-    //     }
-    // }
 
     private void MoverAutomaticamente()
     {
         animator.SetBool("Correndo", true);
-         animator.SetFloat("Velocidade", 1);
+        animator.SetFloat("Velocidade", 1);
         float speedautomatico = speed * 1.5f;
         transform.Translate(Vector2.right * speedautomatico * Time.deltaTime);
     }
 
     public void Movimentar()
     {
-        //if (taPreso == false)
-        //{
-        //    float VelX = Input.GetAxis("Horizontal");
-        //    Vector3 Movement = new Vector3(VelX, 0f, 0f);
-        //    transform.position += Movement * Time.deltaTime * speed;
-
-        //    animator.SetFloat("Velocidade", Mathf.Abs(VelX));
-
-        //    if (VelX > 0)
-        //    {
-        //        spriteRenderer.flipX = false;
-        //    }
-        //    else if (VelX < 0)
-        //    {
-        //        spriteRenderer.flipX = true;
-        //    }
-
-        //    animator.SetBool("Correndo", VelX != 0);
-        //}
-
         // Movimento do personagem enquanto não está no estado de corrida infinita
         if (SceneManager.GetActiveScene().name == "JardimJogo")
         {
@@ -312,6 +266,15 @@ public class ScriptPersonagem : MonoBehaviour
                     spriteRenderer.flipX = true;
                 }
                 animator.SetBool("Correndo", VelX != 0);
+            }
+
+            else
+            {
+                float VelX = Input.GetAxis("Horizontal");
+                Vector3 Movement = new Vector3(VelX, 0f, 0f);
+                transform.position += Movement * Time.deltaTime * speed;
+
+                animator.SetFloat("Velocidade", Mathf.Abs(VelX));
             }
         }
         else
@@ -651,6 +614,9 @@ public class ScriptPersonagem : MonoBehaviour
             AjustarOffSetCamera();
             MudarCameraParaDireita();
             modificaParallaxAutomatico();
+            cinemachine.Follow = null;
+            colisoresParede1.SetActive(true);
+            colisoresParede2.SetActive(true);
         }
 
         if (collision.gameObject.tag == "ObjetoImpulso")
