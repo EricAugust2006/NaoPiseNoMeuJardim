@@ -137,8 +137,8 @@ public class ScriptPersonagem : MonoBehaviour
     public float tempoEntreDano = 1f; // Intervalo entre cada dano
     private float ultimoTempoDano = 0f; // Rastrea o tempo da última aplicação de dano
 
-    public GameObject colisoresParede2;
     public GameObject colisoresParede1;
+    public GameObject colisoresParede2;
 
     private void Awake()
     {
@@ -232,6 +232,14 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (movendoAutomaticamente == true)
+        {
+            MoverAutomaticamente();
+        }
+        else
+        {
+            Movimentar();
+        }
         DetectarChao();
     }
 
@@ -239,7 +247,7 @@ public class ScriptPersonagem : MonoBehaviour
     {
         animator.SetBool("Correndo", true);
         animator.SetFloat("Velocidade", 1);
-        float speedautomatico = speed * 1.5f;
+        float speedautomatico = speed;
         transform.Translate(Vector2.right * speedautomatico * Time.deltaTime);
     }
 
@@ -267,14 +275,13 @@ public class ScriptPersonagem : MonoBehaviour
                 }
                 animator.SetBool("Correndo", VelX != 0);
             }
-
             else
             {
                 float VelX = Input.GetAxis("Horizontal");
                 Vector3 Movement = new Vector3(VelX, 0f, 0f);
                 transform.position += Movement * Time.deltaTime * speed;
 
-                animator.SetFloat("Velocidade", Mathf.Abs(VelX));
+                animator.SetFloat("Velocidade", 1);
             }
         }
         else
@@ -605,7 +612,7 @@ public class ScriptPersonagem : MonoBehaviour
         {
             triggouComTagPararCorrida = true;
             rb.constraints =
-                RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+            RigidbodyConstraints2D.FreezeRotation;
             spriteRenderer.flipX = false;
             movendoAutomaticamente = false;
             parallaxAtivar = true;
@@ -675,7 +682,7 @@ public class ScriptPersonagem : MonoBehaviour
             StartCoroutine(invencilibdade());
             tomouDano = true;
             sistemaDeVida.vida--;
-            Destroy(collision.gameObject);
+            // Destroy(collision.gameObject);
         }
     }
 
@@ -692,7 +699,6 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        animator.SetBool("taPreso", false);
 
         if (collision.gameObject.CompareTag("DarZoom"))
         {

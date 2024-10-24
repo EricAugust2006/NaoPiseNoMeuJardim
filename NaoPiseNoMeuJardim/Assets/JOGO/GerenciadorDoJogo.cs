@@ -26,7 +26,6 @@ public class GerenciadorDoJogo : MonoBehaviour
     [Header("GameObjects em Jogo")]
     [SerializeField] GameObject SairDoEventoTelefone;
     [SerializeField] GameObject MenuPause;
-    public GerenciaInicio gerenciaInicio;
 
 
     private void Start()
@@ -40,7 +39,6 @@ public class GerenciadorDoJogo : MonoBehaviour
         if (SceneManager.GetActiveScene().name == "meuQuarto")
         {
             Time.timeScale = 1f;
-            gerenciaInicio.StartDialogue();
         }
     }
 
@@ -62,7 +60,7 @@ public class GerenciadorDoJogo : MonoBehaviour
 
     public void irParaQuarto()
     {
-        Time.timeScale = 1f; 
+        Time.timeScale = 1f;
         transicaoCenas.CarregarCena("meuQuarto");
     }
 
@@ -86,28 +84,35 @@ public class GerenciadorDoJogo : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Debug.Log("Tecla Esc apertada");
             if (SceneManager.GetActiveScene().name == "JardimJogo")
             {
-                if (!mae.jokenpoEventoAtivado)
+                if (!instrucoesJogo.taNoEventoInstrucoes)
                 {
-                    alternarMenuPause();
-                }
-
-                if(!instrucoesJogo.taNoEventoInstrucoes)
-                {
+                    Debug.Log("Evento de instruções não ativo");
                     alternarMenuPause();
                 }
             }
             else if (SceneManager.GetActiveScene().name == "primeiroAndar")
             {
+                Debug.Log("Cena primeiroAndar ativa");
                 if (!telefoneEvent.taNoEventoTelefone)
                 {
+                    Debug.Log("Evento de telefone não ativo");
                     alternarMenuPause();
                 }
             }
+            else if (SceneManager.GetActiveScene().name == "MeuQuarto")
+            {
+                alternarMenuPause();
+            }
+            else
+            {
+                return;
+            }
+
         }
     }
-
     public void alternarMenuPause()
     {
         bool taAtivo = MenuPause.activeSelf;
@@ -132,7 +137,7 @@ public class GerenciadorDoJogo : MonoBehaviour
 
     public void voltarQuarto()
     {
-        Time.timeScale = 1f; 
+        Time.timeScale = 1f;
         // SceneManager.LoadScene("meuQuarto");
         transicaoCenas.CarregarCena("meuQuarto");
     }
@@ -162,7 +167,8 @@ public class GerenciadorDoJogo : MonoBehaviour
         }
     }
 
-    public void recomecarJogo(){
+    public void recomecarJogo()
+    {
         transicaoCenas.CarregarCena("JardimJogo");
     }
 

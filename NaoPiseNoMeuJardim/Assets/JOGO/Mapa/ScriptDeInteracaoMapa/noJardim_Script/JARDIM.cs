@@ -28,7 +28,7 @@ public class JARDIM : MonoBehaviour
     }
 
     private void Update() {
-        if(Input.GetKeyDown(KeyCode.E) && playerInJardim == true){
+        if(playerInJardim == true){
             barreira.SetActive(false);
             IniciarJogo = true;
         };

@@ -62758,7 +62758,7 @@ Transform:
   m_GameObject: {fileID: 348737671}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 42.5, y: 0, z: -0.26997384}
+  m_LocalPosition: {x: 30.36, y: 0, z: -0.26997384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -64550,7 +64550,7 @@ MonoBehaviour:
   m_Follow: {fileID: 2054204230}
   m_Lens:
     FieldOfView: 60
-    OrthographicSize: 7
+    OrthographicSize: 8
     NearClipPlane: 0.3
     FarClipPlane: 1000
     Dutch: 0
@@ -65322,7 +65322,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 7
+  orthographic size: 8
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -66636,7 +66636,7 @@ GameObject:
   - component: {fileID: 1112139290}
   - component: {fileID: 1112139292}
   - component: {fileID: 1112139291}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: COLISOR 1 (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -66652,7 +66652,7 @@ Transform:
   m_GameObject: {fileID: 1112139289}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.3, y: -2.35, z: 8.430572}
+  m_LocalPosition: {x: 0, y: -2.35, z: 8.430572}
   m_LocalScale: {x: 1, y: -11.74, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -67890,7 +67890,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 54.7, y: -1.53}
+  m_AnchoredPosition: {x: 55, y: -1.53}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!212 &1377466244
@@ -69457,7 +69457,7 @@ Transform:
   m_GameObject: {fileID: 1705792110}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 42.5, y: 4, z: -0.26997384}
+  m_LocalPosition: {x: 30.36, y: 4, z: -0.26997384}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -69646,7 +69646,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1193409190806246324, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: speed
-      value: 13
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1193409190806246324, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: kBTime
@@ -73350,7 +73350,7 @@ GameObject:
   - component: {fileID: 2079561397}
   - component: {fileID: 2079561399}
   - component: {fileID: 2079561398}
-  m_Layer: 0
+  m_Layer: 27
   m_Name: COLISOR 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -73366,7 +73366,7 @@ Transform:
   m_GameObject: {fileID: 2079561396}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.4, y: -2.35, z: 8.430572}
+  m_LocalPosition: {x: -20, y: -2.35, z: 8.430572}
   m_LocalScale: {x: 1, y: -11.74, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -73722,7 +73722,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2131722955
 Transform:
   m_ObjectHideFlags: 0

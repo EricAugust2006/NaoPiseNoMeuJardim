@@ -1580,6 +1580,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1509463244}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &269200316
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 269200317}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &269200317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 269200316}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 50.461933, y: 4.1000366, z: -0.040406644}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &272991621
 GameObject:
   m_ObjectHideFlags: 0
@@ -11621,6 +11652,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1642667299
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1642667300}
+  m_Layer: 0
+  m_Name: GameObject (1)
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1642667300
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1642667299}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 50.461933, y: 4.1000366, z: -0.040406644}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1725961852 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 828323234131786318, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
@@ -12612,6 +12674,14 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 1193409190806246324, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
+      propertyPath: colisoresParede1
+      value: 
+      objectReference: {fileID: 269200316}
+    - target: {fileID: 1193409190806246324, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
+      propertyPath: colisoresParede2
+      value: 
+      objectReference: {fileID: 1642667299}
+    - target: {fileID: 1193409190806246324, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: spawnPointSceneA
       value: 
       objectReference: {fileID: 264447235}
@@ -12821,3 +12891,5 @@ SceneRoots:
   - {fileID: 1372537881}
   - {fileID: 2124555728}
   - {fileID: 1186128330}
+  - {fileID: 269200317}
+  - {fileID: 1642667300}
