@@ -14,6 +14,7 @@ public class GerenciadorDoJogo : MonoBehaviour
     public TelefoneEvent telefoneEvent;
     public ScriptMae mae;
     private InstrucoesJogo instrucoesJogo;
+    private GuiaDoJardim guiaJardim;
 
     [Header("GameObjects no Menu principal")]
     [SerializeField] GameObject MenuPrincipal;
@@ -30,6 +31,7 @@ public class GerenciadorDoJogo : MonoBehaviour
 
     private void Start()
     {
+        guiaJardim = FindObjectOfType<GuiaDoJardim>();
         transicaoCenas = FindObjectOfType<TransicaoDeCenas>();
         instrucoesJogo = FindObjectOfType<InstrucoesJogo>();
         mae = FindObjectOfType<ScriptMae>();
@@ -85,34 +87,33 @@ public class GerenciadorDoJogo : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Tecla Esc apertada");
-            if (SceneManager.GetActiveScene().name == "JardimJogo")
+
+            string nomeCenaAtual = SceneManager.GetActiveScene().name;
+
+            if (nomeCenaAtual == "JardimJogo")
             {
-                if (!instrucoesJogo.taNoEventoInstrucoes)
+                if (!guiaJardim.noMomentoInstrucoes)
                 {
-                    Debug.Log("Evento de instruções não ativo");
+                    Debug.Log("Evento de instruções no jardim não está ativo");
                     alternarMenuPause();
                 }
             }
-            else if (SceneManager.GetActiveScene().name == "primeiroAndar")
+            else if (nomeCenaAtual == "primeiroAndar")
             {
                 Debug.Log("Cena primeiroAndar ativa");
                 if (!telefoneEvent.taNoEventoTelefone)
                 {
-                    Debug.Log("Evento de telefone não ativo");
+                    Debug.Log("Evento de telefone não está ativo");
                     alternarMenuPause();
                 }
             }
-            else if (SceneManager.GetActiveScene().name == "MeuQuarto")
+            else if (nomeCenaAtual == "MeuQuarto")
             {
                 alternarMenuPause();
             }
-            else
-            {
-                return;
-            }
-
         }
     }
+
     public void alternarMenuPause()
     {
         bool taAtivo = MenuPause.activeSelf;

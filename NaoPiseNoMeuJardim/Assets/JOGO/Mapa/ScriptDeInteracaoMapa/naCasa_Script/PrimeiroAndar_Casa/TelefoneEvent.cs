@@ -67,7 +67,7 @@ public class TelefoneEvent : MonoBehaviour
 
     public void EventoTelefone()
     {
-        if (Input.GetKeyDown(KeyCode.E) && eventoLigado == true)
+        if (eventoLigado == true)
         {
             taNoEventoTelefone = true;
             telefoneEventoEntrar.SetActive(true);
@@ -80,7 +80,7 @@ public class TelefoneEvent : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.Escape) && eventoLigado == true)
+        if (eventoLigado == true)
         {
             taNoEventoTelefone = false;
             telefoneEventoEntrar.SetActive(false);

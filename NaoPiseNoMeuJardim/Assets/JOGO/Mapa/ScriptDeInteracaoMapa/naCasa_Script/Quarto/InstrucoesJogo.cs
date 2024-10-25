@@ -14,7 +14,7 @@ public class Instrucao
 public class InstrucoesJogo : MonoBehaviour
 {
     [Header("GameObjects")]
-    public GameObject ESCbutton;
+    // public GameObject ESCbutton;
     public GameObject eButton;
     public GameObject qButton;
 
@@ -39,17 +39,21 @@ public class InstrucoesJogo : MonoBehaviour
 
     private void Start()
     {
-        ESCbutton.SetActive(false);
+        // ESCbutton.SetActive(false);
         telaPreta.color = new Color(0, 0, 0, 0); // Iniciar com tela transparente
         painelInstrucoes.SetActive(false); // O painel começa invisível
     }
 
     private void Update()
     {
-        if (eventoLigado && Input.GetKeyDown(KeyCode.E))
+        if (eventoLigado)
         {
             taNoEventoInstrucoes = true;
-
+            ExibirInstrucoes();
+        }
+        else {
+            taNoEventoInstrucoes = false;
+            ResetarTransicao();
         }
 
         if (taNoEventoInstrucoes && Input.GetKeyDown(KeyCode.Escape))
@@ -71,7 +75,7 @@ public class InstrucoesJogo : MonoBehaviour
         MostrarInstrucao(indiceAtual);
         painelInstrucoes.SetActive(true); // Exibe o painel de instruções imediatamente
         painelLigado = true;
-        ESCbutton.SetActive(true);
+        // ESCbutton.SetActive(true);
         qButton.SetActive(true);
         eButton.SetActive(true);
     }

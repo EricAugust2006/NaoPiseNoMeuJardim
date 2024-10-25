@@ -62693,13 +62693,13 @@ RectTransform:
   - {fileID: 1121999437}
   - {fileID: 2133528414}
   - {fileID: 1404107942}
-  m_Father: {fileID: 1738584850}
+  m_Father: {fileID: 1087770034}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 500, y: 800}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -100}
+  m_SizeDelta: {x: 1400, y: 400}
+  m_Pivot: {x: 0.5, y: 1}
 --- !u!114 &341286476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62713,7 +62713,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.48235294}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -66547,13 +66547,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 341286475}
   m_Father: {fileID: 1738584850}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 1920, y: 1080}
+  m_SizeDelta: {x: 2279, y: 1303}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1087770035
 MonoBehaviour:
@@ -66568,7 +66569,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.5176471}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -66822,11 +66823,11 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 341286475}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 250}
+  m_AnchorMin: {x: 0, y: 0.5}
+  m_AnchorMax: {x: 0, y: 0.5}
+  m_AnchoredPosition: {x: 100, y: 0}
   m_SizeDelta: {x: 200, y: 200}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1121999438
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -66847,7 +66848,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e58c06bee4d040446b47a8d81d722708, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -70025,7 +70026,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1738584850
 RectTransform:
   m_ObjectHideFlags: 0
@@ -70039,7 +70040,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1087770034}
-  - {fileID: 341286475}
   - {fileID: 895590518}
   - {fileID: 879858572}
   - {fileID: 2009598027}
@@ -72902,7 +72902,7 @@ GameObject:
   - component: {fileID: 2020717404}
   - component: {fileID: 2020717407}
   - component: {fileID: 2020717406}
-  - component: {fileID: 2020717408}
+  - component: {fileID: 2020717409}
   m_Layer: 0
   m_Name: Telefone
   m_TagString: Untagged
@@ -73027,7 +73027,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2020717408
+--- !u!114 &2020717409
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73036,27 +73036,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 2020717403}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c679af470fdd9c44e8398327b2151aa1, type: 3}
+  m_Script: {fileID: 11500000, guid: 18b599bce1323ed4aa6e627b5db6a252, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ESCbutton: {fileID: 2009598026}
-  eButton: {fileID: 895590517}
-  qButton: {fileID: 879858571}
-  BotaoInteracao: {fileID: 1134994937}
-  telaPreta: {fileID: 1087770035}
-  painelInstrucoes: {fileID: 1738584849}
-  imagemTecla: {fileID: 1121999438}
-  descricaoAcao: {fileID: 2133528415}
-  botaoProximo: {fileID: 651040249}
-  botaoAnterior: {fileID: 650202818}
-  listaInstrucoes:
-  - imagemTecla: {fileID: 0}
-    descricaoAcao: "Quando voc\xEA INTERAGIR com o JARDIM, voc\xEA estar\xE1 iniciando
+  botaoSair: {fileID: 2009598026}
+  botaoUsarFerramenta: {fileID: 895590517}
+  botaoRecolher: {fileID: 879858571}
+  dicaInteracao: {fileID: 1134994937}
+  filtroEscurecido: {fileID: 1087770035}
+  quadroInstrucoes: {fileID: 1738584849}
+  iconeFerramenta: {fileID: 1121999438}
+  textoDescricao: {fileID: 2133528415}
+  botaoAvancar: {fileID: 651040249}
+  botaoRetroceder: {fileID: 650202818}
+  listaPassos:
+  - iconeFerramenta: {fileID: 21300000, guid: e58c06bee4d040446b47a8d81d722708, type: 3}
+    acaoDescricao: "Quando voc\xEA INTERAGIR com o JARDIM, voc\xEA estar\xE1 iniciando
       o jogo!"
-  velocidadeTransicao: 0.5
-  eventoLigado: 0
-  taNoEventoInstrucoes: 0
-  painelLigado: 0
+  velocidadeDesvanecimento: 0.5
+  guiaAtivo: 0
+  noMomentoInstrucoes: 0
+  quadroVisivel: 0
 --- !u!1 &2032375851
 GameObject:
   m_ObjectHideFlags: 0
@@ -73913,8 +73913,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -83.83}
-  m_SizeDelta: {x: 467.65, y: 317.65}
+  m_AnchoredPosition: {x: 91.87, y: -0.0014953613}
+  m_SizeDelta: {x: 651.37, y: 400}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2133528415
 MonoBehaviour:
@@ -73969,9 +73969,9 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -74004,7 +74004,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &2133528416
@@ -74515,6 +74515,10 @@ PrefabInstance:
       propertyPath: transicaoCenas
       value: 
       objectReference: {fileID: 1104131869}
+    - target: {fileID: 5757998171606388099, guid: d2225469c04ec8441b3562bc7e164b5d, type: 3}
+      propertyPath: SairDoEventoTelefone
+      value: 
+      objectReference: {fileID: 1738584849}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -75628,6 +75632,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3581018995313507924, guid: 7a8b4a10c7db67442a009920566d18d9, type: 3}
       propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581018995313507924, guid: 7a8b4a10c7db67442a009920566d18d9, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3581018995313507924, guid: 7a8b4a10c7db67442a009920566d18d9, type: 3}
+      propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3581018995313507924, guid: 7a8b4a10c7db67442a009920566d18d9, type: 3}
