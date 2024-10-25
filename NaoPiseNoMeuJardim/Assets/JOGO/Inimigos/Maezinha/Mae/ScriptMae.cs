@@ -101,7 +101,7 @@ public class ScriptMae : MonoBehaviour
 
         // Calcula a direção para o próximo ponto de caminho
         Vector2 direction = ((Vector2)path.vectorPath[currentWayPoint] - rb.position).normalized;
-        rb.velocity = new Vector2(direction.x * speed * Time.deltaTime, rb.velocity.y); // Move o personagem na direção do próximo waypoint
+        rb.linearVelocity = new Vector2(direction.x * speed * Time.deltaTime, rb.linearVelocity.y); // Move o personagem na direção do próximo waypoint
 
         float distance = Vector2.Distance(rb.position, path.vectorPath[currentWayPoint]);
         if (distance < nextWaypointDistance)
@@ -112,11 +112,11 @@ public class ScriptMae : MonoBehaviour
         // Altera a direção do personagem com base na velocidade
         if (directionLookEnabled)
         {
-            if (rb.velocity.x > 0.05f)
+            if (rb.linearVelocity.x > 0.05f)
             {
                 transform.localScale = new Vector3(-1f * Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }
-            else if (rb.velocity.x < -0.05f)
+            else if (rb.linearVelocity.x < -0.05f)
             {
                 transform.localScale = new Vector3(Mathf.Abs(transform.localScale.x), transform.localScale.y, transform.localScale.z);
             }

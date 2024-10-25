@@ -350,7 +350,7 @@ public class ScriptPersonagem : MonoBehaviour
                 // destroiToupeira.enabled = false;
                 if (podePular && taNoChao || taNaPlataforma)
                 {
-                    rb.velocity = new Vector2(rb.velocity.x, forcaPulo);
+                    rb.linearVelocity = new Vector2(rb.linearVelocity.x, forcaPulo);
                     animator.SetTrigger("Jump");
                 }
             }
@@ -377,7 +377,7 @@ public class ScriptPersonagem : MonoBehaviour
 
     public void DescerRapidamente()
     {
-        rb.velocity = new Vector2(rb.velocity.x, -velocidadeDescidaRapida);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, -velocidadeDescidaRapida);
     }
 
     IEnumerator trocarLayerPlayer()
@@ -434,7 +434,7 @@ public class ScriptPersonagem : MonoBehaviour
 
     IEnumerator timeBackImpulse()
     {
-        rb.velocity = new Vector2(rb.velocity.x, 12);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 12);
         yield return null;
         animator.SetTrigger("Jump");
     }
@@ -445,21 +445,21 @@ public class ScriptPersonagem : MonoBehaviour
     public void InimigoEmpurrar()
     {
         animator.SetTrigger("Jump");
-        rb.velocity = new Vector2(rb.velocity.x, 15);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 15);
         animator.SetBool("Caindo", false);
     }
 
     public void Empurrar()
     {
         animator.SetTrigger("Jump");
-        rb.velocity = new Vector2(rb.velocity.x, 10);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 10);
         animator.SetBool("Caindo", false);
     }
 
     public void EmpurrarEspelho()
     {
         animator.SetTrigger("Jump");
-        rb.velocity = new Vector2(rb.velocity.x, 5);
+        rb.linearVelocity = new Vector2(rb.linearVelocity.x, 5);
         animator.SetBool("Caindo", false);
     }
 
@@ -469,7 +469,7 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void AtualizarAnimacoes()
     {
-        if (rb.velocity.y < 0)
+        if (rb.linearVelocity.y < 0)
         {
             animator.SetBool("Caindo", true);
         }

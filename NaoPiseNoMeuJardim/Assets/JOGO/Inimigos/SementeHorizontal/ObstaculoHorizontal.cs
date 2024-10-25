@@ -41,7 +41,7 @@ public class ObstaculoHorizontal : MonoBehaviour
                 Rigidbody2D rb = ProjetilLancado.GetComponent<Rigidbody2D>();
                 if (rb != null)
                 {
-                    rb.velocity = new Vector2(-velocidadeProjetil, 0); // Mover na direção x positiva
+                    rb.linearVelocity = new Vector2(-velocidadeProjetil, 0); // Mover na direção x positiva
                 }
 
                 // Reinicia o tempo de spawn e destrói o projétil após um tempo
