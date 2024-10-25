@@ -155,15 +155,6 @@ public class ScriptPersonagem : MonoBehaviour
         colisoresParede1.SetActive(false);
         colisoresParede2.SetActive(false);
 
-        if(SceneManager.GetActiveScene().name == "JardimJogo")
-        {
-            colisoresParede1.SetActive(true);
-            colisoresParede2.SetActive(true);
-        } else {
-            colisoresParede1.SetActive(false);
-            colisoresParede2.SetActive(false);
-        }
-
         if (cinemachine != null)
         {
             targetOrthoSize = initialOrthoSize; // Inicializar targetOrthoSize com o valor inicial
