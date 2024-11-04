@@ -119,7 +119,5 @@ public class Temporizador : MonoBehaviour
 
     public void cagarnaCalca(){
         float cagar = 0;   
-
-
     }
 }

@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -67,7 +67,7 @@ public class TelefoneEvent : MonoBehaviour
 
     public void EventoTelefone()
     {
-        if (eventoLigado == true)
+        if (Input.GetKeyDown(KeyCode.E) && eventoLigado == true)
         {
             taNoEventoTelefone = true;
             telefoneEventoEntrar.SetActive(true);
@@ -80,7 +80,7 @@ public class TelefoneEvent : MonoBehaviour
             }
         }
 
-        if (eventoLigado == true)
+        if (Input.GetKeyDown(KeyCode.Escape) && eventoLigado == true)
         {
             taNoEventoTelefone = false;
             telefoneEventoEntrar.SetActive(false);

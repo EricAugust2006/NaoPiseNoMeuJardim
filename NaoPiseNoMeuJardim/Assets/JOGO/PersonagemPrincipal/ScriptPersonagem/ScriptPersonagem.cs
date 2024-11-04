@@ -243,7 +243,7 @@ public class ScriptPersonagem : MonoBehaviour
         DetectarChao();
     }
 
-    private void MoverAutomaticamente()
+    public void MoverAutomaticamente()
     {
         animator.SetBool("Correndo", true);
         animator.SetFloat("Velocidade", 1);

@@ -64923,8 +64923,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc642ab6ff6f53f4d8d2494618a649bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cutsScene: {fileID: 1607578847}
-  cutsCeneAtivada: 0
+  speedautomatico: 5
+  paredes:
+  - {fileID: 2079561396}
+  - {fileID: 1112139289}
+  paredeTriggerInicia: {fileID: 1377466241}
 --- !u!4 &716421694
 Transform:
   m_ObjectHideFlags: 0
@@ -66712,8 +66715,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.12, y: 0.12}
+    newSize: {x: 0.64, y: 0.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -66764,15 +66767,15 @@ SpriteRenderer:
   m_SortingLayerID: 1631579937
   m_SortingLayer: 21
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1763547749914876530, guid: 03be4d0399e157049960511cf12ff19d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.64, y: 0.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!224 &1118287517 stripped
@@ -67921,7 +67924,7 @@ SpriteRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1377466241}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
@@ -69905,7 +69908,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3722605818911777914, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: vida
-      value: 422
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 3722605818911777914, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: cheio
@@ -69917,7 +69920,7 @@ PrefabInstance:
       objectReference: {fileID: -8465372704706663609, guid: a99cf47ce5e100c43a8f7f26517a6014, type: 3}
     - target: {fileID: 3722605818911777914, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: vidaMaxima
-      value: 422
+      value: 5000
       objectReference: {fileID: 0}
     - target: {fileID: 3722605818911777914, guid: 96c4d7257abd45244aafbe625993f83a, type: 3}
       propertyPath: telaGameOver
@@ -73448,8 +73451,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
-    newSize: {x: 1, y: 1}
+    oldSize: {x: 0.12, y: 0.12}
+    newSize: {x: 0.64, y: 0.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -73500,15 +73503,15 @@ SpriteRenderer:
   m_SortingLayerID: 1631579937
   m_SortingLayer: 21
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1763547749914876530, guid: 03be4d0399e157049960511cf12ff19d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.64, y: 0.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &2080999494
@@ -74612,9 +74615,29 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3743915937460601956, guid: 6f3018ac649a8ad4a85ba71f9aafab6e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3743915937460601956, guid: 6f3018ac649a8ad4a85ba71f9aafab6e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -290
+      objectReference: {fileID: 0}
     - target: {fileID: 4184975434507831296, guid: 6f3018ac649a8ad4a85ba71f9aafab6e, type: 3}
       propertyPath: m_Name
       value: TelaDeCarregamento
+      objectReference: {fileID: 0}
+    - target: {fileID: 4184975434507831296, guid: 6f3018ac649a8ad4a85ba71f9aafab6e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111889213484799999, guid: 6f3018ac649a8ad4a85ba71f9aafab6e, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5111889213484799999, guid: 6f3018ac649a8ad4a85ba71f9aafab6e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -290
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

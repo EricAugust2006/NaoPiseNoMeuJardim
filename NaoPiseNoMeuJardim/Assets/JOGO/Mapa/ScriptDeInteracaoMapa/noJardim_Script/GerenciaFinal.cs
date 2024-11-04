@@ -4,75 +4,71 @@ using UnityEngine;
 
 public class GerenciaFinal : MonoBehaviour
 {
-    public GameObject cutsScene; // O GameObject da cutscene
-    private Temporizador temporizador; // Referência ao temporizador
-    private ScriptPersonagem player; // Referência ao personagem
-    public bool cutsCeneAtivada = false; // Flag para verificar se a cutscene está ativa
-
-    void Start()
+    private ScriptPersonagem player;
+    public float speedautomatico = 8f;
+    public List<GameObject> paredes;
+    public GameObject paredeTriggerInicia;
+    private void Start()
     {
         player = FindObjectOfType<ScriptPersonagem>();
-        cutsScene.SetActive(false); // Desativa a cutscene inicialmente
-        temporizador = FindObjectOfType<Temporizador>();
-    }
-
-    void Update()
-    {
-        podeEscaparDoCastigo(); // Verifica se a cutscene pode ser ativada
-
-        // Se a cutscene estiver ativada, pausa o jogo
-        if (cutsCeneAtivada)
+        
+        if (paredes == null)
         {
-            Time.timeScale = 0f;
+            paredes = new List<GameObject>();
         }
     }
-
-    public void podeEscaparDoCastigo()
+    public void desativarParedes()
     {
-        // Verifica se o tempo máximo foi alcançado e se o personagem deve parar
-        if (temporizador.tempoAtual >= temporizador.tempoMaximo && player.triggouComTagPararCorrida)
+        foreach (GameObject parede in paredes)
         {
-            // Se a tecla F for pressionada, ativa a cutscene
-            if (Input.GetKeyDown(KeyCode.F) && !cutsCeneAtivada)
+            if (parede != null)
             {
-                StartCoroutine(AtivarCutscene());
+                parede.SetActive(false);
             }
         }
     }
 
-    private IEnumerator AtivarCutscene()
+    public void ativarParedes()
     {
-        cutsCeneAtivada = true; // Marca a cutscene como ativada
-        cutsScene.SetActive(true); // Ativa o GameObject da cutscene
-
-        // Aqui você pode adicionar um efeito de transição, como um fade in
-        // Exemplo de uma chamada para uma função de fade (precisa ser implementada)
-        // yield return StartCoroutine(FadeIn());
-
-        // Espera por um tempo ou até que a cutscene termine
-        // Aqui você deve adicionar a lógica para sua cutscene, como animações ou outros elementos
-        yield return new WaitForSeconds(5f); // Simula a duração da cutscene
-
-        // Aqui você pode adicionar um efeito de transição, como um fade out
-        // yield return StartCoroutine(FadeOut());
-
-        // Finaliza a cutscene
-        cutsScene.SetActive(false); // Desativa o GameObject da cutscene
-        cutsCeneAtivada = false; // Marca a cutscene como não ativada
-        Time.timeScale = 1f; // Retorna o tempo ao normal
+        foreach (GameObject parede in paredes)
+        {
+            if (parede != null)
+            {
+                parede.SetActive(true);
+            }
+        }
     }
 
-    // Exemplos de funções de fade (precisam ser implementadas de acordo com a sua lógica)
-    
-    private IEnumerator FadeIn()
+    private void Update()
     {
-        // Implementação do fade in
-        yield return null;
+        if (Input.GetKeyDown(KeyCode.F))
+        {
+            player.MoverAutomaticamente();
+            desativarParedes();
+        }
     }
 
-    private IEnumerator FadeOut()
+    private void MoverAutomaticamente()
     {
-        // Implementação do fade out
-        yield return null;
+        transform.Translate(Vector2.right * speedautomatico * Time.deltaTime);
+    }
+
+    IEnumerator FadeIn()
+    {
+        yield return new WaitForSeconds(2);
+    }
+
+    IEnumerator FadeOut()
+    {
+        yield return new WaitForSeconds(2);
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.CompareTag("pararCorrida"))
+        {
+            player.movendoAutomaticamente = true;
+            paredeTriggerInicia.SetActive(false);
+        }
     }
 }
