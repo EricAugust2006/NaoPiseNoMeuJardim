@@ -107,7 +107,7 @@ public class GerenciadorDoJogo : MonoBehaviour
                     alternarMenuPause();
                 }
             }
-            else if (nomeCenaAtual == "MeuQuarto")
+            else if (nomeCenaAtual == "meuQuarto")
             {
                 alternarMenuPause();
             }

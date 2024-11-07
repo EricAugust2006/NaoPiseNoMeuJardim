@@ -117,6 +117,8 @@ public class Temporizador : MonoBehaviour
 
     private void FinalizarCorrida()
     {
+        player.col.enabled = false;
+        player.rb.gravityScale = 0f;
         corridaFinalizada = true;
         clicarParaTerminarCorrida.SetActive(false);
         player.IniciarMovimentoAutomatico();

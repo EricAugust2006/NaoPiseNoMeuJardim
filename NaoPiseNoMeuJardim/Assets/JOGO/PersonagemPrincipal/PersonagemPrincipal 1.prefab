@@ -59,6 +59,7 @@ SpriteRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -82,7 +83,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingOrder: 2000
   m_Sprite: {fileID: -527675348918979991, guid: 4374e7b430509f64493c0198205b7818, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,7 +97,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!50 &1450048878948196802
 Rigidbody2D:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -107,8 +108,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_GravityScale: 1.15
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -170,6 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6f99f6aeef01f549ace2b24ad76629f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rb: {fileID: 0}
   speed: 5
   pulando: 0
   forcaPulo: 7
@@ -180,6 +182,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   taNoChao: 0
+  col: {fileID: 0}
   detectaPlataforma: {fileID: 8005767813211978251}
   oQueEhPlataforma:
     serializedVersion: 2
@@ -233,6 +236,10 @@ MonoBehaviour:
   raioDetectaChao: 0.2
   colisorGameObjectPlataforma: {fileID: 0}
   tempoEntreDano: 1
+  colisoresParede1: {fileID: 0}
+  colisoresParede2: {fileID: 0}
+  colisoresParede: []
+  velocidadeMovimento: 5
 --- !u!95 &1470256751769913611
 Animator:
   serializedVersion: 7

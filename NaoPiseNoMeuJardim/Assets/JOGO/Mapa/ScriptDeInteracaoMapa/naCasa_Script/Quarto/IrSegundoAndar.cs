@@ -12,7 +12,8 @@ public class IrSegundoAndar : MonoBehaviour
 
     void Start()
     {
-
+        botaoInterage.SetActive(false);
+        botaoE.SetActive(false);
     }
 
     // Update is called once per frame

@@ -18,7 +18,7 @@ public class InstrucoesJogo : MonoBehaviour
     public GameObject eButton;
     public GameObject qButton;
 
-    public GameObject BotaoInteracao;
+    // public GameObject BotaoInteracao;
 
     public Image telaPreta;
     public GameObject painelInstrucoes;
@@ -130,7 +130,7 @@ public class InstrucoesJogo : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             eventoLigado = true;
-            BotaoInteracao.SetActive(true); // Pode mostrar uma dica de "Pressione F1 para ver instruções"
+            // BotaoInteracao.SetActive(true); // Pode mostrar uma dica de "Pressione F1 para ver instruções"
         }
     }
 
@@ -139,7 +139,7 @@ public class InstrucoesJogo : MonoBehaviour
         if (collision.CompareTag("Player"))
         {
             eventoLigado = false;
-            BotaoInteracao.SetActive(false);
+            // BotaoInteracao.SetActive(false);
         }
     }
 }
