@@ -2,43 +2,50 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using System.Collections.Generic;
 
 public class Temporizador : MonoBehaviour
 {
-    public float intervaloAumento = 30f; // Tempo em segundos para acionar o aumento
+    public float intervaloAumento = 30f;
     private ChineloDeMae chineloScript;
 
-    public TextMeshProUGUI tempoUIText; // Referência ao componente de texto na UI
-    public float tempoMaximo = 300f; // 5 minutos (300 segundos)
-    public float tempoAtual = 0f; // Tempo atual que será contado
-    private float proximoAumento; // Controla quando deve ocorrer o próximo aumento
+    public TextMeshProUGUI tempoUIText;
+    public float tempoMaximo = 300f;
+    public float tempoAtual = 0f;
+    private float proximoAumento;
 
-    // Variável para controlar quando iniciar o cronômetro
     public ScriptPersonagem player;
 
     private Coroutine cronometroCoroutine;
     public GameObject clicarParaTerminarCorrida;
     public GameObject temporizadorGameObject;
+    public GameObject menuFimDeJogo;
 
-    public float fadeSpeed = .5f;
+    public float fadeSpeed = 0.2f; 
     public Image blackScreenPanel;
 
+    private bool corridaFinalizada = false;
+
+    public List<GameObject> paredes;
 
     void Start()
     {
+        if (paredes == null)
+        {
+            paredes = new List<GameObject>();
+        }
         player = FindObjectOfType<ScriptPersonagem>();
-        // Encontra o script ChineloDeMae na cena
         chineloScript = FindObjectOfType<ChineloDeMae>();
 
-        // Inicializa o próximo aumento
         proximoAumento = intervaloAumento;
 
-
-        // Start with black screen active
+        
         blackScreenPanel.gameObject.SetActive(true);
         Color color = blackScreenPanel.color;
-        color.a = 1f;
+        color.a = 0f; 
         blackScreenPanel.color = color;
+
+        menuFimDeJogo.SetActive(false);
     }
 
     void Update()
@@ -48,76 +55,90 @@ public class Temporizador : MonoBehaviour
             temporizadorGameObject.SetActive(true);
         }
 
-        // Inicia o cronômetro apenas quando a variável for true
         if (player.triggouComTagPararCorrida == true && cronometroCoroutine == null)
         {
             cronometroCoroutine = StartCoroutine(Cronometro());
         }
 
-        // chamarVovozinha();
+        if (tempoAtual >= tempoMaximo && Input.GetKeyDown(KeyCode.F) && !corridaFinalizada)
+        {
+            FinalizarCorrida();
+            desativarColisores();
+            player.gameObject.tag = "Vencedor";
+        }
+    }
+
+    public void ativarColisores()
+    {
+        foreach (GameObject parede in paredes)
+        {
+            if (parede != null)
+            {
+                parede.SetActive(true);
+            }
+        }
+    }
+
+    public void desativarColisores()
+    {
+        foreach (GameObject parede in paredes)
+        {
+            if (parede != null)
+            {
+                parede.SetActive(false);
+            }
+        }
     }
 
     private IEnumerator Cronometro()
     {
         while (tempoAtual < tempoMaximo)
         {
-            // Atualiza o tempo atual a cada frame
             tempoAtual += Time.deltaTime;
 
-            // Converte o tempo atual para o formato de minutos e segundos (MM:SS)
             string minutos = Mathf.FloorToInt(tempoAtual / 60).ToString("00");
             string segundos = Mathf.FloorToInt(tempoAtual % 60).ToString("00");
 
-            // Atualiza o texto na UI
             tempoUIText.text = minutos + ":" + segundos;
 
-            // Verifica se já é o momento de aumentar a chance de spawn
             if (tempoAtual >= proximoAumento && chineloScript != null)
             {
                 chineloScript.AumentarChance();
-                proximoAumento += intervaloAumento; // Agenda o próximo aumento
+                proximoAumento += intervaloAumento;
             }
 
-            yield return null; // Aguarda o próximo frame
+            yield return null;
         }
 
-        // Após 5 minutos, interrompe o temporizador
         tempoUIText.text = "05:00";
-        Debug.Log("Tempo máximo atingido!");
-
         temporizadorGameObject.SetActive(false);
         clicarParaTerminarCorrida.SetActive(true);
     }
 
-    public void chamarVovozinha()
+    private void FinalizarCorrida()
     {
-        if (tempoAtual == tempoMaximo)
-        {
-            clicarParaTerminarCorrida.SetActive(true);
-            if (Input.GetKeyDown(KeyCode.C) && player.triggouComTagPararCorrida == true)
-            {
-                StartCoroutine(FadeOutBlackScreen());
+        corridaFinalizada = true;
+        clicarParaTerminarCorrida.SetActive(false);
+        player.IniciarMovimentoAutomatico();
 
-                IEnumerator FadeOutBlackScreen()
-                {
-                    Color color = blackScreenPanel.color;
-
-                    // Gradually fade out the black screen
-                    while (color.a > 0f)
-                    {
-                        color.a -= fadeSpeed * Time.deltaTime;
-                        blackScreenPanel.color = color;
-                        yield return null;
-                    }
-                    // Disable black screen panel after fade out
-                    blackScreenPanel.gameObject.SetActive(false);
-                }
-                //script para chamar animação para chamar o script do fim da corrida infinita
-            }
-        }
+        StartCoroutine(FinalizarComFade());
     }
 
-    public void cagarnaCalca(){
-        float cagar = 0;   
+    private IEnumerator FinalizarComFade()
+    {
+        yield return new WaitForSeconds(3f); 
+
+        Color color = blackScreenPanel.color;
+
+        
+        while (color.a < 1f)
+        {
+            color.a += fadeSpeed * Time.deltaTime; 
+            blackScreenPanel.color = color;
+            yield return null;
+        }
+
+        Time.timeScale = 0; 
+        menuFimDeJogo.SetActive(true); 
     }
 }
