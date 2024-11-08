@@ -38,12 +38,12 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
-  serializedVersion: 12
+  serializedVersion: 13
+  m_BakeOnSceneLoad: 0
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -665,7 +665,6 @@ MonoBehaviour:
   MenuOpcoes: {fileID: 2114493664}
   SairDoEventoTelefone: {fileID: 0}
   MenuPause: {fileID: 0}
-  gerenciaInicio: {fileID: 0}
 --- !u!1 &823780533
 GameObject:
   m_ObjectHideFlags: 0
@@ -1863,8 +1862,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280033333
-  m_fontColor: {r: 0.20784314, g: 0.1254902, b: 0.10980392, a: 1}
+    rgba: 4283218687
+  m_fontColor: {r: 1, g: 0.73118615, b: 0.2971698, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -2351,8 +2350,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4280033333
-  m_fontColor: {r: 0.20784314, g: 0.1254902, b: 0.10980392, a: 1}
+    rgba: 4283218687
+  m_fontColor: {r: 1, g: 0.73118615, b: 0.2971698, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:

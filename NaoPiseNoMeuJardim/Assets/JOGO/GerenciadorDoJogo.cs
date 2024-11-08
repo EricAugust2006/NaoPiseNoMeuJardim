@@ -111,6 +111,10 @@ public class GerenciadorDoJogo : MonoBehaviour
             {
                 alternarMenuPause();
             }
+            else
+            {
+                alternarMenuPause();
+            }
         }
     }
 

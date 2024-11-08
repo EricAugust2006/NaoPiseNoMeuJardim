@@ -281,12 +281,11 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 267158020}
+  - {fileID: 1194485215}
   - {fileID: 885119003}
   - {fileID: 1196333804}
   - {fileID: 885908812}
   - {fileID: 743844324}
-  - {fileID: 406008395}
   - {fileID: 1485372178}
   - {fileID: 110023770}
   - {fileID: 221411786}
@@ -296,7 +295,8 @@ RectTransform:
   - {fileID: 1607578850}
   - {fileID: 1738584850}
   - {fileID: 73533527}
-  - {fileID: 1194485215}
+  - {fileID: 267158020}
+  - {fileID: 406008395}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -67548,7 +67548,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1194485215
 RectTransform:
   m_ObjectHideFlags: 0
@@ -76524,6 +76524,7 @@ PrefabInstance:
     m_RemovedGameObjects:
     - {fileID: 1497004367589588364, guid: 7a8b4a10c7db67442a009920566d18d9, type: 3}
     - {fileID: 2231427650807986628, guid: 7a8b4a10c7db67442a009920566d18d9, type: 3}
+    - {fileID: 8519537612938158331, guid: 7a8b4a10c7db67442a009920566d18d9, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7a8b4a10c7db67442a009920566d18d9, type: 3}

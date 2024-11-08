@@ -46,7 +46,6 @@ public class ScriptPersonagem : MonoBehaviour
     public GameObject paredeInvisivel;
     public GameObject GameObjectdetectaPlataforma;
 
-    // public GameObject temporizadorIniciar;
 
     [Header("Animacao e Flip")]
     private SpriteRenderer spriteRenderer;
@@ -131,20 +130,19 @@ public class ScriptPersonagem : MonoBehaviour
     public MoverFundo parallaxArvoreDois;
 
     [Header("Descer rápido")]
-    public float velocidadeDescidaRapida = 20f; // Velocidade extra ao descer
-    public float raioDetectaChao = 0.2f; // Raio para a detecção
+    public float velocidadeDescidaRapida = 20f;
+    public float raioDetectaChao = 0.2f;
     public Collider2D colisorGameObjectPlataforma;
-    public float tempoEntreDano = 1f; // Intervalo entre cada dano
-    private float ultimoTempoDano = 0f; // Rastrea o tempo da última aplicação de dano
+    public float tempoEntreDano = 1f; 
+    private float ultimoTempoDano = 0f; 
 
     public GameObject colisoresParede1;
     public GameObject colisoresParede2;
     public List<GameObject> colisoresParede;
 
-//mudei aqui
-    public float velocidadeMovimento = 5f; // Velocidade do movimento automático
-    private bool movimentoAutomaticoAtivado = false; // Controle do movimento automático
-    private Vector3 direcaoMovimento = Vector3.right; // Direção do movimento automático
+    public float velocidadeMovimento = 5f; 
+    private bool movimentoAutomaticoAtivado = false; 
+    private Vector3 direcaoMovimento = Vector3.right;
 
     private void Awake()
     {
@@ -170,15 +168,15 @@ public class ScriptPersonagem : MonoBehaviour
         {
             targetOrthoSize = initialOrthoSize;
             cinemachine.m_Lens.OrthographicSize = initialOrthoSize;
-            targetOrthoSize = initialOrthoSize; // Inicializar targetOrthoSize com o valor inicial
-            cinemachine.m_Lens.OrthographicSize = initialOrthoSize; // Definir o orthoSize inicial
+            targetOrthoSize = initialOrthoSize; 
+            cinemachine.m_Lens.OrthographicSize = initialOrthoSize;
 
-            // Obtém o Framing Transposer do Cinemachine Virtual Camera
             framingTransposer = cinemachine.GetCinemachineComponent<CinemachineFramingTransposer>();
 
             if (framingTransposer != null)
             {
                 // Define o valor inicial do offset no eixo X (originalOffsetX)
+                // dificil pra aprender, mas é compreensivel
                 originalOffsetX = new Vector3(
                     framingTransposer.m_TrackedObjectOffset.x,
                     framingTransposer.m_TrackedObjectOffset.y,
@@ -187,6 +185,7 @@ public class ScriptPersonagem : MonoBehaviour
                 targetOffsetX = originalOffsetX;
 
                 // Aplicar o valor inicial ao Framing Transposer, mas apenas no eixo X
+                // dificil pra aprender, mas é compreensivel
                 framingTransposer.m_TrackedObjectOffset = new Vector3(
                     originalOffsetX.x,
                     framingTransposer.m_TrackedObjectOffset.y,
@@ -224,8 +223,7 @@ public class ScriptPersonagem : MonoBehaviour
     {
         if (movendoAutomaticamente)
         {
-            // Mova o personagem para a direita
-            rb.linearVelocity = new Vector2(5f, rb.linearVelocity.y); // 5f é a velocidade que você pode ajustar
+            rb.linearVelocity = new Vector2(5f, rb.linearVelocity.y); 
         }
 
         AtualizarAnimacoes();
@@ -238,7 +236,6 @@ public class ScriptPersonagem : MonoBehaviour
             {
                 MudarCameraParaDireita();
             }
-
             if (jardim.eventoLigado)
             {
                 paredeInvisivel.SetActive(false);
@@ -246,12 +243,10 @@ public class ScriptPersonagem : MonoBehaviour
                 movendoAutomaticamente = true;
                 spriteRenderer.flipX = false;
             }
-
             AjustarZoomCamera();
             MudarPlataforma();
             CuidarLayer();
         }
-
         if (movendoAutomaticamente)
         {
             MoverAutomaticamente();
@@ -260,12 +255,10 @@ public class ScriptPersonagem : MonoBehaviour
         {
             Movimentar();
         }
-
         if (podePular)
         {
             Jump();
         }
-
         AtualizarAnimacoes();
     }
 
@@ -281,7 +274,6 @@ public class ScriptPersonagem : MonoBehaviour
         }
         DetectarChao();
     }
-
     public void MoverAutomaticamente()
     {
         animator.SetBool("Correndo", true);
@@ -289,13 +281,10 @@ public class ScriptPersonagem : MonoBehaviour
         float speedautomatico = speed;
         transform.Translate(Vector2.right * speedautomatico * Time.deltaTime);
     }
-
     public void Movimentar()
     {
-        // Movimento do personagem enquanto não está no estado de corrida infinita
         if (SceneManager.GetActiveScene().name == "JardimJogo")
         {
-            // Verifica se o personagem não está em corrida automática e o evento não está ativado
             if (!emCorridaInfinita && !movendoAutomaticamente && !jardim.IniciarJogo)
             {
                 float VelX = Input.GetAxis("Horizontal");
@@ -319,13 +308,11 @@ public class ScriptPersonagem : MonoBehaviour
                 float VelX = Input.GetAxis("Horizontal");
                 Vector3 Movement = new Vector3(VelX, 0f, 0f);
                 transform.position += Movement * Time.deltaTime * speed;
-
                 animator.SetFloat("Velocidade", 1);
             }
         }
         else
         {
-            // Movimentação fora do Jardim
             float VelX = Input.GetAxis("Horizontal");
             Vector3 Movement = new Vector3(VelX, 0f, 0f);
             transform.position += Movement * Time.deltaTime * speed;
@@ -347,6 +334,7 @@ public class ScriptPersonagem : MonoBehaviour
         if (framingTransposer != null)
         {
             // Defina o valor do offset no eixo X para mover a câmera para a direita
+            //ficou um pouco confuso, mas deu
             framingTransposer.m_TrackedObjectOffset = new Vector3(
                 originalOffsetX.x + offSetX,
                 framingTransposer.m_TrackedObjectOffset.y,
@@ -386,7 +374,6 @@ public class ScriptPersonagem : MonoBehaviour
         {
             if (Input.GetButtonDown("Jump"))
             {
-                // destroiToupeira.enabled = false;
                 if (podePular && taNoChao || taNaPlataforma)
                 {
                     rb.linearVelocity = new Vector2(rb.linearVelocity.x, forcaPulo);
@@ -406,7 +393,6 @@ public class ScriptPersonagem : MonoBehaviour
             {
                 if (!taNoChao && Input.GetButtonDown("VerticalDown") && !taNaPlataforma)
                 {
-                    // destroiToupeira.SetActive(true);
                     StartCoroutine(trocarLayerPlayer());
                     DescerRapidamente();
                 }
@@ -425,11 +411,7 @@ public class ScriptPersonagem : MonoBehaviour
         yield return new WaitForSeconds(.5f);
         gameObject.tag = "Player";
     }
-
-    // =================================================================================
     // ================================ PLATAFORMAS ====================================
-    // =================================================================================
-
     public void TomouDanoDeCima()
     {
         if (taNaPlataforma)
@@ -464,9 +446,7 @@ public class ScriptPersonagem : MonoBehaviour
     {
         podePular = false;
         col.enabled = false;
-        //gameObject.layer = LayerMask.NameToLayer("Player");
         yield return new WaitForSeconds(.5f);
-        //gameObject.layer = LayerMask.NameToLayer("Default");
         col.enabled = true;
         podePular = true;
     }
@@ -477,10 +457,7 @@ public class ScriptPersonagem : MonoBehaviour
         yield return null;
         animator.SetTrigger("Jump");
     }
-
-    // =================================================================================
     // ================================= EMPURRAR ======================================
-    // =================================================================================
     public void InimigoEmpurrar()
     {
         animator.SetTrigger("Jump");
@@ -501,11 +478,7 @@ public class ScriptPersonagem : MonoBehaviour
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 5);
         animator.SetBool("Caindo", false);
     }
-
-    // =================================================================================
     // ======================== PARTE DE ANIMAÇÃO ANIMAÇÃO =============================
-    // =================================================================================
-
     private void AtualizarAnimacoes()
     {
         if (rb.linearVelocity.y < 0)
@@ -546,11 +519,7 @@ public class ScriptPersonagem : MonoBehaviour
         animator.SetLayerWeight(1, taNoChao ? 0 : 1);
         animator.SetLayerWeight(1, taNaPlataforma ? 0 : 1);
     }
-
-    // =================================================================================
     // ============================== CINEMACHINE ZOOM =================================
-    // =================================================================================
-
     public void VoaPassarin()
     {
         if (framingTransposer != null)
@@ -651,9 +620,7 @@ public class ScriptPersonagem : MonoBehaviour
         movimentoAutomaticoAtivado = false;
         Debug.Log("Fim do Jogo!"); // Aqui você pode adicionar a lógica para finalizar o jogo
     }
-    // =================================================================================
     // ============================= PARTE DAS COLISÕES ================================
-    // =================================================================================
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
