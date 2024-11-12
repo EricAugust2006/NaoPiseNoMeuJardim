@@ -40,7 +40,7 @@ public class Toupeira : MonoBehaviour
                 Debug.Log("A toupeira deu uma vida ao jogador!");
             }
 
-            player.InimigoEmpurrar();
+            player.Empurrar();
             Destroy(gameObject);
         }
     }

@@ -28,8 +28,14 @@ public class Temporizador : MonoBehaviour
 
     public List<GameObject> paredes;
 
+    public List<GameObject> gameObjectsParaDesabilitar;
+
     void Start()
     {
+        if (gameObjectsParaDesabilitar == null){
+            gameObjectsParaDesabilitar = new List<GameObject>();
+        }
+
         if (paredes == null)
         {
             paredes = new List<GameObject>();
@@ -62,9 +68,19 @@ public class Temporizador : MonoBehaviour
 
         if (tempoAtual >= tempoMaximo && Input.GetKeyDown(KeyCode.F) && !corridaFinalizada)
         {
+            desativarGameObjects();
             FinalizarCorrida();
             desativarColisores();
             player.gameObject.tag = "Vencedor";
+        }
+    }
+
+    public void desativarGameObjects(){
+        foreach(GameObject gameobjectsDesativar in gameObjectsParaDesabilitar)
+        {
+            if(gameobjectsDesativar != null){
+                gameobjectsDesativar.SetActive(false);
+            }
         }
     }
 
@@ -117,8 +133,9 @@ public class Temporizador : MonoBehaviour
 
     private void FinalizarCorrida()
     {
-        player.col.enabled = false;
-        player.rb.gravityScale = 0f;
+        // player.col.enabled = false;
+        // player.rb.gravityScale = 1f;
+        player.gameObject.layer = LayerMask.NameToLayer("Invencibilidade");
         corridaFinalizada = true;
         clicarParaTerminarCorrida.SetActive(false);
         player.IniciarMovimentoAutomatico();

@@ -144,8 +144,17 @@ public class ScriptPersonagem : MonoBehaviour
     private bool movimentoAutomaticoAtivado = false; 
     private Vector3 direcaoMovimento = Vector3.right;
 
+
+    [Header("aAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")]
+    public GameObject painelDica; 
+
+    private bool painelAtivo = false; 
+    private bool podeFecharPainel = false;
+
     private void Awake()
     {
+        painelDica.SetActive(false);
+
         if (colisoresParede == null)
         {
             colisoresParede = new List<GameObject>();
@@ -221,6 +230,11 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void Update()
     {
+    if (podeFecharPainel && Input.GetKeyDown(KeyCode.E))
+        {
+            FecharPainel();
+        }
+
         if (movendoAutomaticamente)
         {
             rb.linearVelocity = new Vector2(5f, rb.linearVelocity.y); 
@@ -327,6 +341,21 @@ public class ScriptPersonagem : MonoBehaviour
             }
             animator.SetBool("Correndo", VelX != 0);
         }
+    }
+     void AbrirPainel()
+    {
+        Time.timeScale = 0f;
+        painelDica.SetActive(true);
+        painelAtivo = true;
+        podeFecharPainel = true;
+    }
+
+    void FecharPainel()
+    {
+        Time.timeScale = 1f;
+        painelDica.SetActive(false);
+        painelAtivo = false;
+        podeFecharPainel = false;
     }
 
     private void MudarCameraParaDireita()
@@ -460,23 +489,23 @@ public class ScriptPersonagem : MonoBehaviour
     // ================================= EMPURRAR ======================================
     public void InimigoEmpurrar()
     {
-        animator.SetTrigger("Jump");
+        // animator.SetTrigger("Jump");
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 15);
-        animator.SetBool("Caindo", false);
+        // animator.SetBool("Caindo", false);
     }
 
     public void Empurrar()
     {
-        animator.SetTrigger("Jump");
+        // animator.SetTrigger("Jump");
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 10);
-        animator.SetBool("Caindo", false);
+        // animator.SetBool("Caindo", false);
     }
 
     public void EmpurrarEspelho()
     {
-        animator.SetTrigger("Jump");
+        // animator.SetTrigger("Jump");
         rb.linearVelocity = new Vector2(rb.linearVelocity.x, 5);
-        animator.SetBool("Caindo", false);
+        // animator.SetBool("Caindo", false);
     }
     // ======================== PARTE DE ANIMAÇÃO ANIMAÇÃO =============================
     private void AtualizarAnimacoes()
@@ -620,12 +649,20 @@ public class ScriptPersonagem : MonoBehaviour
         movimentoAutomaticoAtivado = false;
         Debug.Log("Fim do Jogo!"); // Aqui você pode adicionar a lógica para finalizar o jogo
     }
+    public void ativarDica(){
+
+    }
+
+    IEnumerator ativarDiquinha(){
+        yield return null;
+    }
     // ============================= PARTE DAS COLISÕES ================================
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "pararCorrida")
         {
+            AbrirPainel();
             triggouComTagPararCorrida = true;
             rb.constraints =
             RigidbodyConstraints2D.FreezeRotation;

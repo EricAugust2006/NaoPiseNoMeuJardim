@@ -42,17 +42,19 @@ public class GerenciadorDoJogo : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
+        if(SceneManager.GetActiveScene().name == "JardimJogo"){
+            Time.timeScale = 1f;
+        }
     }
 
     private void Update()
     {
+        
         abrirEfecharMenuPause();
         jogoTaDesligado();
     }
 
-    // =================================================
     // ================== MENU PRINCIPAL ===============
-    // =================================================
 
     public void novoJogo()
     {
@@ -78,9 +80,7 @@ public class GerenciadorDoJogo : MonoBehaviour
         MenuPrincipal.SetActive(true);
     }
 
-    // =================================================
     // ================== EM JOGO ======================
-    // =================================================
 
     public void abrirEfecharMenuPause()
     {
@@ -125,11 +125,11 @@ public class GerenciadorDoJogo : MonoBehaviour
 
         if (taAtivo)
         {
-            Time.timeScale = 1f; // Retoma o jogo
+            Time.timeScale = 1f;
         }
         else
         {
-            Time.timeScale = 0f; // Pausa o jogo
+            Time.timeScale = 0f;
         }
     }
 
@@ -161,20 +161,22 @@ public class GerenciadorDoJogo : MonoBehaviour
         {
             jogoLigado = false;
 
-            if (!jogoLigado) // Compara��o correta
+            if (!jogoLigado) 
             {
-                Time.timeScale = 0f; // Pausa o jogo no menu principal
+                Time.timeScale = 0f;
             }
             else
             {
-                Time.timeScale = 1f; // Retoma o jogo se n�o estiver no menu principal
+                Time.timeScale = 1f;
             }
         }
     }
 
     public void recomecarJogo()
-    {
-        transicaoCenas.CarregarCena("JardimJogo");
+    {   
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("JardimJogo");
+        // transicaoCenas.CarregarCena("JardimJogo");
     }
 
     public void sairDoJogo()

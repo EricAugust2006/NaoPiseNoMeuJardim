@@ -23,8 +23,11 @@ public class DialogoMãe : MonoBehaviour
     private Animator personagemAnimator;
     private JARDIM jardim;
 
+    public GameObject botaoAvançarDialogo;
+
     void Start()
     {
+        botaoAvançarDialogo.SetActive(false);
         jardim = FindObjectOfType<JARDIM>();
         dialoguePanel.SetActive(false);
         personagemScript = FindObjectOfType<ScriptPersonagem>();
@@ -44,7 +47,6 @@ public class DialogoMãe : MonoBehaviour
         {
             if (!startDialogue)
             {
-                // Desativa pulo e animação de corrida
                 personagemScript.speed = 0f;
                 DesativarAnimacoes();
                 StartDialogue();
@@ -97,6 +99,8 @@ public class DialogoMãe : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.04f);
         }
+
+        botaoAvançarDialogo.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -117,7 +121,6 @@ public class DialogoMãe : MonoBehaviour
         return;
     }
 
-    // Método para desativar animações
     void DesativarAnimacoes()
     {
         if (personagemAnimator != null)
@@ -126,18 +129,15 @@ public class DialogoMãe : MonoBehaviour
             personagemAnimator.SetBool("Correndo", false);
             personagemAnimator.SetBool("Caindo", false);
             personagemAnimator.SetFloat("Velocidade", 0f);
-            // Adicione qualquer outro parâmetro que precise ser desativado
         }
     }
 
-    // Método para restaurar animações
     void RestaurarAnimacoes()
     {
         if (personagemAnimator != null)
         {
             Debug.Log("Restaurando animações");
-            // Ajuste os valores conforme necessário para restaurar o estado anterior
-            personagemAnimator.SetBool("Correndo", true); // Se necessário, ajuste conforme a lógica do seu jogo
+            personagemAnimator.SetBool("Correndo", true); 
         }
     }
 }

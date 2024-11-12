@@ -26,8 +26,11 @@ public class DialogoESPELHO : MonoBehaviour
     public GameObject botaoInteracao;
     public bool tanoDialogoEspelho = false;
 
+    public GameObject botaoAvançarDialogo;
+
     void Start()
     {
+        botaoAvançarDialogo.SetActive(false);
         dialoguePanel.SetActive(false);
         personagemScript = FindObjectOfType<ScriptPersonagem>();
         if (personagemScript != null)
@@ -59,7 +62,7 @@ public class DialogoESPELHO : MonoBehaviour
 
             if (!Interagido)
             {
-                personagemScript.EmpurrarEspelho();
+                personagemScript.Empurrar();
                 Interagido = true;
             }
         }
@@ -103,6 +106,8 @@ public class DialogoESPELHO : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.02f);
         }
+
+        botaoAvançarDialogo.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

@@ -32,8 +32,11 @@ public class InteraçãoPorta : MonoBehaviour
     public GameObject botaoInteracao;
     public TransicaoDeCenas transicaoDeCenas;
 
+    public GameObject botaoAvançarDialogo;
+
     void Start()
     {
+        botaoAvançarDialogo.SetActive(false);
         dialoguePanel.SetActive(false);
         personagemScript = FindObjectOfType<ScriptPersonagem>();
         if (personagemScript != null)
@@ -100,6 +103,8 @@ public class InteraçãoPorta : MonoBehaviour
             dialogueText.text += letter;
             yield return new WaitForSeconds(0.02f);
         }
+
+        botaoAvançarDialogo.SetActive(true);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

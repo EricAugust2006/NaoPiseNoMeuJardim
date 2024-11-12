@@ -19,6 +19,7 @@ Physics2DSettings:
   m_LinearSleepTolerance: 0.01
   m_AngularSleepTolerance: 2
   m_DefaultContactOffset: 0.01
+  m_ContactThreshold: 0
   m_JobOptions:
     serializedVersion: 2
     useMultithreading: 0
@@ -52,4 +53,4 @@ Physics2DSettings:
   m_ReuseCollisionCallbacks: 1
   m_AutoSyncTransforms: 0
   m_GizmoOptions: 10
-  m_LayerCollisionMatrix: ffef39fcffffbffcffffbffcffffffffffffbbfcffff39fcffffffffffffffffffff3afcffbf31fcffff18fcffff39fcfeff39fcffff38fcfffdbcfcffff39fcff9a39fcde0138fcce4038fcfffd37fcffff3ffcfffb3ffcc80000fdde4000f8c80040f8c80000f8ffff7ff8ffffffffffffffffffffffffffffffffffffffff
+  m_LayerCollisionMatrix: ffef39ecffffbfecffffbfecffffffffffffbbecffff39ecffffffffffffffffffff3afcffbf31ecffff18ecffff39ecfeff39ecffff38ecfffdbcecffff39ecff9a39ecde0138ecce4038ecfffd37ecffff3fecfffb3fecc80000edde4000e8c80040e8c80000e8ffff7fe8ffffffefc80100e0ffffffffffffffffffffffff
