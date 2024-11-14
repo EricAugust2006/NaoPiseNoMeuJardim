@@ -42,14 +42,15 @@ public class GerenciadorDoJogo : MonoBehaviour
         {
             Time.timeScale = 1f;
         }
-        if(SceneManager.GetActiveScene().name == "JardimJogo"){
+        if (SceneManager.GetActiveScene().name == "JardimJogo")
+        {
             Time.timeScale = 1f;
         }
     }
 
     private void Update()
     {
-        
+
         abrirEfecharMenuPause();
         jogoTaDesligado();
     }
@@ -161,7 +162,7 @@ public class GerenciadorDoJogo : MonoBehaviour
         {
             jogoLigado = false;
 
-            if (!jogoLigado) 
+            if (!jogoLigado)
             {
                 Time.timeScale = 0f;
             }
@@ -173,7 +174,7 @@ public class GerenciadorDoJogo : MonoBehaviour
     }
 
     public void recomecarJogo()
-    {   
+    {
         Time.timeScale = 1f;
         SceneManager.LoadScene("JardimJogo");
         // transicaoCenas.CarregarCena("JardimJogo");

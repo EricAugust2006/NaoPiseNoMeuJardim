@@ -11,7 +11,7 @@ using UnityEngine.UIElements;
 
 public class ScriptPersonagem : MonoBehaviour
 {
-    [Header("Movimentacao")]    
+    [Header("Movimentacao")]
     public Rigidbody2D rb;
 
     [SerializeField]
@@ -133,22 +133,22 @@ public class ScriptPersonagem : MonoBehaviour
     public float velocidadeDescidaRapida = 20f;
     public float raioDetectaChao = 0.2f;
     public Collider2D colisorGameObjectPlataforma;
-    public float tempoEntreDano = 1f; 
-    private float ultimoTempoDano = 0f; 
+    public float tempoEntreDano = 1f;
+    private float ultimoTempoDano = 0f;
 
     public GameObject colisoresParede1;
     public GameObject colisoresParede2;
     public List<GameObject> colisoresParede;
 
-    public float velocidadeMovimento = 5f; 
-    private bool movimentoAutomaticoAtivado = false; 
+    public float velocidadeMovimento = 5f;
+    private bool movimentoAutomaticoAtivado = false;
     private Vector3 direcaoMovimento = Vector3.right;
 
 
     [Header("aAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA")]
-    public GameObject painelDica; 
+    public GameObject painelDica;
 
-    private bool painelAtivo = false; 
+    private bool painelAtivo = false;
     private bool podeFecharPainel = false;
 
     private void Awake()
@@ -177,7 +177,7 @@ public class ScriptPersonagem : MonoBehaviour
         {
             targetOrthoSize = initialOrthoSize;
             cinemachine.m_Lens.OrthographicSize = initialOrthoSize;
-            targetOrthoSize = initialOrthoSize; 
+            targetOrthoSize = initialOrthoSize;
             cinemachine.m_Lens.OrthographicSize = initialOrthoSize;
 
             framingTransposer = cinemachine.GetCinemachineComponent<CinemachineFramingTransposer>();
@@ -230,14 +230,14 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void Update()
     {
-    if (podeFecharPainel && Input.GetKeyDown(KeyCode.E))
+        if (podeFecharPainel && Input.GetKeyDown(KeyCode.E))
         {
             FecharPainel();
         }
 
         if (movendoAutomaticamente)
         {
-            rb.linearVelocity = new Vector2(5f, rb.linearVelocity.y); 
+            rb.linearVelocity = new Vector2(5f, rb.linearVelocity.y);
         }
 
         AtualizarAnimacoes();
@@ -301,12 +301,26 @@ public class ScriptPersonagem : MonoBehaviour
         {
             if (!emCorridaInfinita && !movendoAutomaticamente && !jardim.IniciarJogo)
             {
+                // float VelX = Input.GetAxis("Horizontal");
+                // Vector3 Movement = new Vector3(VelX, 0f, 0f);
+                // transform.position += Movement * Time.deltaTime * speed;
+
+                // animator.SetFloat("Velocidade", Mathf.Abs(VelX));
+
+                // if (VelX > 0)
+                // {
+                //     spriteRenderer.flipX = false;
+                // }
+                // else if (VelX < 0)
+                // {
+                //     spriteRenderer.flipX = true;
+                // }
+                // animator.SetBool("Correndo", VelX != 0);
+
                 float VelX = Input.GetAxis("Horizontal");
                 Vector3 Movement = new Vector3(VelX, 0f, 0f);
                 transform.position += Movement * Time.deltaTime * speed;
-
                 animator.SetFloat("Velocidade", Mathf.Abs(VelX));
-
                 if (VelX > 0)
                 {
                     spriteRenderer.flipX = false;
@@ -342,7 +356,7 @@ public class ScriptPersonagem : MonoBehaviour
             animator.SetBool("Correndo", VelX != 0);
         }
     }
-     void AbrirPainel()
+    void AbrirPainel()
     {
         Time.timeScale = 0f;
         painelDica.SetActive(true);
@@ -362,8 +376,7 @@ public class ScriptPersonagem : MonoBehaviour
     {
         if (framingTransposer != null)
         {
-            // Defina o valor do offset no eixo X para mover a câmera para a direita
-            //ficou um pouco confuso, mas deu
+
             framingTransposer.m_TrackedObjectOffset = new Vector3(
                 originalOffsetX.x + offSetX,
                 framingTransposer.m_TrackedObjectOffset.y,
@@ -641,23 +654,23 @@ public class ScriptPersonagem : MonoBehaviour
 
     public void IniciarMovimentoAutomatico()
     {
-        movendoAutomaticamente = true; // Ativa o movimento automático
+        movendoAutomaticamente = true;
     }
     public void FimDoJogo()
     {
-        // Para o movimento automático quando o jogo termina
         movimentoAutomaticoAtivado = false;
-        Debug.Log("Fim do Jogo!"); // Aqui você pode adicionar a lógica para finalizar o jogo
+        Debug.Log("Fim do Jogo!");
     }
-    public void ativarDica(){
+    public void ativarDica()
+    {
 
     }
 
-    IEnumerator ativarDiquinha(){
+    IEnumerator ativarDiquinha()
+    {
         yield return null;
     }
     // ============================= PARTE DAS COLISÕES ================================
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "pararCorrida")
