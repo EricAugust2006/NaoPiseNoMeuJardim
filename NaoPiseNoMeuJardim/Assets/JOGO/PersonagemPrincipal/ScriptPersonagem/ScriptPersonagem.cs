@@ -102,10 +102,10 @@ public class ScriptPersonagem : MonoBehaviour
 
     [Header("Corrida Infinita")]
     public bool emCorridaInfinita = false;
+    public bool movendoAutomaticamente = false;
     public float velocidadeCorridaInfinita = 8f;
     public float distanciaScene = 100f;
     public float velocidadeScene = 5f;
-    public bool movendoAutomaticamente = false;
     private bool movendoScene = false;
     public Vector2 destination;
 
@@ -299,24 +299,8 @@ public class ScriptPersonagem : MonoBehaviour
     {
         if (SceneManager.GetActiveScene().name == "JardimJogo")
         {
-            if (!emCorridaInfinita && !movendoAutomaticamente && !jardim.IniciarJogo)
+            if (!jardim.IniciarJogo)
             {
-                // float VelX = Input.GetAxis("Horizontal");
-                // Vector3 Movement = new Vector3(VelX, 0f, 0f);
-                // transform.position += Movement * Time.deltaTime * speed;
-
-                // animator.SetFloat("Velocidade", Mathf.Abs(VelX));
-
-                // if (VelX > 0)
-                // {
-                //     spriteRenderer.flipX = false;
-                // }
-                // else if (VelX < 0)
-                // {
-                //     spriteRenderer.flipX = true;
-                // }
-                // animator.SetBool("Correndo", VelX != 0);
-
                 float VelX = Input.GetAxis("Horizontal");
                 Vector3 Movement = new Vector3(VelX, 0f, 0f);
                 transform.position += Movement * Time.deltaTime * speed;
@@ -661,15 +645,6 @@ public class ScriptPersonagem : MonoBehaviour
         movimentoAutomaticoAtivado = false;
         Debug.Log("Fim do Jogo!");
     }
-    public void ativarDica()
-    {
-
-    }
-
-    IEnumerator ativarDiquinha()
-    {
-        yield return null;
-    }
     // ============================= PARTE DAS COLISÕES ================================
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -749,7 +724,6 @@ public class ScriptPersonagem : MonoBehaviour
             StartCoroutine(invencilibdade());
             tomouDano = true;
             sistemaDeVida.vida--;
-            // Destroy(collision.gameObject);
         }
     }
 
@@ -766,12 +740,11 @@ public class ScriptPersonagem : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-
         if (collision.gameObject.CompareTag("DarZoom"))
         {
             targetOffset = originalOffset;
             isInTriggerZone = false;
-            targetOrthoSize = initialOrthoSize; // Retornar ao tamanho inicial quando sair do trigger
+            targetOrthoSize = initialOrthoSize;
         }
     }
 }
