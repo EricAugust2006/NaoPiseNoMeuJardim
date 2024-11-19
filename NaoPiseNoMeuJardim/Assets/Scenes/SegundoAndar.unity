@@ -5067,7 +5067,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -540.0018, y: 175.8}
+  m_AnchoredPosition: {x: -563, y: 250}
   m_SizeDelta: {x: 140, y: 140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1334328740
@@ -5439,7 +5439,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -545.5, y: 310}
+  m_AnchoredPosition: {x: -557, y: 117}
   m_SizeDelta: {x: 279.3, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1416970757
@@ -5464,15 +5464,15 @@ MonoBehaviour:
       m_Calls: []
   m_text: NOME
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 48cf1bd2c7021034881123fb551129ea, type: 2}
+  m_sharedMaterial: {fileID: -7523962947296427756, guid: 48cf1bd2c7021034881123fb551129ea, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294967295
-  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+    rgba: 4287811327
+  m_fontColor: {r: 1, g: 0.80692583, b: 0.5707547, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -15771,8 +15771,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Dialogue:'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 48cf1bd2c7021034881123fb551129ea, type: 2}
+  m_sharedMaterial: {fileID: -7523962947296427756, guid: 48cf1bd2c7021034881123fb551129ea, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -15796,8 +15796,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 40
-  m_fontSizeBase: 40
+  m_fontSize: 50
+  m_fontSizeBase: 50
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -17025,7 +17025,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 4053800111429793726, guid: 26ba510646d12d642a77750bc8e1acc3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f08d8d377b5ff52469679e4145a8662d, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -17426,8 +17426,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -6.2051506, y: -3.26165, z: 0}
-    m_Extent: {x: 39.20535, y: 36.26075, z: 0}
+    m_Center: {x: -6.20595, y: -3.260851, z: 0}
+    m_Extent: {x: 42.90615, y: 39.96145, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -17435,7 +17435,7 @@ MonoBehaviour:
   m_ShapeLightParametricSides: 5
   m_ShapeLightParametricAngleOffset: 0
   m_ShapeLightParametricRadius: 1
-  m_ShapeLightFalloffSize: 32.5
+  m_ShapeLightFalloffSize: 36.2
   m_ShapeLightFalloffOffset: {x: 0, y: 0}
   m_ShapePath:
   - {x: -2.1576939, y: -6.960758, z: 0}
