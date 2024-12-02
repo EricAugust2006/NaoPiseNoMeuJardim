@@ -10,7 +10,7 @@ public class Temporizador : MonoBehaviour
     private ChineloDeMae chineloScript;
 
     public TextMeshProUGUI tempoUIText;
-    public float tempoMaximo = 300f;
+    public float tempoMaximo = 180f;
     public float tempoAtual = 0f;
     private float proximoAumento;
 
@@ -126,7 +126,7 @@ public class Temporizador : MonoBehaviour
             yield return null;
         }
 
-        tempoUIText.text = "05:00";
+        tempoUIText.text = "03:00";
         temporizadorGameObject.SetActive(false);
         clicarParaTerminarCorrida.SetActive(true);
     }

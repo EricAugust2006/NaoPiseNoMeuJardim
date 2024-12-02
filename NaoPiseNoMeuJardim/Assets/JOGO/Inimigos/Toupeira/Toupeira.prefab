@@ -134,6 +134,7 @@ SpriteRenderer:
   m_RayTraceProcedural: 0
   m_RayTracingAccelStructBuildFlagsOverride: 0
   m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -193,7 +194,7 @@ Animator:
   m_WriteDefaultValuesOnDisable: 0
 --- !u!50 &1151420709319530436
 Rigidbody2D:
-  serializedVersion: 4
+  serializedVersion: 5
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -204,8 +205,8 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
-  m_AngularDrag: 0.05
+  m_LinearDamping: 0
+  m_AngularDamping: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -267,4 +268,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1d6e3946996f7443b79b22ca56a1fbb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chanceDarVida: 0.1
+  chanceDarVida: 0.55
